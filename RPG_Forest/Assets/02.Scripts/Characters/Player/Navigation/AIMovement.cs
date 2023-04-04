@@ -4,18 +4,6 @@ using UnityEngine;
 
 public class AIMovement : CharacterMovement
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     protected void MoveByPath(Vector3[] pathList)
     {
         StopAllCoroutines();
@@ -24,13 +12,13 @@ public class AIMovement : CharacterMovement
 
     IEnumerator MovingByPath(Vector3[] pathList)
     {
-        int i = 1;
         myAnim.SetFloat("Speed", 1.0f);
+        int i = 1;
         while (i < pathList.Length)
         {
             bool done = false;
-            StartCoroutine(MovingToPos(pathList[1],()=> done=true));
-            while(!done)
+            MoveToPos(pathList[i], () => done = true);
+            while (!done)
             {
                 for(int n=i; n<pathList.Length; n++)
                 {
@@ -40,6 +28,6 @@ public class AIMovement : CharacterMovement
             }
             ++i;
         }
-        myAnim.SetFloat("speed", 0.0f);
+        myAnim.SetFloat("Speed", 0.0f);
     }
 }

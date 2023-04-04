@@ -4,19 +4,19 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class CharacterMovement : CharacterProperty
-{    
+{
+    Coroutine coMove = null;
     protected void MoveToPos(Vector3 pos, UnityAction done = null)
     {
-        StopAllCoroutines();
-        StartCoroutine(MovingToPos(pos, done));
+        if (coMove != null)
+        {
+            StopCoroutine(coMove);
+            coMove = null;
+        }
+        coMove = StartCoroutine(MovingToPos(pos, done));
     }
 
-    protected void FollowTarget(Transform target)
-    {
-        StopAllCoroutines();
-        StartCoroutine(FollowingTarget(target));
-    }
-    protected IEnumerator MovingToPos(Vector3 pos, UnityAction done)
+    IEnumerator MovingToPos(Vector3 pos, UnityAction done)
     {
         Vector3 dir = pos - transform.position;
         float dist = dir.magnitude;
@@ -26,7 +26,7 @@ public class CharacterMovement : CharacterProperty
 
         myAnim.SetBool("isMoving", true);
 
-        while(dist > 0.0f)
+        while (dist > 0.0f)
         {
             if (!myAnim.GetBool("isAttacking"))
             {
@@ -36,58 +36,45 @@ public class CharacterMovement : CharacterProperty
                     delta = dist;
                 }
                 dist -= delta;
-                transform.Translate(dir * delta, Space.World);
+                transform.Translate(dir * delta, Space.World); 
             }
             yield return null;
         }
-
         myAnim.SetBool("isMoving", false);
         done?.Invoke();
     }
 
-    IEnumerator Rotating(Vector3 dir)
+    protected void FollowTarget(Transform Target)
     {
-        float angle = Vector3.Angle(transform.forward, dir);
-        float rotDir = 1.0f;
-        if(Vector3.Dot(transform.right,dir) < 0.0f)
-        {
-            rotDir = -1.0f;
-        }
-        while(angle > 0.0f)
-        {
-            float delta = RotSpeed * Time.deltaTime;
-            if(angle - delta < 0.0f)
-            {
-                delta = angle;
-            }
-            angle -= delta;
-            transform.Rotate(Vector3.up * rotDir * delta);
-            yield return null;
-        }
+        StopAllCoroutines();
+        StartCoroutine(FollowingTarget(Target));
     }
 
-    IEnumerator FollowingTarget(Transform target)
+    IEnumerator FollowingTarget(Transform target) 
     {
-        while(target != null)
-        {            
-            if(!myAnim.GetBool("isAttacking")) playTime += Time.deltaTime;
+        while (target != null)
+        {
+            
+            if (!myAnim.GetBool("isAttacking")) playTime += Time.deltaTime;
             if (!myAnim.GetBool("isAttacking"))
             {
                 myAnim.SetBool("isMoving", false);
                 Vector3 dir = target.position - transform.position;
-                float dist = dir.magnitude - AttackRange;                
-                dir.Normalize();
-                float delta = 0.0f;
+                float dist = dir.magnitude - AttackRange;
 
+                dir.Normalize();
+
+                float delta = MoveSpeed * Time.deltaTime;
                 if (dist > 0.0f)
                 {
-                    delta = MoveSpeed * Time.deltaTime;
-                    if (dist <= delta)
+
+                    if (dist < delta)
                     {
-                        delta = dist;                        
+                        delta = dist;
                     }
                     myAnim.SetBool("isMoving", true);
                     transform.Translate(dir * delta, Space.World);
+
                 }
                 else
                 {
@@ -98,25 +85,45 @@ public class CharacterMovement : CharacterProperty
                             playTime = 0.0f;
                             myAnim.SetTrigger("Attack");
                         }
+
                     }
                 }
-
-                //Rotation
                 float angle = Vector3.Angle(transform.forward, dir);
                 float rotDir = 1.0f;
                 if (Vector3.Dot(transform.right, dir) < 0.0f)
-                {
                     rotDir = -1.0f;
-                }
                 delta = RotSpeed * Time.deltaTime;
+
                 if (angle < delta)
-                {
                     delta = angle;
-                }
-                transform.Rotate(transform.up * rotDir * delta, Space.World);
+
+                transform.Rotate(transform.up * delta * rotDir, Space.World);
             }
 
             yield return null;
         }
+
+    }
+
+    IEnumerator Rotating(Vector3 dir)
+    {
+        float angle = Vector3.Angle(transform.forward, dir);
+        float rotDir = 1.0f;
+
+        if (Vector3.Dot(transform.right, dir) < 0.0f)
+        {
+            rotDir = -1.0f;
+        }
+        while (angle > 0.0f)
+        {
+            float delta = RotSpeed * Time.deltaTime;
+            if (angle - delta < 0.0f)
+            {
+                delta = angle;
+            }
+            angle -= delta;
+            transform.Rotate(Vector3.up * rotDir * delta);
+        }
+        yield return null;
     }
 }
