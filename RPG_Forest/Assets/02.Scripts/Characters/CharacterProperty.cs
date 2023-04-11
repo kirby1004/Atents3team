@@ -5,12 +5,13 @@ using UnityEngine.Events;
 
 public class CharacterProperty : MonoBehaviour
 {
-    public UnityAction DeathAlarm;
-    public float MoveSpeed = 2.0f;
+
+    public UnityAction DeathAlarm;      // 게임 매니저
+    public float MoveSpeed = 2.0f;      
     public float RotSpeed = 360.0f;
     public float AttackRange = 1.0f;
     public float AttackDelay = 1.0f;
-    protected float playTime = 0.0f;
+    protected float playTime = 0.0f;   // 명칭 변경    
     public float MaxHp = 100.0f;
     float _curHp = -100.0f;
     public float AttackPoint = 35.0f;
