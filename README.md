@@ -9,11 +9,14 @@
 4. 개발 일정 확인하기 - [개발 일정](https://app.asana.com/0/1204352798021693/list)
 ---
 ### V.1.0.2 - SM
->PlayerAnimEvent Script 추가 -> 플레이어 애니메이션 이벤트 스크립트
->PlayerMovement Script 추가 -> 플레이어 움직임 및 공격 함수 구현
+>PlayerAnimEvent Script 추가 
+    -> 플레이어 애니메이션 이벤트 스크립트
+>PlayerMovement Script 추가 
+    -> 플레이어 움직임 및 공격 함수 구현
 >Follow Camera Script 수정
 >ShakeCamera Script 추가
->CharacterProperty Script 수정-> myCamera를 이용해 카메라에 접근할 수 있도록 CharacterProperty에서 myCamera 프로퍼티 추가함.
+>CharacterProperty Script 수정
+    -> myCamera를 이용해 카메라에 접근할 수 있도록 CharacterProperty에서 myCamera 프로퍼티 추가함.
 ---
 ### V.1.0.1 - GY
 >몬스터 스폰상태 추가
