@@ -11,9 +11,9 @@
   
 ### V.2.0.2 - JS
 > CharacterMovementV2 Script 추가  
-    - abstract 구조로 변경 
-    - 플레이어와 에너미 공통적으로 쓰는 메서드들 중 재정의가 필요한 것은 abstract 함수로 정의 후 각각 스크립트에서 재정의 필요
-    - 플레이어와 에너미가 공통적으로 쓴느 메서드 중 100% 일치하는 것은 그냥 protected로 선언 후 사용
+    - abstract 구조로 변경  
+    - 플레이어와 에너미 공통적으로 쓰는 메서드들 중 재정의가 필요한 것은 abstract 함수로 정의 후 각각 스크립트에서 재정의 필요  
+    - 플레이어와 에너미가 공통적으로 쓴느 메서드 중 100% 일치하는 것은 그냥 protected로 선언 후 사용  
 
 > Enemy Script 추가  
     - CharacterMovementV2로부터 재정의할 함수 Enemy Script에 구현 필요
@@ -24,23 +24,30 @@
 ### V.2.0.1 - SM
 > PlayerAnimEvent Script 추가  
     - 플레이어 애니메이션 이벤트 스크립트
+
 > PlayerMovement Script 추가  
     - 플레이어 움직임 및 공격 함수 구현
+
 > Follow Camera Script 수정  
+
 > ShakeCamera Script 추가  
+
 > CharacterProperty Script 수정  
     - myCamera를 이용해 카메라에 접근할 수 있도록 CharacterProperty에서 myCamera 프로퍼티 추가함.
 ---
 ## ***Phase2*** 04.17(Mon) ~ 05.01(Mon)
 ---
 ### V.1.0.2 - JS
-> GameManager SingleTone 구조 구현
-> ShakeCamera SingleTone 스크립트 작성 및 플레이어 담당 수민에게 전달
-> ObjectPooling source Code 구현
+> GameManager SingleTone 구조 구현  
+
+> ShakeCamera SingleTone 스크립트 작성 및 플레이어 담당 수민에게 전달  
+
+> ObjectPooling source Code 구현  
 ---
 ### V.1.0.1 - GY
-> 몬스터 스폰상태 추가
-> 몬스터 StateMachine 세분화 작업
+> 몬스터 스폰상태 추가  
+
+> 몬스터 StateMachine 세분화 작업  
 ---
 ### V.1.0.0 - JS
 > 개발 버전 업데이트 규칙  
