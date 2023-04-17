@@ -58,8 +58,9 @@
 4. 간단한 업무 내용 Asana에도 기입 가능  
 <img src = "https://user-images.githubusercontent.com/105345909/230705713-2d2a0ddb-fdeb-438e-8949-3ff0a6e94bfb.PNG" width = "180" height ="200"/>
      - 공동 작업이 필요한 경우 공동 작업자 태그를 걸고 사전에 업무 공유하기
-
-
+     
+---
+## ***Phase1*** 04.03(Mon) ~ 04.17(Mon)
 ---
 ### V.0.0.2
 
