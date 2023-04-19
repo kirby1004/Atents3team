@@ -8,7 +8,16 @@
 3. **상속 구조로 이루어진 스크립트**는 기존의 변수명 수정은 최대한 삼가고 불가피하게 작업을 해야하는 경우는 팀원들에게 미리 알리고 주석을 상세히 달기
 4. 개발 일정 확인하기 - [개발 일정](https://app.asana.com/0/1204352798021693/list)
 ---
-  
+### V.2.0.4 - JS
+> CharacterMovementV2 Script 수정  
+    - 플레이어의 Attack 함수 가져와서 Collider를 활용하여 Attack성공여부 확인 할 수있게 수정  
+> Abstract State 스크립트 구현  
+> StateMachine 및 Enemy Script 구현 예정  
+
+---
+### V.2.0.3 - GY
+
+---
 ### V.2.0.2 - JS
 > CharacterMovementV2 Script 추가  
     - abstract 구조로 변경  
