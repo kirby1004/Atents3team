@@ -45,6 +45,7 @@ public class Gamemanager : MonoBehaviour
     
     // [UIManager 싱글톤]으로 구현하고 여기에서 view 처리
 
+    // 세이브데이터
 
 
 

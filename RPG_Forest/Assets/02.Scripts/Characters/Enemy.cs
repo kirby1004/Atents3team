@@ -10,7 +10,7 @@ public class Enemy : CharacterMovement_V2
 
     // Dictionary<States, StateMachine>
 
-    private void Start()
+    protected override void Start()
     {
         //enemySM = new StateMachine();    
 

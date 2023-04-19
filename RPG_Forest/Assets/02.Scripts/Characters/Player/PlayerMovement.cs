@@ -30,7 +30,7 @@ public class PlayerMovement : CharacterMovement,IBattle
     }
 
     public void OnDamage(float dmg)
-    {
+    { 
         curHp -= dmg;
 
         if (Mathf.Approximately(curHp, 0.0f))
