@@ -13,7 +13,6 @@
     - 플레이어의 Attack 함수 가져와서 Collider를 활용하여 Attack성공여부 확인 할 수있게 수정  
 > Abstract State 스크립트 구현  
 > StateMachine 및 Enemy Script 구현 예정  
-
 ---
 ### V.2.0.3 - GY
 
@@ -25,10 +24,9 @@
     - 플레이어와 에너미가 공통적으로 쓴느 메서드 중 100% 일치하는 것은 그냥 protected로 선언 후 사용  
 
 > Enemy Script 추가  
-    - CharacterMovementV2로부터 재정의할 함수 Enemy Script에 구현 필요
-    - StateMachine과 스크립트의 분할을 위해 기틀 작업
-    - StateMachine, State 구현 예정 (4/19)
-
+    - CharacterMovementV2로부터 재정의할 함수 Enemy Script에 구현 필요  
+    - StateMachine과 스크립트의 분할을 위해 기틀 작업  
+    - StateMachine, State 구현 예정 (4/19)  
 ---
 ### V.2.0.1 - SM
 > PlayerAnimEvent Script 추가  
