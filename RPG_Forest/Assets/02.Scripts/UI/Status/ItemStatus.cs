@@ -5,17 +5,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ItemStatus", menuName = "Scriptable Object/ItemStatus", order = int.MaxValue)]
 public class ItemStatus : ScriptableObject
 {
-    public enum EquipmentType
-    {
-        Weapon , Armor , Leggins , Headgear , Boots
-    }
-    //public EquipmentType myequipmentType;
+
     [SerializeField]
     private EquipmentType _myequipType;
     public EquipmentType MyEquipmentType { get { return _myequipType; } }
     [SerializeField]
     private string _itemName;
     public string ItemName { get { return _itemName; } }
+    public ActionType actionType;
+
     [SerializeField]
     private int _attackPoint;
     public int AttackPoint
@@ -27,7 +25,7 @@ public class ItemStatus : ScriptableObject
             else return 0;
         }
     }
-    [SerializeField]
+    [SerializeField] 
     private float _attackSpeed;
     public float AttackSpeed 
     { 
@@ -60,8 +58,30 @@ public class ItemStatus : ScriptableObject
             else return 0;
         }
     }
+    [SerializeField]
+    private float _maxHpIncrese;
+    public float MaxHpIncrese
+    {
+        get 
+        {
+            if (MyEquipmentType != EquipmentType.Weapon)
+                return _maxHpIncrese;
+            else return 0;
+        }
+    }
 
+    public bool stackable;
 
+    [SerializeField]
+    private Sprite _image;
+    public Sprite Image { get { return _image; } }
+}
 
-
+public enum EquipmentType
+{
+    Weapon, Armor, Leggins, Headgear, Boots , Soul
+}
+public enum ActionType
+{
+    Attack , Defense , Inchent
 }

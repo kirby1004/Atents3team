@@ -22,10 +22,10 @@ public class Enemy : CharacterMovement_V2
         
     }
 
-    public override void Attack(Transform target = null)
-    {
-        throw new System.NotImplementedException();
-    }
+    //public override void Attack(Transform target = null)
+    //{
+    //    throw new System.NotImplementedException();
+    //}
 
     public override void MoveToPos(Vector3 pos, UnityAction done = null)
     {
