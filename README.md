@@ -8,6 +8,16 @@
 3. **상속 구조로 이루어진 스크립트**는 기존의 변수명 수정은 최대한 삼가고 불가피하게 작업을 해야하는 경우는 팀원들에게 미리 알리고 주석을 상세히 달기
 4. 개발 일정 확인하기 - [개발 일정](https://app.asana.com/0/1204352798021693/list)
 ---
+### V.2.0.5 - GY
+> Inventory 구현  
+ - ItemSlot , ItemStatus , Item 추가  
+   Item drag & drop , Item Add 구현  
+> Equipment 부분 구현
+ - EquipmentSlot , EquipmentItem 추가  
+ 장비칸의 타입에 맞는 장비만 착용되도록 구현  
+ 장비착용시 착용중인 장비 속성값 추가되도록 설정   
+ 장비창에서 착용해제할때 착용중인 장비상태 해제되도록 설정 
+---
 ### V.2.0.4 - JS
 > CharacterMovementV2 Script 수정  
     - 플레이어의 Attack 함수 가져와서 Collider를 활용하여 Attack성공여부 확인 할 수있게 수정  
@@ -15,7 +25,12 @@
 > StateMachine 및 Enemy Script 구현 예정  
 ---
 ### V.2.0.3 - GY
-
+> UI 외형 구현 
+- Inventory , Status , Equipment , SoulInchent
+> UI 기본 기능 추가
+- Drag & Drop 방식으로 이동 기능 추가
+- UI Close 구현
+- UI Menu 를 통해서 Active 가능하게 구현
 ---
 ### V.2.0.2 - JS
 > CharacterMovementV2 Script 추가  
