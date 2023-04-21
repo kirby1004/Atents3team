@@ -17,8 +17,9 @@ public class EquipmentSlot : MonoBehaviour , IDropHandler
         {
             if (transform.childCount == 0)
             {
-                inventorySlotItem.parentAfterDrag = transform;
+                inventorySlotItem.ChangeParent(transform);
                 inventorySlotItem.AddComponent<EquipmentItem>();
+                Gamemanager.instance.myUIManager.equipmentManager.RefreshStat();
             }
             else
             {
@@ -27,26 +28,16 @@ public class EquipmentSlot : MonoBehaviour , IDropHandler
                 {
                     mySlotItem.ChangeParent(inventorySlotItem.parentAfterDrag, true);
                     Destroy(mySlotItem.GetComponentInChildren<EquipmentItem>());
+                    Gamemanager.instance.myUIManager.equipmentManager.RefreshStat();
                 }
                 inventorySlotItem.ChangeParent(transform);
                 inventorySlotItem.AddComponent<EquipmentItem>();
+                Gamemanager.instance.myUIManager.equipmentManager.RefreshStat();
             }
         }
         //else if (inventorySlotItem.GetComponentInChildren<EquipmentItem>() == null)
         //{
 
         //}
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

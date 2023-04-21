@@ -16,6 +16,7 @@ public class InventorySlot : MonoBehaviour , IDropHandler
             if (inventorySlotItem.GetComponent<EquipmentItem>() != null)
             {
                 Destroy(inventorySlotItem.GetComponent<EquipmentItem>());
+                Gamemanager.instance.myUIManager.equipmentManager.RefreshStat();
             }
         }
         else if (transform.childCount == 1)
@@ -28,12 +29,14 @@ public class InventorySlot : MonoBehaviour , IDropHandler
                 if (inventorySlotItem.GetComponent<EquipmentItem>() != null)
                 {
                     mySlotItem.AddComponent<EquipmentItem>();
+                    Gamemanager.instance.myUIManager.equipmentManager.RefreshStat();
                 }
             }
             inventorySlotItem.ChangeParent(transform);
             if (inventorySlotItem.GetComponent<EquipmentItem>() != null)
             {
                 Destroy(inventorySlotItem.GetComponent<EquipmentItem>());
+                Gamemanager.instance.myUIManager.equipmentManager.RefreshStat();
             }
         }
     }

@@ -44,8 +44,11 @@ public class Gamemanager : MonoBehaviour
     // [Enemy] 스포너 위치  
     
     // [UIManager 싱글톤]으로 구현하고 여기에서 view 처리
-
+    public UIManager myUIManager;
+    
     // 세이브데이터
+
+
 
 
 
