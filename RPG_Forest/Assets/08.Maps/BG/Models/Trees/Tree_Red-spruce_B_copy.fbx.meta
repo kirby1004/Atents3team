@@ -7,8 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Bark_Red-spruce
+    second: {fileID: 2100000, guid: c6401176ded091f40b27e9e89456e785, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Bark_Red-spruce.001
     second: {fileID: 2100000, guid: c6401176ded091f40b27e9e89456e785, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Leaf_Red-spruce
+    second: {fileID: 2100000, guid: 0dc392ddd26d06e4b9236a88fea9422f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
