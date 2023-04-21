@@ -7,10 +7,7 @@ public class StatusManager : MonoBehaviour
 {
     public TMP_Text[] myStat;
 
-    public void RefreshStatus()
-    {
-        
-    }
+
 
 
 }

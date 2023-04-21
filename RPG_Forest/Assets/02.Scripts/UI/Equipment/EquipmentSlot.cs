@@ -35,6 +35,7 @@ public class EquipmentSlot : MonoBehaviour , IDropHandler
                 Gamemanager.instance.myUIManager.equipmentManager.RefreshStat();
             }
         }
+
         //else if (inventorySlotItem.GetComponentInChildren<EquipmentItem>() == null)
         //{
 

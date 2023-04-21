@@ -19,6 +19,12 @@ public class EquipmentManager : MonoBehaviour
 
     public void RefreshStat()
     {
+        StartCoroutine(RefreshStaus());
+    }
+
+    IEnumerator RefreshStaus()
+    {
+        yield return new WaitForSeconds(0.5f);
         equipmentHP = equipmentAP = equipmentDP = equipmentAS = equipmentSpeed = 0;
         for (int i = 0; i < equipmentSlots.Length; i++)
         {
