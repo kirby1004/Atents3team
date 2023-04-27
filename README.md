@@ -8,6 +8,10 @@
 3. **상속 구조로 이루어진 스크립트**는 기존의 변수명 수정은 최대한 삼가고 불가피하게 작업을 해야하는 경우는 팀원들에게 미리 알리고 주석을 상세히 달기
 4. 개발 일정 확인하기 - [개발 일정](https://app.asana.com/0/1204352798021693/list)
 ---
+### V.2.0.7 - JS  
+> State - Trace Script 수정  
+- Interface 재정의 누락으로 인한 
+---
 ### V.2.0.6 - JS  
 > CharacterProperty Script 수정  
 - Protected 한정자 일부 Public으로 수정
