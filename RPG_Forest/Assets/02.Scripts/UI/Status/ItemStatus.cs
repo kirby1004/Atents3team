@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "ItemStatus", menuName = "Scriptable Object/ItemStatus", order = int.MaxValue)]
 public class ItemStatus : ScriptableObject
@@ -10,9 +11,11 @@ public class ItemStatus : ScriptableObject
     private EquipmentType _myequipType;
     public EquipmentType MyEquipmentType { get { return _myequipType; } }
     [SerializeField]
+    private ActionType _actionType;
+    public ActionType actionType { get { return _actionType; } }
+    [SerializeField]
     private string _itemName;
     public string ItemName { get { return _itemName; } }
-    public ActionType actionType;
 
     [SerializeField]
     private int _attackPoint;
@@ -53,7 +56,7 @@ public class ItemStatus : ScriptableObject
     {
         get
         {
-            if (MyEquipmentType != EquipmentType.Boots)
+            if (MyEquipmentType == EquipmentType.Boots)
                 return _moveSpeed;
             else return 0;
         }
@@ -75,6 +78,8 @@ public class ItemStatus : ScriptableObject
     [SerializeField]
     private Sprite _image;
     public Sprite Image { get { return _image; } }
+
+    
 }
 
 public enum EquipmentType

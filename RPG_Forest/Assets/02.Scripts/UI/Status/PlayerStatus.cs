@@ -26,9 +26,10 @@ public class PlayerStatus : ScriptableObject
     [SerializeField]
     private float _defensePoint;
     public float DefensePoint { get { return _defensePoint; } }
-    [SerializeField]
-    private Dictionary<int, string> _dropTable;
-    public Dictionary<int, string> DropTable { get {  return _dropTable; } }
+
+    //[SerializeField]
+    //private Dictionary<int, string> _dropTable;
+    //public Dictionary<int, string> DropTable { get {  return _dropTable; } }
 
 }
 

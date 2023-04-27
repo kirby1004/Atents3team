@@ -18,12 +18,40 @@ public class UIManager : MonoBehaviour
         {
             if (Instance != this) Destroy(this.gameObject); // 씬에 싱글톤 오브젝트가 된 다른 UIManager Object가 있다면 자신을 파괴
         }
+        if(FindObjectOfType<InventoryManager>() == null)
+        {
+            GameObject obj = Instantiate(inventoryManagerGameObject, transform);
+            inventoryManager = obj.GetComponent<InventoryManager>();
+            obj.SetActive(false);
+        }
+        if (FindObjectOfType<EquipmentManager>() == null)
+        {
+            GameObject obj = Instantiate(equipmentManagerGameObject, transform);
+            equipmentManager = obj.GetComponent<EquipmentManager>();
+            obj.SetActive(false);
+        }
+        if (FindObjectOfType<StatusManager>() == null)
+        {
+            GameObject obj = Instantiate(statusManagerGameObject, transform);
+            statusManager = obj.GetComponent<StatusManager>();
+            obj.SetActive(false);
+        }
     }
 
+
+    //참조하는 매니저
     public InventoryManager inventoryManager;
     public EquipmentManager equipmentManager;
+    public StatusManager statusManager;
+    public ShopManager shopManager;
+    //참조하는 프리펩
+    public GameObject inventoryManagerGameObject;
+    public GameObject statusManagerGameObject;
+    public GameObject equipmentManagerGameObject;
 
-    
+
+
+
     public void Refresh(Component component , Transform parents)
     {
 

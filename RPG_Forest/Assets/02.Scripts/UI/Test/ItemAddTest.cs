@@ -13,10 +13,10 @@ public class ItemAddTest : MonoBehaviour
         inventoryManager.AddItem(itemsList[id]);
     }
 
-    public void SlotList(int id)
+
+    private void Start()
     {
-        //inventoryManager.inventorySlots.
-        
+        inventoryManager = FindObjectOfType<InventoryManager>();
     }
 
 }
