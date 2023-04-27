@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyState_Trace : EnemyState_Idle, IPerception
+public class EnemyState_Trace : EnemyState_Idle
 {
     public EnemyState_Trace(Enemy enemy, StateMachine stateMachine) : base(enemy, stateMachine)
     {
@@ -19,7 +19,7 @@ public class EnemyState_Trace : EnemyState_Idle, IPerception
         enemy.StopAllCoroutines();
         base.Exit();
     }
- 
+
     public override void LogicUpdate()
     {
         base.LogicUpdate();
@@ -29,8 +29,6 @@ public class EnemyState_Trace : EnemyState_Idle, IPerception
     {
         base.PhysicsUpdate();
     }
-
-    
 
     // TracingTarget으로 이름 변경
     IEnumerator TracingTarget(Transform target) // 타겟을 추적하고 거리가 됫을때 공격하기
