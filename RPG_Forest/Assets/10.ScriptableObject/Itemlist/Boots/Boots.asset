@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7921e8d258c536e4192c1a07bce18f90, type: 3}
+  m_Name: Boots
+  m_EditorClassIdentifier: 
+  _myequipType: 4
+  _actionType: 1
+  _itemName: Boots
+  _attackPoint: 0
+  _attackSpeed: 0
+  _defensePoint: 5
+  _moveSpeed: 5
+  _maxHpIncrese: 10
+  stackable: 0
+  _image: {fileID: 21300000, guid: 4d600697d7984744d9dfcb4593c3eba9, type: 3}
