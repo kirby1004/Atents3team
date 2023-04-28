@@ -33,7 +33,9 @@
 ### V.2.0.4 - JS
 > CharacterMovementV2 Script 수정  
     - 플레이어의 Attack 함수 가져와서 Collider를 활용하여 Attack성공여부 확인 할 수있게 수정  
+  
 > Abstract State 스크립트 구현  
+  
 > StateMachine 및 Enemy Script 구현 예정  
 ---
 ### V.2.0.3 - GY
