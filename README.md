@@ -8,17 +8,17 @@
 3. **상속 구조로 이루어진 스크립트**는 기존의 변수명 수정은 최대한 삼가고 불가피하게 작업을 해야하는 경우는 팀원들에게 미리 알리고 주석을 상세히 달기
 4. 개발 일정 확인하기 - [개발 일정](https://app.asana.com/0/1204352798021693/list)
 ---
-### V.2.0.8 - GY
+### V.2.0.9 - GY
 > ShopManager 구현 
 - 상점 외형 , 상점 목록 , 상점 아이템 , 상점 슬롯  
 ShopManager , ShopItem, ShopSlot, ItemInfo 스크립트 추가
 > ScriptableObject 추가  
 - ItemStatus , ShopItemList , PlayerStatus 추가
 ---
-### V.2.0.7 - SM   
+### V.2.0.8 - SM   
 > 1. Player
 * Player Scene추가
-*  - Player 테스트 씬 (플레이어, NPC 테스트 중)
+  - Player 테스트 씬 (플레이어, NPC 테스트 중)
 * 플레이어 하위에 CameraPoint(카메라의 위치), ViewPoint(카메라가 쳐다보는 곳) 추가
 * 플레이어 애니메이터(연속 공격, 움직임 구현) => 데미지 및 죽는 처리는 옮길 예정.
 * NPC와 상호작용 코드 추가함.
