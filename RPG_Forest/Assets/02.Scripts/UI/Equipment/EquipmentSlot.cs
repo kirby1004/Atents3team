@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class EquipmentSlot : MonoBehaviour , IDropHandler
 {
+
     ItemStatus item;
     public EquipmentType myEquipmentType;
     public EquipmentItem myEquipmentItem;
@@ -21,7 +22,6 @@ public class EquipmentSlot : MonoBehaviour , IDropHandler
                 // 장비창의 자식으로 설정 , 착용장비 속성 추가
                 inventorySlotItem.ChangeParent(transform);
                 inventorySlotItem.AddComponent<EquipmentItem>();
-                //Gamemanager.instance.myUIManager.equipmentManager.RefreshStat();
             }
             else
             {
@@ -32,17 +32,10 @@ public class EquipmentSlot : MonoBehaviour , IDropHandler
                 {
                     mySlotItem.ChangeParent(inventorySlotItem.parentAfterDrag, true);
                     Destroy(mySlotItem.GetComponentInChildren<EquipmentItem>());
-                    //Gamemanager.instance.myUIManager.equipmentManager.RefreshStat();
                 }
                 inventorySlotItem.ChangeParent(transform);
                 inventorySlotItem.AddComponent<EquipmentItem>();
-                //Gamemanager.instance.myUIManager.equipmentManager.RefreshStat();
             }
         }
-
-        //else if (inventorySlotItem.GetComponentInChildren<EquipmentItem>() == null)
-        //{
-
-        //}
     }
 }

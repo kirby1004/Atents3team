@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour
         {
             if (Instance != this) Destroy(this.gameObject); // 씬에 싱글톤 오브젝트가 된 다른 UIManager Object가 있다면 자신을 파괴
         }
+        // 각각의 매니저가 존재하지않을때 생성후 참조대상으로 설정해주기
+        // 이미 생성되잇을때 재참조기능 추가필요?
         if(FindObjectOfType<InventoryManager>() == null)
         {
             GameObject obj = Instantiate(inventoryManagerGameObject, transform);
@@ -44,7 +46,7 @@ public class UIManager : MonoBehaviour
     public EquipmentManager equipmentManager;
     public StatusManager statusManager;
     public ShopManager shopManager;
-    //참조하는 프리펩
+    //참조하는 원본
     public GameObject inventoryManagerGameObject;
     public GameObject statusManagerGameObject;
     public GameObject equipmentManagerGameObject;

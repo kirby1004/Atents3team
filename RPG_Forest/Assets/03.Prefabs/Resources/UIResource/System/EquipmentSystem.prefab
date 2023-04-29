@@ -57,13 +57,6 @@ MonoBehaviour:
   - {fileID: 4273515595020944665}
   - {fileID: 4273515595747510457}
   - {fileID: 4273515595999699740}
-  equipmentSlots:
-  - {fileID: 4273515595357974832}
-  - {fileID: 4273515596217872255}
-  - {fileID: 4273515596223956511}
-  - {fileID: 4273515595020944665}
-  - {fileID: 4273515595747510457}
-  - {fileID: 4273515595999699740}
   equipmentSlotPrefab: {fileID: 0}
   equipmentItemPrefab: {fileID: 0}
   equipmentHP: 0
@@ -948,7 +941,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4273515595161210431}
+      - m_Target: {fileID: 3961701949277922524}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6

@@ -4,19 +4,13 @@ using UnityEngine;
 
 public class ItemAddTest : MonoBehaviour
 {
-    public InventoryManager inventoryManager;
+
     public ItemStatus[] itemsList;
 
 
     public void ItemList(int id)
     {
-        inventoryManager.AddItem(itemsList[id]);
-    }
-
-
-    private void Start()
-    {
-        inventoryManager = FindObjectOfType<InventoryManager>();
+        Gamemanager.instance.myUIManager.inventoryManager.AddItem(itemsList[id]);
     }
 
 }

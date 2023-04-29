@@ -5,44 +5,50 @@ using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
+    // 상점목록 스크립트 , 오브젝트 링크
     public ShopList ShopList;
-
     public Transform myShopList;
+    // 판매 아이템 정보 컴포넌트 링크
     public ItemInfo itemInfo;
 
+    // 상점 슬롯 오브젝트 원본 
     public GameObject ShopSlotPrefab;
     public GameObject ShopUI;
 
+    // 구매버튼
     public Button BuyButton;
+    // 상점 목록의 종류
+    public List<ShopItemList> ShopItemList;
+
+
     public void AddListInfo(ItemStatus item)
     {
         
-        
     }
 
+    // 상점 오픈 ver1 상점 목록을 받아서 열기
     public void OpenShop(ShopItemList itemList)
     {
         ShopUI.SetActive(true);
         Gamemanager.instance.myUIManager.shopManager.myShopList.GetComponent<ShopList>().myShopItemList = itemList;
         Gamemanager.instance.myUIManager.shopManager.ShopList.ShopItemRefreshing(itemList);
     }
+    // 상점 오픈 ver2 상인 타입을 받아서 열기
+    public void OpenShop(NpcType npcType)
+    {
+        ShopUI.SetActive(true);
+        Gamemanager.instance.myUIManager.shopManager.myShopList.GetComponent<ShopList>().myShopItemList = ShopItemList[(int)npcType];
+        Gamemanager.instance.myUIManager.shopManager.ShopList.ShopItemRefreshing(ShopItemList[(int)npcType]);
+    }
 
     private void Start()
     {
         
     }
+}
 
-    //public List<ShopSlot> slotList;
-    //public void AddSlot()
-    //{
-    //    GameObject obj = Instantiate(ShopSlotPrefab, myShopList);
-    //    slotList.Add(obj.GetComponent<ShopSlot>());
-    //}
-    //public void DeleteSlot()
-    //{
-    //    Destroy(slotList[slotList.Count - 1].gameObject);
-    //    slotList.RemoveAt(slotList.Count - 1);
-    //}
-
-
+//이동예정
+public enum NpcType //Npc타입을 저장함.
+{
+    Shop, SecretShop
 }
