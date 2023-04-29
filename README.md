@@ -8,12 +8,7 @@
 3. **상속 구조로 이루어진 스크립트**는 기존의 변수명 수정은 최대한 삼가고 불가피하게 작업을 해야하는 경우는 팀원들에게 미리 알리고 주석을 상세히 달기
 4. 개발 일정 확인하기 - [개발 일정](https://app.asana.com/0/1204352798021693/list)
 ---
-### V.2.0.8 - GY
-> ShopManager 구현 
-- 상점 외형 , 상점 목록 , 상점 아이템 , 상점 슬롯  
-ShopManager , ShopItem, ShopSlot, ItemInfo 스크립트 추가
-> ScriptableObject 추가  
-- ItemStatus , ShopItemList , PlayerStatus 추가
+### V.2.0.7 - SM   
 ---
 ### V.2.0.7 - JS  
 > State - Trace Script 수정  
