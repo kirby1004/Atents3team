@@ -10,7 +10,7 @@ public class CharacterProperty : MonoBehaviour
     public float RotSpeed = 360.0f; //1초에 한바퀴.
     public float AttackRange = 1.0f;
     public float AttackDelay = 1.0f;
-    public float playTime = 0.0f;
+    protected float playTime = 0.0f;
     public float AttackPoint = 35.0f;
     public float MaxHp = 100.0f;
     float _curHp = -100.0f; //캐릭터 프로퍼티는 최상위부모. MonoBehaviour가 부모라서 생성자 x,생성자를 이용해서 초기화 X
@@ -27,7 +27,7 @@ public class CharacterProperty : MonoBehaviour
         set => _curHp = Mathf.Clamp(value, 0.0f, MaxHp);
     }
     Animator _anim = null;
-    public Animator myAnim
+    protected Animator myAnim
     {
         get
         {
