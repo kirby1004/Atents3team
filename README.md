@@ -26,11 +26,13 @@ ShopManager , ShopItem, ShopSlot, ItemInfo 스크립트 추가
 * NPC와 상호작용 추가.
   - TriggerEnter, Stay, Exit으로 구현. 
   - isNPC로 NPC 범위에 들어와있는지 감지 후 상호작용 키를 누르면 isShop 반응( isShop보다는 isUI나 다른 변수명으로 바꿀 예정)
+    + isShop이 반응할 때 게임 매니저에서 NPC의 타입을 체크하고 거기에 알맞는 UI를 실행시킴.
   - isShop이 true가 될 때 NPC와 상호작용하여 UI가 열리는 것이므로 카메라를 NPC의 ViewPoint로 옮겨준다. 
     + 만약 상점과의 스크립트(대화)가 있다면 스크립트 후에 UI가 열리도록 해야함.
 * Player 구르기 스킬 및, 다른 스킬 구현할 예정. 
 >2. NPC
 - NPCProperty를 만들어서, 열거형으로 NPCType을 선언 => NPCType으로 NPC 종류를 구별함.
+  * NPC랑 Camera 수정할거임 리드미 다 적은거아니에요 
 - NPC의 NpcType은 프로퍼티로 만들어 get으로만 가져올 수 있게 함. 
 - NPCProperty를 상속받는 NPC 스크립트를 NPC한테 붙여주고 NPC타입에 맞는 enum을 설정해주면 됨.
 - NPC 하위에는 ViewPoint, PlayerPoint로 카메라, 플레이어 위치를 저장하는 빈 오브젝트를 가지고 있음.  
