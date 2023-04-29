@@ -25,13 +25,10 @@ public class EnemyState_Trace : EnemyState_Idle
         base.LogicUpdate();
     }
 
-
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
     }
-
-    
 
     // TracingTarget으로 이름 변경
     IEnumerator TracingTarget(Transform target) // 타겟을 추적하고 거리가 됫을때 공격하기

@@ -44,6 +44,70 @@ public abstract class CharacterMovement_V2 : CharacterProperty
     public abstract void MoveToPos(Vector3 pos, UnityAction done = null); // 수민 스크립트의 Move() 함수 변형하면 될 것으로 보임
     #endregion
 
+    #region Enemy - MoveToPos, Rotating 
+    /*
+     * 에너미 스크립트에서 public override 필요
+     * 
+    protected void MoveToPos(Vector3 pos, UnityAction done = null)
+    {
+        CoCheckStop(coMoving);
+        coMoving = StartCoroutine(MovingToPos(pos, done));
+    }
+    
+
+    protected IEnumerator MovingToPos(Vector3 pos, UnityAction done)
+    {
+        Vector3 dir = pos - transform.position;
+        float dist = dir.magnitude;
+        dir.Normalize();
+
+        StartCoroutine(Rotating(dir));
+
+        myAnim.SetBool("isMoving", true);
+
+        while (dist > 0.0f)
+        {
+            if (!myAnim.GetBool("isAttacking"))
+            {
+                float delta = MoveSpeed * Time.deltaTime;
+                if (dist - delta < 0.0f)
+                {
+                    delta = dist;
+                }
+                dist -= delta;
+                transform.Translate(dir * delta, Space.World);
+            }
+            yield return null;
+        }
+
+        myAnim.SetBool("isMoving", false);
+        done?.Invoke();
+    }
+
+    
+    IEnumerator Rotating(Vector3 dir)  // 주의 : Normalize 된 벡터만 입력받게 할것
+    {
+        float angle = Vector3.Angle(transform.forward, dir);
+        float rotDir = 1.0f;
+        if (Vector3.Dot(transform.right, dir) < 0.0f)
+        {
+            rotDir = -1.0f;
+        }
+        while (angle > 0.0f)
+        {
+            float delta = RotSpeed * Time.deltaTime;
+            if (angle - delta < 0.0f)
+            {
+                delta = angle;
+            }
+            angle -= delta;
+            transform.Rotate(Vector3.up * rotDir * delta);
+            yield return null;
+        }
+    }
+
+    */
+    #endregion
 
 
     /// [Summary] Target Tracing과 Attack State 구분 완료

@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public abstract class State
 {
-
     protected Enemy enemy;
     protected StateMachine stateMachine;
 
@@ -17,10 +15,12 @@ public abstract class State
 
     public virtual void Enter()
     {
+
     }
 
     public virtual void Exit()
     {
+
     }
 
     public virtual void PhysicsUpdate()
