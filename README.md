@@ -16,6 +16,7 @@ ShopManager , ShopItem, ShopSlot, ItemInfo 스크립트 추가
 - ItemStatus , ShopItemList , PlayerStatus 추가
 ---
 ### V.2.0.7 - SM   
+> 1. Player Scene 추가
 ---
 ### V.2.0.7 - JS  
 > State - Trace Script 수정  
