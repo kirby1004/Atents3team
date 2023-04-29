@@ -9,7 +9,8 @@
 4. 개발 일정 확인하기 - [개발 일정](https://app.asana.com/0/1204352798021693/list)
 ---
 ### V.2.0.7 - SM  
-> Player Scene 추가 
+> Player Scene 추가  
+ -ㅇㅇ
 ---
 ### V.2.0.7 - JS  
 > State - Trace Script 수정  
