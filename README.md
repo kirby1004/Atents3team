@@ -36,11 +36,11 @@ ShopManager , ShopItem, ShopSlot, ItemInfo 스크립트 추가
     + 만약 상점과의 스크립트(대화)가 있다면 스크립트 후에 UI가 열리도록 해야함.
 * Player 구르기 스킬 및, 다른 스킬 구현할 예정. 
 >2. NPC
-- NPCProperty를 만들어서, 열거형으로 NPCType을 선언 => NPCType으로 NPC 종류를 구별함.
-  * NPC랑 Camera 수정할거임 리드미 다 적은거아니에요 
-- NPC의 NpcType은 프로퍼티로 만들어 get으로만 가져올 수 있게 함. 
-- NPCProperty를 상속받는 NPC 스크립트를 NPC한테 붙여주고 NPC타입에 맞는 enum을 설정해주면 됨.
-- NPC 하위에는 ViewPoint, PlayerPoint로 카메라, 플레이어 위치를 저장하는 빈 오브젝트를 가지고 있음.  
+- NPCProperty 스크립트 생성
+  * 열거형 NPCType 선언 => NPC 종류를 구별한다.
+  * NPCType의 NpcType을 선언해 프로퍼티로 구현, get으로만 가져올 수 있도록 함.
+  * Transform 형식인 PlayerPoint와 ViewPoint를 저장함.(카메라와 플레이어 위치를 저장하는 빈오브젝트.)
+- NPCProperty를 상속받는 스크립트를 붙여주고 NPC타입에 맞는 enum을 설정해주면 됨.
 >3. Camera
 - 카메라가 플레이어가 아닌 다른 시점으로 이동하는 함수와 다시 돌아오는 함수를 구현.
  + 이동하는 함수는 코루틴으로 작성함. 보간으로 이동하며 위치는 NPC에서 받아와 Player에서 GetComponent로 실행함.
