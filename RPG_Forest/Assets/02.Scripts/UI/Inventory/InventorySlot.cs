@@ -53,14 +53,8 @@ public class InventorySlot : MonoBehaviour , IDropHandler
             }
             else if (dropItem.GetComponent<EquipmentItem>() == null)
             {
-                if (SlotNum == -1)
-                {
-                    return;
-                }
-                else
-                {
-                    Gamemanager.instance.myUIManager.inventoryManager.InsertItem(dropItem, SlotNum);
-                }
+                mySlotItem.ChangeParent(dropItem.parentAfterDrag, true);
+                //Gamemanager.instance.myUIManager.inventoryManager.InsertItem(dropItem, SlotNum);
                 dropItem.ChangeParent(transform);
             }
             

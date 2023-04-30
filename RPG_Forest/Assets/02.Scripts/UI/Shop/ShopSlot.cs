@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using Unity.VisualScripting;
-using UnityEditor.Timeline;
 
 public class ShopSlot : MonoBehaviour
 {
