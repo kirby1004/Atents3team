@@ -6,26 +6,17 @@ using UnityEngine.EventSystems;
 using Unity.VisualScripting;
 using UnityEditor.Timeline;
 
-public class ShopSlot : MonoBehaviour ,IPointerExitHandler, IPointerEnterHandler
+public class ShopSlot : MonoBehaviour
 {
     public GameObject Iteminfo;
-    public ItemStatus items;
-    public int ItemNum;
+    //public ItemStatus items;
+    //public int ItemNum;
 
     private void Start()
     {
+
         Iteminfo = Gamemanager.instance.myUIManager.shopManager.itemInfo.gameObject;
     }
 
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        //Debug.Log("OFF");
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        //Debug.Log("On");
-        //Gamemanager.instance.myUIManager.shopManager.itemInfo.RefreshItemInfo(items);
-    }
 }

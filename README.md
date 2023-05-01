@@ -8,6 +8,38 @@
 3. **상속 구조로 이루어진 스크립트**는 기존의 변수명 수정은 최대한 삼가고 불가피하게 작업을 해야하는 경우는 팀원들에게 미리 알리고 주석을 상세히 달기
 4. 개발 일정 확인하기 - [개발 일정](https://app.asana.com/0/1204352798021693/list)
 ---
+### V.2.0.9 - GY
+> ShopManager 구현 
+- 상점 외형 , 상점 목록 , 상점 아이템 , 상점 슬롯  
+ShopManager , ShopItem, ShopSlot, ItemInfo 스크립트 추가
+> ScriptableObject 추가  
+- ItemStatus , ShopItemList , PlayerStatus 추가
+---
+### V.2.0.8 - SM   
+> 1. Player
+* Player Scene추가.
+  - Player 테스트 씬 (플레이어, NPC 테스트 중)
+* 플레이어 하위에 CameraPoint, ViewPoint 추가.
+  - 빈 오브젝트인 CameraPoint(카메라의 위치), ViewPoint(카메라가 쳐다보는 곳)
+* 플레이어 애니메이터, 애니메이션
+  - 연속 공격, 움직임 옮겨둠 => 데미지 및 죽는 처리는 옮길 예정.
+* NPC와 상호작용 추가.
+  - TriggerEnter, Stay, Exit으로 구현. 
+  - isNPC로 NPC 범위에 들어와있는지 감지 후 상호작용 키를 누르면 isShop 반응( isShop보다는 isUI나 다른 변수명으로 바꿀 예정)
+  - isShop이 true가 될 때 NPC와 상호작용하여 UI가 열리는 것이므로 카메라를 NPC의 ViewPoint로 옮겨준다. 
+    + 만약 상점과의 스크립트(대화)가 있다면 스크립트 후에 UI가 열리도록 해야함.
+* Player 구르기 스킬 및, 다른 스킬 구현할 예정. 
+>2. NPC
+- NPCProperty를 만들어서, 열거형으로 NPCType을 선언 => NPCType으로 NPC 종류를 구별함.
+- NPC의 NpcType은 프로퍼티로 만들어 get으로만 가져올 수 있게 함. 
+- NPCProperty를 상속받는 NPC 스크립트를 NPC한테 붙여주고 NPC타입에 맞는 enum을 설정해주면 됨.
+- NPC 하위에는 ViewPoint, PlayerPoint로 카메라, 플레이어 위치를 저장하는 빈 오브젝트를 가지고 있음.  
+>3. Camera
+- 카메라가 플레이어가 아닌 다른 시점으로 이동하는 함수와 다시 돌아오는 함수를 구현.
+ + 이동하는 함수는 코루틴으로 작성함. 보간으로 이동하며 위치는 NPC에서 받아와 Player에서 GetComponent로 실행함.
+- 카메라가 플레이어에 붙어있는지 아닌지를 판별하는 bool isPlayer 추가해서 isPlayer가 false일 땐 마우스 입력에 의해 카메라가 움직이지 않도록 함.
+    
+---
 ### V.2.0.7 - JS  
 > State - Trace Script 수정  
 - Interface 재정의 누락으로 인한 

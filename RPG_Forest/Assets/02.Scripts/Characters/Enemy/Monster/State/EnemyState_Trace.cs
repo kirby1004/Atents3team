@@ -20,7 +20,7 @@ public class EnemyState_Trace : State
         enemy.StopAllCoroutines();
         base.Exit();
     }
-
+ 
     public override void LogicUpdate()
     {
         base.LogicUpdate();
@@ -30,6 +30,8 @@ public class EnemyState_Trace : State
     {
         base.PhysicsUpdate();
     }
+
+    
 
     // TracingTarget으로 이름 변경
     IEnumerator TracingTarget(Transform target) // 타겟을 추적하고 거리가 됬을때 공격하기
