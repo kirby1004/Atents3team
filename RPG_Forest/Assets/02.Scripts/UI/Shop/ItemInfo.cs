@@ -49,30 +49,30 @@ public class ItemInfo : MonoBehaviour
     // 옵션의 종류 추가
     public void InsertOption(ItemStatus myItem)
     {
-        switch (myItem.MyEquipmentType) 
+        switch (myItem.MyItemType) 
         {
-            case EquipmentType.Weapon:
+            case ItemType.Weapon:
                 Options[0].text = "AP";
                 Options[1].text = "AS";
                 break;
-            case EquipmentType.Armor:
+            case ItemType.Armor:
                 Options[0].text = "HP";
                 Options[1].text = "DP";
                 break;
-            case EquipmentType.Leggins:
+            case ItemType.Leggins:
                 Options[0].text = "HP";
                 Options[1].text = "DP";
                 break;
-            case EquipmentType.Headgear:
+            case ItemType.Headgear:
                 Options[0].text = "HP";
                 Options[1].text = "DP";
                 break;
-            case EquipmentType.Boots:
+            case ItemType.Boots:
                 Options[0].text = "HP";
                 Options[1].text = "DP";
                 Options[2].text = "Speed";
                 break;
-            case EquipmentType.Soul:
+            case ItemType.Soul:
                 Options[0].text = "HP";
                 break;
             default: 
@@ -112,30 +112,30 @@ public class ItemInfo : MonoBehaviour
     // 옵션의 수치 스트링 변환후 출력
     public void InsertOptionNums(ItemStatus item)
     {
-        switch(item.MyEquipmentType) 
+        switch(item.MyItemType) 
         {
-            case EquipmentType.Weapon:
+            case ItemType.Weapon:
                 OptionNums[0].text = myItem.AttackPoint.ToString();
                 OptionNums[1].text = myItem.AttackSpeed.ToString();
                 break;
-            case EquipmentType.Armor:
+            case ItemType.Armor:
                 OptionNums[0].text = myItem.MaxHpIncrese.ToString();
                 OptionNums[1].text = myItem.DefensePoint.ToString();
                 break;
-            case EquipmentType.Leggins:
+            case ItemType.Leggins:
                 OptionNums[0].text = myItem.MaxHpIncrese.ToString();
                 OptionNums[1].text = myItem.DefensePoint.ToString();
                 break;
-            case EquipmentType.Headgear:
+            case ItemType.Headgear:
                 OptionNums[0].text = myItem.MaxHpIncrese.ToString();
                 OptionNums[1].text = myItem.DefensePoint.ToString();
                 break;
-            case EquipmentType.Boots:
+            case ItemType.Boots:
                 OptionNums[0].text = myItem.MaxHpIncrese.ToString();
                 OptionNums[1].text = myItem.DefensePoint.ToString();
                 OptionNums[2].text = myItem.MoveSpeed.ToString();
                 break;
-            case EquipmentType.Soul:
+            case ItemType.Soul:
                 OptionNums[0].text = myItem.MaxHpIncrese.ToString();
                 break;
             default:
@@ -151,29 +151,29 @@ public class ItemInfo : MonoBehaviour
             myItem = item;
             RemoveAllOptionNums(OptionNums.Count);
             RemoveAllOptions(Options.Count);
-            switch (item.MyEquipmentType)
+            switch (item.MyItemType)
             {
-                case EquipmentType.Weapon:
+                case ItemType.Weapon:
                     MakeOptions(2);
                     MakeOptionNums(2);
                     break;
-                case EquipmentType.Armor:
+                case ItemType.Armor:
                     MakeOptions(2);
                     MakeOptionNums(2);
                     break;
-                case EquipmentType.Leggins:
+                case ItemType.Leggins:
                     MakeOptions(2);
                     MakeOptionNums(2);
                     break;
-                case EquipmentType.Headgear:
+                case ItemType.Headgear:
                     MakeOptions(2);
                     MakeOptionNums(2);
                     break;
-                case EquipmentType.Boots:
+                case ItemType.Boots:
                     MakeOptions(3);
                     MakeOptionNums(3);
                     break;
-                case EquipmentType.Soul:
+                case ItemType.Soul:
                     MakeOptions(1);
                     MakeOptionNums(1);
                     break;

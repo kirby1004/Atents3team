@@ -8,8 +8,8 @@ public class ItemStatus : ScriptableObject
 {
     // 장비의 부위 ex) 무기 , 갑옷 ,투구
     [SerializeField]
-    private EquipmentType _myequipType;
-    public EquipmentType MyEquipmentType { get { return _myequipType; } }
+    private ItemType _myItemType;
+    public ItemType MyItemType { get { return _myItemType; } }
 
     // 장비의 타입 ex) 무기 , 방어구 , 코어 (추가예정 재료 , 강화석 등등?) 추가시 스텟부분은 수정작업 필요 
     [SerializeField]
@@ -28,7 +28,7 @@ public class ItemStatus : ScriptableObject
     {
         get
         {
-            if (MyEquipmentType == EquipmentType.Weapon)
+            if (MyItemType == ItemType.Weapon)
                 return _attackPoint;
             else return 0;
         }
@@ -41,7 +41,7 @@ public class ItemStatus : ScriptableObject
     { 
         get 
         {
-            if (MyEquipmentType == EquipmentType.Weapon)
+            if (MyItemType == ItemType.Weapon)
                 return _attackSpeed;
             else return 0;
         } 
@@ -54,7 +54,7 @@ public class ItemStatus : ScriptableObject
     { 
         get 
         {
-            if(MyEquipmentType != EquipmentType.Weapon)
+            if(MyItemType != ItemType.Weapon && MyItemType != ItemType.Others)
             return _defensePoint; 
             else return 0;
         } 
@@ -67,7 +67,7 @@ public class ItemStatus : ScriptableObject
     {
         get
         {
-            if (MyEquipmentType == EquipmentType.Boots)
+            if (MyItemType == ItemType.Boots)
                 return _moveSpeed;
             else return 0;
         }
@@ -80,7 +80,7 @@ public class ItemStatus : ScriptableObject
     {
         get 
         {
-            if (MyEquipmentType != EquipmentType.Weapon)
+            if (MyItemType != ItemType.Weapon && MyItemType != ItemType.Others)
                 return _maxHpIncrese;
             else return 0;
         }
@@ -97,11 +97,11 @@ public class ItemStatus : ScriptableObject
     
 }
 
-public enum EquipmentType
+public enum ItemType
 {
-    Weapon, Armor, Leggins, Headgear, Boots , Soul
+    Weapon, Armor, Leggins, Headgear, Boots , Soul , Others
 }
 public enum ActionType
 {
-    Attack , Defense , Inchent
+    Attack , Defense , Inchent , UsedItem
 }

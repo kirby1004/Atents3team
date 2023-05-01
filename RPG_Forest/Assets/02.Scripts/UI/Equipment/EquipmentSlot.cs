@@ -9,13 +9,13 @@ public class EquipmentSlot : MonoBehaviour , IDropHandler
 {
 
     ItemStatus item;
-    public EquipmentType myEquipmentType;
+    public ItemType myEquipmentType;
     public EquipmentItem myEquipmentItem;
 
     public void OnDrop(PointerEventData eventData)
     {
         InventoryItem inventorySlotItem = eventData.pointerDrag.GetComponent<InventoryItem>();
-        if ( myEquipmentType == inventorySlotItem.item.MyEquipmentType)
+        if ( myEquipmentType == inventorySlotItem.item.MyItemType)
         {
             if (transform.GetComponentInChildren<EquipmentItem>() == null)
             {
