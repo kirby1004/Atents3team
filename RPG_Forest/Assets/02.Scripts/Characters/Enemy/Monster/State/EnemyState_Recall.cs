@@ -11,11 +11,16 @@ public class EnemyState_Recall : State
     public override void Enter()
     {
         base.Enter();
+        enemy.MoveToPos(enemy.orgPos, () =>
+        {
+            if (!enemy.myAnim.GetBool("isAttacking")) stateMachine.ChangeState(enemy.m_states[Enemy.eState.Idle]);
+        });
     }
 
     public override void Exit()
     {
         base.Exit();
+        
     }
 
     public override void LogicUpdate()
@@ -27,5 +32,4 @@ public class EnemyState_Recall : State
     {
         base.PhysicsUpdate();
     }
-
 }

@@ -20,7 +20,7 @@ public class Monster : CharacterMovement, IPerception, IBattle, I_Ad
 
     Coroutine coRoaming = null;
     //Coroutine coFollow = null;
-    Coroutine coRecall = null;
+    //Coroutine coRecall = null;
 
     public bool IsLive
     {

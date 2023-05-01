@@ -11,7 +11,6 @@ public class EnemyState_Create : State
     public override void Enter()
     {
         base.Enter();
-        //stateMachine.ChangeState(enemy.m_states[Enemy.eState.Idle]);
         enemy.StartCoroutine(CreateDelay());
     }
 
@@ -33,7 +32,7 @@ public class EnemyState_Create : State
     IEnumerator CreateDelay()
     {
         yield return new WaitForSeconds(2.0f);
-        stateMachine.ChangeState(enemy.m_states[Enemy.eState.Trace]);
+        stateMachine.ChangeState(enemy.m_states[Enemy.eState.Idle]);
     }
 
 }

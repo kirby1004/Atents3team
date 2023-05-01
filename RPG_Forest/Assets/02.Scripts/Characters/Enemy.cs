@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 // 에너미 스크립트 스테이트머신과 패턴 전부 분리하기 
-public class Enemy : CharacterMovement_V2, IPerception
+public class Enemy : CharacterMovement_V2, IPerception, IBattle
 {
     public enum eState
     {
@@ -24,9 +24,8 @@ public class Enemy : CharacterMovement_V2, IPerception
     public Vector3 orgPos; // 드래곤의 원래 포지션, Fly State에서 Land -> Idle로 돌아올 때 y값 저장 필요
     public Transform myTarget = null; // 에너미의 타겟 -> Player
 
-    //// IsLive 프로퍼티 구현
-    //public bool IsLive => throw new System.NotImplementedException();
-
+    // IsLive 프로퍼티 구현
+    public bool IsLive => throw new System.NotImplementedException();
 
     protected override void Start()
     {
@@ -41,6 +40,8 @@ public class Enemy : CharacterMovement_V2, IPerception
         m_states.Add(eState.Die, new EnemyState_Recall(this, m_enemySM));
 
         m_enemySM.Initialize(m_states[eState.Create]);
+
+        orgPos = this.transform.position;
     }
 
     protected override void Update()
@@ -120,6 +121,8 @@ public class Enemy : CharacterMovement_V2, IPerception
     public Vector3 flyPos;
     public bool isFlying = false;
     public float flyHeight = 10.0f;
+
+
     //public bool startFlyBoosting = false;
 
     #endregion
@@ -131,7 +134,7 @@ public class Enemy : CharacterMovement_V2, IPerception
     {
         myTarget = target;
         //enemy.myTarget.GetComponent<CharacterProperty>().DeathAlarm += () => { if (IsLive) ChangeState(State.Normal); }; // Death Alarm 후에 구현
-        m_enemySM.ChangeState(m_states[eState.Battle]);
+        m_enemySM.ChangeState(m_states[eState.Trace]);
     }
 
     public void LostTarget()
@@ -141,14 +144,48 @@ public class Enemy : CharacterMovement_V2, IPerception
         m_enemySM.ChangeState(m_states[eState.Recall]);
     }
 
+
+
     #endregion
 
 
     #region Battle
     //public override void Attack(Transform target = null)
     //{
-    //    throw new System.NotImplementedException();
+
     //}
+
+    public Transform leftClawPoint;
+
+    // IBattle Interface
+    public void OnDamage(float dmg)
+    {
+        curHp -= dmg;
+        if (Mathf.Approximately(curHp, 0.0f))
+        {
+            m_enemySM.ChangeState(m_states[eState.Die]);
+        }
+        else
+        {
+            myAnim.SetTrigger("Damage");
+        }
+    }
+
+    public void AttackExit()
+    {
+        if (myTarget == null)
+        {
+            Debug.Log("AttackExit");
+        }
+        if(myTarget)
+        {
+            m_enemySM.ChangeState(m_states[eState.Trace]);
+        }
+        else
+        {
+            m_enemySM.ChangeState(m_states[eState.Idle]);
+        }
+    }
 
     // 쿨타임 체크 함수? 코루틴? 구현 필요
 

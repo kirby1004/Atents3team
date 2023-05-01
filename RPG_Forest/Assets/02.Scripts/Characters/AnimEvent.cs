@@ -7,6 +7,7 @@ public class AnimEvent : MonoBehaviour
 {
     public UnityEvent AttackFunc;
     public UnityEvent DeadFunc;
+    public UnityEvent AttackDoneFunc;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,5 +28,10 @@ public class AnimEvent : MonoBehaviour
     public void OnDead()
     {
         DeadFunc?.Invoke();
+    }
+
+    public void OnAttackDoneCheck()
+    {
+        AttackDoneFunc?.Invoke();
     }
 }

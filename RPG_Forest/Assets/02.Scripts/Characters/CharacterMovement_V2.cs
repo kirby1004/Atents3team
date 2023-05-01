@@ -5,17 +5,7 @@ using UnityEngine.Events;
 
 public abstract class CharacterMovement_V2 : CharacterProperty
 {
-    protected void CoCheckStop(Coroutine coroutine) // 입력받은 코루틴이 동작하고잇는지 확인하고 종료시키기
-    {
-        if (coroutine != null)
-        {
-            StopCoroutine(coroutine);
-            coroutine = null;
-        }
-    }
-
     #region 유니티 이벤트 함수
-
     protected virtual void Start()
     {
 
@@ -43,8 +33,6 @@ public abstract class CharacterMovement_V2 : CharacterProperty
     // 추상 함수로 선언 -> 각 플레이어, 에너미 스크립트에서 override로 정의 필요
     public abstract void MoveToPos(Vector3 pos, UnityAction done = null); // 수민 스크립트의 Move() 함수 변형하면 될 것으로 보임
     #endregion
-
-
 
     /// [Summary] Target Tracing과 Attack State 구분 완료
 
@@ -124,74 +112,9 @@ public abstract class CharacterMovement_V2 : CharacterProperty
     //// 플레이어는 
     //public abstract void Attack(Transform target = null);
     
-
-    IEnumerator AttackTarget(Transform target)
-    {
-        while (target != null)
-        {
-            if (!myAnim.GetBool("isAttacking"))
-            {
-
-                if (playTime >= AttackDelay)
-                {
-                    playTime = 0.0f;
-                    myAnim.SetTrigger("Attacking");
-                }
-            }
-        }
-        yield return null;
-    }
-    #endregion
-
-
-    #region 리콜 state 
-    /*
-     *  리콜 -> 에너미한테만 필요함 몬스터로 이동하여서 몬스터 스테이트머신 Recall State에 protected void 함수로 선언
-     *  에너미스크립트에서 public override 필요
-     * 
-    protected void RecallToPos(Vector3 pos, UnityAction done = null)
-    {
-        CoCheckStop(coMoving);
-        CoCheckStop(coFollow);
-        coRecall = StartCoroutine(RecallBack(pos, done));
-        //myAnim.SetBool("isMoving", true);
-        //myAnim.ResetTrigger("isAttack");
-        curHp = MaxHp;
-    }
     
-
-    protected IEnumerator RecallBack(Vector3 pos, UnityAction done)
-    {
-        Vector3 dir = pos - transform.position;
-        float dist = dir.magnitude;
-        dir.Normalize();
-
-        myAnim.SetBool("isMoving", true);
-
-        while (dist > 0.0f)
-        {
-
-            float delta = MoveSpeed * Time.deltaTime * 2;
-            if (dist - delta < 0.0f)
-            {
-                delta = dist;
-            }
-            dist -= delta;
-            transform.Translate(dir * delta, Space.World);
-            curHp = MaxHp;
-
-            yield return null;
-        }
-
-        //myAnim.SetBool("isMoving", true);
-        //myAnim.ResetTrigger("isAttack");
-        //curHp = MaxHp;
-        //coMoving = StartCoroutine(MovingToPos(pos, done));
-
-        done?.Invoke();
-    }
-    */
     #endregion
+
 
 
 }

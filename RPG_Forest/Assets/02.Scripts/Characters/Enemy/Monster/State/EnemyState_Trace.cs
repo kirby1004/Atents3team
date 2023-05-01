@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyState_Trace : EnemyState_Idle
+public class EnemyState_Trace : State
 {
     public EnemyState_Trace(Enemy enemy, StateMachine stateMachine) : base(enemy, stateMachine)
     {
@@ -11,6 +11,7 @@ public class EnemyState_Trace : EnemyState_Idle
     public override void Enter()
     {
         base.Enter();
+        enemy.StopAllCoroutines();
         enemy.StartCoroutine(TracingTarget(enemy.myTarget));
     }
 
@@ -31,18 +32,17 @@ public class EnemyState_Trace : EnemyState_Idle
     }
 
     // TracingTarget으로 이름 변경
-    IEnumerator TracingTarget(Transform target) // 타겟을 추적하고 거리가 됫을때 공격하기
+    IEnumerator TracingTarget(Transform target) // 타겟을 추적하고 거리가 됬을때 공격하기
     {
         while (target != null)
         {
-            if (!enemy.myAnim.GetBool("isAttacking")) enemy.playTime += Time.deltaTime;
             if (!enemy.myAnim.GetBool("isAttacking"))
             {
                 enemy.myAnim.SetBool("isMoving", false);
                 Vector3 dir = target.position - enemy.transform.position;
                 float dist = dir.magnitude - enemy.AttackRange;
                 dir.Normalize();
-                float delta = 0.0f;
+                float delta;
 
                 // MoveToPos
                 if (dist > 0.0f)
@@ -54,6 +54,10 @@ public class EnemyState_Trace : EnemyState_Idle
                     }
                     enemy.myAnim.SetBool("isMoving", true);
                     enemy.transform.Translate(dir * delta, Space.World);
+                }
+                else
+                {
+                    stateMachine.ChangeState(enemy.m_states[Enemy.eState.Battle]);
                 }
 
                 // Rotation

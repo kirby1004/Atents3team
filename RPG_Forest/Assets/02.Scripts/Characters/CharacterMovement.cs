@@ -74,7 +74,7 @@ public class CharacterMovement : CharacterProperty
         done?.Invoke();
     }
 
-    Coroutine myCombo = null;
+    //Coroutine myCombo = null;
     protected IEnumerator MovingToPos(Vector3 pos, UnityAction done)
     {
         Vector3 dir = pos - transform.position;
