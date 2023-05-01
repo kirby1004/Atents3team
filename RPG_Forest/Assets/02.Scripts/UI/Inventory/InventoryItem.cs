@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -53,7 +52,7 @@ public class InventoryItem : MonoBehaviour , IBeginDragHandler, IEndDragHandler 
     }
 
 
-    // 입력받은 트랜스폼과 부모 교환 true 일때는 자리까지 바꿈
+    // 입력받은 트랜스폼과 부모 교환 false 일때는 참조대상만 , true 일때는 부모변경후 포지션이동까지
     public void ChangeParent(Transform p, bool update = false)
     {
         parentAfterDrag = p;

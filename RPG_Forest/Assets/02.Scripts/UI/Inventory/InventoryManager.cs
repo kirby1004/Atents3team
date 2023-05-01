@@ -7,7 +7,7 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     // 인벤토리 슬롯 배열에서 리스트로 변경 리소스과부화시 배열로 변경가능
-    public List<InventorySlot> slots = new List<InventorySlot>();   
+    public List<InventorySlot> slots = new();   
 
     // 인벤토리 슬롯 , 아이템 기본틀
     public GameObject inventoryItemPrefab;
@@ -18,19 +18,38 @@ public class InventoryManager : MonoBehaviour
     // 슬롯들의 부모
     public Transform slotParent;
 
-    // 앞에서부터 빈슬롯 확인 후 빈 슬롯에 아이템 추가
+    // 앞에서부터 빈슬롯 확인 후 빈 슬롯에 아이템 추가 / 슬롯이 꽉찻을때 예외처리 및 가독성 작업 완료
     public void AddItem(ItemStatus item)
     {
-        for (int i = 0; i < slots.Count; i++)
+        int slotIndex = FindEmptySlot();
+        if (slotIndex == -1) return;
+        else
         {
-            InventorySlot slot = slots[i];
-            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
-            if (itemInSlot == null)
+            SpawnNewItem(item, slots[slotIndex]);
+        }
+    }
+
+    // 빈 슬롯의 번호 찾기 -1 리턴시 실패
+    public int FindEmptySlot()
+    {
+        for(int i = 0;i < slots.Count; i++)
+        {
+            if (slots[i].GetComponentInChildren<InventoryItem>() == null)
             {
-                SpawnNewItem(item, slot);
-                return;
+                     return i;
             }
         }
+        return -1;
+    }
+
+    // 특정 슬롯에 아이템 옮기기
+    public void InsertItem(InventoryItem item , int SlotNum)
+    {
+        if (slots[SlotNum].transform.GetComponentInChildren<InventoryItem>() == null)
+        {
+            item.ChangeParent(slots[SlotNum].transform ,true);
+        }
+        else  return;
     }
 
     // 아이템 슬롯 생성
@@ -39,6 +58,7 @@ public class InventoryManager : MonoBehaviour
         GameObject newSlotGo = Instantiate(inventorySlotPrefab , slotParent);
         slots.Add(newSlotGo.GetComponent<InventorySlot>());
     }
+
     // 다수의 슬롯 생성
     public void SpawnNewSlots(int count)
     {
@@ -47,11 +67,12 @@ public class InventoryManager : MonoBehaviour
             SpawnNewSlot();
         }
     }
+
     //맨 마지막 슬롯 삭제
     public void DeleteSlot()
     {
-        Destroy(slots[slots.Count-1].gameObject);   //인벤토리슬롯 목록의 맨마지막 오브젝트를 제거하고 리스트에서 제거
-        slots.RemoveAt(slots.Count-1);
+        Destroy(slots[slots.Count - 1].gameObject);   //인벤토리슬롯 목록의 맨마지막 오브젝트를 제거하고 리스트에서 제거
+        slots.RemoveAt(slots.Count - 1);
     }
 
     // 새로운 아이템 오브젝트 생성

@@ -7,8 +7,8 @@ using UnityEngine.Events;
 public class EquipmentManager : MonoBehaviour
 {
     // 장비창 슬롯
-    public List<EquipmentSlot> equipslot = new List<EquipmentSlot>();
-    // 장비 슬롯 , 아이템 프리펩
+    public List<EquipmentSlot> equipslot = new();
+    // 장비 슬롯 , 아이템 원본
     public GameObject equipmentSlotPrefab;
     public GameObject equipmentItemPrefab;
 
@@ -18,6 +18,7 @@ public class EquipmentManager : MonoBehaviour
     public float equipmentDP;
     public float equipmentAS;
     public float equipmentSpeed;
+
 
     // 스텟 갱신 코루틴 작동
     public void RefreshStat()

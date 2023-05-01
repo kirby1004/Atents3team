@@ -4,7 +4,6 @@ using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 // 상점에서 마우스 오버 된 아이템의 정보 출력
 public class ItemInfo : MonoBehaviour
