@@ -13,7 +13,7 @@ public class ShopSlot : MonoBehaviour
     private void Start()
     {
 
-        Iteminfo = Gamemanager.instance.myUIManager.shopManager.itemInfo.gameObject;
+        Iteminfo = ShopManager.Inst.itemInfo.gameObject;
     }
 
 

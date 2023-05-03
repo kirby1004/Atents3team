@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopManager : MonoBehaviour
+public class ShopManager : Singleton<ShopManager>
 {
     // 상점목록 스크립트 , 오브젝트 링크
     public ShopList ShopList;
@@ -30,17 +30,20 @@ public class ShopManager : MonoBehaviour
     public void OpenShop(ShopItemList itemList)
     {
         ShopUI.SetActive(true);
-        Gamemanager.instance.myUIManager.shopManager.myShopList.GetComponent<ShopList>().myShopItemList = itemList;
-        Gamemanager.instance.myUIManager.shopManager.ShopList.ShopItemRefreshing(itemList);
+        ShopManager.Inst.myShopList.GetComponent<ShopList>().myShopItemList = itemList;
+        ShopManager.Inst.ShopList.ShopItemRefreshing(itemList);
     }
-    // 상점 오픈 ver2 상인 타입을 받아서 열기
+    //상점 오픈 ver2 상인 타입을 받아서 열기
     public void OpenShop(NpcType npcType)
     {
         ShopUI.SetActive(true);
         Gamemanager.instance.myUIManager.shopManager.myShopList.GetComponent<ShopList>().myShopItemList = ShopItemList[(int)npcType];
         Gamemanager.instance.myUIManager.shopManager.ShopList.ShopItemRefreshing(ShopItemList[(int)npcType]);
     }
-
+    private void Awake()
+    {
+        base.Initialize();
+    }
     private void Start()
     {
         

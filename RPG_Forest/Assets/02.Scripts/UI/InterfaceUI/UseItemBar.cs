@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UseItemBar : MonoBehaviour
 {
-    public List<UseItemSlot> slots = new List<UseItemSlot>();
+    public List<Slot> slots = new List<Slot>();
     // Start is called before the first frame update
     void Start()
     {

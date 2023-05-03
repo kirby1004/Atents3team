@@ -20,7 +20,7 @@ public class ShopItem : MonoBehaviour, IPointerExitHandler, IPointerEnterHandler
         if (isDone)
         {
             //Destroy(GetComponent<ShopItem>());
-            Gamemanager.instance.myUIManager.inventoryManager.AddItem(item);
+            InventoryManager.Inst.AddItem(item);
         }
     }
     //마우스오버 끝날때
@@ -32,9 +32,9 @@ public class ShopItem : MonoBehaviour, IPointerExitHandler, IPointerEnterHandler
     public void OnPointerEnter(PointerEventData eventData)
     {
         // 상점 정보창 갱신 => 마우스 오버된 상점 아이템의 정보 , 가격 가져와서 넘겨주기
-        Gamemanager.instance.myUIManager.shopManager.itemInfo.RefreshItemInfo
+        ShopManager.Inst.itemInfo.RefreshItemInfo
             (eventData.pointerEnter.GetComponent<ShopItem>().myItem);
-        Gamemanager.instance.myUIManager.shopManager.itemInfo.myCost = myCost;
+        ShopManager.Inst.itemInfo.myCost = myCost;
 
     }
 

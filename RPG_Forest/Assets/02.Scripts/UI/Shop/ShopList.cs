@@ -23,7 +23,7 @@ public class ShopList : MonoBehaviour
     private void Start()
     {
         ShopItemRefreshing(myShopItemList);
-        Gamemanager.instance.myUIManager.shopManager.ShopUI.SetActive(false);
+        ShopManager.Inst.ShopUI.SetActive(false);
     }
 
     // 입력받은 숫자만큼 뒤에서부터 상점 슬롯 제거
@@ -39,17 +39,17 @@ public class ShopList : MonoBehaviour
     // 상점 슬롯 단일추가 ShopSlotAdd , 복수추가 SlotAddItems
     public void ShopSlotAdd()
     {
-        GameObject obj = Instantiate(Gamemanager.instance.myUIManager.shopManager.ShopSlotPrefab, transform);
+        GameObject obj = Instantiate(ShopManager.Inst.ShopSlotPrefab, transform);
         shopSlots.Add(obj.GetComponent<ShopSlot>());
     }
     public void SlotAddItems(int index)
     {
-        GameObject obj = Instantiate(Gamemanager.instance.myUIManager.shopManager.ShopList.ShopItemPrefab,
+        GameObject obj = Instantiate(ShopManager.Inst.ShopList.ShopItemPrefab,
             shopSlots[index].transform);
         obj.GetComponent<ShopItem>().myItem = myShopItemList.items[index];
         obj.GetComponent<ShopItem>().myCost = myShopItemList.cost[index];
         obj.GetComponent<ShopItem>().myImage.sprite = myShopItemList.items[index].Image;
-        obj.GetComponent<ShopItem>().buyButton = Gamemanager.instance.myUIManager.shopManager.BuyButton;
+        obj.GetComponent<ShopItem>().buyButton = ShopManager.Inst.BuyButton;
     }
 
     //상점 목록 갱신코루틴 상점목록 스크립터블 오브젝트를 입력받음

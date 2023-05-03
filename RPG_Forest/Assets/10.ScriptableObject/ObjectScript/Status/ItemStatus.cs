@@ -93,7 +93,7 @@ public class ItemStatus : ScriptableObject
     [SerializeField]
     private Sprite _image;
     public Sprite Image { get { return _image; } }
-
+    
     
 }
 
@@ -103,5 +103,5 @@ public enum ItemType
 }
 public enum ActionType
 {
-    Attack , Defense , Inchent , UsedItem
+    Attack , Defense , Inchent , UsingItems
 }

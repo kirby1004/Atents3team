@@ -1886,8 +1886,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1034738041}
-        m_TargetAssemblyTypeName: ItemAddTest, Assembly-CSharp
+      - m_Target: {fileID: 1034738044}
+        m_TargetAssemblyTypeName: TestItemAdd, Assembly-CSharp
         m_MethodName: ItemList
         m_Mode: 3
         m_Arguments:
@@ -2472,11 +2472,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 685800598}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21e7c2c65d2a70143a4f326d3355040a, type: 3}
+  m_Script: {fileID: 11500000, guid: f7745099af63f7041bd71becd3c09ab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myitem: {fileID: 0}
-  myCoolDown: 0
+  mySlotItems: {fileID: 0}
+  mySlotType: 2
+  myItemType: 6
+  tempSlotType: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2944,8 +2946,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1034738041}
-        m_TargetAssemblyTypeName: ItemAddTest, Assembly-CSharp
+      - m_Target: {fileID: 1034738044}
+        m_TargetAssemblyTypeName: TestItemAdd, Assembly-CSharp
         m_MethodName: ItemList
         m_Mode: 3
         m_Arguments:
@@ -3499,7 +3501,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &971641234
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3932,6 +3934,7 @@ GameObject:
   - component: {fileID: 1034738043}
   - component: {fileID: 1034738042}
   - component: {fileID: 1034738041}
+  - component: {fileID: 1034738044}
   m_Layer: 5
   m_Name: TestSpawnBtn
   m_TagString: Untagged
@@ -4021,6 +4024,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034738039}
   m_CullTransparentMesh: 1
+--- !u!114 &1034738044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034738039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 808a10bc4aabdc646a293afd0b1c55ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsList:
+  - {fileID: 11400000, guid: 6c334900b9104644dabc4c8f0fe98903, type: 2}
+  - {fileID: 11400000, guid: 69968d335b4bda64ca1596856cb8da69, type: 2}
+  - {fileID: 11400000, guid: acdd0afde4436db4687016487cb56885, type: 2}
+  - {fileID: 11400000, guid: 11e738da08d037a41904cc5e9d142084, type: 2}
+  - {fileID: 11400000, guid: 9d6708c36f37bd846ae687e0eabd031f, type: 2}
+  - {fileID: 11400000, guid: 6ebd56256309c7c40bcc8e290ea2ed6a, type: 2}
 --- !u!1001 &1040847691
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4383,8 +4405,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1034738041}
-        m_TargetAssemblyTypeName: ItemAddTest, Assembly-CSharp
+      - m_Target: {fileID: 1034738044}
+        m_TargetAssemblyTypeName: TestItemAdd, Assembly-CSharp
         m_MethodName: ItemList
         m_Mode: 3
         m_Arguments:
@@ -4517,8 +4539,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1034738041}
-        m_TargetAssemblyTypeName: ItemAddTest, Assembly-CSharp
+      - m_Target: {fileID: 1034738044}
+        m_TargetAssemblyTypeName: TestItemAdd, Assembly-CSharp
         m_MethodName: ItemList
         m_Mode: 3
         m_Arguments:
@@ -4651,8 +4673,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1034738041}
-        m_TargetAssemblyTypeName: ItemAddTest, Assembly-CSharp
+      - m_Target: {fileID: 1034738044}
+        m_TargetAssemblyTypeName: TestItemAdd, Assembly-CSharp
         m_MethodName: ItemList
         m_Mode: 3
         m_Arguments:
@@ -5096,11 +5118,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1238679320}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21e7c2c65d2a70143a4f326d3355040a, type: 3}
+  m_Script: {fileID: 11500000, guid: f7745099af63f7041bd71becd3c09ab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myitem: {fileID: 0}
-  myCoolDown: 0
+  mySlotItems: {fileID: 0}
+  mySlotType: 2
+  myItemType: 6
+  tempSlotType: 0
 --- !u!1 &1246453364
 GameObject:
   m_ObjectHideFlags: 0
@@ -5187,11 +5211,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1246453364}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21e7c2c65d2a70143a4f326d3355040a, type: 3}
+  m_Script: {fileID: 11500000, guid: f7745099af63f7041bd71becd3c09ab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myitem: {fileID: 0}
-  myCoolDown: 0
+  mySlotItems: {fileID: 0}
+  mySlotType: 2
+  myItemType: 6
+  tempSlotType: 0
 --- !u!1 &1249701476
 GameObject:
   m_ObjectHideFlags: 0
@@ -7027,11 +7053,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1786938849}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21e7c2c65d2a70143a4f326d3355040a, type: 3}
+  m_Script: {fileID: 11500000, guid: f7745099af63f7041bd71becd3c09ab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myitem: {fileID: 0}
-  myCoolDown: 0
+  mySlotItems: {fileID: 0}
+  mySlotType: 2
+  myItemType: 6
+  tempSlotType: 0
 --- !u!1 &1792951474
 GameObject:
   m_ObjectHideFlags: 0
@@ -8998,8 +9026,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1034738041}
-        m_TargetAssemblyTypeName: ItemAddTest, Assembly-CSharp
+      - m_Target: {fileID: 1034738044}
+        m_TargetAssemblyTypeName: TestItemAdd, Assembly-CSharp
         m_MethodName: ItemList
         m_Mode: 3
         m_Arguments:
@@ -9549,13 +9577,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d2d22d30d43d54c9830486877f8038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryManager: {fileID: 0}
-  equipmentManager: {fileID: 0}
-  statusManager: {fileID: 0}
-  shopManager: {fileID: 971641235}
-  inventoryManagerGameObject: {fileID: 3990505018993774941, guid: e78858df4112c714094a79c06c929755, type: 3}
-  statusManagerGameObject: {fileID: 3141903165264859488, guid: e5055a7a61fed2c45b5726beb8aa2bf3, type: 3}
-  equipmentManagerGameObject: {fileID: 3961701949277922524, guid: 6545d37658d15fa4d8bdc469f1d58d5d, type: 3}
+  TestinventoryManager: {fileID: 0}
+  TestequipmentManager: {fileID: 0}
+  TeststatusManager: {fileID: 0}
+  shopManager: {fileID: 0}
+  inventoryManagerGameObject: {fileID: 3990505018993774941, guid: ee288121936cbc2449935125c501bef1, type: 3}
+  statusManagerGameObject: {fileID: 3141903165264859488, guid: 40c7d63f13b8816478b71994ca672d22, type: 3}
+  equipmentManagerGameObject: {fileID: 3961701949277922524, guid: be424e5b946c8324580b39eb1f114d79, type: 3}
 --- !u!1 &6387618671940372214
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SocialPlatforms;
 
-public class Spawnner : MonoBehaviour
+public class Spawnner : MonoBehaviour 
 {
     public GameObject orgObject;
     public int TotalCount = 3;

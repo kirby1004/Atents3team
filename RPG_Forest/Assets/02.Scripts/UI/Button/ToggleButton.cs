@@ -16,10 +16,9 @@ public class ToggleButton : MonoBehaviour
     {
         //메뉴목록 1.인벤토리 2.장비창 3.스테이터스 4.소울강화(추가예정)
         mybutton = GetComponent<Button>();
-        mySystems.Add(Gamemanager.instance.myUIManager.inventoryManager.gameObject);
-        mySystems.Add(Gamemanager.instance.myUIManager.equipmentManager.gameObject);
-        mySystems.Add(Gamemanager.instance.myUIManager.statusManager.gameObject);
-        //mySystems.Add(Gamemanager.instance.myUIManager.shopManager.gameObject);
+        mySystems.Add(InventoryManager.Inst.gameObject);
+        mySystems.Add(EquipmentManager.Inst.gameObject);
+        mySystems.Add(StatusManager.Inst.gameObject);
     }
 
     // Update is called once per frame

@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemAddTest : MonoBehaviour
+public class ItemAdd : MonoBehaviour
 {
-
     public ItemStatus[] itemsList;
 
 
@@ -12,5 +11,4 @@ public class ItemAddTest : MonoBehaviour
     {
         InventoryManager.Inst.AddItem(itemsList[id]);
     }
-
 }

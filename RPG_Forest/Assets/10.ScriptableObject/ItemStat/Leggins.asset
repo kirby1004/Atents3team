@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7921e8d258c536e4192c1a07bce18f90, type: 3}
   m_Name: Leggins
   m_EditorClassIdentifier: 
-  _myequipType: 2
+  _myItemType: 2
+  _actionType: 1
   _itemName: Boots
-  actionType: 1
   _attackPoint: 0
   _attackSpeed: 0
   _defensePoint: 10

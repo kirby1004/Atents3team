@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7921e8d258c536e4192c1a07bce18f90, type: 3}
   m_Name: Core
   m_EditorClassIdentifier: 
-  _myequipType: 5
+  _myItemType: 5
+  _actionType: 2
   _itemName: Armor
-  actionType: 2
   _attackPoint: 0
   _attackSpeed: 0
   _defensePoint: 0

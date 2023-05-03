@@ -20,32 +20,29 @@ public class UIManager : MonoBehaviour
         }
         // 각각의 매니저가 존재하지않을때 생성후 참조대상으로 설정해주기
         // 이미 생성되잇을때 재참조기능 추가필요?
-        if(FindObjectOfType<InventoryManager>() == null)
+        if (FindObjectOfType<InventoryManager>() == null)
         {
             GameObject obj = Instantiate(inventoryManagerGameObject, transform);
-            inventoryManager = obj.GetComponent<InventoryManager>();
-            obj.SetActive(false);
+            TestinventoryManager = obj.GetComponent<InventoryManager>();
         }
         if (FindObjectOfType<EquipmentManager>() == null)
         {
             GameObject obj = Instantiate(equipmentManagerGameObject, transform);
-            equipmentManager = obj.GetComponent<EquipmentManager>();
-            obj.SetActive(false);
+            TestequipmentManager = obj.GetComponent<EquipmentManager>();
         }
         if (FindObjectOfType<StatusManager>() == null)
         {
             GameObject obj = Instantiate(statusManagerGameObject, transform);
-            statusManager = obj.GetComponent<StatusManager>();
-            obj.SetActive(false);
+            TeststatusManager = obj.GetComponent<StatusManager>();
         }
     }
-
-
-
-    //참조하는 매니저
-    public InventoryManager inventoryManager;
-    public EquipmentManager equipmentManager;
-    public StatusManager statusManager;
+    private void Start()
+    {
+        Refresh();
+    }
+    public InventoryManager TestinventoryManager;
+    public EquipmentManager TestequipmentManager;
+    public StatusManager TeststatusManager;
     public ShopManager shopManager;
     //참조하는 원본
     public GameObject inventoryManagerGameObject;
@@ -55,10 +52,20 @@ public class UIManager : MonoBehaviour
 
 
 
-    public void Refresh(Component component , Transform parents)
+    public void Refresh()
     {
-
+        StartCoroutine(ManagerSetup());
+    }
+    IEnumerator ManagerSetup()
+    {
+        yield return new WaitForFixedUpdate();
+        EquipmentManager.Inst.gameObject.SetActive(false);
+        InventoryManager.Inst.gameObject.SetActive(false);
+        StatusManager.Inst.gameObject.SetActive(false);
     }
 
-
+}
+public enum ItemSlotType
+{
+    Inventory, Equipment, Quick, Shop, Skill, Soul
 }

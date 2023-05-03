@@ -1,19 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventoryItem : MonoBehaviour , IBeginDragHandler, IEndDragHandler ,IDragHandler
+interface IItems  // 다른종류의 슬롯으로이동가능한 아이템만 상속받게 하기
 {
+    Component myState
+    {
+        get;
+    }
+       
+}
+
+public class Item : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+{
+
     // 아이템의 정보
     public ItemStatus item;
     //아이템 이미지
     public Image image;
-    
+
     public Transform parentAfterDrag;
 
+    public ItemSlotType slotType = ItemSlotType.Inventory;
     // 아이템 생성시 정보갱신 (추가할지 말지 고민중)
     // Start is called before the first frame update
     //private void Start()
@@ -29,6 +39,7 @@ public class InventoryItem : MonoBehaviour , IBeginDragHandler, IEndDragHandler 
         Color color = image.color;
         color.a = 1;
         image.color = color;
+        slotType = ItemSlotType.Inventory;
     }
 
     // 마우스 드래그 
@@ -40,11 +51,11 @@ public class InventoryItem : MonoBehaviour , IBeginDragHandler, IEndDragHandler 
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.parent);
     }
-    public void OnDrag(PointerEventData eventData) 
+    public void OnDrag(PointerEventData eventData)
     {
         transform.position = eventData.position + mousePos;
     }
-    public void OnEndDrag(PointerEventData eventData) 
+    public void OnEndDrag(PointerEventData eventData)
     {
         image.raycastTarget = true;
         transform.SetParent(parentAfterDrag);
