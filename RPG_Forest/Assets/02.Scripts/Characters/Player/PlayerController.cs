@@ -149,6 +149,7 @@ public class PlayerController : CharacterMovement_V2, IBattle
         }
     }
 
+    #region 공격
     public void AttackEnter() //공격이 시작될 때 실행되는 이벤트함수, 공격 애니메이션 이벤트로 시작될 때 실행된다.
     {
         myAnim.SetBool("ComboAttack", true); //공격이 시작되면 콤보어택을 true로 바꾸고 isClick을 false로 둔다=> 공격 중간에 클릭이 들어오는 지 확인하기 위함.
@@ -166,6 +167,7 @@ public class PlayerController : CharacterMovement_V2, IBattle
             myAnim.SetBool("ComboAttack", false); //아니라면 ComboAttack은 false
         }
     }
+    #endregion
 
     void Roll()
     {

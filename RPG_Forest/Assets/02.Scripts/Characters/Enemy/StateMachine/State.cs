@@ -6,12 +6,12 @@ using UnityEngine.Events;
 public abstract class State
 {
 
-    protected Enemy enemy;
+    protected Monster monster;
     protected StateMachine stateMachine;
 
-    protected State(Enemy enemy, StateMachine stateMachine)
+    public State(Monster monster, StateMachine stateMachine)
     {
-        this.enemy = enemy;
+        this.monster = monster;
         this.stateMachine = stateMachine;
     }
 
@@ -23,12 +23,12 @@ public abstract class State
     {
     }
 
-    public virtual void PhysicsUpdate()
+    public virtual void LogicUpdate()
     {
 
     }
 
-    public virtual void LogicUpdate()
+    public virtual void PhysicsUpdate()
     {
 
     }

@@ -23,9 +23,13 @@ public class Gamemanager : MonoBehaviour
         }
     }
 
+    // 씬
+
+
     // 바인딩
-    public RPGPlayer myPlyaer;
-    public Monster myMonster;
+    
+    public PlayerController myPlyaer;
+    public Monster myEnemy;
     public Spawnner mySpawnner; // 트랜스폼만 받을지 클래스 전체로 받을지
 
 
@@ -33,7 +37,7 @@ public class Gamemanager : MonoBehaviour
     // [IBattle] 
     public UnityAction DeathAlarm;
     [SerializeField]
-    public float playTime; // 
+    public float playTime; // 총 게임 시간
 
 
     

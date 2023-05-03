@@ -40,7 +40,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-
+ 
 
     //참조하는 매니저
     public InventoryManager inventoryManager;

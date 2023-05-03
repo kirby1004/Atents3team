@@ -9,6 +9,21 @@
 4. 개발 일정 확인하기 - [개발 일정](https://app.asana.com/0/1204352798021693/list)
 
 ---
+### V.3.0.00 - JS / Midterm discussion
+> Enemy -> Monster 이름 변경  
+
+> Script 정리  
+- 쓸모없는 스크립트 정리
+- 프로퍼티 공통적으로 쓰는 값들 정리하고 안쓰는 것들은 각자 스크립트에서 오버라이딩
+
+>  SingleTon 구현할 내용 정리  
+- GameManager에 들어갈 내용 전체적으로 간추리기
+
+> Skill Manager 구현 방법 토의  
+
+> UI 구현 개념 정리  
+
+---
 ### V.2.0.11 - JS  
 > Enemy State - Battle, Recall 상태 구현  
 

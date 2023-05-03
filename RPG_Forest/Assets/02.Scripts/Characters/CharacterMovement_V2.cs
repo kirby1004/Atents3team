@@ -34,67 +34,6 @@ public abstract class CharacterMovement_V2 : CharacterProperty
     public abstract void MoveToPos(Vector3 pos, UnityAction done = null); // 수민 스크립트의 Move() 함수 변형하면 될 것으로 보임
     #endregion
 
-    /// [Summary] Target Tracing과 Attack State 구분 완료
-
-    #region TargetTracing 
-    /*
-     * Enemy Script로 이동 필요 public overide
-     * 유도 스킬 기능(?)을 사용하기위해서 플레이어도 필요한 함수인지 고민 필요?
-     * 
-    protected void TraceTarget(Transform target)
-    {
-        CoCheckStop(coFollow);
-        coFollow = StartCoroutine(TracingTarget(target));
-    }
-
-    // TracingTarget으로 이름 변경
-    IEnumerator TracingTarget(Transform target) // 타겟을 추적하고 거리가 됫을때 공격하기
-                                                // 추적과 공격 분리 필요 (해결)
-    {
-        while (target != null)
-        {
-            if (!myAnim.GetBool("isAttacking")) playTime += Time.deltaTime;
-            if (!myAnim.GetBool("isAttacking"))
-            {
-                myAnim.SetBool("isMoving", false);
-                Vector3 dir = target.position - transform.position;
-                float dist = dir.magnitude - AttackRange;
-                dir.Normalize();
-                float delta = 0.0f;
-
-                // MoveToPos
-                if (dist > 0.0f)
-                {
-                    delta = MoveSpeed * Time.deltaTime;
-                    if (dist <= delta)
-                    {
-                        delta = dist;
-                    }
-                    myAnim.SetBool("isMoving", true);
-                    transform.Translate(dir * delta, Space.World);
-                }
-
-                // Rotation
-                float angle = Vector3.Angle(transform.forward, dir);
-                float rotDir = 1.0f;
-                if (Vector3.Dot(transform.right, dir) < 0.0f)
-                {
-                    rotDir = -1.0f;
-                }
-                delta = RotSpeed * Time.deltaTime;
-                if (angle < delta)
-                {
-                    delta = angle;
-                }
-                transform.Rotate(transform.up * rotDir * delta, Space.World);
-            }
-            yield return null;
-        }
-    }
-    */
-    #endregion
-
-
     #region Attack
 
     public void Attack(Transform attackPoint)

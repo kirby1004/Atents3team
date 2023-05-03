@@ -1,198 +1,179 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Monster : CharacterMovement, IPerception, IBattle, I_Ad
+// 에너미 스크립트 스테이트머신과 패턴 전부 분리하기 
+public class Monster : CharacterMovement_V2, IPerception, IBattle
 {
-    public static int TotalCount = 0;
-    public enum State // Recall State 추가
+    public enum eState
     {
-        Create, Normal, Battle, Death , Recall
-    }
-    public State myState = State.Create;
-
-    protected Transform Spawn; // 복귀지점을 잡기위하여 시작지점 입력받기
-    protected Vector3 orgPos;
-    public Transform myTarget = null;
-    public Transform myReturn = null;
-
-    Coroutine coRoaming = null;
-    //Coroutine coFollow = null;
-    //Coroutine coRecall = null;
-
-    public bool IsLive
-    {
-        get => myState != State.Death;
-    }
-    public void StateChange(State s) // 현재상태에서 S 로 상태 변화
-    {
-        if (myState == s) return;
-        ExitState(myState);
-        EnterState(s);
+        Create,
+        Idle,
+        Trace,
+        Battle,
+        Recall,
+        Fly,
+        Die
     }
 
-    void ChangeState(State s)
+    public static int TotalCount;
+
+    private StateMachine m_monsterSM; // 스테이트 머신 스크립트 참조
+
+    public Dictionary<eState, State> m_states = new Dictionary<eState, State>(); // Enum 값과 상태를 Key, value 값으로 갖는 Dictionary로 생성
+
+    public Vector3 orgPos; // 드래곤의 원래 포지션, Fly State에서 Land -> Idle로 돌아올 때 y값 저장 필요
+    public Transform myTarget = null; // 에너미의 타겟 -> Player
+
+    // IsLive 프로퍼티 구현
+    //public bool IsLive
+    //{
+
+    //    get => m_enemySM.CurrentState(m_states[eState.Die]);
+    //}
+
+    public bool IsLive => throw new System.NotImplementedException();
+
+    protected override void Start()
     {
-        if (myState == s) return;
-        myState = s;
-        switch(myState)
+        m_monsterSM = new StateMachine(); // 스테이트 머신 스크립트 인스턴스 생성 
+        
+        m_states.Add(eState.Create, new MonsterState_Create(this, m_monsterSM)); 
+        m_states.Add(eState.Idle, new MonsterState_Idle(this, m_monsterSM));
+        m_states.Add(eState.Trace, new MonsterState_Trace(this, m_monsterSM));
+        m_states.Add(eState.Battle, new MonsterState_Battle(this, m_monsterSM));
+        m_states.Add(eState.Recall, new MonsterState_Recall(this, m_monsterSM));
+        m_states.Add(eState.Fly, new MonsterState_Fly(this, m_monsterSM));
+        m_states.Add(eState.Die, new MonsterState_Recall(this, m_monsterSM));
+
+        m_monsterSM.Initialize(m_states[eState.Create]);
+
+        orgPos = this.transform.position;
+
+        TotalCount = 3;
+
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        m_monsterSM.CurrentState.LogicUpdate();
+    }
+
+    protected override void LateUpdate()
+    {
+        base.LateUpdate();
+        m_monsterSM.CurrentState.PhysicsUpdate();
+    }
+
+    #region Movement
+    // 드래곤의 이동에 관한 함수
+    public override void MoveToPos(Vector3 pos, UnityAction done = null)
+    {
+        StartCoroutine(MovingToPos(pos, done));
+    }
+
+    protected IEnumerator MovingToPos(Vector3 pos, UnityAction done)
+    {
+        Vector3 dir = pos - transform.position;
+        float dist = dir.magnitude;
+        dir.Normalize();
+
+        StartCoroutine(Rotating(dir));
+
+        myAnim.SetBool("isMoving", true);
+
+        while (dist > 0.0f)
         {
-            case State.Normal:
-                myAnim.SetBool("isMoving", false);
-                coCheckStop(coRoaming);
-                coRoaming = StartCoroutine(Roaming(Random.Range(1.0f, 3.0f)));
-                break;
-            case State.Battle:                
-                StopAllCoroutines();
-                FollowTarget(myTarget);
-                break;
-            case State.Death:
-                Collider[] list = transform.GetComponentsInChildren<Collider>();
-                foreach (Collider col in list) col.enabled = false;
-                DeathAlarm?.Invoke();
-                StopAllCoroutines();
-                myAnim.SetTrigger("Dead");
-                break;
-            case State.Recall:
-                StopAllCoroutines();
-                MoveToPos(myReturn.position);
-                break;
-            default:
-                Debug.Log("처리 되지 않는 상태 입니다.");
-                break;
+            if (!myAnim.GetBool("isAttacking"))
+            {
+                float delta = MoveSpeed * Time.deltaTime;
+                if (dist - delta < 0.0f)
+                {
+                    delta = dist;
+                }
+                dist -= delta;
+                transform.Translate(dir * delta, Space.World);
+            }
+            yield return null;
+        }
+
+        myAnim.SetBool("isMoving", false);
+        done?.Invoke();
+    }
+
+    IEnumerator Rotating(Vector3 dir)  // 주의 : Normalize 된 벡터만 입력받게 할것
+    {
+        float angle = Vector3.Angle(transform.forward, dir);
+        float rotDir = 1.0f;
+        if (Vector3.Dot(transform.right, dir) < 0.0f)
+        {
+            rotDir = -1.0f;
+        }
+        while (angle > 0.0f)
+        {
+            float delta = RotSpeed * Time.deltaTime;
+            if (angle - delta < 0.0f)
+            {
+                delta = angle;
+            }
+            angle -= delta;
+            transform.Rotate(Vector3.up * rotDir * delta);
+            yield return null;
         }
     }
+    #endregion
 
-    void EnterState(State s)
-    {
-        if (myState == s) return;
-        myState = s;
-        switch (myState)
-        {
-            case State.Create:
-                //정보 로딩
-                break;
-            case State.Normal:
-                coCheckStop(coRoaming);
-                myAnim.SetBool("isMoving", false);
-                coRoaming = StartCoroutine(Roaming(Random.Range(1.0f, 3.0f)));
-                break;
-            case State.Battle:
-                
-                StopAllCoroutines();
-                FollowTarget(myTarget);
-                break;
-            case State.Death: // 충돌 판정 제거 , 사망 알람 전달 , 사망 애니메이션 동작 
-                // 충돌 판정 제거
-                Collider[] list = transform.GetComponentsInChildren<Collider>();
-                foreach (Collider col in list) col.enabled = false; 
-                // 사망알람 전달
-                DeathAlarm?.Invoke();
-                //동작중인 움직임 및 판정 제거
-                StopAllCoroutines();          
-                // 사망 애니메이션 동작
-                myAnim.SetTrigger("Dead");
-                break;
-            case State.Recall:
-                break;
-            default:
-                break;
-        }
-    }
-    void ExitState(State S)
-    {
-        switch (myState) 
-        {
-            case State.Create:
-            break;
-            case State.Normal: 
-                // 로밍상태 해제
-                coCheckStop(coRoaming);
-                // 이동 애니메이션 제거
-                myAnim.SetBool("isMoving", false);
-                break;
-            case State.Battle:
-                StopAllCoroutines();
-                break;
-            case State.Death: // 일정시간 경과 및 루팅이 끝낫을때 사체 소멸시키기
-                OnDisappear(); 
-            break;
-            case State.Recall:
-                break;
-            default:
-            break;
-        }
-    }
 
-    void StateProcess()
-    {
-        switch (myState)
-        {
-            case State.Normal:
-                break;
-            case State.Battle:
-                break;
-            case State.Death:
-                break;
-            case State.Recall:
+    
+    #region Fly
 
-                break;
-            default:
-                Debug.Log("처리 되지 않는 상태 입니다.");
-                break;
-        }
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        TotalCount++;
-        orgPos = transform.position;
-        Spawn = Gamemanager.Instance.mySpawnner.transform;
-        ChangeState(State.Normal);
-    }
+    public Vector3 flyPos;
+    public bool isFlying = false;
+    public float flyHeight = 10.0f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        StateProcess();
-    }
 
-    IEnumerator Roaming(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        Vector3 pos = orgPos;
-        pos.x += Random.Range(-5.0f, 5.0f);
-        pos.z += Random.Range(-5.0f, 5.0f);
-        MoveToPos(pos, ()=> StartCoroutine(Roaming(Random.Range(1.0f,3.0f))));
-    }
+    //public bool startFlyBoosting = false;
+
+    #endregion
+
+
+    #region Find, LostTarget
 
     public void Find(Transform target)
     {
         myTarget = target;
-        myTarget.GetComponent<CharacterProperty>().DeathAlarm += () => { if (IsLive) ChangeState(State.Normal); };
-        ChangeState(State.Battle);
+        //monster.myTarget.GetComponent<CharacterProperty>().DeathAlarm += () => { if (IsLive) ChangeState(State.Normal); }; // Death Alarm 후에 구현
+        m_monsterSM.ChangeState(m_states[eState.Trace]);
     }
 
     public void LostTarget()
     {
         myTarget = null;
-        Rangeout(Spawn);
-       // ChangeState(State.Recall);
+        m_monsterSM.ChangeState(m_states[eState.Recall]);
     }
 
-    public void OnAttack()
-    {
-        myTarget.GetComponent<IBattle>()?.OnDamage(AttackPoint);
-    }
 
+
+    #endregion
+
+
+    #region Battle
+    //public override void Attack(Transform target = null)
+    //{
+
+    //}
+
+    public Transform leftClawPoint;
+
+    // IBattle Interface
     public void OnDamage(float dmg)
     {
         curHp -= dmg;
         if (Mathf.Approximately(curHp, 0.0f))
         {
-            ChangeState(State.Death);            
+            m_monsterSM.ChangeState(m_states[eState.Die]);
         }
         else
         {
@@ -200,34 +181,27 @@ public class Monster : CharacterMovement, IPerception, IBattle, I_Ad
         }
     }
 
-    public void OnDisappear()
-    {
-        StartCoroutine(Disappearing());
-    }
+    //public void AttackExit()
+    //{
+    //    if (myTarget == null)
+    //    {
+    //        Debug.Log("AttackExit");
+    //    }
+    //    if(myTarget)
+    //    {
+    //        m_enemySM.ChangeState(m_states[eState.Trace]);
+    //    }
+    //    else
+    //    {
+    //        m_enemySM.ChangeState(m_states[eState.Idle]);
+    //    }
+    //}
 
-    IEnumerator Disappearing()
-    {
-        yield return new WaitForSeconds(3.0f);
-        float dist = 0.0f;
-        while(dist < 1.0f)
-        {
-            dist += Time.deltaTime;
-            transform.Translate(Vector3.down * Time.deltaTime);
-            yield return null;
-        }
-        Destroy(gameObject);
-        TotalCount--;
-    }
+    // 쿨타임 체크 함수? 코루틴? 구현 필요
 
-    public void Rangeout(Transform target)
-    {
-        if (transform == target)
-        {
-            ChangeState(State.Normal);
-            return;
-        }
-        myReturn = target;
-        ChangeState(State.Recall);
-    }
+    #endregion
+
 
 }
+
+
