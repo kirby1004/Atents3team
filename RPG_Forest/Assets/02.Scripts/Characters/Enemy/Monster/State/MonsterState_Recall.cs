@@ -2,21 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyState_Create : State
+public class MonsterState_Recall : State
 {
-    public EnemyState_Create(Enemy enemy, StateMachine stateMachine) : base(enemy, stateMachine)
+    public MonsterState_Recall(Monster monster, StateMachine stateMachine) : base(monster, stateMachine)
     {
     }
 
     public override void Enter()
     {
         base.Enter();
-        enemy.StartCoroutine(CreateDelay());
+        monster.MoveToPos(monster.orgPos, () =>
+        {
+            if (!monster.myAnim.GetBool("isAttacking")) stateMachine.ChangeState(monster.m_states[Monster.eState.Idle]);
+        });
     }
 
     public override void Exit()
     {
         base.Exit();
+        
     }
 
     public override void LogicUpdate()
@@ -28,11 +32,4 @@ public class EnemyState_Create : State
     {
         base.PhysicsUpdate();
     }
-
-    IEnumerator CreateDelay()
-    {
-        yield return new WaitForSeconds(2.0f);
-        stateMachine.ChangeState(enemy.m_states[Enemy.eState.Idle]);
-    }
-
 }

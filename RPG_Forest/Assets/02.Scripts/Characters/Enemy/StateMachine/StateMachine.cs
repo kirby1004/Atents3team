@@ -14,6 +14,8 @@ public class StateMachine
 
     public void ChangeState(State newState)
     {
+        //Debug.Log($"CurState : {CurrentState}");
+
         CurrentState.Exit();
 
         CurrentState = newState;

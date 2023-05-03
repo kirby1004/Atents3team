@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyState_Die : State
+public class MonsterState_Create : State
 {
-    public EnemyState_Die(Enemy enemy, StateMachine stateMachine) : base(enemy, stateMachine)
+    public MonsterState_Create(Monster monster, StateMachine stateMachine) : base(monster, stateMachine)
     {
     }
 
     public override void Enter()
     {
         base.Enter();
+        monster.StartCoroutine(CreateDelay());
     }
 
     public override void Exit()
@@ -26,6 +27,12 @@ public class EnemyState_Die : State
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+    }
+
+    IEnumerator CreateDelay()
+    {
+        yield return new WaitForSeconds(2.0f);
+        stateMachine.ChangeState(monster.m_states[Monster.eState.Idle]);
     }
 
 }

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyState_Idle : State
+public class MonsterState_Idle : State
 {
-    public EnemyState_Idle(Enemy enemy, StateMachine stateMachine) : base(enemy, stateMachine)
+    public MonsterState_Idle(Monster monster, StateMachine stateMachine) : base(monster, stateMachine)
     {
         
     }
@@ -12,14 +12,14 @@ public class EnemyState_Idle : State
     public override void Enter()
     {
         base.Enter();
-        enemy.myAnim.SetBool("isMoving", false);
-        enemy.StartCoroutine(Roaming(Random.Range(1.0f, 3.0f)));
+        monster.myAnim.SetBool("isMoving", false);
+        monster.StartCoroutine(Roaming(Random.Range(1.0f, 3.0f)));
     }
 
     public override void Exit()
     {
         base.Exit();
-        enemy.StopAllCoroutines();
+        monster.StopAllCoroutines();
     }
 
     
@@ -36,10 +36,10 @@ public class EnemyState_Idle : State
     IEnumerator Roaming(float delay)
     {
         yield return new WaitForSeconds(delay);
-        Vector3 pos = enemy.orgPos;
+        Vector3 pos = monster.orgPos;
         pos.x += Random.Range(-5.0f, 5.0f);
         pos.z += Random.Range(-5.0f, 5.0f);
-        enemy.MoveToPos(pos, () => enemy.StartCoroutine(Roaming(Random.Range(1.0f, 3.0f))));
+        monster.MoveToPos(pos, () => monster.StartCoroutine(Roaming(Random.Range(1.0f, 3.0f))));
     }
 
     
