@@ -22,17 +22,17 @@ public class UIManager : MonoBehaviour
         // 이미 생성되잇을때 재참조기능 추가필요?
         if (FindObjectOfType<InventoryManager>() == null)
         {
-            GameObject obj = Instantiate(inventoryManagerGameObject, transform);
+            GameObject obj = Instantiate(Resources.Load("UIResource/System/InventorySystem") as GameObject,transform);
             TestinventoryManager = obj.GetComponent<InventoryManager>();
         }
         if (FindObjectOfType<EquipmentManager>() == null)
         {
-            GameObject obj = Instantiate(equipmentManagerGameObject, transform);
+            GameObject obj = Instantiate(Resources.Load("UIResource/System/EquipmentSystem") as GameObject, transform);
             TestequipmentManager = obj.GetComponent<EquipmentManager>();
         }
         if (FindObjectOfType<StatusManager>() == null)
         {
-            GameObject obj = Instantiate(statusManagerGameObject, transform);
+            GameObject obj = Instantiate(Resources.Load("UIResource/System/StatusSystem") as GameObject, transform);
             TeststatusManager = obj.GetComponent<StatusManager>();
         }
     }
@@ -40,14 +40,15 @@ public class UIManager : MonoBehaviour
     {
         Refresh();
     }
+    [Header("Managers")]
     public InventoryManager TestinventoryManager;
     public EquipmentManager TestequipmentManager;
     public StatusManager TeststatusManager;
     public ShopManager shopManager;
     //참조하는 원본
-    public GameObject inventoryManagerGameObject;
-    public GameObject statusManagerGameObject;
-    public GameObject equipmentManagerGameObject;
+    //public GameObject inventoryManagerGameObject;
+    //public GameObject statusManagerGameObject;
+    //public GameObject equipmentManagerGameObject;
 
 
 

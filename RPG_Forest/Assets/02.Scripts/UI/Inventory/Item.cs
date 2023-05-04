@@ -13,17 +13,18 @@ interface IItems  // 다른종류의 슬롯으로이동가능한 아이템만 상속받게 하기
        
 }
 
-public class Item : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class Item : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler , IPointerClickHandler
 {
 
     // 아이템의 정보
     public ItemStatus item;
     //아이템 이미지
     public Image image;
-
+    public Image myIcon = null;
     public Transform parentAfterDrag;
 
     public ItemSlotType slotType = ItemSlotType.Inventory;
+    Color color = Color.white;
     // 아이템 생성시 정보갱신 (추가할지 말지 고민중)
     // Start is called before the first frame update
     //private void Start()
@@ -74,6 +75,31 @@ public class Item : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
         }
     }
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if(transform.GetComponent<QuickItem>() != null)
+        {
+            if (Mathf.Approximately(myIcon.fillAmount, 1.0f))
+            {
+                myIcon.fillAmount = 0.0f;
+                color.a = 0.0f;
+                image.color = color;
+                StopAllCoroutines();
+                StartCoroutine(Cooling());
+            }
+        }
+    }
 
+    IEnumerator Cooling()
+    {
+        float speed = 1.0f / item.ItemCoolDown;
+        while (myIcon.fillAmount < 1)
+        {
+            myIcon.fillAmount += speed * Time.deltaTime;
+            yield return null;
+        }
+        color.a = 1.0f;
+        image.color = color;
+    }
 
 }

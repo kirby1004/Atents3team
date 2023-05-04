@@ -9,6 +9,16 @@
 4. 개발 일정 확인하기 - [개발 일정](https://app.asana.com/0/1204352798021693/list)
 
 ---
+### V.3.0.02 - GY
+> 미사용 프리펩 및 스크립트 정리  
+- Slot 통합작업 중 생긴 미사용 프리펩 및 스크립트 정리  
+---
+### V.3.0.01 - GY
+> Slot 통합  
+- Inventory , Equipment , Quick , Skill , Soul , Shop Slot 스크립트 및 프리펩 단일객체화  
+> Mananger 싱글톤화 및 자동생성  
+- UI , Inventory , Equipment , Status , Shop Mananger 로드시 자동 생성 및 참조
+---
 ### V.3.0.00 - JS / Midterm discussion
 > Enemy -> Monster 이름 변경  
 

@@ -21,6 +21,12 @@ public class Gamemanager : MonoBehaviour
         {
             if (Instance != this) Destroy(this.gameObject); // 씬에 싱글톤 오브젝트가 된 다른 GameManager Object가 있다면 자신을 파괴
         }
+        
+        if(FindObjectOfType<UIManager>() == null)
+        {
+            GameObject obj = Instantiate(myUIPrefab);
+            myUIManager = obj.GetComponent<UIManager>();
+        }
     }
 
     // 씬
@@ -40,16 +46,17 @@ public class Gamemanager : MonoBehaviour
     public float playTime; // 총 게임 시간
 
 
-    
+
     // [Status] 클래스로 만들어서 프로퍼티 불러오기
-    
+
     // [Inventory] 클래스로 만들어서 프로퍼티 불러오기
-    
+
     // [Enemy] 스포너 위치  
-    
+
     // [UIManager 싱글톤]으로 구현하고 여기에서 view 처리
+    [Header("UIManager")]
     public UIManager myUIManager;
-    
+    public GameObject myUIPrefab;
     // 세이브데이터
 
 

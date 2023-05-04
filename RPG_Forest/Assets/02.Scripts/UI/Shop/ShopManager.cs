@@ -25,7 +25,7 @@ public class ShopManager : Singleton<ShopManager>
     {
         
     }
-
+    #region 상점 열기
     // 상점 오픈 ver1 상점 목록을 받아서 열기
     public void OpenShop(ShopItemList itemList)
     {
@@ -37,9 +37,11 @@ public class ShopManager : Singleton<ShopManager>
     public void OpenShop(NpcType npcType)
     {
         ShopUI.SetActive(true);
-        Gamemanager.instance.myUIManager.shopManager.myShopList.GetComponent<ShopList>().myShopItemList = ShopItemList[(int)npcType];
-        Gamemanager.instance.myUIManager.shopManager.ShopList.ShopItemRefreshing(ShopItemList[(int)npcType]);
+        ShopManager.Inst.myShopList.GetComponent<ShopList>().myShopItemList = ShopItemList[(int)npcType];
+        ShopManager.Inst.ShopList.ShopItemRefreshing(ShopItemList[(int)npcType]);
     }
+    #endregion
+
     private void Awake()
     {
         base.Initialize();
@@ -50,7 +52,6 @@ public class ShopManager : Singleton<ShopManager>
     }
 }
 
-//이동예정
 public enum NpcType //Npc타입을 저장함.
 {
     Shop, SecretShop

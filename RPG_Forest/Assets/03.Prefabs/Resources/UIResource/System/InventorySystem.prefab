@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3990505018993774930}
   - component: {fileID: 3990505018993774915}
-  - component: {fileID: 3990505018993774914}
+  - component: {fileID: 9002924489042887062}
   m_Layer: 5
   m_Name: InventorySystem
   m_TagString: Untagged
@@ -47,7 +47,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3990505018993774941}
   m_CullTransparentMesh: 1
---- !u!114 &3990505018993774914
+--- !u!114 &9002924489042887062
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,12 +56,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3990505018993774941}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f14764d82a182248b0a9b06b3a7d5fe, type: 3}
+  m_Script: {fileID: 11500000, guid: a99bb3121ee5aea4d80d3759483e2e40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   slots: []
-  inventoryItemPrefab: {fileID: 6478043930047163432, guid: aace1ff335fd4304da326c8acc9e647c, type: 3}
-  inventorySlotPrefab: {fileID: 7747044839633560797, guid: fb89a507514fcae4398ff9754b8baf58, type: 3}
+  inventoryItemPrefab: {fileID: 6478043930047163432, guid: 983f225720e9ce24c9c7e2290a221d38, type: 3}
+  inventorySlotPrefab: {fileID: 8375515251776502479, guid: 76a0b40dc18b4014d93dccc4f08c3086, type: 3}
   startSlotcount: 12
   slotParent: {fileID: 3990505020786613836}
 --- !u!1 &3990505019001473989

@@ -86,6 +86,17 @@ public class ItemStatus : ScriptableObject
         }
     }
 
+    [SerializeField]
+    private float _itemCoolDown;
+    public float ItemCoolDown
+    {
+        get
+        {
+            if(actionType == ActionType.UsingItems) 
+                return _itemCoolDown;
+            else return 0;
+        }
+    }
     //중첩가능여부 => 강화재료나 잡템 같은거에 사용 예정
     public bool stackable;
 
