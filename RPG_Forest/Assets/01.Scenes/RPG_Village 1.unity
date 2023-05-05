@@ -1053,7 +1053,6 @@ MonoBehaviour:
   mySpawnner: {fileID: 0}
   playTime: 0
   myUIManager: {fileID: 0}
-  myUIPrefab: {fileID: 5608546189791095131, guid: bc2b62a3ea2b5f148919c95cb96daf6f, type: 3}
 --- !u!4 &1006187153
 Transform:
   m_ObjectHideFlags: 0

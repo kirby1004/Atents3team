@@ -19,19 +19,21 @@ public class EquipmentItem : MonoBehaviour , IItems
     }
     //게임종료시 오브젝트파괴
     private void Update()
+    {        
+    }
+
+    bool isQuit = false;
+    private void OnApplicationQuit()
     {
-        if (Application.isPlaying == false)
-        {
-            GameObject.Destroy(gameObject);
-        }
+        isQuit = true;
     }
     //착용상태 해제시 스텟 갱신
     private void OnDestroy()
     {
-        if (Application.isPlaying == true)
+        if (!isQuit)
         {
             transform.parent.GetComponent<Slot>().mySlotItems = null;
             EquipmentManager.Inst.RefreshStat(); // 장비 매니저의 스탯갱신 동작
-        }
+        }       
     }
 }

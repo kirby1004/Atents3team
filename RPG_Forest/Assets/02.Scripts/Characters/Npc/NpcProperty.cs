@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class NpcProperty : MonoBehaviour
 {
-    public enum NpcType //Npc타입을 저장함. 게임매니저에서 NPC 타입을 확인하고 그에 맞는 UI연결.
-    {
-        Shop, SecretShop
-    }
-
+    [SerializeField]
     protected NpcType npctype;
 
     public NpcType npcType 
@@ -38,3 +34,6 @@ public class NpcProperty : MonoBehaviour
         }
     }
 }
+// NPC 프로퍼티에 있는 Enum type 는 ShopManager로 이동함
+// Enum 사용시에 클래스 내부에 선언하면 외부참조가 어려움!
+

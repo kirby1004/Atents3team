@@ -24,7 +24,7 @@ public class Gamemanager : MonoBehaviour
         
         if(FindObjectOfType<UIManager>() == null)
         {
-            GameObject obj = Instantiate(myUIPrefab);
+            GameObject obj = Instantiate(Resources.Load("UIResource/System/UIManager") as GameObject);
             myUIManager = obj.GetComponent<UIManager>();
         }
     }
@@ -56,7 +56,6 @@ public class Gamemanager : MonoBehaviour
     // [UIManager 싱글톤]으로 구현하고 여기에서 view 처리
     [Header("UIManager")]
     public UIManager myUIManager;
-    public GameObject myUIPrefab;
     // 세이브데이터
 
 

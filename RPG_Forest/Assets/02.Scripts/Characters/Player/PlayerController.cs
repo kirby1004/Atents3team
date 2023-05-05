@@ -107,6 +107,9 @@ public class PlayerController : CharacterMovement_V2, IBattle
                     myAnim.SetFloat("xDir", 0);
                     myAnim.SetFloat("yDir", 0);
                     //게임매니저에서 Shop이 어떤 Shop인지 enum으로 비교하고 그에 맞는 UI를 실행시켜줘야함.
+                    // 플레이어가 상호작용가능한 가장 최신 대상의 유니티액션을 작동시키기
+                    // 담겨있는 함수 - 상점 열기
+                    myInteractTarget.GetComponent<Npc>().ShopOpen?.Invoke(myInteractTarget.transform);
                 }
                 else //상점이 열려 있을 때 isShop을 false로 하고 UI 끄기.
                 {
@@ -179,17 +182,26 @@ public class PlayerController : CharacterMovement_V2, IBattle
         gameObject.layer = 7; //플레이어의 레이어를 무적 레이어로 바꿔서 맞지 않도록 함.
         yield return null;
     }
-
-
+    // 상호작용이 가능한 대상 저장
+    // -> 여러 대상을 확인할 방법 찾아야함 & 1번 말걸면 다시 말걸기 어려워짐
+    // npc 가 뭉쳐잇으면 카메라 타겟이 맛이감
+    public Transform myInteractTarget = null;
     private void OnTriggerEnter(Collider other)
     {
         if(((1 << other.gameObject.layer) & npcMask) != 0)
         {
             isNpc = true;
+
+            // 상호작용 대상을 가장 나중에 들어온 대상으로 설정 후
+            // ShopOpen 유니티액션에 상점열기 함수 추가
+            myInteractTarget = other.transform;
+            other.GetComponent<Npc>().ShopOpen +=
+                other.GetComponent<Npc>().OpenMyShop2;
         }
         
     }
 
+    
     private void OnTriggerStay(Collider other)
     {
         if (isShop) //isShop이 트루일 때 
@@ -197,7 +209,7 @@ public class PlayerController : CharacterMovement_V2, IBattle
             myCamera.GetComponent<FollowCamera>().Camera_PlayerToOther(other.gameObject.GetComponent<Npc>()?.ViewPoint);          //카메라를 플레이어에서 다른 오브젝트로 이동시키는 함수 실행, 보이는 위치는 NPC에서 가져옴.
             Transform playerPoint = other.gameObject.GetComponent<Npc>()?.playerPoint;      //플레이어 이동도 필요하기 때문에 NPC에서 포인트를 받아서 저장.
             transform.position = playerPoint.position;                                      //캐릭터의 위치와 회전을 NPC에서 미리 저장한 Point의 위치와 회전을 가져와 설정.
-            transform.rotation = Quaternion.Euler(0, playerPoint.rotation.eulerAngles.y, 0); 
+            transform.rotation = Quaternion.Euler(0, playerPoint.rotation.eulerAngles.y, 0);
         }
     }
 
@@ -206,6 +218,13 @@ public class PlayerController : CharacterMovement_V2, IBattle
         if (((1 << other.gameObject.layer) & npcMask) != 0)
         {
             isNpc = false;
+
+            // 상호작용 범위에서 나가는 npc의 ShopOpen에 함수가 들어가 있을때 제거시키기
+            if (other.GetComponent<Npc>().ShopOpen != null)
+            {
+                other.GetComponent<Npc>().ShopOpen -=
+                    other.GetComponent<Npc>().OpenMyShop2;
+            }
         }
     }
 }

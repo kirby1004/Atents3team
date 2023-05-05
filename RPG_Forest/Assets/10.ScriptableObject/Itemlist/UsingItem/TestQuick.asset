@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7921e8d258c536e4192c1a07bce18f90, type: 3}
   m_Name: TestQuick
   m_EditorClassIdentifier: 
-  _myItemType: 0
-  _actionType: 0
-  _itemName: 
+  _myItemType: 6
+  _actionType: 3
+  _itemName: Coins
   _attackPoint: 0
   _attackSpeed: 0
   _defensePoint: 0
   _moveSpeed: 0
   _maxHpIncrese: 0
+  _itemCoolDown: 3
   stackable: 0
-  _image: {fileID: 0}
+  _image: {fileID: 21300000, guid: d2c0dc76eca05bb4eb4f3fc4a37f258d, type: 3}
