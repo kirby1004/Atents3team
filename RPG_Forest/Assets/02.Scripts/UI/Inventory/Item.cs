@@ -50,7 +50,9 @@ public class Item : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
         mousePos = (Vector2)transform.position - eventData.position;
         image.raycastTarget = false;
         parentAfterDrag = transform.parent;
-        transform.SetParent(transform.parent);
+        transform.SetParent(transform.parent.parent.parent.parent.parent);
+        transform.SetAsLastSibling();
+        //transform.SetParent(transform.parent);
     }
     public void OnDrag(PointerEventData eventData)
     {

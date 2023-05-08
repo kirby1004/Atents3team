@@ -10,6 +10,8 @@ public class LootingManager : Singleton<LootingManager>
         base.Initialize();
     }
 
+    
+
     // Start is called before the first frame update
     void Start()
     {

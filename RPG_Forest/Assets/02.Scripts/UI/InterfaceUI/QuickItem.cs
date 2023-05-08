@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class QuickItem : MonoBehaviour , IItems
 {
+    GameObject myIcon = null;
     public Component myState
     {
         get => this as Component;
@@ -16,6 +17,7 @@ public class QuickItem : MonoBehaviour , IItems
         transform.parent.GetComponent<Slot>().mySlotItems = transform;
         GameObject obj = new("Icon");
         obj.transform.SetParent(transform);
+        myIcon = obj;
         obj.AddComponent<SlotCoolDown>();
         obj.AddComponent<Image>();
         obj.GetComponent<SlotCoolDown>().myParent = transform;
@@ -23,6 +25,8 @@ public class QuickItem : MonoBehaviour , IItems
     }
     private void OnDestroy()
     {
+        Destroy(myIcon);
+        transform.GetComponent<Item>().myIcon = null;
         transform.parent.GetComponent<Slot>().mySlotItems = null;
     }
 
