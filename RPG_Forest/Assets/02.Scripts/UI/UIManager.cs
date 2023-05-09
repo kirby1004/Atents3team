@@ -35,6 +35,11 @@ public class UIManager : MonoBehaviour
             GameObject obj = Instantiate(Resources.Load("UIResource/System/StatusSystem") as GameObject, transform);
             statusManager = obj.GetComponent<StatusManager>();
         }
+        if(FindObjectOfType<LootingManager>() == null)
+        {
+            GameObject obj = Instantiate(Resources.Load("UIResource/System/LootingSystem") as GameObject, transform);
+            lootingManager = obj.GetComponent<LootingManager>();
+        }
     }
     private void Start()
     {
@@ -45,6 +50,7 @@ public class UIManager : MonoBehaviour
     public EquipmentManager equipmentManager;
     public StatusManager statusManager;
     public ShopManager shopManager;
+    public LootingManager lootingManager;
     //참조하는 원본
     //public GameObject inventoryManagerGameObject;
     //public GameObject statusManagerGameObject;

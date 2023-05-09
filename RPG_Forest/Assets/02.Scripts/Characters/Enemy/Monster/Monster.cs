@@ -25,7 +25,7 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
 
     public Vector3 orgPos; // 드래곤의 원래 포지션, Fly State에서 Land -> Idle로 돌아올 때 y값 저장 필요
     public Transform myTarget = null; // 에너미의 타겟 -> Player
-
+    public ItemDropTable myDropTable; // 이 몬스터의 드랍테이블
     // IsLive 프로퍼티 구현
     //public bool IsLive
     //{
@@ -45,7 +45,7 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
         m_states.Add(eState.Battle, new MonsterState_Battle(this, m_monsterSM));
         m_states.Add(eState.Recall, new MonsterState_Recall(this, m_monsterSM));
         m_states.Add(eState.Fly, new MonsterState_Fly(this, m_monsterSM));
-        m_states.Add(eState.Die, new MonsterState_Recall(this, m_monsterSM));
+        m_states.Add(eState.Die, new MonsterState_Die(this, m_monsterSM));
 
         m_monsterSM.Initialize(m_states[eState.Create]);
 

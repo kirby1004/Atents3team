@@ -406,7 +406,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -836,7 +836,7 @@ GameObject:
   - component: {fileID: 1544996757797421744}
   - component: {fileID: 1544996757797421747}
   m_Layer: 5
-  m_Name: Button (7)
+  m_Name: T1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -950,7 +950,7 @@ MonoBehaviour:
         m_MethodName: OpenShop
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 60233bfc8ed824a47b1600b5dab4e55e, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: c21ed6d242873f94ea36ac23c0952385, type: 2}
           m_ObjectArgumentAssemblyTypeName: ShopItemList, Assembly-CSharp
           m_IntArgument: 5
           m_FloatArgument: 0
@@ -1233,7 +1233,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1604,7 +1604,7 @@ GameObject:
   - component: {fileID: 1544996757983854679}
   - component: {fileID: 1544996757983854678}
   m_Layer: 5
-  m_Name: Boots
+  m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1713,14 +1713,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1544996759074236502}
-        m_TargetAssemblyTypeName: TestItemAdd, Assembly-CSharp
+      - m_Target: {fileID: 1544996759074236499}
+        m_TargetAssemblyTypeName: ItemAddTest, Assembly-CSharp
         m_MethodName: ItemList
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1791,7 +1791,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: '1
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2088,7 +2090,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 7
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2457,7 +2459,7 @@ GameObject:
   - component: {fileID: 1544996758118328427}
   - component: {fileID: 1544996758118328426}
   m_Layer: 5
-  m_Name: Button (8)
+  m_Name: T2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2571,7 +2573,7 @@ MonoBehaviour:
         m_MethodName: OpenShop
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: c21ed6d242873f94ea36ac23c0952385, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 60233bfc8ed824a47b1600b5dab4e55e, type: 2}
           m_ObjectArgumentAssemblyTypeName: ShopItemList, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2591,7 +2593,7 @@ GameObject:
   - component: {fileID: 1544996758144821270}
   - component: {fileID: 1544996758144821265}
   m_Layer: 5
-  m_Name: Leggins
+  m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2700,14 +2702,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1544996759074236502}
-        m_TargetAssemblyTypeName: TestItemAdd, Assembly-CSharp
+      - m_Target: {fileID: 1544996759074236499}
+        m_TargetAssemblyTypeName: ItemAddTest, Assembly-CSharp
         m_MethodName: ItemList
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2725,7 +2727,7 @@ GameObject:
   - component: {fileID: 1544996758152853126}
   - component: {fileID: 1544996758152853121}
   m_Layer: 5
-  m_Name: Core
+  m_Name: 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2834,14 +2836,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1544996759074236502}
-        m_TargetAssemblyTypeName: TestItemAdd, Assembly-CSharp
+      - m_Target: {fileID: 1544996759074236499}
+        m_TargetAssemblyTypeName: ItemAddTest, Assembly-CSharp
         m_MethodName: ItemList
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
+          m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2859,7 +2861,7 @@ GameObject:
   - component: {fileID: 1544996758205339932}
   - component: {fileID: 1544996758205339935}
   m_Layer: 5
-  m_Name: Weapon
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4744,7 +4746,7 @@ GameObject:
   - component: {fileID: 1544996758880424533}
   - component: {fileID: 1544996758880424532}
   m_Layer: 5
-  m_Name: Armor
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4853,14 +4855,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1544996759074236502}
-        m_TargetAssemblyTypeName: TestItemAdd, Assembly-CSharp
+      - m_Target: {fileID: 1544996759074236499}
+        m_TargetAssemblyTypeName: ItemAddTest, Assembly-CSharp
         m_MethodName: ItemList
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5372,7 +5374,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5530,7 +5532,6 @@ GameObject:
   - component: {fileID: 1544996759074236497}
   - component: {fileID: 1544996759074236496}
   - component: {fileID: 1544996759074236499}
-  - component: {fileID: 1544996759074236502}
   m_Layer: 5
   m_Name: TestSpawnBtn
   m_TagString: Untagged
@@ -5614,31 +5615,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsList:
-  - {fileID: 11400000, guid: 2f29a9d924b261346a433129de223ccd, type: 2}
-  - {fileID: 11400000, guid: 69968d335b4bda64ca1596856cb8da69, type: 2}
   - {fileID: 11400000, guid: f279be09202461040bd00813bb2757dc, type: 2}
-  - {fileID: 11400000, guid: 6220d9a41ed156547bcde1b3bd7b4192, type: 2}
-  - {fileID: 11400000, guid: 9d6708c36f37bd846ae687e0eabd031f, type: 2}
-  - {fileID: 11400000, guid: 6ebd56256309c7c40bcc8e290ea2ed6a, type: 2}
---- !u!114 &1544996759074236502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1544996759074236509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 808a10bc4aabdc646a293afd0b1c55ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemsList:
-  - {fileID: 11400000, guid: 6c334900b9104644dabc4c8f0fe98903, type: 2}
-  - {fileID: 11400000, guid: 69968d335b4bda64ca1596856cb8da69, type: 2}
-  - {fileID: 11400000, guid: acdd0afde4436db4687016487cb56885, type: 2}
-  - {fileID: 11400000, guid: 11e738da08d037a41904cc5e9d142084, type: 2}
-  - {fileID: 11400000, guid: 9d6708c36f37bd846ae687e0eabd031f, type: 2}
-  - {fileID: 11400000, guid: 6ebd56256309c7c40bcc8e290ea2ed6a, type: 2}
+  - {fileID: 11400000, guid: 5a89e601de22a58448db765f111ecb8d, type: 2}
+  - {fileID: 11400000, guid: f76ce4f2ce041f74c9d4ac873c666061, type: 2}
+  - {fileID: 11400000, guid: 8a7115cafef634b43817bc233a94f90d, type: 2}
+  - {fileID: 11400000, guid: 52afefc282753dd489fef47c3ea24bb6, type: 2}
+  - {fileID: 11400000, guid: f5dc8cf7d8c241646bd0da02a45529d8, type: 2}
+  - {fileID: 11400000, guid: e49dd8b2111c7194e9419a2beaa0f391, type: 2}
+  - {fileID: 11400000, guid: e3a2d78a56218e74f92d835e81bf82ae, type: 2}
+  - {fileID: 11400000, guid: bdc29402630f96a4ba1531216f38c5da, type: 2}
+  - {fileID: 11400000, guid: 8b4db6c84cc6c9546b8ca761e3efa4ae, type: 2}
+  - {fileID: 11400000, guid: 826c397e51d45714089d8a007e4f058a, type: 2}
+  - {fileID: 11400000, guid: 481d4b6fed898c845b5805deac9628b6, type: 2}
+  - {fileID: 11400000, guid: 9592ed66bbabf61498a5131d5c94f3e8, type: 2}
+  - {fileID: 11400000, guid: 8e21b7bc586a05648b7cd112d16ee303, type: 2}
+  - {fileID: 11400000, guid: 831b44d257a1e5648a6edf94cd9ad431, type: 2}
+  itemDropTables:
+  - {fileID: 11400000, guid: 0a2c9d46a47639842a6a4b93e03f8ede, type: 2}
 --- !u!1 &1544996759085786203
 GameObject:
   m_ObjectHideFlags: 0
@@ -6119,7 +6112,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: T2Shop
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6254,7 +6247,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ShopRefresh
+  m_text: 'T1Shop
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6736,7 +6731,7 @@ GameObject:
   - component: {fileID: 1544996759360111442}
   - component: {fileID: 1544996759360111453}
   m_Layer: 5
-  m_Name: Button (6)
+  m_Name: 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6845,14 +6840,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5608546189791095131}
-        m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 2
+      - m_Target: {fileID: 1544996759074236499}
+        m_TargetAssemblyTypeName: ItemAddTest, Assembly-CSharp
+        m_MethodName: LootTest
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 2896361140166090923, guid: fb89a507514fcae4398ff9754b8baf58, type: 3}
-          m_ObjectArgumentAssemblyTypeName: InventorySlot, Assembly-CSharp
-          m_IntArgument: 5
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6999,7 +6994,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7134,7 +7129,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 6
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7405,7 +7400,7 @@ GameObject:
   - component: {fileID: 1544996759666987685}
   - component: {fileID: 1544996759666987684}
   m_Layer: 5
-  m_Name: Headgear
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7514,8 +7509,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1544996759074236502}
-        m_TargetAssemblyTypeName: TestItemAdd, Assembly-CSharp
+      - m_Target: {fileID: 1544996759074236499}
+        m_TargetAssemblyTypeName: ItemAddTest, Assembly-CSharp
         m_MethodName: ItemList
         m_Mode: 3
         m_Arguments:
@@ -8201,3 +8196,4 @@ MonoBehaviour:
   equipmentManager: {fileID: 0}
   statusManager: {fileID: 0}
   shopManager: {fileID: 0}
+  lootingManager: {fileID: 0}

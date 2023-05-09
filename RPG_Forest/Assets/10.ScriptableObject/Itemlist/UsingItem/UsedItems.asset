@@ -20,5 +20,6 @@ MonoBehaviour:
   _defensePoint: 0
   _moveSpeed: 0
   _maxHpIncrese: 0
+  _itemCoolDown: 5
   stackable: 0
   _image: {fileID: 0}

@@ -4,14 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-interface IItems  // 다른종류의 슬롯으로이동가능한 아이템만 상속받게 하기
-{
-    Component myState
-    {
-        get;
-    }
-       
-}
+
 
 public class Item : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler , IPointerClickHandler
 {

@@ -7,6 +7,7 @@ public class MouseOver : MonoBehaviour , IPointerDownHandler, IPointerUpHandler
 {
     public Item myItem = null;
     public GameObject myObj = null;
+
     public void OnPointerDown(PointerEventData eventData)
     {
         Destroy(myObj);
