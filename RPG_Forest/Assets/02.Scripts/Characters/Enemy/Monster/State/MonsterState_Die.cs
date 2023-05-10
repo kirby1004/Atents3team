@@ -10,10 +10,11 @@ public class MonsterState_Die : State
 
     public override void Enter()
     {
+        monster.StopAllCoroutines();
         DisableCollider();
         monster.DeathAlarm?.Invoke();
-        monster.StopAllCoroutines();
         monster.myAnim.SetTrigger("Die");
+        monster.OnDisappear();
         base.Enter();
     }
 
@@ -37,5 +38,9 @@ public class MonsterState_Die : State
         Collider[] list = monster.transform.GetComponentsInChildren<Collider>();
         foreach (Collider col in list) col.enabled = false;
     }
+
+    
+
+    
 
 }

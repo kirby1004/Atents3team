@@ -5,7 +5,6 @@ using UnityEngine.Events;
 
 public abstract class State
 {
-
     protected Monster monster;
     protected StateMachine stateMachine;
 
@@ -25,11 +24,9 @@ public abstract class State
 
     public virtual void LogicUpdate()
     {
-
     }
 
     public virtual void PhysicsUpdate()
     {
-
     }
 }

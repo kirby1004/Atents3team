@@ -9,6 +9,15 @@
 4. 개발 일정 확인하기 - [개발 일정](https://app.asana.com/0/1204352798021693/list)
 
 ---
+### V.3.0.03 - JS  
+> Enemy State Machine 완료 
+
+> Boss  
+- Enemy Inherit 구조 사용 가능하게 변경  
+- FlyState 구현 완료  
+
+> DragonAI Scene에서 Boss-Player 피격 타격 구현   
+---
 ### V.3.0.02 - GY
 > 미사용 프리펩 및 스크립트 정리  
 - Slot 통합작업 중 생긴 미사용 프리펩 및 스크립트 정리  
