@@ -17,16 +17,17 @@ public class EquipmentItem : MonoBehaviour , IItems
         EquipmentManager.Inst.RefreshStat(); // 장비 매니저의 스텟갱신 동작
 
     }
-    //게임종료시 오브젝트파괴
     private void Update()
     {        
     }
 
+    // 
     bool isQuit = false;
     private void OnApplicationQuit()
     {
         isQuit = true;
     }
+    
     //착용상태 해제시 스텟 갱신
     private void OnDestroy()
     {

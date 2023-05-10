@@ -4,14 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-interface IItems  // 다른종류의 슬롯으로이동가능한 아이템만 상속받게 하기
-{
-    Component myState
-    {
-        get;
-    }
-       
-}
+
 
 public class Item : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler , IPointerClickHandler
 {
@@ -50,7 +43,9 @@ public class Item : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
         mousePos = (Vector2)transform.position - eventData.position;
         image.raycastTarget = false;
         parentAfterDrag = transform.parent;
-        transform.SetParent(transform.parent);
+        transform.SetParent(transform.parent.parent.parent.parent.parent);
+        transform.SetAsLastSibling();
+        //transform.SetParent(transform.parent);
     }
     public void OnDrag(PointerEventData eventData)
     {

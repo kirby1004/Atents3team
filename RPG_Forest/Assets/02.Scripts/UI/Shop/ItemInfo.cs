@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
@@ -23,10 +24,10 @@ public class ItemInfo : MonoBehaviour
     public List<TMP_Text> Options = new List<TMP_Text>();
     public Transform Option;
     public GameObject OptionPrefab;
-
     // 옵션의 종류 출력할 오브젝트 단일생성 MakeOption , 복수생성 MakeOptions
     public void MakeOption()
     {
+       
         GameObject Newoptions = Instantiate(OptionPrefab, Option);
         Options.Add(Newoptions.GetComponent<TMP_Text>());
     }

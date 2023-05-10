@@ -23,17 +23,22 @@ public class UIManager : MonoBehaviour
         if (FindObjectOfType<InventoryManager>() == null)
         {
             GameObject obj = Instantiate(Resources.Load("UIResource/System/InventorySystem") as GameObject,transform);
-            TestinventoryManager = obj.GetComponent<InventoryManager>();
+            inventoryManager = obj.GetComponent<InventoryManager>();
         }
         if (FindObjectOfType<EquipmentManager>() == null)
         {
             GameObject obj = Instantiate(Resources.Load("UIResource/System/EquipmentSystem") as GameObject, transform);
-            TestequipmentManager = obj.GetComponent<EquipmentManager>();
+            equipmentManager = obj.GetComponent<EquipmentManager>();
         }
         if (FindObjectOfType<StatusManager>() == null)
         {
             GameObject obj = Instantiate(Resources.Load("UIResource/System/StatusSystem") as GameObject, transform);
-            TeststatusManager = obj.GetComponent<StatusManager>();
+            statusManager = obj.GetComponent<StatusManager>();
+        }
+        if(FindObjectOfType<LootingManager>() == null)
+        {
+            GameObject obj = Instantiate(Resources.Load("UIResource/System/LootingSystem") as GameObject, transform);
+            lootingManager = obj.GetComponent<LootingManager>();
         }
     }
     private void Start()
@@ -41,10 +46,11 @@ public class UIManager : MonoBehaviour
         Refresh();
     }
     [Header("Managers")]
-    public InventoryManager TestinventoryManager;
-    public EquipmentManager TestequipmentManager;
-    public StatusManager TeststatusManager;
+    public InventoryManager inventoryManager;
+    public EquipmentManager equipmentManager;
+    public StatusManager statusManager;
     public ShopManager shopManager;
+    public LootingManager lootingManager;
     //참조하는 원본
     //public GameObject inventoryManagerGameObject;
     //public GameObject statusManagerGameObject;

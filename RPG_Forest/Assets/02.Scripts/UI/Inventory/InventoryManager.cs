@@ -2,6 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+interface IItems  // 다른종류의 슬롯으로이동가능한 아이템만 상속받게 하기
+{
+    Component myState
+    {
+        get;
+    }
+
+}
+
 public class InventoryManager : Singleton<InventoryManager>
 {
     public List<Slot> slots = new();

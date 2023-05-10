@@ -7,10 +7,16 @@ public class ItemAddTest : MonoBehaviour
 
     public ItemStatus[] itemsList;
 
+    public ItemDropTable[] itemDropTables;
 
     public void ItemList(int id)
     {
         InventoryManager.Inst.AddItem(itemsList[id]);
+    }
+
+    public void LootTest(int id)
+    {
+        LootingManager.Inst.SpawnLootWindow(itemDropTables[id]);
     }
 
 }
