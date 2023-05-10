@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterState_Fly : State
+public class DragonState_Fly : State
 {
+    Dragon dragon;
 
-    public MonsterState_Fly(Monster monster, StateMachine stateMachine) : base(monster, stateMachine)
+    public DragonState_Fly(Monster monster, StateMachine stateMachine) : base(monster, stateMachine)
     {
+        dragon = monster as Dragon;
     }
 
     public override void Enter()
     {
         base.Enter();
-        monster.StopAllCoroutines();
-        monster.myAnim.SetTrigger("Fly");
-        monster.myAnim.SetBool("isFlying", true);
+        dragon.StopAllCoroutines();
+        dragon.myAnim.SetTrigger("Fly");
+        dragon.myAnim.SetBool("isFlying", true);
         StartFlying();
     }
 
@@ -36,8 +38,8 @@ public class MonsterState_Fly : State
 
     public void StartFlying()
     {
-        monster.isFlying = true;
-        monster.StartCoroutine(StartFlyingBoost());
+        dragon.isFlying = true;
+        dragon.StartCoroutine(StartFlyingBoost());
     }
 
     IEnumerator StartFlyingBoost()
@@ -48,8 +50,8 @@ public class MonsterState_Fly : State
         while (boostTime < 1f)
         {
             boostTime += Time.deltaTime;
-            monster.flyPos = new Vector3(monster.transform.position.x, monster.flyHeight, monster.transform.position.z);
-            monster.transform.position = Vector3.Lerp(monster.transform.position, monster.flyPos, deltaTime * Time.deltaTime);
+            dragon.flyPos = new Vector3(dragon.transform.position.x, dragon.flyHeight, dragon.transform.position.z);
+            dragon.transform.position = Vector3.Lerp(dragon.transform.position, dragon.flyPos, deltaTime * Time.deltaTime);
             yield return null;
         }
         //enemy.startFlyBoosting = true;

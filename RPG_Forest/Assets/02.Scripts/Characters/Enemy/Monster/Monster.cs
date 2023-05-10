@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-// 에너미 스크립트 스테이트머신과 패턴 전부 분리하기 
+// 몬스터 스크립트 스테이트머신과 패턴 전부 분리하기 
 public class Monster : CharacterMovement_V2, IPerception, IBattle
 {
     public enum eState
@@ -13,18 +13,22 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
         Trace,
         Battle,
         Recall,
-        Fly,
-        Die
+        Die,
+
+        Fly
     }
+
+    [SerializeField]
+    private eState State;
 
     public static int TotalCount;
 
-    private StateMachine m_monsterSM; // 스테이트 머신 스크립트 참조
+    protected StateMachine m_monsterSM; // 스테이트 머신 스크립트 참조
 
     public Dictionary<eState, State> m_states = new Dictionary<eState, State>(); // Enum 값과 상태를 Key, value 값으로 갖는 Dictionary로 생성
 
-    public Vector3 orgPos; // 드래곤의 원래 포지션, Fly State에서 Land -> Idle로 돌아올 때 y값 저장 필요
-    public Transform myTarget = null; // 에너미의 타겟 -> Player
+    public Vector3 orgPos; // 몬스터의 원래 포지션, Fly State에서 Land -> Idle로 돌아올 때 y값 저장 필요
+    public Transform myTarget = null; // 몬스터의 타겟 -> Player
 
     // IsLive 프로퍼티 구현
     //public bool IsLive
@@ -33,7 +37,7 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
     //    get => m_enemySM.CurrentState(m_states[eState.Die]);
     //}
 
-    public bool IsLive => throw new System.NotImplementedException();
+    public bool IsLive => m_monsterSM.CurrentState != m_states[eState.Die];
 
     protected override void Start()
     {
@@ -44,14 +48,15 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
         m_states.Add(eState.Trace, new MonsterState_Trace(this, m_monsterSM));
         m_states.Add(eState.Battle, new MonsterState_Battle(this, m_monsterSM));
         m_states.Add(eState.Recall, new MonsterState_Recall(this, m_monsterSM));
-        m_states.Add(eState.Fly, new MonsterState_Fly(this, m_monsterSM));
-        m_states.Add(eState.Die, new MonsterState_Recall(this, m_monsterSM));
+        m_states.Add(eState.Die, new MonsterState_Die(this, m_monsterSM));
 
         m_monsterSM.Initialize(m_states[eState.Create]);
 
         orgPos = this.transform.position;
 
         TotalCount = 3;
+
+        AttackRange = 5.0f;
 
     }
 
@@ -68,7 +73,7 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
     }
 
     #region Movement
-    // 드래곤의 이동에 관한 함수
+    // 몬스터의 이동에 관한 함수
     public override void MoveToPos(Vector3 pos, UnityAction done = null)
     {
         StartCoroutine(MovingToPos(pos, done));
@@ -125,26 +130,12 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
     }
     #endregion
 
-
-    
-    #region Fly
-
-    public Vector3 flyPos;
-    public bool isFlying = false;
-    public float flyHeight = 10.0f;
-
-
-    //public bool startFlyBoosting = false;
-
-    #endregion
-
-
     #region Find, LostTarget
 
     public void Find(Transform target)
     {
         myTarget = target;
-        //monster.myTarget.GetComponent<CharacterProperty>().DeathAlarm += () => { if (IsLive) ChangeState(State.Normal); }; // Death Alarm 후에 구현
+        myTarget.GetComponent<CharacterProperty>().DeathAlarm += () => { if (IsLive) m_monsterSM.ChangeState(m_states[eState.Idle]); }; // Death Alarm 후에 구현
         m_monsterSM.ChangeState(m_states[eState.Trace]);
     }
 
@@ -170,6 +161,7 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
     // IBattle Interface
     public void OnDamage(float dmg)
     {
+        Debug.Log("OnDamage");
         curHp -= dmg;
         if (Mathf.Approximately(curHp, 0.0f))
         {
@@ -181,27 +173,36 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
         }
     }
 
-    //public void AttackExit()
-    //{
-    //    if (myTarget == null)
-    //    {
-    //        Debug.Log("AttackExit");
-    //    }
-    //    if(myTarget)
-    //    {
-    //        m_enemySM.ChangeState(m_states[eState.Trace]);
-    //    }
-    //    else
-    //    {
-    //        m_enemySM.ChangeState(m_states[eState.Idle]);
-    //    }
-    //}
-
     // 쿨타임 체크 함수? 코루틴? 구현 필요
 
     #endregion
 
 
+    #region Die
+
+    UnityEvent deadAction = null;
+
+    public void OnDisappear()
+    {
+        StartCoroutine(Disappearing());
+    }
+
+    public IEnumerator Disappearing()
+    {
+        yield return new WaitForSeconds(3.0f);
+        float dist = 0.0f;
+        while (dist < 1.0f)
+        {
+            dist += Time.deltaTime;
+            transform.Translate(Vector3.down * Time.deltaTime);
+            yield return null;
+        }
+        deadAction?.Invoke();
+        Destroy(gameObject);
+        TotalCount--;
+    }
+
+    #endregion
 }
 
 
