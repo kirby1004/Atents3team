@@ -51,6 +51,10 @@ public class LootSlot : MonoBehaviour , IPointerClickHandler ,IPointerEnterHandl
     public void OnPointerClick(PointerEventData eventData)
     {
         myAction?.Invoke();
+        if(MouseOverWindows != null)
+        {
+            Destroy(MouseOverWindows.gameObject);   
+        }
     }
     public GameObject MouseOverWindows;
     // 마우스가 올라오면 팝업창이 뜨게 하기
@@ -61,7 +65,8 @@ public class LootSlot : MonoBehaviour , IPointerClickHandler ,IPointerEnterHandl
     {
         if(isLoot == false)
         {
-            MouseOverWindows = Instantiate(Resources.Load("UIResource/MouseOverWindow/MouseOverWindow") as GameObject, transform);
+            MouseOverWindows = Instantiate(Resources.Load("UIResource/MouseOverWindow/MouseOverWindow") as GameObject,
+                LootingManager.Inst.LootWindow.transform);
             MouseOverWindows.GetComponent<MouseOverWindow>().myItem = myItem;
             mousePos = (Vector2)transform.position - eventData.position;
             sumPos = new Vector2(MouseOverWindows.GetComponent<RectTransform>().rect.width / 2,

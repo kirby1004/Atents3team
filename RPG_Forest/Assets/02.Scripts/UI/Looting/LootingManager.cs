@@ -39,6 +39,7 @@ public class LootingManager : Singleton<LootingManager>
     {
         //GameObject obj = Instantiate(LootWindow, transform);
         GameObject obj = Instantiate(Resources.Load("UIResource/Looting/LootWindow") as GameObject, transform);
+        LootWindow = obj;
         obj.GetComponentInChildren<DropList>().myDropTable = itemDropTable;
         ItemDrop += () => obj.SetActive(true);
     }
