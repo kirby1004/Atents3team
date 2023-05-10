@@ -10,10 +10,13 @@
 
 ---
 ### V.3.0.03 - JS  
-> Enemy State Machine 완료
-> Boss - Enemy Inherit 구조 사용 가능하게 변경
-> Boss - FlyState 구현 완료
-> DragonAI Scene에서 Boss-Player 피격 타격 구현 
+> Enemy State Machine 완료 
+
+> Boss  
+- Enemy Inherit 구조 사용 가능하게 변경  
+- FlyState 구현 완료  
+
+> DragonAI Scene에서 Boss-Player 피격 타격 구현   
 ---
 ### V.3.0.02 - GY
 > 미사용 프리펩 및 스크립트 정리  
