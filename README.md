@@ -18,15 +18,15 @@
   - 데미지, 죽는 애니메이션 추가함. 
   - PlayerController을 수정하면서 스킬 애니메이션, 구르기 애니메이션이 이상해짐(수정 예정..)
 >2. Skill (구조 확정은 아닌데 일단 올려둠)
-- Skill Data 스크립트 생성
-  * 스크립터블 오브젝트를 상속받는 SkillData, 스킬 데이터 저장함. 
-- Skill 스크립트 생성
-  * SkillData와 스킬을 사용할 때 처리할 함수를 Skill 스크립트에서 구현할 예정임. 
-  * 각각의 스킬들은 Skill 스크립트를 상속받아 FireBall 같은 스킬 스크립트를 만듦..
-- Skill Manager 생성
-  * 일단 SkillManager은 instance로 해놓았고 나중에 GameManager에서 접근해서 사용하던지 구조 바꾸면 됨..
-  * 지금 구조는 SkillManager가 SkillName이라는 enum을 가지고 있음.
-  *  ResiterSkill(SkillName name, Transform Point)라는 함수를 이용해서 스킬 이펙트 및 스킬 사용.
+* Skill Data 스크립트 생성
+  - 스크립터블 오브젝트를 상속받는 SkillData, 스킬 데이터 저장함. 
+* Skill 스크립트 생성
+  - SkillData와 스킬을 사용할 때 처리할 함수를 Skill 스크립트에서 구현할 예정임. 
+  - 각각의 스킬들은 Skill 스크립트를 상속받아 FireBall 같은 스킬 스크립트를 만듦..
+* Skill Manager 생성
+  - 일단 SkillManager은 instance로 해놓았고 나중에 GameManager에서 접근해서 사용하던지 구조 바꾸면 됨..
+  - 지금 구조는 SkillManager가 SkillName이라는 enum을 가지고 있음.
+  -  ResiterSkill(SkillName name, Transform Point)라는 함수를 이용해서 스킬 이펙트 및 스킬 사용.
     + isShop이 반응할 때 게임 매니저에서 NPC의 타입을 체크하고 거기에 알맞는 UI를 실행시킴.
     + ObjectPoolingManager에서 name을 string으로 바꿔서 스킬 이펙트를 가져오고 GameObject skilleffect에 저장.
     + skilleffect.GetComponent해서 스킬의 Use함수를 불러와서 스킬을 사용하는 구조를 생각하고 있음.
