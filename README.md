@@ -27,9 +27,9 @@
   - 일단 SkillManager은 instance로 해놓았고 나중에 GameManager에서 접근해서 사용하던지 구조 바꾸면 됨..
   - 지금 구조는 SkillManager가 SkillName이라는 enum을 가지고 있음.
   -  ResiterSkill(SkillName name, Transform Point)라는 함수를 이용해서 스킬 이펙트 및 스킬 사용.
-    + isShop이 반응할 때 게임 매니저에서 NPC의 타입을 체크하고 거기에 알맞는 UI를 실행시킴.
-    + ObjectPoolingManager에서 name을 string으로 바꿔서 스킬 이펙트를 가져오고 GameObject skilleffect에 저장.
-    + skilleffect.GetComponent해서 스킬의 Use함수를 불러와서 스킬을 사용하는 구조를 생각하고 있음.
+      + isShop이 반응할 때 게임 매니저에서 NPC의 타입을 체크하고 거기에 알맞는 UI를 실행시킴.
+      + ObjectPoolingManager에서 name을 string으로 바꿔서 스킬 이펙트를 가져오고 GameObject skilleffect에 저장.
+      + skilleffect.GetComponent해서 스킬의 Use함수를 불러와서 스킬을 사용하는 구조를 생각하고 있음.
 >3. Camera
 - SpringArm 스크립트 생성.
  + 기존에는 카메라를 움직였는데 SpringArm을 움직이는 걸로 함. 
