@@ -43,8 +43,8 @@ public class DropList : MonoBehaviour
      
     void SpawnLootSlot(ItemStatus itemStatus)
     {
-        GameObject obj = Instantiate(LootSlot, transform);
-        //obj.AddComponent<LootSlot>();
+        //GameObject obj = Instantiate(LootSlot, transform);
+        GameObject obj = Instantiate(Resources.Load("UIResource/Looting/LootSlot") as  GameObject, transform);
         obj.GetComponent<LootSlot>().myItem = itemStatus;
         myLootSlots.Add(obj.GetComponent<LootSlot>());
         obj.GetComponent<LootSlot>().myIndex = myLootSlots.Count - 1;

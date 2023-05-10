@@ -34,12 +34,13 @@ public class LootingManager : Singleton<LootingManager>
     //    ItemDrop += () => obj.SetActive(true);
     //    //GameObject obj = Instantiate(Resources.Load("") as GameObject, transform);
     //}
+
     public void SpawnLootWindow(ItemDropTable itemDropTable)
     {
-        GameObject obj = Instantiate(LootWindow, transform);
+        //GameObject obj = Instantiate(LootWindow, transform);
+        GameObject obj = Instantiate(Resources.Load("UIResource/Looting/LootWindow") as GameObject, transform);
         obj.GetComponentInChildren<DropList>().myDropTable = itemDropTable;
         ItemDrop += () => obj.SetActive(true);
-        //GameObject obj = Instantiate(Resources.Load("") as GameObject, transform);
     }
 
     public bool ProbabilityChoose(float Rate)

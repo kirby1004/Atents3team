@@ -80,7 +80,6 @@ public class ItemInfo : MonoBehaviour
                 break;
 
         }
-
     }
 
     // 옵션의 수치 

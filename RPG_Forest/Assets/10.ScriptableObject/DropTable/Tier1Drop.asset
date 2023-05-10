@@ -18,7 +18,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8a7115cafef634b43817bc233a94f90d, type: 2}
   - {fileID: 11400000, guid: f279be09202461040bd00813bb2757dc, type: 2}
   myDropRate:
-  - 0
+  - 80
+  - 70
+  - 60
   - 50
-  - 20
-  - 10

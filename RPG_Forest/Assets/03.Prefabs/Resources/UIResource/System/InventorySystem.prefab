@@ -62,7 +62,7 @@ MonoBehaviour:
   slots: []
   inventoryItemPrefab: {fileID: 6478043930047163432, guid: 983f225720e9ce24c9c7e2290a221d38, type: 3}
   inventorySlotPrefab: {fileID: 8375515251776502479, guid: 76a0b40dc18b4014d93dccc4f08c3086, type: 3}
-  startSlotcount: 12
+  startSlotcount: 16
   slotParent: {fileID: 3990505020786613836}
 --- !u!1 &3990505019001473989
 GameObject:
@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 4239371626512300576}
   - component: {fileID: 4239371626512300582}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: DragWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -406,14 +406,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 75fe7e5bed5c03f4da8168a3852f5e28, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
