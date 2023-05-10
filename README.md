@@ -17,9 +17,9 @@
 * Animator, Animation
   - 데미지, 죽는 애니메이션 추가함. 
   - PlayerController을 수정하면서 스킬 애니메이션, 구르기 애니메이션이 이상해짐(수정 예정..)
->2. Skill
+>2. Skill (구조 확정은 아닌데 일단 올려둠)
 - Skill Data 스크립트 생성
-  * 스크립터블 오브젝트를 상속받는 SkillData, 스킬 데이터 저장함. (구조 확정은 아닌데 일단 올려둠)
+  * 스크립터블 오브젝트를 상속받는 SkillData, 스킬 데이터 저장함. 
 - Skill 스크립트 생성
   * SkillData와 스킬을 사용할 때 처리할 함수를 Skill 스크립트에서 구현할 예정임. 
   * 각각의 스킬들은 Skill 스크립트를 상속받아 FireBall 같은 스킬 스크립트를 만듦..
