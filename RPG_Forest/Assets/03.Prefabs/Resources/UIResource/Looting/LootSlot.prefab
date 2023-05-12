@@ -267,3 +267,4 @@ MonoBehaviour:
   myItemImage: {fileID: 6069892550727199839}
   emptyImage: {fileID: 21300000, guid: 77b1750139856cb448bb9d36629fd2fd, type: 3}
   myIndex: -1
+  MouseOverWindow: {fileID: 1542199467972204456, guid: e0343a614be53d9418ba56c90376d666, type: 3}

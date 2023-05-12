@@ -7,7 +7,53 @@
 3. 작업 내용의 **주석**은 최대한 상세히
 3. **상속 구조로 이루어진 스크립트**는 기존의 변수명 수정은 최대한 삼가고 불가피하게 작업을 해야하는 경우는 팀원들에게 미리 알리고 주석을 상세히 달기
 4. 개발 일정 확인하기 - [개발 일정](https://app.asana.com/0/1204352798021693/list)
+---
+### V.3.0.05 - GY
+> Looting  
+- 루팅창 외형 구현  
+- 몬스터 드랍테이블 구현 및 드랍확률 구현
+- 플레이어와 죽은몬스터간의 연결작업 필요
+- 단일 루팅 및 전체 루팅 기능 구현
+> Looting MouseOver
+- 마우스오버창 외형 구현
+- 루팅될 아이템에 마우스를 올리면 우측 상단에 아이템 정보 출력
+- 아이템 루팅시 자동으로 마우스오버창 꺼지도록 설정
+---
+### V.3.0.04 - SM  
+> 1. Player
+* ComboAttack 수정
+* PlayerController 수정
+  - 움직임 처리 및 등등 (오류 있어서 더 수정할 예정)
+* Animator, Animation
+  - 데미지, 죽는 애니메이션 추가함. 
+  - PlayerController을 수정하면서 스킬 애니메이션, 구르기 애니메이션이 이상해짐(수정 예정..)
+>2. Skill (구조 확정은 아닌데 일단 올려둠)
+* Skill Data 스크립트 생성
+  - 스크립터블 오브젝트를 상속받는 SkillData, 스킬 데이터 저장함. 
+* Skill 스크립트 생성
+  - SkillData와 스킬을 사용할 때 처리할 함수를 Skill 스크립트에서 구현할 예정임. 
+  - 각각의 스킬들은 Skill 스크립트를 상속받아 FireBall 같은 스킬 스크립트를 만듦..
+* Skill Manager 생성
+  - 일단 SkillManager은 instance로 해놓았고 나중에 GameManager에서 접근해서 사용하던지 구조 바꾸면 됨..
+  - 지금 구조는 SkillManager가 SkillName이라는 enum을 가지고 있음.
+  - ResiterSkill(SkillName name, Transform Point)라는 함수를 이용해서 스킬 이펙트 및 스킬 사용.
+    + ObjectPoolingManager에서 name을 string으로 바꿔서 스킬 이펙트를 가져오고 GameObject skilleffect에 저장.
+    + skilleffect.GetComponent해서 스킬의 Use함수를 불러와서 스킬을 사용하는 구조를 생각하고 있음.
+>3. Camera
+- SpringArm 스크립트 생성.
+ + 기존에는 카메라를 움직였는데 SpringArm을 움직이는 걸로 함. 
+- 시점 변경
+  + 캐릭터의 머리를 바라보게 했는데 숄더뷰로 바꿨음.
+- toggle, 카메라 대상 전환은 새로 바뀐 카메라에 맞게 수정할 예정..
+---
+### V.3.0.03 - JS  
+> Enemy State Machine 완료 
 
+> Boss  
+- Enemy Inherit 구조 사용 가능하게 변경  
+- FlyState 구현 완료  
+
+> DragonAI Scene에서 Boss-Player 피격 타격 구현   
 ---
 ### V.3.0.02 - GY
 > 미사용 프리펩 및 스크립트 정리  
