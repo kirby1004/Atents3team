@@ -14,6 +14,7 @@ public class MonsterState_Battle : State
     public override void Enter()
     {
         base.Enter();
+        //monster.StartCoroutine() // 패턴 수정 필요
         monster.StartCoroutine(AttackTarget(monster.myTarget, monster.leftClawPoint));
     }
 
@@ -28,6 +29,8 @@ public class MonsterState_Battle : State
         base.LogicUpdate();
 
         dist = Vector3.Distance(monster.transform.position, monster.myTarget.transform.position);
+
+        
 
         // 거리 체크를 하는 함수를 구현
         if (monster.myTarget != null && dist > monster.AttackRange + attackRadiusOffset)
