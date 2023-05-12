@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3226146661896567594}
-  - component: {fileID: 2832223368371965029}
   - component: {fileID: 241810030}
   m_Layer: 0
   m_Name: EnergyBall
@@ -37,32 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2832223368371965029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2467265553658134814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56e17d10c4e020147ae8b5e49a85fd67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_gameObjectMain: {fileID: 2467265553658134814}
-  m_gameObjectTail: {fileID: 3925137529451541510}
-  m_hitObject: {fileID: 4076542598011512728, guid: 8a497d4bbcaeded49ab0e88f5d252008, type: 3}
-  maxLength: 1
-  isDestroy: 0
-  ObjectDestroyTime: 0
-  TailDestroyTime: 1
-  HitObjectDestroyTime: 2
-  maxTime: 1
-  MoveSpeed: 35
-  isCheckHitTag: 0
-  mtag: 
-  isShieldActive: 0
-  isHitMake: 1
 --- !u!114 &241810030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,8 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1954ffa296759e341a42381399350df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skillData: {fileID: 11400000, guid: 35099e23dda3e244fa972679216c765b, type: 2}
+  skillData: {fileID: 11400000, guid: 35099e23dda3e244fa972679216c765b, type: 2}
   HitPoint: {fileID: 600055332100359311}
+  coolDown: 0
+  dist: 0
 --- !u!1 &3925137529451541510
 GameObject:
   m_ObjectHideFlags: 0
@@ -4969,7 +4944,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 600055332100359311}
-  - component: {fileID: 241810027}
   m_Layer: 0
   m_Name: HitPoint
   m_TagString: Untagged
@@ -4992,20 +4966,6 @@ Transform:
   m_Father: {fileID: 3226146661896567594}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &241810027
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5362909288189221324}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.6736717
-  m_Height: 1.3853348
-  m_Direction: 0
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5444069552118221946
 GameObject:
   m_ObjectHideFlags: 0

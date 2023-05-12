@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f935e96fe7c59e743a21102743e82b40, type: 3}
   m_Name: EnergyBall
   m_EditorClassIdentifier: 
-  _skillImage: {fileID: 0}
-  _skillName: "\uC5D0\uB108\uC9C0\uBCFC"
-  _skillValue1: 30
-  _skillValue2: 0
-  _skillRange: 5
+  _image: {fileID: 0}
+  _name: EnergyBall
+  _value1: 30
+  _value2: 0
+  _range: 3
+  _distance: 10
   _coolTime: 3
-  _skillSpeed: 2
+  _Speed: 3
   _crowdControlType: 0
-  _skillType: 0
-  _skillEffect: {fileID: 0}
