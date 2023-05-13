@@ -23,7 +23,6 @@ public class DragonState_Fly : State
     public override void Exit()
     {
         base.Exit();
-
     }
 
     public override void LogicUpdate()

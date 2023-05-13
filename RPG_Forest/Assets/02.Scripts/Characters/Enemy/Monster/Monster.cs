@@ -15,7 +15,10 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
         Recall,
         Die,
 
-        Fly
+        Fly,
+        FlySpitFire,
+        Landing,
+        BattleDragon
     }
 
     [SerializeField]
@@ -29,6 +32,7 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
 
     public Vector3 orgPos; // 몬스터의 원래 포지션, Fly State에서 Land -> Idle로 돌아올 때 y값 저장 필요
     public Transform myTarget = null; // 몬스터의 타겟 -> Player
+    public bool hasPattern = false;     // 패턴을 가지는 몬스터인 경우
 
     // IsLive 프로퍼티 구현
     //public bool IsLive
@@ -171,6 +175,11 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
         {
             myAnim.SetTrigger("Damage");
         }
+    }
+
+    public virtual void OnBattle()
+    {
+        m_monsterSM.ChangeState(m_states[eState.Battle]);
     }
 
     // 쿨타임 체크 함수? 코루틴? 구현 필요

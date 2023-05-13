@@ -30,6 +30,8 @@ public class MonsterState_Trace : State
         base.PhysicsUpdate();
     }
 
+    
+
     // TracingTarget으로 이름 변경
     IEnumerator TracingTarget(Transform target) // 타겟을 추적하고 거리가 됬을때 공격하기
     {
@@ -56,7 +58,7 @@ public class MonsterState_Trace : State
                 }
                 else
                 {
-                    stateMachine.ChangeState(monster.m_states[Monster.eState.Battle]);
+                    monster.OnBattle();
                 }
 
                 // Rotation

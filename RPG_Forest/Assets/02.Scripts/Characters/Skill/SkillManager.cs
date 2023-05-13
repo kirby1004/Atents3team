@@ -21,17 +21,27 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    public List<Skill> skillList = new List<Skill>();
+    Dictionary<Skillname,bool> skillCooldown = new Dictionary<Skillname,bool>(); //스킬이름이랑 bool 값 연결해서 true면 실행 X, false면 실행되지 않도록 
 
-    private void Start()
+    private void Start() 
     {
-       
+       //요따가 스킬 enum을 skillCooldown 딕셔너리에 다 넣어버리깅.
     }
 
     public void RegisterSkill(Skillname name,Transform Point)
     {
-        GameObject skill = ObjectPoolingManager.instance.GetObject((name).ToString(), Point.position,Quaternion.identity);
+        if (!skillCooldown[name])
+        {
+            skillCooldown[name] = true;
+            GameObject skill = ObjectPoolingManager.instance.GetObject((name).ToString(), Point.position, Quaternion.identity);
+            skill.GetComponent<ISkill>()?.Use();
+            StartCoroutine(CoolDown(name));
+        }
+    }
 
+    IEnumerator CoolDown(Skillname name) //쿨다운 코루틴 쿨다운이 다 되면 false로 바꾸기.
+    {
+        yield return null;
     }
 }
 

@@ -13,7 +13,7 @@ public class MonsterState_Idle : State
     {
         base.Enter();
         monster.myAnim.SetBool("isMoving", false);
-        monster.StartCoroutine(Roaming(Random.Range(1.0f, 3.0f)));
+        monster.StartCoroutine(Roaming(Random.Range(3.0f, 5.0f)));
     }
 
     public override void Exit()
@@ -39,7 +39,7 @@ public class MonsterState_Idle : State
         Vector3 pos = monster.orgPos;
         pos.x += Random.Range(-5.0f, 5.0f);
         pos.z += Random.Range(-5.0f, 5.0f);
-        monster.MoveToPos(pos, () => monster.StartCoroutine(Roaming(Random.Range(1.0f, 3.0f))));
+        monster.MoveToPos(pos, () => monster.StartCoroutine(Roaming(Random.Range(3.0f, 5.0f))));
     }
 
     

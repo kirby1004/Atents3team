@@ -17,7 +17,7 @@ public class CharacterProperty : MonoBehaviour
 
     public LayerMask enemyLayer;
 
-    protected float curHp
+    public float curHp
     {
         get
         {

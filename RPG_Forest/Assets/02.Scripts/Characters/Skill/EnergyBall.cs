@@ -1,20 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
+using UnityEditor.Rendering;
 using UnityEngine;
 
-public class EnergyBall : Skill
+public class EnergyBall : Skill,ISkill
 {
-    public Transform HitPoint;
-    
-    private void Awake()
+    public float dist;
+    public void Awake()
     {
-        SetValue(skillData.skillType);
+        dist = skillData.Distance;
+    }
+    public void Use()
+    {
+            StartCoroutine(Using());
     }
 
-    public override void Use()
-    {        
-
-
+    IEnumerator Using()
+    {
+        while (dist > 0.0f)
+        {
+            float delta = skillData.Speed * Time.deltaTime;
+            if (dist - delta < 0.0f)
+            {
+                delta = dist;
+            }
+            dist -= delta;
+            transform.Translate(transform.forward * delta, Space.World);
+            yield return null;
+        }
+        dist = skillData.Distance;
+        ObjectPoolingManager.instance.ReturnObject(gameObject);
     }
-
 }

@@ -8,6 +8,21 @@
 3. **상속 구조로 이루어진 스크립트**는 기존의 변수명 수정은 최대한 삼가고 불가피하게 작업을 해야하는 경우는 팀원들에게 미리 알리고 주석을 상세히 달기
 4. 개발 일정 확인하기 - [개발 일정](https://app.asana.com/0/1204352798021693/list)
 ---
+### V.3.0.06 - SM
+>1. Skill 
+* Skill Data 스크립트 수정
+* Skill 스크립트 수정 (skill 스크립트는 수정할 수도 있음.)
+  - ISkill 인터페이스 클래스를 가지고 있고 ISkill안에 use함수를 가지고 있음.
+  - Protected로 SkillData와 Transform인 HitPoint를 가지고 있음.
+  - 각각의 스킬들은 Skill이랑 ISkill을 상속받으면됨. 
+* Skill Manager 수정
+  - Dictionary<SkillName,bool>로 스킬 쿨타임을 관리한다. bool값을 이용해서 스킬이 사용될 수 있는 상태인지 확인.
+  - ResiterSkill(SkillName name, Transform Point)라는 함수를 이용해서 스킬 이펙트 및 스킬 사용.
+    + 스킬 사용 전 딕셔너리의 bool값으로 스킬이 사용될 수 있는 상태인지 확인.
+    + GetComponent<ISkill>.use로 스킬 사용하면 된다.
+    + 끝에 CoolDown 함수를 실행시켜 스킬 쿨다운.
+  - CoolDown이라는 코루틴으로 스킬의 쿨타임을 관리함. 코루틴이 끝나면 딕셔너리의 bool값을 바꿔주어 스킬이 사용될 수 있는 상태로 바꿔줌.
+---
 ### V.3.0.05 - GY
 > Looting  
 - 루팅창 외형 구현  
