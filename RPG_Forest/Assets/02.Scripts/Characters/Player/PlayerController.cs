@@ -12,7 +12,7 @@ public class PlayerController : CharacterMovement_V2, IBattle
     public LayerMask npcMask;
     public LayerMask warpMask; //워프도 사용할거니까 미리 만들어둠.
 
-    Vector3 playerRotate=Vector3.zero;
+    Vector3 playerRotate = Vector3.zero;
 
     public bool IsLive
     {
@@ -43,20 +43,19 @@ public class PlayerController : CharacterMovement_V2, IBattle
     protected override void Update()
     {
         InputMethod();
-        if (!isShop)
+        if (!isShop || myAnim.GetBool("isAttacking"))
         {
             MoveToPos(Vector3.zero);
         }
     }
 
-    bool toggleCameraRotation;
     protected override void LateUpdate()
     {
-    //    if (toggleCameraRotation != true&&!isShop)
-    //    {
-    //        playerRotate = Vector3.Scale(myCamera.transform.forward, new Vector3(1, 0, 1)); //벡터 구성요소 별 곱.
-    //        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(playerRotate), Time.deltaTime * 15.0f); //구형 보간으로 캐릭터의 Rotation을 playerRotate로 바라보게
-    //    }
+        //    if (toggleCameraRotation != true&&!isShop)
+        //    {
+        //        playerRotate = Vector3.Scale(myCamera.transform.forward, new Vector3(1, 0, 1)); //벡터 구성요소 별 곱.
+        //        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(playerRotate), Time.deltaTime * 15.0f); //구형 보간으로 캐릭터의 Rotation을 playerRotate로 바라보게
+        //    }
     }
 
     bool isShop = false; //상점 UI가 열려 있는지 여부를 저장하는 bool isShop
@@ -74,11 +73,11 @@ public class PlayerController : CharacterMovement_V2, IBattle
 
             if (Input.GetKey(KeyCode.LeftAlt))
             {
-                toggleCameraRotation = true;
+                SpringArm.GetComponent<SpringArm>().toggleCameraRotation = true;
             }
             else
             {
-                toggleCameraRotation = false;
+                SpringArm.GetComponent<SpringArm>().toggleCameraRotation = false;
             }
         }
 
@@ -91,7 +90,7 @@ public class PlayerController : CharacterMovement_V2, IBattle
             isSprint = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.F)) 
+        if (Input.GetKeyDown(KeyCode.F))
         {
             if (isNpc)  //F를 눌렀을 때 NPC인지 아닌지
             {
@@ -113,59 +112,41 @@ public class PlayerController : CharacterMovement_V2, IBattle
 
         if (!myAnim.GetBool("isRolling")) rollPlayTime += Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Space)) //-- 구르기 구현중 --
-        {
-            if (rollPlayTime >= rollCoolTime)
-            {
-                Roll();
-                myAnim.SetTrigger("Roll");
-                rollPlayTime = 0.0f;
-
-            }
-        }
-
         if (Input.GetKeyDown(KeyCode.Q))
         {
             SkillManager.instance.RegisterSkill(Skillname.EnergyBall, WeaponPoint);
         }
     }
 
-    Vector2 desireDirection;
+    Vector3 desireDirection;
     float SprintSpeed = 7.0f;
     float Speed;
     public override void MoveToPos(Vector3 pos, UnityAction done = null)
     {
         Speed = (isSprint) ? SprintSpeed : MoveSpeed; //speed를 Sprint를 하느냐 안하느냐에 따라 결정, isSprint가 true면 sprintSpeed를 아니라면 MoveSpeed로 설정된다.
 
-        Vector2 inputDirection = Vector2.zero;
-        if(inputDirection.y==0)inputDirection.x = Input.GetAxisRaw("Horizontal");
-        if (inputDirection.x == 0) inputDirection.y = Input.GetAxisRaw("Vertical");
+        Vector3 inputDirection = Vector3.zero;
+        if (inputDirection.z == 0) inputDirection.x = Input.GetAxisRaw("Horizontal");
+        if (inputDirection.x == 0) inputDirection.z = Input.GetAxisRaw("Vertical");
 
-        desireDirection = Vector2.Lerp(desireDirection, inputDirection, Time.deltaTime * 5.0f);
+        desireDirection = Vector3.Lerp(desireDirection, inputDirection, Time.deltaTime * 5.0f);
 
         myAnim.SetFloat("xDir", desireDirection.x);
-        if(isSprint) myAnim.SetFloat("yDir", desireDirection.y*2);
-        else myAnim.SetFloat("yDir", desireDirection.y);
-        //Vector3 forward = transform.TransformDirection(Vector3.forward).normalized;
-        //Vector3 right = transform.TransformDirection(Vector3.right).normalized;
-        //float x = Input.GetAxisRaw("Vertical");
-        //float z = Input.GetAxisRaw("Horizontal");
-        //Vector3 moveDirection = forward * x + right * z;
-        //bool isMoving = (new Vector3(x, 0, z).magnitude != 0);
-        //myAnim.SetBool("isMoving", isMoving);
-        //if (!isMoving)
-        //{
-        //    myAnim.SetFloat("xDir", 0);
-        //    myAnim.SetFloat("yDir", 0);
-        //}
-        //else
-        //{
-        //    transform.position += moveDirection.normalized * Time.deltaTime * Speed;
-        //    myAnim.SetFloat("xDir", z);
-        //    if (isSprint) myAnim.SetFloat("yDir", x * 2);
-        //    else myAnim.SetFloat("yDir", x);
-        //}
-        
+        if (isSprint) myAnim.SetFloat("yDir", desireDirection.z * 2);
+        else myAnim.SetFloat("yDir", desireDirection.z);
+
+        if (!myAnim.GetBool("isRolling")) transform.Translate(inputDirection.normalized * Time.deltaTime * Speed);
+
+        if (Input.GetKeyDown(KeyCode.Space) && inputDirection.magnitude != 0)
+        {
+            if (rollPlayTime >= rollCoolTime)
+            {
+                Roll(inputDirection);
+                myAnim.SetTrigger("Roll");
+                rollPlayTime = 0.0f;
+
+            }
+        }
     }
 
 
@@ -173,21 +154,11 @@ public class PlayerController : CharacterMovement_V2, IBattle
     Coroutine coCheck = null;
     public void AttackEnter() //공격이 시작될 때 실행되는 이벤트함수, 공격 애니메이션 이벤트로 시작될 때 실행된다.
     {
-        //myAnim.SetBool("ComboAttack", true); //공격이 시작되면 콤보어택을 true로 바꾸고 isClick을 false로 둔다=> 공격 중간에 클릭이 들어오는 지 확인하기 위함.
-        //myAnim.SetBool("isClick", false);
         coCheck = StartCoroutine(ComboChecking());
     }
 
     public void AttackExit() //공격 애니메이션 이벤트로 공격이 끝날 때 실행된다.
     {
-        //if (myAnim.GetBool("isClick")) //isClick이 true인지 false인지 확인함.
-        //{
-        //    myAnim.SetBool("ComboAttack", true);  //true라면 재입력이 들어온 것이기 때문에 콤보어택을 true로 계속 유지시킨다.
-        //}
-        //else
-        //{
-        //    myAnim.SetBool("ComboAttack", false); //아니라면 ComboAttack은 false
-        //}
         StopCoroutine(coCheck);
         if (clickCount == 0)
         {
@@ -211,20 +182,20 @@ public class PlayerController : CharacterMovement_V2, IBattle
     }
 
 
-    void Roll()
+    void Roll(Vector3 dir)
     {
-        StartCoroutine(Rolling());
+        StartCoroutine(Rolling(dir));
     }
 
     float rollPlayTime = 3.0f;
     float rollCoolTime = 3.0f;
-    IEnumerator Rolling()
+    IEnumerator Rolling(Vector3 dir)
     {
         myAnim.SetBool("isRolling", true);
         while (myAnim.GetBool("isRolling"))
         {
             gameObject.layer = 7; //플레이어의 레이어를 무적 레이어로 바꿔서 맞지 않도록 함.
-            //transform.position += transform.forward * Time.deltaTime * MoveSpeed;
+            transform.position += dir.normalized * Time.deltaTime * 1.5f;
             yield return null;
         }
         gameObject.layer = 8;
@@ -233,11 +204,11 @@ public class PlayerController : CharacterMovement_V2, IBattle
 
     private void OnTriggerEnter(Collider other)
     {
-        if(((1 << other.gameObject.layer) & npcMask) != 0)
+        if (((1 << other.gameObject.layer) & npcMask) != 0)
         {
             isNpc = true;
         }
-        
+
     }
 
     private void OnTriggerStay(Collider other)
@@ -247,7 +218,7 @@ public class PlayerController : CharacterMovement_V2, IBattle
             myCamera.GetComponent<FollowCamera>().Camera_PlayerToOther(other.gameObject.GetComponent<Npc>()?.ViewPoint);          //카메라를 플레이어에서 다른 오브젝트로 이동시키는 함수 실행, 보이는 위치는 NPC에서 가져옴.
             Transform playerPoint = other.gameObject.GetComponent<Npc>()?.playerPoint;      //플레이어 이동도 필요하기 때문에 NPC에서 포인트를 받아서 저장.
             transform.position = playerPoint.position;                                      //캐릭터의 위치와 회전을 NPC에서 미리 저장한 Point의 위치와 회전을 가져와 설정.
-            transform.rotation = Quaternion.Euler(0, playerPoint.rotation.eulerAngles.y, 0); 
+            transform.rotation = Quaternion.Euler(0, playerPoint.rotation.eulerAngles.y, 0);
         }
     }
 
