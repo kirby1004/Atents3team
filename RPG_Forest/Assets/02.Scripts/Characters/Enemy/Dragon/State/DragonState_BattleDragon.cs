@@ -15,7 +15,7 @@ public class DragonState_BattleDragon : State
     public DragonState_BattleDragon(Monster monster, StateMachine stateMachine) : base(monster, stateMachine)
     {
         dragon = monster as Dragon;
-        
+        attackCoroutine = null;
     }
 
     public override void Enter()
@@ -43,12 +43,12 @@ public class DragonState_BattleDragon : State
         {
             stateMachine.ChangeState(dragon.m_states[Dragon.eState.Trace]);
         }
-        
-        if(dragon.curHp < dragon.MaxHp * 0.2f)
+
+        if (dragon.curHp < dragon.MaxHp * 0.2f)
         {
             stateMachine.ChangeState(dragon.m_states[Dragon.eState.Fly]);
         }
-        else if(attackCoroutine == null || !attackCoroutine.MoveNext())
+        else if (attackCoroutine == null || !attackCoroutine.MoveNext())
         {
             attackCoroutine = dragon.pattern.DoAttackPattern();
             dragon.StartCoroutine(attackCoroutine);

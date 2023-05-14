@@ -20,6 +20,7 @@ public class AttackState : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.ResetTrigger("Attack");
+        animator.ResetTrigger("Bite");
         animator.SetBool("isAttacking", false);
     }
 

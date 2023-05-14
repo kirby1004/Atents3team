@@ -7,6 +7,13 @@ public class Dragon : Monster
     public Transform headPoint;
     public DragonAttackPattern pattern;
 
+    protected override void Awake()
+    {
+        pattern = new DragonAttackPattern(this);
+
+        canFly = true;
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -39,6 +46,16 @@ public class Dragon : Monster
     {
         m_monsterSM.ChangeState(m_states[Dragon.eState.BattleDragon]);
     }
+
+    /*public override void Attack(Transform attackPoint)
+    {
+        Collider[] list = Physics.OverlapSphere(attackPoint.position, 0.75f, enemyLayer); 
+        Debug.DrawLine(attackPoint.position, attackPoint.position + new Vector3(0.5f, 0.5f, 0.5f));
+        foreach (Collider col in list)
+        {
+            col.transform.GetComponent<IBattle>()?.OnDamage(AttackPoint);
+        }
+    }*/
 
     #endregion
 
