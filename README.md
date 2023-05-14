@@ -7,6 +7,22 @@
 3. 작업 내용의 **주석**은 최대한 상세히
 3. **상속 구조로 이루어진 스크립트**는 기존의 변수명 수정은 최대한 삼가고 불가피하게 작업을 해야하는 경우는 팀원들에게 미리 알리고 주석을 상세히 달기
 4. 개발 일정 확인하기 - [개발 일정](https://app.asana.com/0/1204352798021693/list)
+
+
+---
+### V.3.0.07 - JS
+> CharacterMovement_V2.cs  
+  - Awake 함수 추가
+  - Attack 함수 Player 안쓰면 몬스터로 내리는 거 고려 필요 - with SM 
+
+> AttackPhase.cs  
+  - Attack 함수 두 AttackPoint Binding으로 공격 위치 해결  
+  - Pattern delay 주기 작업 실패...  
+  - AttackPattern 에 ObjectPooling 추가 하는 Idea 구상 완료  
+
+> Monster.cs  
+  - Fly 시 Recall 상태로 돌아가지 않도록 Monster에 canFly 변수 추가 및 LostTarget() 업데이트  
+
 ---
 ### V.3.0.06 - SM
 >1. Skill 
