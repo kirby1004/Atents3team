@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -25,8 +26,8 @@ public class LootingManager : Singleton<LootingManager>
     }
 
     public GameObject LootWindow;
-
-    
+    public Dictionary<Monster, bool> LootQueue = new Dictionary<Monster, bool>();
+    public List<Monster> LootList = new List<Monster>();
     //public void SpawnLootWindow(ItemDropTable itemDropTable, Transform transform)
     //{
     //    GameObject obj = Instantiate(LootWindow, transform);
@@ -34,6 +35,19 @@ public class LootingManager : Singleton<LootingManager>
     //    ItemDrop += () => obj.SetActive(true);
     //    //GameObject obj = Instantiate(Resources.Load("") as GameObject, transform);
     //}
+
+    public Monster LootQueueSearch()
+    {
+        for (int i = 0; i < LootQueue.Count; i++)
+        {
+            if (LootQueue[LootList[i]] == true)
+            {
+                //LootList[i].
+                return LootList[i];
+            }
+        }
+        return null;
+    }
 
     public void SpawnLootWindow(ItemDropTable itemDropTable)
     {

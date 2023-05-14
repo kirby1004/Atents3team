@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 67601344}
   - component: {fileID: 67601343}
+  - component: {fileID: 67601345}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -217,6 +218,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &67601345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67601342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &101337026
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,6 +290,7 @@ MonoBehaviour:
   RotSpeed: 360
   AttackRange: 1
   AttackDelay: 1
+  playTime: 0
   AttackPoint: 35
   MaxHp: 100
   enemyLayer:
@@ -3942,7 +3964,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bcbe1a5b66911ff41978a82b25d6ec1f, type: 2}
+  - {fileID: 2100000, guid: 64098c7984e9ce443830c72882a2e1ca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4049,8 +4071,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a776d4a384c994eb03693bfea8c567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npctype: 0
   viewPoint: {fileID: 1751432137}
   playerPoint: {fileID: 622276503}
+  ShopItemList: {fileID: 0}
 --- !u!1 &622276502
 GameObject:
   m_ObjectHideFlags: 0
@@ -5717,4 +5741,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650bc91712bc98d4fa7adeedebb37d60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillList: []
