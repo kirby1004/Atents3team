@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using TreeEditor;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerController : CharacterMovement_V2, IBattle
+public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
 {
     public Transform SpringArm;
     public Transform WeaponPoint;
@@ -12,13 +13,13 @@ public class PlayerController : CharacterMovement_V2, IBattle
     public LayerMask npcMask;
     public LayerMask warpMask; //워프도 사용할거니까 미리 만들어둠.
 
-    Vector3 playerRotate = Vector3.zero;
-
+    Vector3 playerRotate=Vector3.zero;
     public bool IsLive
     {
         get => !Mathf.Approximately(curHp, 0.0f);
     }
 
+    
     public void OnDamage(float dmg)
     {
         curHp -= dmg;
@@ -39,11 +40,18 @@ public class PlayerController : CharacterMovement_V2, IBattle
         }
     }
 
+    protected override void Start()
+    {
+        base.Start();
+        interPlay = new UnityEvent();
+        OpenUi = new UnityEvent();
+        CloseUi = new UnityEvent();
+    }
     // Update is called once per frame
     protected override void Update()
     {
         InputMethod();
-        if (!isShop || myAnim.GetBool("isAttacking"))
+        if (!isUi&&!myAnim.GetBool("isAttacking"))
         {
             MoveToPos(Vector3.zero);
         }
@@ -51,19 +59,35 @@ public class PlayerController : CharacterMovement_V2, IBattle
 
     protected override void LateUpdate()
     {
-        //    if (toggleCameraRotation != true&&!isShop)
-        //    {
-        //        playerRotate = Vector3.Scale(myCamera.transform.forward, new Vector3(1, 0, 1)); //벡터 구성요소 별 곱.
-        //        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(playerRotate), Time.deltaTime * 15.0f); //구형 보간으로 캐릭터의 Rotation을 playerRotate로 바라보게
-        //    }
+    //    if (toggleCameraRotation != true&&!isShop)
+    //    {
+    //        playerRotate = Vector3.Scale(myCamera.transform.forward, new Vector3(1, 0, 1)); //벡터 구성요소 별 곱.
+    //        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(playerRotate), Time.deltaTime * 15.0f); //구형 보간으로 캐릭터의 Rotation을 playerRotate로 바라보게
+    //    }
     }
 
-    bool isShop = false; //상점 UI가 열려 있는지 여부를 저장하는 bool isShop
-    bool isNpc = false; //OnTriggerEnter, OnTriggerExit으로 Npc 범위에 들어와있는지 아닌지 판별함.
+    [SerializeField]
+    bool isObjectNear;
+    bool isUi;
+    public void SetisObjectNear(bool n)
+    {
+        isObjectNear = n;
+    }
+    public void SetisUI(bool n)
+    {
+        isUi = n;
+    }
+    public UnityEvent OpenUi { get; set; }    
+    public UnityEvent interPlay
+    {
+        get; set;
+    }
+    public UnityEvent CloseUi { get; set; }
+
     bool isSprint;
     void InputMethod()
     {
-        if (!isShop)
+        if (!isUi)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -90,23 +114,28 @@ public class PlayerController : CharacterMovement_V2, IBattle
             isSprint = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F)) 
         {
-            if (isNpc)  //F를 눌렀을 때 NPC인지 아닌지
+            if (isObjectNear)  //F를 눌렀을 때 NPC인지 아닌지
             {
-                if (!isShop)    //상점이 열려있지 않을 때, isShop을 true로 해주고 움직임 애니메이션을 강제로 idle로 바꿔줌.
+                Debug.Log($"{isObjectNear}, ");
+                if (!isUi)    //상점이 열려있지 않을 때, isShop을 true로 해주고 움직임 애니메이션을 강제로 idle로 바꿔줌.
                 {
-                    isShop = true;
-                    myAnim.SetFloat("xDir", 0);
-                    myAnim.SetFloat("yDir", 0);
-                    //게임매니저에서 Shop이 어떤 Shop인지 enum으로 비교하고 그에 맞는 UI를 실행시켜줘야함.
+
+                    OpenUi?.Invoke();
                 }
                 else //상점이 열려 있을 때 isShop을 false로 하고 UI 끄기.
                 {
-                    isShop = false;
-                    //게임 매니저에서 상점 UI 닫아주기
-                    myCamera.GetComponent<FollowCamera>().Camera_OtherToPlayer(SpringArm); //카메라를 다른 시점에서 플레이어로 옮기는 함수를 실행시켜줌.
+                   
+                    
+                    CloseUi?.Invoke();
                 }
+            }
+            else
+            {
+                OpenUi.RemoveAllListeners();
+                CloseUi.RemoveAllListeners();
+                interPlay.RemoveAllListeners();
             }
         }
 
@@ -119,25 +148,25 @@ public class PlayerController : CharacterMovement_V2, IBattle
     }
 
     Vector3 desireDirection;
-    float SprintSpeed = 7.0f;
+    float SprintSpeed = 5.0f;
     float Speed;
     public override void MoveToPos(Vector3 pos, UnityAction done = null)
     {
         Speed = (isSprint) ? SprintSpeed : MoveSpeed; //speed를 Sprint를 하느냐 안하느냐에 따라 결정, isSprint가 true면 sprintSpeed를 아니라면 MoveSpeed로 설정된다.
 
         Vector3 inputDirection = Vector3.zero;
-        if (inputDirection.z == 0) inputDirection.x = Input.GetAxisRaw("Horizontal");
+        if(inputDirection.z==0)inputDirection.x = Input.GetAxisRaw("Horizontal");
         if (inputDirection.x == 0) inputDirection.z = Input.GetAxisRaw("Vertical");
 
         desireDirection = Vector3.Lerp(desireDirection, inputDirection, Time.deltaTime * 5.0f);
 
         myAnim.SetFloat("xDir", desireDirection.x);
-        if (isSprint) myAnim.SetFloat("yDir", desireDirection.z * 2);
+        if(isSprint) myAnim.SetFloat("yDir", desireDirection.z*2);
         else myAnim.SetFloat("yDir", desireDirection.z);
 
-        if (!myAnim.GetBool("isRolling")) transform.Translate(inputDirection.normalized * Time.deltaTime * Speed);
+        if(!myAnim.GetBool("isRolling"))transform.Translate(inputDirection.normalized * Time.deltaTime * Speed);
 
-        if (Input.GetKeyDown(KeyCode.Space) && inputDirection.magnitude != 0)
+        if (Input.GetKeyDown(KeyCode.Space)&&inputDirection.magnitude!=0) 
         {
             if (rollPlayTime >= rollCoolTime)
             {
@@ -194,39 +223,39 @@ public class PlayerController : CharacterMovement_V2, IBattle
         myAnim.SetBool("isRolling", true);
         while (myAnim.GetBool("isRolling"))
         {
-            gameObject.layer = 7; //플레이어의 레이어를 무적 레이어로 바꿔서 맞지 않도록 함.
-            transform.position += dir.normalized * Time.deltaTime * 1.5f;
+            gameObject.layer = 10; //플레이어의 레이어를 무적 레이어로 바꿔서 맞지 않도록 함.
+            transform.position += dir.normalized * Time.deltaTime*1.5f;
             yield return null;
         }
         gameObject.layer = 8;
     }
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (((1 << other.gameObject.layer) & npcMask) != 0)
-        {
-            isNpc = true;
-        }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if(((1 << other.gameObject.layer) & npcMask) != 0)
+    //    {
+    //        isNpc = true;
+    //    }
+        
+    //}
 
-    }
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if (isUi) //isShop이 트루일 때 
+    //    {
+    //        myCamera.GetComponent<FollowCamera>().Camera_PlayerToOther(other.gameObject.GetComponent<Npc>()?.ViewPoint);          //카메라를 플레이어에서 다른 오브젝트로 이동시키는 함수 실행, 보이는 위치는 NPC에서 가져옴.
+    //        Transform playerPoint = other.gameObject.GetComponent<Npc>()?.playerPoint;      //플레이어 이동도 필요하기 때문에 NPC에서 포인트를 받아서 저장.
+    //        transform.position = playerPoint.position;                                      //캐릭터의 위치와 회전을 NPC에서 미리 저장한 Point의 위치와 회전을 가져와 설정.
+    //        transform.rotation = Quaternion.Euler(0, playerPoint.rotation.eulerAngles.y, 0); 
+    //    }
+    //}
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (isShop) //isShop이 트루일 때 
-        {
-            myCamera.GetComponent<FollowCamera>().Camera_PlayerToOther(other.gameObject.GetComponent<Npc>()?.ViewPoint);          //카메라를 플레이어에서 다른 오브젝트로 이동시키는 함수 실행, 보이는 위치는 NPC에서 가져옴.
-            Transform playerPoint = other.gameObject.GetComponent<Npc>()?.playerPoint;      //플레이어 이동도 필요하기 때문에 NPC에서 포인트를 받아서 저장.
-            transform.position = playerPoint.position;                                      //캐릭터의 위치와 회전을 NPC에서 미리 저장한 Point의 위치와 회전을 가져와 설정.
-            transform.rotation = Quaternion.Euler(0, playerPoint.rotation.eulerAngles.y, 0);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (((1 << other.gameObject.layer) & npcMask) != 0)
-        {
-            isNpc = false;
-        }
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (((1 << other.gameObject.layer) & npcMask) != 0)
+    //    {
+    //        isNpc = false;
+    //    }
+    //}
 }
