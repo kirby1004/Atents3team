@@ -32,7 +32,9 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
 
     public Vector3 orgPos; // 몬스터의 원래 포지션, Fly State에서 Land -> Idle로 돌아올 때 y값 저장 필요
     public Transform myTarget = null; // 몬스터의 타겟 -> Player
+
     public bool hasPattern = false;     // 패턴을 가지는 몬스터인 경우
+    public bool canFly = false;         // 날 수 있는 몬스터인 경우
     public ItemDropTable myDropTable;
 
 
@@ -148,7 +150,7 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
     public void LostTarget()
     {
         myTarget = null;
-        m_monsterSM.ChangeState(m_states[eState.Recall]);
+        if(!canFly) m_monsterSM.ChangeState(m_states[eState.Recall]);
     }
 
 
@@ -185,6 +187,21 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
     }
 
     // 쿨타임 체크 함수? 코루틴? 구현 필요
+
+
+    /*
+     * 
+     * public virtual void Attack(Transform attackPoint)
+    {
+        Collider[] list = Physics.OverlapSphere(attackPoint.position, 0.75f, enemyLayer); //웨폰 포인트는 캐릭터 무기의 위치를 가지고 있음.
+                                                                                          //  그 위치의 0.75 반지름을 가진 구의 공격범위를 가지고 있다. (나중에 수정 예정)
+                                                                                          // overLap에 감지된 콜라이더들을 list에 저장.
+        Debug.DrawLine(attackPoint.position, attackPoint.position + new Vector3(0.5f, 0.5f, 0.5f)); //이건 범위를 확인하기 위한 DrawLine (나중에 지울 예정)
+        foreach (Collider col in list) //list의 콜라이더들을 하나하나 꺼내서 IBattle 컴포넌트를 가지고 있는지 확인하고 맞으면 => OnDamage 함수 실행.
+        {
+            col.transform.GetComponent<IBattle>()?.OnDamage(AttackPoint);
+        }
+    }*/
 
     #endregion
 

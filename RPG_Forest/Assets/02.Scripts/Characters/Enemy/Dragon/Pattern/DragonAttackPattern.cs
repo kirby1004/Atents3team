@@ -40,6 +40,7 @@ public class DragonAttackPattern
             if (Mathf.Approximately(dragon.curHp,0)) break;
 
             yield return dragon.StartCoroutine(phase.DoPhase());
+            yield return new WaitForSeconds(10.0f);                  // Delay Between Phases
 
             //if(dragon.curHp <= dragon.MaxHp * 0.2f && !isBerserk)
             //{
@@ -47,7 +48,6 @@ public class DragonAttackPattern
             //}
 
         }
-        yield return null;
     }
 
 

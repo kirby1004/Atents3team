@@ -48,7 +48,7 @@ public class MonsterState_Battle : State
         base.PhysicsUpdate();
     }
 
-    public IEnumerator AttackTarget(Transform target, Transform atkPoint)
+    public IEnumerator AttackTarget(Transform target, Transform atkPoint = null)
     {
         while (target != null)
         {
