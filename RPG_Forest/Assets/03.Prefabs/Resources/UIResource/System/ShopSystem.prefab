@@ -1136,7 +1136,9 @@ MonoBehaviour:
   ShopSlotPrefab: {fileID: 8375515251776502479, guid: 5ec9a5912630f8c4296011bd2ae93252, type: 3}
   ShopUI: {fileID: 6071832490505639614}
   BuyButton: {fileID: 0}
-  ShopItemList: []
+  ShopItemList:
+  - {fileID: 11400000, guid: c21ed6d242873f94ea36ac23c0952385, type: 2}
+  - {fileID: 11400000, guid: 60233bfc8ed824a47b1600b5dab4e55e, type: 2}
 --- !u!1 &9125531161110022894
 GameObject:
   m_ObjectHideFlags: 0

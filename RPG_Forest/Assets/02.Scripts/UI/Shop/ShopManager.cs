@@ -34,7 +34,7 @@ public class ShopManager : Singleton<ShopManager>
         ShopManager.Inst.ShopList.ShopItemRefreshing(itemList);
     }
     //상점 오픈 ver2 상인 타입을 받아서 열기
-    public void OpenShop(NpcType npcType)
+    public void OpenShop(NpcProperty.NPCType npcType)
     {
         ShopUI.SetActive(true);
         ShopManager.Inst.myShopList.GetComponent<ShopList>().myShopItemList = ShopItemList[(int)npcType];
@@ -50,9 +50,4 @@ public class ShopManager : Singleton<ShopManager>
     {
         
     }
-}
-
-public enum NpcType //Npc타입을 저장함.
-{
-    Shop, SecretShop
 }

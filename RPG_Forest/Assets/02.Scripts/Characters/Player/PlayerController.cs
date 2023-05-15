@@ -121,7 +121,7 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
                 Debug.Log($"{isObjectNear}, ");
                 if (!isUi)    //상점이 열려있지 않을 때, isShop을 true로 해주고 움직임 애니메이션을 강제로 idle로 바꿔줌.
                 {
-
+                    interPlay?.Invoke();
                     OpenUi?.Invoke();
                 }
                 else //상점이 열려 있을 때 isShop을 false로 하고 UI 끄기.
