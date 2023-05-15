@@ -10,6 +10,25 @@
 
 
 ---
+### V.3.0.08 - SM
+>  1. Player
+  - PlayerController 수정
+    * Attack할 때 움직일 수 없도록 수정.
+    * IinterPlay 인터페이스 상속
+      + IinterPlay 인터페이스는 오브젝트와 상호작용할 때 쓰이는 함수, 이벤트를 정의함.
+      + Root, Npc, Warp와 상호작용할 예정.
+  - Animator 수정.
+    * Roll 애니메이션에 Roll State를 추가.
+    * Die, Damage 레이어 설정 및 테스트 했음.
+> 2. NPC
+  - ShopNPC 스크립트 생성
+    * ShopNpc 스크립트로 플레이어와 상호작용 테스트할 예정
+    * 카메라 이동, UI 함수의 순서를 정하는 구조 고민중..
+    * 카메라 이동이 안되는 오류가 있음.. (고칠예정..)
+> 3. Layer
+  - Invincible 레이어 추가
+    * 10번에 무적 레이어 추가, 영어 임의로 넣음.. 수정해주세요.. 감사합니다.
+---
 ### V.3.0.07 - JS
 > CharacterMovement_V2.cs  
   - Awake 함수 추가
