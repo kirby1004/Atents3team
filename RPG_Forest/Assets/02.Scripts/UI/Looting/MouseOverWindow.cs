@@ -20,7 +20,7 @@ public class MouseOverWindow : MonoBehaviour
     {
         myImage.sprite = myItem.Image;
         InsertOption(myItem);
-
+        
 
     }
 

@@ -33,6 +33,8 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
     public Vector3 orgPos; // 몬스터의 원래 포지션, Fly State에서 Land -> Idle로 돌아올 때 y값 저장 필요
     public Transform myTarget = null; // 몬스터의 타겟 -> Player
     public bool hasPattern = false;     // 패턴을 가지는 몬스터인 경우
+    public ItemDropTable myDropTable;
+
 
     // IsLive 프로퍼티 구현
     //public bool IsLive
