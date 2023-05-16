@@ -14,6 +14,8 @@ public class Dragon : Monster
         pattern = new DragonAttackPattern(this);
 
         canFly = true;
+        
+
     }
 
     protected override void Start()
@@ -23,8 +25,9 @@ public class Dragon : Monster
         m_states.Add(eState.FlySpitFire, new DragonState_FlySpitFire(this, m_monsterSM));
         m_states.Add(eState.Landing, new DragonState_Landing(this, m_monsterSM));
         m_states.Add(eState.BattleDragon, new DragonState_BattleDragon(this, m_monsterSM));
-        
 
+
+        AttackRange = 5.2f;
         //m_monsterSM.ChangeState(m_states[eState.Create]);
         //StartCoroutine(TestLanding());
     }

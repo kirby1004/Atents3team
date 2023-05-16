@@ -56,7 +56,7 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
 
         TotalCount = 3;
 
-        AttackRange = 5.0f;
+        AttackRange = 2.0f;
         AttackDelay = 1.0f;
     }
 
