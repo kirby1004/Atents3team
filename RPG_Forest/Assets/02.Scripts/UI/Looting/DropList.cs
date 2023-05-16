@@ -25,7 +25,10 @@ public class DropList : MonoBehaviour
     void Update()
     {
         if (myLootCount == 0)
+        {
+            LootingManager.Inst.LootWindow = null;
             Destroy(transform.parent.gameObject);
+        }
     }
 
     void ConfirmItem(ItemDropTable mydropTable)
@@ -56,6 +59,7 @@ public class DropList : MonoBehaviour
         {
             myLootSlots[i].GetComponent<LootSlot>().LootDone();
         }
+        LootingManager.Inst.LootWindow = null;
         Destroy(transform.parent.gameObject);
     }
 }

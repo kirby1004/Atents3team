@@ -20,12 +20,16 @@ public class SkillManager : MonoBehaviour
             if (Instance != this) Destroy(this.gameObject); // 씬에 싱글톤 오브젝트가 된 다른 GameManager Object가 있다면 자신을 파괴
         }
     }
-
+    [SerializeField]
     Dictionary<Skillname,bool> skillCooldown = new Dictionary<Skillname,bool>(); //스킬이름이랑 bool 값 연결해서 true면 실행 X, false면 실행되지 않도록 
 
     private void Start() 
     {
        //요따가 스킬 enum을 skillCooldown 딕셔너리에 다 넣어버리깅.
+       for(int i = 0; i < System.Enum.GetValues(typeof(Skillname)).Length; i++)
+        {
+            skillCooldown.Add((Skillname)i, false);
+        }
     }
 
     public void RegisterSkill(Skillname name,Transform Point)

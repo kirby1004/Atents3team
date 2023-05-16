@@ -27,7 +27,9 @@ public class LootingManager : Singleton<LootingManager>
 
     public GameObject LootWindow;
     public Dictionary<Monster, bool> LootQueue = new Dictionary<Monster, bool>();
-    public List<Monster> LootList = new List<Monster>();
+
+    public List<(Monster,GameObject,bool)> LootList = new List<(Monster, GameObject, bool)>();
+
     //public void SpawnLootWindow(ItemDropTable itemDropTable, Transform transform)
     //{
     //    GameObject obj = Instantiate(LootWindow, transform);
@@ -40,10 +42,10 @@ public class LootingManager : Singleton<LootingManager>
     {
         for (int i = 0; i < LootQueue.Count; i++)
         {
-            if (LootQueue[LootList[i]] == true)
+            if (LootQueue[LootList[i].Item1] == true)
             {
                 //LootList[i].
-                return LootList[i];
+                return LootList[i].Item1;
             }
         }
         return null;
@@ -58,6 +60,32 @@ public class LootingManager : Singleton<LootingManager>
         ItemDrop += () => obj.SetActive(true);
     }
 
+    public void ReadyLootWindow(Monster myMonster)
+    {
+        ItemDropTable itemDropTable = myMonster.myDropTable;
+        //GameObject obj = Instantiate(LootWindow, transform);
+        GameObject obj = Instantiate(Resources.Load("UIResource/Looting/LootWindow") as GameObject, transform);
+       // LootWindow = obj;
+        obj.GetComponentInChildren<DropList>().myDropTable = itemDropTable;
+        LootList.Add((myMonster, obj, true));
+        LootQueue.Add(myMonster, true);
+        obj.SetActive(false);
+    }
+
+    public void OpenLootWindow(Monster mymonster)
+    {
+        if(LootWindow == null)
+        {
+            
+        }
+        else
+        {
+            return;
+        }
+    }
+
+
+    // DropRate Calculate
     public bool ProbabilityChoose(float Rate)
     {
         //float Percentge = Rate / 100;

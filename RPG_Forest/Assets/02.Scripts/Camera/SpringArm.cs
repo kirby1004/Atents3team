@@ -22,40 +22,54 @@ public struct ZoomData
 
 public class SpringArm : MonoBehaviour
 {
-    public Transform RightShoulder;
+    public Transform cameraPoint;
     public LayerMask crashMask;
     [SerializeField] float Offset = 0.5f;
     [SerializeField] float RotSpeed = 180.0f;
     Transform myCam = null;
     public ZoomData myZoomData = new ZoomData(3.0f);
     Vector3 curRot = Vector3.zero;
+    public Vector3 CurRot {
+        get; set;
+    }
     [SerializeField] Vector2 LookUpRange = new Vector2(-60, 90);
-    
+
     void Start()
     {
         myCam = GetComponentInChildren<Camera>().transform;
+        cameraPoint = myCam.transform;
         curRot = transform.localRotation.eulerAngles;
         myZoomData.desireDist = myZoomData.curDist = myCam.localPosition.magnitude;
     }
 
-    public bool toggleCameraRotation { get; set; } 
+    [field: SerializeField] public bool toggleCameraRotation { get; set; }
     void Update()
     {
-        
+        if (!CameraChange)
+        {
+            CameraUpdate();
+        }
+       
+    }
+    
+    void CameraUpdate()
+    {
         if (Input.GetMouseButton(1))
         {
             curRot.x = Mathf.Clamp(curRot.x - Input.GetAxis("Mouse Y") * RotSpeed * Time.deltaTime, LookUpRange.x, LookUpRange.y);
             curRot.y += Input.GetAxis("Mouse X") * RotSpeed * Time.deltaTime;
             transform.localRotation = Quaternion.Euler(curRot.x, 0, 0);
-            if (toggleCameraRotation != true)
-            {
-                transform.parent.localRotation = Quaternion.Euler(0, curRot.y, 0);
-            }
         }
-        //else
-        //{
-        //    transform.position = RightShoulder.position + new Vector3(1, 0, 0) * 0.3f;
-        //}
+
+        if (!toggleCameraRotation)
+        {
+            transform.parent.localRotation = Quaternion.Euler(0, curRot.y, 0);
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(transform.localRotation.eulerAngles.x, 0, 0), Time.deltaTime * 10.0f);
+        }
+        else
+        {
+            transform.localRotation = Quaternion.Euler(0, curRot.y, 0);
+        }
 
         myZoomData.desireDist = Mathf.Clamp(myZoomData.desireDist + Input.GetAxis("Mouse ScrollWheel") * myZoomData.ZoomSpeed, myZoomData.ZoomRange.x, myZoomData.ZoomRange.y);
 
@@ -69,5 +83,57 @@ public class SpringArm : MonoBehaviour
         }
 
         myCam.localPosition = Vector3.back * myZoomData.curDist;
+    }
+
+    bool CameraChange = false;
+    public void ViewPointTransformation(Transform ViewPoint)
+    {
+        myCam.transform.SetParent(null);
+        ChangeViewPoint(ViewPoint);
+        CameraChange = true;
+    }
+
+    public void ViewPointReset(Transform Parent)
+    {
+        myCam.transform.SetParent(Parent);
+        ResetSetting();
+    }
+
+    public void ResetSetting()
+    {
+        //myCam.localPosition = cameraPoint.localPosition;
+        //myCam.localRotation = cameraPoint.localRotation;
+        //curRot = transform.localRotation.eulerAngles;        
+        //CameraChange = false;
+        StopAllCoroutines();
+        StartCoroutine(Resetting(myZoomData.curDist));
+    }
+
+    IEnumerator Resetting(float dist)
+    {           
+        while (Mathf.Abs(myCam.localPosition.x) > 0.01f || Mathf.Abs(myCam.localPosition.y) > 0.01f)
+        {            
+            myCam.localPosition = Vector3.Lerp(myCam.localPosition, new Vector3(0,0,-dist), Time.deltaTime * myZoomData.ZoomLerpSpeed);            
+            yield return null;
+        }
+        myZoomData.desireDist = myZoomData.curDist;
+        CameraChange = false;
+    }
+
+
+    public void ChangeViewPoint(Transform ViewPoint) //코루틴을 실행시키는 함수
+    {
+        StartCoroutine(ChangingViewPoint(ViewPoint));
+    }
+
+    IEnumerator ChangingViewPoint(Transform ViewPoint) //카메라의 시점을 전환시켜주는 코루틴, ViewPoint를 받아 ViewPoint로 옮겨서 이동함.
+    { 
+        while (!Mathf.Approximately(myCam.localPosition.x, ViewPoint.position.x) && (!Mathf.Approximately(myCam.localPosition.y, ViewPoint.position.y) && !Mathf.Approximately(myCam.localPosition.z, ViewPoint.position.z)))
+        {
+            float delta = myZoomData.ZoomLerpSpeed * Time.deltaTime;
+            myCam.transform.position = Vector3.Lerp(myCam.transform.position, ViewPoint.position, Time.deltaTime * myZoomData.ZoomLerpSpeed); //위치, 회전 보간을 통해 움직임
+            myCam.transform.rotation = Quaternion.Slerp(myCam.transform.rotation, Quaternion.Euler(ViewPoint.rotation.eulerAngles), 5.0f * Time.deltaTime);
+            yield return null;
+        }
     }
 }
