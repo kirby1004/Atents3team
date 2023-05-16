@@ -10,6 +10,18 @@
 
 
 ---
+### V.4.0.01 - SM
+>  1. Camera
+  - SpringArm 수정
+    * 시점 변환할 때 이상한 오류 수정.
+> 2. Skill
+  - SkillManager 수정
+    * 스킬매니저가 생성될 때 enum의 수만큼 Dictionary Add해서 쿨타임 관리
+> 3. NPC
+  - ShopNPC 수정
+    * NPC의 PlayerPoint의 로테이션으로 캐릭터가 돌아가지 않는 오류가 생김 수정예정.
+    * Trigger Enter, Exit 상태일 때 코드 수정. 
+---
 ### V.3.0.08 - SM
 >  1. Player
   - PlayerController 수정
