@@ -33,17 +33,9 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
     public Vector3 orgPos; // 몬스터의 원래 포지션, Fly State에서 Land -> Idle로 돌아올 때 y값 저장 필요
     public Transform myTarget = null; // 몬스터의 타겟 -> Player
 
-    public bool hasPattern = false;     // 패턴을 가지는 몬스터인 경우
     public bool canFly = false;         // 날 수 있는 몬스터인 경우
     public ItemDropTable myDropTable;
 
-
-    // IsLive 프로퍼티 구현
-    //public bool IsLive
-    //{
-
-    //    get => m_enemySM.CurrentState(m_states[eState.Die]);
-    //}
 
     public bool IsLive => m_monsterSM.CurrentState != m_states[eState.Die];
 
@@ -64,8 +56,8 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
 
         TotalCount = 3;
 
-        AttackRange = 5.0f;
-
+        AttackRange = 2.0f;
+        AttackDelay = 1.0f;
     }
 
     protected override void Update()
@@ -140,7 +132,7 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
 
     #region Find, LostTarget
 
-    public void Find(Transform target)
+    public virtual void Find(Transform target)
     {
         myTarget = target;
         myTarget.GetComponent<CharacterProperty>().DeathAlarm += () => { if (IsLive) m_monsterSM.ChangeState(m_states[eState.Idle]); }; // Death Alarm 후에 구현
@@ -156,7 +148,6 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
 
 
     #endregion
-
 
     #region Battle
     //public override void Attack(Transform target = null)
@@ -204,7 +195,6 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
     }*/
 
     #endregion
-
 
     #region Die
 

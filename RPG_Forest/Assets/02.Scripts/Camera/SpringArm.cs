@@ -29,6 +29,9 @@ public class SpringArm : MonoBehaviour
     Transform myCam = null;
     public ZoomData myZoomData = new ZoomData(3.0f);
     Vector3 curRot = Vector3.zero;
+    public Vector3 CurRot {
+        get; set;
+    }
     [SerializeField] Vector2 LookUpRange = new Vector2(-60, 90);
 
     void Start()
@@ -42,8 +45,16 @@ public class SpringArm : MonoBehaviour
     [field: SerializeField] public bool toggleCameraRotation { get; set; }
     void Update()
     {
-
-        if (Input.GetMouseButton(1) && !CameraChange)
+        if (!CameraChange)
+        {
+            CameraUpdate();
+        }
+       
+    }
+    
+    void CameraUpdate()
+    {
+        if (Input.GetMouseButton(1))
         {
             curRot.x = Mathf.Clamp(curRot.x - Input.GetAxis("Mouse Y") * RotSpeed * Time.deltaTime, LookUpRange.x, LookUpRange.y);
             curRot.y += Input.GetAxis("Mouse X") * RotSpeed * Time.deltaTime;
@@ -84,18 +95,31 @@ public class SpringArm : MonoBehaviour
 
     public void ViewPointReset(Transform Parent)
     {
-        transform.SetParent(Parent);
-        CameraChange = false;
+        myCam.transform.SetParent(Parent);
         ResetSetting();
-        myCam.position = cameraPoint.position;
-        myCam.rotation = cameraPoint.rotation;
     }
 
     public void ResetSetting()
     {
-        curRot = transform.localRotation.eulerAngles;
-        myZoomData.desireDist = myZoomData.curDist = myCam.localPosition.magnitude;
+        //myCam.localPosition = cameraPoint.localPosition;
+        //myCam.localRotation = cameraPoint.localRotation;
+        //curRot = transform.localRotation.eulerAngles;        
+        //CameraChange = false;
+        StopAllCoroutines();
+        StartCoroutine(Resetting(myZoomData.curDist));
     }
+
+    IEnumerator Resetting(float dist)
+    {           
+        while (Mathf.Abs(myCam.localPosition.x) > 0.01f || Mathf.Abs(myCam.localPosition.y) > 0.01f)
+        {            
+            myCam.localPosition = Vector3.Lerp(myCam.localPosition, new Vector3(0,0,-dist), Time.deltaTime * myZoomData.ZoomLerpSpeed);            
+            yield return null;
+        }
+        myZoomData.desireDist = myZoomData.curDist;
+        CameraChange = false;
+    }
+
 
     public void ChangeViewPoint(Transform ViewPoint) //코루틴을 실행시키는 함수
     {
@@ -103,17 +127,12 @@ public class SpringArm : MonoBehaviour
     }
 
     IEnumerator ChangingViewPoint(Transform ViewPoint) //카메라의 시점을 전환시켜주는 코루틴, ViewPoint를 받아 ViewPoint로 옮겨서 이동함.
-    {
-        Vector3 v = ViewPoint.position - myCam.transform.position;
-        float Dist = v.magnitude;
-
-        while (Dist > 0)
+    { 
+        while (!Mathf.Approximately(myCam.localPosition.x, ViewPoint.position.x) && (!Mathf.Approximately(myCam.localPosition.y, ViewPoint.position.y) && !Mathf.Approximately(myCam.localPosition.z, ViewPoint.position.z)))
         {
-            float delta = RotSpeed * Time.deltaTime;
-            if (Dist < delta) delta = Dist;
-            transform.position = Vector3.Lerp(myCam.transform.position, ViewPoint.position, delta); //위치, 회전 보간을 통해 움직임
-            transform.rotation = Quaternion.Slerp(myCam.transform.rotation, Quaternion.Euler(ViewPoint.rotation.eulerAngles), 10.0f * Time.deltaTime);
-            Dist -= delta;
+            float delta = myZoomData.ZoomLerpSpeed * Time.deltaTime;
+            myCam.transform.position = Vector3.Lerp(myCam.transform.position, ViewPoint.position, Time.deltaTime * myZoomData.ZoomLerpSpeed); //위치, 회전 보간을 통해 움직임
+            myCam.transform.rotation = Quaternion.Slerp(myCam.transform.rotation, Quaternion.Euler(ViewPoint.rotation.eulerAngles), 5.0f * Time.deltaTime);
             yield return null;
         }
     }

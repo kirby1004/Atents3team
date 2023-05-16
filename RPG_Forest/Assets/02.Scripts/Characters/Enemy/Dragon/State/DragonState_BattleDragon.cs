@@ -5,8 +5,7 @@ using UnityEngine;
 public class DragonState_BattleDragon : State
 {
     Dragon dragon;
-
-    IEnumerator attackCoroutine;
+    private IEnumerator attackCoroutine;
 
     float dist;
     float attackRadiusOffset = 0.05f;
@@ -23,14 +22,18 @@ public class DragonState_BattleDragon : State
         base.Enter();
         dragon.StopAllCoroutines();
         Debug.Log("DragonBattleState");
-
-        //dragon.StartCoroutine(pattern.DoAttackPattern());
+        if (check != null) check = dragon.StartCoroutine(attackCoroutine);
+        
+        //dragon.StartCoroutine(dragon.pattern.DoAttackPattern());
     }
 
     public override void Exit()
     {
         base.Exit();
+        dragon.StopCoroutine(attackCoroutine);
     }
+
+    Coroutine check = null;
 
     public override void LogicUpdate()
     {
@@ -39,19 +42,20 @@ public class DragonState_BattleDragon : State
         dist = Vector3.Distance(dragon.transform.position, dragon.myTarget.transform.position);
 
         // 거리 체크를 하는 함수를 구현
-        if (dragon.myTarget != null && dist > dragon.AttackRange + attackRadiusOffset)
+        if (!dragon.isFlying && dragon.myTarget != null && dist > dragon.AttackRange + attackRadiusOffset)
         {
             stateMachine.ChangeState(dragon.m_states[Dragon.eState.Trace]);
         }
 
-        if (dragon.curHp < dragon.MaxHp * 0.2f)
+        if (dragon.curHp < dragon.MaxHp * 0.2f && !dragon.isBerserk)
         {
+            dragon.isBerserk = true;
             stateMachine.ChangeState(dragon.m_states[Dragon.eState.Fly]);
         }
-        else if (attackCoroutine == null || !attackCoroutine.MoveNext())
+        else if (check == null)
         {
             attackCoroutine = dragon.pattern.DoAttackPattern();
-            dragon.StartCoroutine(attackCoroutine);
+            check = dragon.StartCoroutine(attackCoroutine);
         }
     }
 

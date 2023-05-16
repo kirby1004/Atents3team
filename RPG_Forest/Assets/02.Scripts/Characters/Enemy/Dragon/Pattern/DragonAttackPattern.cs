@@ -28,27 +28,26 @@ public class DragonAttackPattern
 
     private void InitializePhases()
     {
-        phases.Add(new DragonState_LeftClawAttack(dragon));
         phases.Add(new DragonState_Bite(dragon));
+        phases.Add(new DragonState_LeftClawAttack(dragon));
+        
         //phases.Add(new DragonState_SpitFire(dragon));
     }
 
     public IEnumerator DoAttackPattern()
     {
-        foreach (AttackPhase phase in phases)
+        while(true)
         {
-            if (Mathf.Approximately(dragon.curHp,0)) break;
+            foreach (AttackPhase phase in phases)
+            {
+                if (Mathf.Approximately(dragon.curHp, 0)) break;
 
-            yield return dragon.StartCoroutine(phase.DoPhase());
-            yield return new WaitForSeconds(10.0f);                  // Delay Between Phases
-
-            //if(dragon.curHp <= dragon.MaxHp * 0.2f && !isBerserk)
-            //{
-            //    isBerserk = true;
-            //}
-
+                yield return dragon.StartCoroutine(phase.DoPhase());
+                yield return new WaitForSeconds(1.0f);                  // Delay Between Phases
+            }
+            yield return null;
         }
+        
     }
-
 
 }

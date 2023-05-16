@@ -5,6 +5,7 @@ using UnityEngine;
 public class DragonState_Fly : State
 {
     Dragon dragon;
+    //int spitFireCnt;
 
     public DragonState_Fly(Monster monster, StateMachine stateMachine) : base(monster, stateMachine)
     {
@@ -14,6 +15,7 @@ public class DragonState_Fly : State
     public override void Enter()
     {
         base.Enter();
+        dragon.orgPos = dragon.transform.position;
         dragon.StopAllCoroutines();
         dragon.myAnim.SetTrigger("Fly");
         dragon.myAnim.SetBool("isFlying", true);
@@ -43,7 +45,6 @@ public class DragonState_Fly : State
 
     IEnumerator StartFlyingBoost()
     {
-        //enemy.startFlyBoosting = false;
         float boostTime = 0f;
         float deltaTime = 0.5f;
         while (boostTime < 1f)
@@ -53,7 +54,7 @@ public class DragonState_Fly : State
             dragon.transform.position = Vector3.Lerp(dragon.transform.position, dragon.flyPos, deltaTime * Time.deltaTime);
             yield return null;
         }
-        //enemy.startFlyBoosting = true;
+        stateMachine.ChangeState(dragon.m_states[Dragon.eState.FlySpitFire]);
     }
 
 }

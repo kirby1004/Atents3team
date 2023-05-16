@@ -114,30 +114,31 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
             isSprint = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.F)) 
+        if (isObjectNear)
         {
-            if (isObjectNear)  //F를 눌렀을 때 NPC인지 아닌지
+            if (Input.GetKeyDown(KeyCode.F))
             {
-                Debug.Log($"{isObjectNear}, ");
-                if (!isUi)    //상점이 열려있지 않을 때, isShop을 true로 해주고 움직임 애니메이션을 강제로 idle로 바꿔줌.
+                if (!isUi)
                 {
-                    interPlay?.Invoke();
-                    OpenUi?.Invoke();
+                    if (!isUi)    //상점이 열려있지 않을 때, isShop을 true로 해주고 움직임 애니메이션을 강제로 idle로 바꿔줌.
+                    {
+                        OpenUi?.Invoke();
+                    }
+                    else //상점이 열려 있을 때 isShop을 false로 하고 UI 끄기.
+                    {
+
+
+                        CloseUi?.Invoke();
+                    }
                 }
-                else //상점이 열려 있을 때 isShop을 false로 하고 UI 끄기.
-                {
-                   
-                    
-                    CloseUi?.Invoke();
-                }
-            }
-            else
-            {
-                OpenUi.RemoveAllListeners();
-                CloseUi.RemoveAllListeners();
-                interPlay.RemoveAllListeners();
             }
         }
+        else
+        {
+            OpenUi.RemoveAllListeners();
+            CloseUi.RemoveAllListeners();
+        }
+
 
         if (!myAnim.GetBool("isRolling")) rollPlayTime += Time.deltaTime;
 
@@ -145,7 +146,17 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
         {
             SkillManager.instance.RegisterSkill(Skillname.EnergyBall, WeaponPoint);
         }
+
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            SpringArm.GetComponent<SpringArm>()?.ViewPointTransformation(TestTrans);
+        }
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            SpringArm.GetComponent<SpringArm>()?.ViewPointReset(SpringArm);
+        }
     }
+    public Transform TestTrans;
 
     Vector3 desireDirection;
     float SprintSpeed = 5.0f;

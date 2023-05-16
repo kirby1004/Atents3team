@@ -14,8 +14,8 @@ TagManager:
   - 
   - Ground
   - Player
-  - Enemy
-  - Invincible
+  - Monster
+  - Invulnerable
   - 
   - 
   - 
