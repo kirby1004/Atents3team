@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -60,6 +61,18 @@ public class Gamemanager : MonoBehaviour
 
 
 
+    public float DamageDecrease(float AP , float DP)
+    {
+        float Rate = 1 - (DP / DP + 100);
 
+        if( AP * Rate > 1.0f)
+        {
+            return AP * Rate;
+        }
+        else
+        {
+            return 1;
+        }
+    }
 
 }

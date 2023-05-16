@@ -31,7 +31,7 @@ public class ShopNpc : NpcProperty
     private void OnTriggerEnter(Collider other)
     {
         other.gameObject.GetComponent<IinterPlay>().SetisObjectNear(true);
-        //other.gameObject.GetComponent<IinterPlay>().OpenUi.AddListener(() => { ShopManager.Inst.OpenShop(_npctype); });
+        other.gameObject.GetComponent<IinterPlay>().OpenUi.AddListener(() => { ShopManager.Inst.OpenShop(_npctype); });
         //other.gameObject.GetComponent<IinterPlay>().CloseUi.AddListener();
         other.gameObject.GetComponent<IinterPlay>()?.OpenUi.AddListener(()=> { ShopView(other.gameObject); });
 

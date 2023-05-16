@@ -35,6 +35,8 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
 
     public bool hasPattern = false;     // 패턴을 가지는 몬스터인 경우
     public bool canFly = false;         // 날 수 있는 몬스터인 경우
+    public ItemDropTable myDropTable;
+
 
     // IsLive 프로퍼티 구현
     //public bool IsLive
