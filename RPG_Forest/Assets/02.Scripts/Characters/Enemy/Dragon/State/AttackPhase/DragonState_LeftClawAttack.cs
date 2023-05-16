@@ -19,22 +19,24 @@ public class DragonState_LeftClawAttack : AttackPhase
         //    this.target = dragon.myTarget;
         //    this.atkPoint = dragon.leftClawPoint;
         //}
-
+        float delayTime = 2.0f;
         while (dragon.myTarget != null)
         {
             if (!dragon.myAnim.GetBool("isAttacking"))
             {
                 // playTime 을 nextAttackTime으로 변경 필요
-                dragon.playTime += Time.deltaTime;
+                dragon.playTime +=  Time.deltaTime;
                 if (dragon.playTime >= dragon.AttackDelay)
                 {
                     dragon.playTime = 0.0f;
                     dragon.myAnim.SetTrigger("Attack");
                     Debug.Log("왼팔공격");
                     dragon.Attack(atkPoint);
+                    yield break;
                 }
             }
-            yield return new WaitForSeconds(10.0f);
+            yield return new WaitForSeconds(delayTime);
+            dragon.playTime += delayTime;
         }
     }
 

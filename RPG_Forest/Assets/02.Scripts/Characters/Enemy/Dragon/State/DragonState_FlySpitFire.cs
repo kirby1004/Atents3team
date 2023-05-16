@@ -14,24 +14,38 @@ public class DragonState_FlySpitFire : State
     public override void Enter()
     {
         base.Enter();
-        dragon.StopAllCoroutines();
-        dragon.myAnim.SetTrigger("FlySpitFire");
+        dragon.StartCoroutine(SpitFire());
     }
 
     public override void Exit()
     {
         base.Exit();
-        //stateMachine.ChangeState(monster.m_states[Dragon.eState.Fly]);
     }
 
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+    }
+
+    IEnumerator SpitFire()
+    {
+        while(dragon.spitFireCnt < 5)
+        {
+            dragon.spitFireCnt++;
+            dragon.myAnim.SetTrigger("FlySpitFire");
+            Debug.Log($"{dragon.spitFireCnt}");
+            // ½ºÅ³ ÀÌÆåÆ® 
+            //GameObject fireEffect = ObjectPoolManager.Instance.GetObject("FireEffect", dragon.firePoint.position, dragon.firePoint.rotation);
+            //fireEffect.SetActive(true);
+            yield return new WaitForSeconds(dragon.spitFireDelay);
+        }
+        stateMachine.ChangeState(dragon.m_states[Dragon.eState.Landing]);
     }
 
 }

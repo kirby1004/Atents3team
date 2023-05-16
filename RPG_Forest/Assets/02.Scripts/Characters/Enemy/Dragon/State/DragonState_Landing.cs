@@ -16,12 +16,15 @@ public class DragonState_Landing : State
     {
         base.Enter();
         dragon.StopAllCoroutines();
+        dragon.myAnim.SetTrigger("Landing");
+        dragon.StartCoroutine(Landing());
     }
 
     public override void Exit()
     {
         base.Exit();
         dragon.myAnim.SetBool("isFlying", false);
+        dragon.isFlying = false;
     }
 
     public override void LogicUpdate()
@@ -32,16 +35,21 @@ public class DragonState_Landing : State
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+    }
 
-        if (dragon.transform.position.y <= dragon.orgPos.y)
+    IEnumerator Landing()
+    {
+        float landTime = 0f;
+
+        Vector3 startPos = dragon.transform.position;
+        Vector3 targetPos = dragon.orgPos;
+
+        while (landTime < 1.0f)
         {
-            if(dragon.transform.position.y <= dragon.orgPos.y + offset) dragon.myAnim.SetTrigger("Landing");
-            stateMachine.ChangeState(monster.m_states[Dragon.eState.Idle]);
+            landTime += Time.deltaTime / dragon.landingDuration;
+            dragon.transform.position = Vector3.Lerp(startPos, targetPos, landTime);
+            yield return null;
         }
-        else
-        {
-            Vector3 moveDir = -monster.transform.up;
-            monster.transform.position += moveDir * dragon.landingSpeed * Time.deltaTime;
-        }
+        stateMachine.ChangeState(dragon.m_states[Dragon.eState.BattleDragon]);
     }
 }

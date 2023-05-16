@@ -194,7 +194,7 @@ public class PlayerController : CharacterMovement_V2, IBattle
         myAnim.SetBool("isRolling", true);
         while (myAnim.GetBool("isRolling"))
         {
-            gameObject.layer = 7; //플레이어의 레이어를 무적 레이어로 바꿔서 맞지 않도록 함.
+            gameObject.layer = 10; //플레이어의 레이어를 무적 레이어로 바꿔서 맞지 않도록 함.
             transform.position += dir.normalized * Time.deltaTime * 1.5f;
             yield return null;
         }

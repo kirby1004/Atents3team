@@ -7,6 +7,8 @@ public class Dragon : Monster
     public Transform headPoint;
     public DragonAttackPattern pattern;
 
+    public bool isBerserk = false;                 // ±¤ÆøÈ­
+
     protected override void Awake()
     {
         pattern = new DragonAttackPattern(this);
@@ -23,7 +25,7 @@ public class Dragon : Monster
         m_states.Add(eState.BattleDragon, new DragonState_BattleDragon(this, m_monsterSM));
         
 
-        //m_monsterSM.ChangeState(m_states[eState.Fly]);
+        //m_monsterSM.ChangeState(m_states[eState.Create]);
         //StartCoroutine(TestLanding());
     }
 
@@ -39,6 +41,15 @@ public class Dragon : Monster
         m_monsterSM.CurrentState.PhysicsUpdate();
     }
 
+    #region Find
+
+    public override void Find(Transform target)
+    {
+        myTarget = target;
+        myTarget.GetComponent<CharacterProperty>().DeathAlarm += () => { if (IsLive) m_monsterSM.ChangeState(m_states[eState.Idle]); }; // Death Alarm ÈÄ¿¡ ±¸Çö
+        if(!isFlying) m_monsterSM.ChangeState(m_states[eState.Trace]);
+    }
+    #endregion
 
     #region Battle
 
@@ -47,16 +58,6 @@ public class Dragon : Monster
         m_monsterSM.ChangeState(m_states[Dragon.eState.BattleDragon]);
     }
 
-    /*public override void Attack(Transform attackPoint)
-    {
-        Collider[] list = Physics.OverlapSphere(attackPoint.position, 0.75f, enemyLayer); 
-        Debug.DrawLine(attackPoint.position, attackPoint.position + new Vector3(0.5f, 0.5f, 0.5f));
-        foreach (Collider col in list)
-        {
-            col.transform.GetComponent<IBattle>()?.OnDamage(AttackPoint);
-        }
-    }*/
-
     #endregion
 
     #region Fly
@@ -64,9 +65,9 @@ public class Dragon : Monster
     public Vector3 flyPos;
     public bool isFlying = false;
     public float flyHeight = 20.0f;
-    public float landingSpeed = 6.0f;
-
-    //public bool startFlyBoosting = false;
+    public float landingDuration = 1.0f;
+    public float spitFireCnt;
+    public float spitFireDelay = 3.0f;
 
     IEnumerator TestLanding()
     {
