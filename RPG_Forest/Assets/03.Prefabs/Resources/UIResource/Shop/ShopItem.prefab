@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 8441871053048668414}
   - component: {fileID: 8441871053048668413}
   - component: {fileID: 8441871053048668412}
+  - component: {fileID: 2900413501057446590}
+  - component: {fileID: 4147931604279594494}
   m_Layer: 5
   m_Name: ShopItem
   m_TagString: Untagged
@@ -92,3 +94,28 @@ MonoBehaviour:
   myItem: {fileID: 0}
   myCost: 0
   myImage: {fileID: 8441871053048668413}
+  buyButton: {fileID: 0}
+--- !u!114 &2900413501057446590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441871053048668410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea83162b1cf43d747b092db2c0733339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4147931604279594494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441871053048668410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea83162b1cf43d747b092db2c0733339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

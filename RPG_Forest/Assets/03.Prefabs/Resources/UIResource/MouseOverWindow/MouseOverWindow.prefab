@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 752063556596068835}
   - component: {fileID: 6146873601881623099}
   - component: {fileID: 8893256127055596427}
+  - component: {fileID: 7804637847152041010}
   m_Layer: 5
   m_Name: MouseOverWindow
   m_TagString: Untagged
@@ -270,6 +271,18 @@ MonoBehaviour:
   myOptionType: []
   myOptionNum: []
   Optionparent: {fileID: 2860014377586555500}
+--- !u!114 &7804637847152041010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542199467972204456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea83162b1cf43d747b092db2c0733339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3392413209691363172
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,6 +358,7 @@ GameObject:
   - component: {fileID: 8318550612454203214}
   - component: {fileID: 809546874104760261}
   - component: {fileID: 995883738003198809}
+  - component: {fileID: 2222423506034739029}
   m_Layer: 5
   m_Name: ImageBG
   m_TagString: Untagged
@@ -426,6 +440,18 @@ MonoBehaviour:
   m_EffectColor: {r: 0.21176472, g: 0.14901961, b: 0.11764707, a: 1}
   m_EffectDistance: {x: 5, y: 5}
   m_UseGraphicAlpha: 0
+--- !u!114 &2222423506034739029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4981751499623727890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea83162b1cf43d747b092db2c0733339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6664905510784369617
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,6 +463,7 @@ GameObject:
   - component: {fileID: 704400590988197745}
   - component: {fileID: 5227391629941991654}
   - component: {fileID: 950607624051416119}
+  - component: {fileID: 8969905458646656839}
   m_Layer: 5
   m_Name: ItemImage
   m_TagString: Untagged
@@ -502,3 +529,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8969905458646656839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6664905510784369617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea83162b1cf43d747b092db2c0733339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

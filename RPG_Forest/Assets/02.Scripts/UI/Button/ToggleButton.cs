@@ -51,14 +51,15 @@ public class ToggleButton : MonoBehaviour
     // 메뉴창 껏다켜기
     public void OnbuttonClick(int index)
     {
-        if (mySystems[index].gameObject.activeSelf)
-        {
-            mySystems[index].gameObject.SetActive(false);
-        }
-        else
-        {
-            mySystems[index].gameObject.SetActive(true);
-        }
+        mySystems[index].gameObject.SetActive(!mySystems[index].gameObject.activeSelf);
+        //if (mySystems[index].gameObject.activeSelf)
+        //{
+        //    mySystems[index].gameObject.SetActive(false);
+        //}
+        //else
+        //{
+        //    mySystems[index].gameObject.SetActive(true);
+        //}
     }
 
 }
