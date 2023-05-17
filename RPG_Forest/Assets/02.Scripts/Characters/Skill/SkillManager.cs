@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
+    
     public static SkillManager instance;                 // 자기 자신을 담을 static 변수
-
     public static SkillManager Instance => instance;     // 그 변수를 리턴할 static 프로퍼티 Instance
 
     public void Awake()

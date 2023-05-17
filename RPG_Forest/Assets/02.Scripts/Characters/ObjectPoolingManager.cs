@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class PoolObjectData
+public struct PoolObjectData
 {
     public GameObject prefab;
 
     [Tooltip("poolCount는 최소 1개 이상 설정")]
-    public int poolCount = 10;
-
+    public int poolCount;
     [Header("해당 오브젝트 설명")]
     public string explan;
 }
@@ -20,7 +19,9 @@ public class ObjectPoolingManager : MonoBehaviour
     public static ObjectPoolingManager instance;
 
     [SerializeField] private bool dontDestroy = true;
-    [SerializeField] private List<PoolObjectData> poolList = new List<PoolObjectData>();
+    [SerializeField] private List<PoolObjectData> playerSkill = new List<PoolObjectData>();
+    [SerializeField] private List<PoolObjectData> MonsterSkill = new List<PoolObjectData>();
+    [SerializeField] private List<PoolObjectData> ObjectPoolList = new List<PoolObjectData>();
 
     private Dictionary<string, Transform> poolParentDic = new Dictionary<string, Transform>();                  // 각각 풀링들의 부모
     private Dictionary<string, PoolObjectData> instantiateObject = new Dictionary<string, PoolObjectData>();    // 풀링으로 생성된 오브젝트
@@ -42,7 +43,9 @@ public class ObjectPoolingManager : MonoBehaviour
         }
 
         MakeDir("Using");
-        Pool(poolList);   // 초기 풀링에 들어가있는 오브젝트 풀링
+        Pool(playerSkill);   // 초기 풀링에 들어가있는 오브젝트 풀링
+        Pool(MonsterSkill);   // 초기 풀링에 들어가있는 오브젝트 풀링
+        Pool(ObjectPoolList);   // 초기 풀링에 들어가있는 오브젝트 풀링
     }
 
     #region Instantiate

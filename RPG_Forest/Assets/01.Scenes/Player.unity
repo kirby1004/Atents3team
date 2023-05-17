@@ -401,10 +401,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroy: 1
-  poolList:
+  playerSkill:
   - prefab: {fileID: 2467265553658134814, guid: 0d801d6040ace084caff3119c26a39bc, type: 3}
     poolCount: 1
     explan: 
+  MonsterSkill: []
+  ObjectPoolList: []
 --- !u!1 &540509052
 GameObject:
   m_ObjectHideFlags: 0
