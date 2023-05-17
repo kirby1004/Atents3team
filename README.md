@@ -8,7 +8,20 @@
 3. **상속 구조로 이루어진 스크립트**는 기존의 변수명 수정은 최대한 삼가고 불가피하게 작업을 해야하는 경우는 팀원들에게 미리 알리고 주석을 상세히 달기
 4. 개발 일정 확인하기 - [개발 일정](https://app.asana.com/0/1204352798021693/list)
 
+---
+### V.4.0.02 - JS
+> Scene 정리  
+  - Village 씬 - 수민
+  - Forest 씬 - 교원
+  - Boss 씬 - 진수
 
+> Warp Point 지정  
+  - 씬 전환 담당 => 진수 (~5/19)  
+  - 씬 Script 추가 (Intro Scene.cs, Scene Loader.cs)
+
+> Boss Script
+  - Boss Attack Pattern Coroutine 반복 호출 에러 수정
+  - Boss Attack 각 패턴 별 Attack Delay 수정 가능하게 변경
 ---
 ### V.4.0.01 - SM
 >  1. Camera
@@ -21,6 +34,8 @@
   - ShopNPC 수정
     * NPC의 PlayerPoint의 로테이션으로 캐릭터가 돌아가지 않는 오류가 생김 수정예정.
     * Trigger Enter, Exit 상태일 때 코드 수정. 
+---
+## ***Phase4*** 05.15(Mon) ~ 05.30(Tue)
 ---
 ### V.3.0.08 - SM
 >  1. Player
@@ -140,7 +155,8 @@
 > Skill Manager 구현 방법 토의  
 
 > UI 구현 개념 정리  
-
+---
+## ***Phase3*** 05.01(Mon) ~ 05.14(Sun)
 ---
 ### V.2.0.11 - JS  
 > Enemy State - Battle, Recall 상태 구현  
