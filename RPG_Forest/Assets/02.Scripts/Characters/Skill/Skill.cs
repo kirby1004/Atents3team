@@ -4,6 +4,10 @@ using UnityEngine;
 
 public interface ISkill
 {
+    public SkillData skillData
+    {
+        get;set;
+    }
     void Use()
     {
 
@@ -12,9 +16,6 @@ public interface ISkill
 
 public abstract class Skill : MonoBehaviour
 {
-    [SerializeField]
-    protected SkillData skillData;
-
     [SerializeField]
     protected Transform HitPoint;
 }

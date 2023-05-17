@@ -132,8 +132,6 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
                     }
                     else //상점이 열려 있을 때 isShop을 false로 하고 UI 끄기.
                     {
-
-
                         CloseUi?.Invoke();
                     }
                 }
