@@ -48,9 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1954ffa296759e341a42381399350df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillData: {fileID: 11400000, guid: 35099e23dda3e244fa972679216c765b, type: 2}
   HitPoint: {fileID: 600055332100359311}
-  coolDown: 0
+  <skillData>k__BackingField: {fileID: 11400000, guid: 35099e23dda3e244fa972679216c765b, type: 2}
   dist: 0
 --- !u!1 &3925137529451541510
 GameObject:
