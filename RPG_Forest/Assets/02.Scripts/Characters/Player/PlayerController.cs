@@ -47,10 +47,14 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
         OpenUi = new UnityEvent();
         CloseUi = new UnityEvent();
     }
+    public bool isEnterUI = false;
+
     // Update is called once per frame
     protected override void Update()
     {
+        
         InputMethod();
+        
         if (!isUi&&!myAnim.GetBool("isAttacking"))
         {
             MoveToPos(Vector3.zero);
@@ -83,14 +87,16 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
         get; set;
     }
     public UnityEvent CloseUi { get; set; }
+    public UnityAction OpenLoot { get; set; }
 
     bool isSprint;
     void InputMethod()
     {
-        if (!isUi)
+        if (!isUi )
         {
             if (Input.GetMouseButtonDown(0))
             {
+                if (isEnterUI == true) return;
                 //myAnim.SetBool("isClick", true); //isClick을 이용해 마우스 클릭이 들어왔는지 체크
                 myAnim.SetTrigger("Attack"); // 공격 애니메이션 실행
             }
@@ -126,8 +132,6 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
                     }
                     else //상점이 열려 있을 때 isShop을 false로 하고 UI 끄기.
                     {
-
-
                         CloseUi?.Invoke();
                     }
                 }
@@ -189,7 +193,10 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
         }
     }
 
-
+    public void SetIsEnterUI(bool bools)
+    {
+        isEnterUI = bools;
+    }
     int clickCount = 0;
     Coroutine coCheck = null;
     public void AttackEnter() //공격이 시작될 때 실행되는 이벤트함수, 공격 애니메이션 이벤트로 시작될 때 실행된다.

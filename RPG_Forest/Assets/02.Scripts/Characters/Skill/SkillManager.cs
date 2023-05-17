@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
+    
     public static SkillManager instance;                 // 자기 자신을 담을 static 변수
-
     public static SkillManager Instance => instance;     // 그 변수를 리턴할 static 프로퍼티 Instance
 
     public void Awake()
@@ -25,7 +25,6 @@ public class SkillManager : MonoBehaviour
 
     private void Start() 
     {
-       //요따가 스킬 enum을 skillCooldown 딕셔너리에 다 넣어버리깅.
        for(int i = 0; i < System.Enum.GetValues(typeof(Skillname)).Length; i++)
         {
             skillCooldown.Add((Skillname)i, false);
@@ -39,14 +38,14 @@ public class SkillManager : MonoBehaviour
             skillCooldown[name] = true;
             GameObject skill = ObjectPoolingManager.instance.GetObject((name).ToString(), Point.position, Quaternion.identity);
             skill.GetComponent<ISkill>()?.Use();
-            StartCoroutine(CoolDown(name, skill));
+            StartCoroutine(CoolDown(name,skill.GetComponent<ISkill>().skillData.CoolTime));
         }
     }
 
-    IEnumerator CoolDown(Skillname name, GameObject Skill) //쿨다운 코루틴 쿨다운이 다 되면 false로 바꾸기.
+    IEnumerator CoolDown(Skillname name,float coolTime) //쿨다운 코루틴 쿨다운이 다 되면 false로 바꾸기.
     {
         float playTime = 0.0f;
-        while(playTime < Skill.GetComponent<ISkill>().skillData.CoolTime)
+        while (coolTime>playTime)
         {
             playTime += Time.deltaTime;
             yield return null;

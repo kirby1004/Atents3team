@@ -6,11 +6,13 @@ using UnityEngine;
 
 public class EnergyBall : Skill,ISkill
 {
-    [field: SerializeField]
-    public SkillData skillData { get; set; }
-    
-    public float dist;
+    [field:SerializeField]
+    public SkillData skillData
+    {
+        get;set;
+    }
 
+    public float dist;
     public void Awake()
     {
         dist = skillData.Distance;
@@ -36,6 +38,4 @@ public class EnergyBall : Skill,ISkill
         dist = skillData.Distance;
         ObjectPoolingManager.instance.ReturnObject(gameObject);
     }
-
-
 }

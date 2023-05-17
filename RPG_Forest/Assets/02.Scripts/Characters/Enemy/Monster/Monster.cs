@@ -35,7 +35,7 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
 
     public bool canFly = false;         // 날 수 있는 몬스터인 경우
     public ItemDropTable myDropTable;
-
+    public Transform myAI;
 
     public bool IsLive => m_monsterSM.CurrentState != m_states[eState.Die];
 
@@ -167,15 +167,19 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
     // IBattle Interface
     public void OnDamage(float dmg)
     {
-        Debug.Log("OnDamage");
-        curHp -= dmg;
-        if (Mathf.Approximately(curHp, 0.0f))
+        if (IsLive)
         {
-            m_monsterSM.ChangeState(m_states[eState.Die]);
-        }
-        else
-        {
-            myAnim.SetTrigger("Damage");
+
+            Debug.Log("OnDamage");
+            curHp -= dmg;
+            if (Mathf.Approximately(curHp, 0.0f))
+            {
+                m_monsterSM.ChangeState(m_states[eState.Die]);
+            }
+            else
+            {
+                myAnim.SetTrigger("Damage");
+            }
         }
     }
 
@@ -206,6 +210,7 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
     #region Die
 
     UnityEvent deadAction = null;
+    public UnityAction ColDelete = null;
 
     public void OnDisappear()
     {
