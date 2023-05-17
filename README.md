@@ -9,6 +9,16 @@
 4. 개발 일정 확인하기 - [개발 일정](https://app.asana.com/0/1204352798021693/list)
 
 ---
+### V.4.0.04 - JS
+> Boss Scene  
+  - Game Manager 추가
+  - UI Manager 추가 (Event Handler)
+  - Skill Manager 추가 - Skill 사용 Test
+  - Boss Map 
+    * Plane Collider 추가
+    * CineMahcine - 추가 예정
+
+---
 ### V.4.0.02 - JS
 > Scene 정리  
   - Village 씬 - 수민

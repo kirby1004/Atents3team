@@ -72,6 +72,13 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
         m_monsterSM.CurrentState.PhysicsUpdate();
     }
 
+    #region
+    public virtual void OnCreate()
+    {
+
+    }
+    #endregion
+
     #region Movement
     // 몬스터의 이동에 관한 함수
     public override void MoveToPos(Vector3 pos, UnityAction done = null)

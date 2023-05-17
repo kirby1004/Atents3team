@@ -5,7 +5,6 @@ using UnityEngine;
 public class DragonState_Landing : State
 {
     Dragon dragon;
-    float offset = 5.0f;
 
     public DragonState_Landing(Monster monster, StateMachine stateMachine) : base(monster, stateMachine)
     {

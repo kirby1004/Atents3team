@@ -35,6 +35,9 @@ public class DragonState_FlySpitFire : State
 
     IEnumerator SpitFire()
     {
+        float startDelay = 5.0f;
+        yield return new WaitForSeconds(startDelay);
+
         while(dragon.spitFireCnt < 5)
         {
             dragon.spitFireCnt++;
@@ -43,6 +46,9 @@ public class DragonState_FlySpitFire : State
             // ½ºÅ³ ÀÌÆåÆ® 
             //GameObject fireEffect = ObjectPoolManager.Instance.GetObject("FireEffect", dragon.firePoint.position, dragon.firePoint.rotation);
             //fireEffect.SetActive(true);
+
+            SkillManager.instance.RegisterSkill(Skillname.EnergyBall, dragon.headPoint);
+
             yield return new WaitForSeconds(dragon.spitFireDelay);
         }
         stateMachine.ChangeState(dragon.m_states[Dragon.eState.Landing]);

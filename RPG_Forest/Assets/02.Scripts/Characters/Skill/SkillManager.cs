@@ -39,13 +39,19 @@ public class SkillManager : MonoBehaviour
             skillCooldown[name] = true;
             GameObject skill = ObjectPoolingManager.instance.GetObject((name).ToString(), Point.position, Quaternion.identity);
             skill.GetComponent<ISkill>()?.Use();
-            StartCoroutine(CoolDown(name));
+            StartCoroutine(CoolDown(name, skill));
         }
     }
 
-    IEnumerator CoolDown(Skillname name) //쿨다운 코루틴 쿨다운이 다 되면 false로 바꾸기.
+    IEnumerator CoolDown(Skillname name, GameObject Skill) //쿨다운 코루틴 쿨다운이 다 되면 false로 바꾸기.
     {
-        yield return null;
+        float playTime = 0.0f;
+        while(playTime < Skill.GetComponent<ISkill>().skillData.CoolTime)
+        {
+            playTime += Time.deltaTime;
+            yield return null;
+        }
+        skillCooldown[name] = false;
     }
 }
 
