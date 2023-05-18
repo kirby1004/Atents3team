@@ -23,7 +23,7 @@ public class AIPerception : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (transform.parent.GetComponent<Monster>().IsLive == false) Destroy(this);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5410678365125090730}
   - component: {fileID: 2356755532222643148}
   - component: {fileID: 19055115639568346}
+  - component: {fileID: 2035307258402189095}
   m_Layer: 5
   m_Name: Frame
   m_TagString: Untagged
@@ -76,6 +77,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2035307258402189095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490990957487767196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea83162b1cf43d747b092db2c0733339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &831862332083619119
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,6 +102,7 @@ GameObject:
   - component: {fileID: 831862332083619121}
   - component: {fileID: 4618980183158121865}
   - component: {fileID: 4618980183158121864}
+  - component: {fileID: 539180342413290079}
   m_Layer: 5
   m_Name: LootBG
   m_TagString: Untagged
@@ -195,7 +209,20 @@ MonoBehaviour:
   myDropTable: {fileID: 11400000, guid: b5fb6ba50bd73f0498b3f680567c2245, type: 2}
   myLootSlots: []
   myLootCount: 0
+  IsEnterLoot: 0
   LootSlot: {fileID: 6177742379139784686, guid: e02cbb07161333248bd949aed84aff5e, type: 3}
+--- !u!114 &539180342413290079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831862332083619119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea83162b1cf43d747b092db2c0733339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &831862332325543206
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,6 +275,7 @@ GameObject:
   - component: {fileID: 4428547232699636690}
   - component: {fileID: 6169274822178939571}
   - component: {fileID: 5890250809839665402}
+  - component: {fileID: 2532055705483077329}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -370,6 +398,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2532055705483077329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888593194700267792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea83162b1cf43d747b092db2c0733339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1261537534389053886
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,6 +557,7 @@ GameObject:
   - component: {fileID: 6042333035332626725}
   - component: {fileID: 79130932550186708}
   - component: {fileID: 7260236252233343136}
+  - component: {fileID: 2299338184269018717}
   m_Layer: 5
   m_Name: DragWIndow
   m_TagString: Untagged
@@ -592,5 +633,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8dfa9fe3a6477af439f5b0dfc88404ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2299338184269018717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8843059614948681997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea83162b1cf43d747b092db2c0733339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

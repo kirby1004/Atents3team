@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7362501858127529538}
   - component: {fileID: 7362501858127529541}
   - component: {fileID: 7362501858127529536}
+  - component: {fileID: 5115314904011896491}
   m_Layer: 5
   m_Name: ItemListBG
   m_TagString: Untagged
@@ -114,7 +115,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75f4a6283116de3499887e5e3a5ca6ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Selectitems: {fileID: 0}
-  SelectshopItems: {fileID: 0}
-  shopItemList: {fileID: 11400000, guid: c21ed6d242873f94ea36ac23c0952385, type: 2}
-  items: []
+  ShopItemPrefab: {fileID: 0}
+  myShopItemList: {fileID: 0}
+  shopSlots: []
+--- !u!114 &5115314904011896491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7362501858127529543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea83162b1cf43d747b092db2c0733339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

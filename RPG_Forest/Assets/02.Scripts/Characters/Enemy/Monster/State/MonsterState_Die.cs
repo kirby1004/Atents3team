@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MonsterState_Die : State
@@ -11,10 +12,14 @@ public class MonsterState_Die : State
     public override void Enter()
     {
         monster.StopAllCoroutines();
-        DisableCollider();
-        monster.DeathAlarm?.Invoke();
+        Transform transform = monster.transform;
+        monster.ColDelete += DisableCollider;
         monster.myAnim.SetTrigger("Die");
-        monster.OnDisappear();
+        LootingManager.Inst.ReadyLootWindow(monster);
+        //Object.Destroy(transform.GetComponentInChildren<AIPerception>());
+        monster.myAI.AddComponent<LootingPerception>();
+        monster.DeathAlarm?.Invoke();
+        //monster.OnDisappear();
         base.Enter();
     }
 
