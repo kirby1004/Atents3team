@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2704593671500676397}
   - component: {fileID: 7933673478333078933}
   - component: {fileID: 7933673478333078932}
-  - component: {fileID: 4837851544102499010}
   m_Layer: 5
   m_Name: LootBG
   m_TagString: Untagged
@@ -122,15 +121,3 @@ MonoBehaviour:
   myLootCount: 0
   IsEnterLoot: 0
   LootSlot: {fileID: 6177742379139784686, guid: e02cbb07161333248bd949aed84aff5e, type: 3}
---- !u!114 &4837851544102499010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2704593671500676403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea83162b1cf43d747b092db2c0733339, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
