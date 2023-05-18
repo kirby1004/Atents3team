@@ -11,6 +11,7 @@ public class MonsterState_Create : State
     public override void Enter()
     {
         base.Enter();
+        monster.OnCreate();
         monster.StartCoroutine(CreateDelay());
     }
 

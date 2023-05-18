@@ -27,7 +27,7 @@ public class Dragon : Monster
         m_states.Add(eState.BattleDragon, new DragonState_BattleDragon(this, m_monsterSM));
 
 
-        AttackRange = 5.2f;
+        AttackRange = 5.1f;
         //m_monsterSM.ChangeState(m_states[eState.Create]);
         //StartCoroutine(TestLanding());
     }
@@ -43,6 +43,14 @@ public class Dragon : Monster
         base.LateUpdate();
         m_monsterSM.CurrentState.PhysicsUpdate();
     }
+
+    #region
+
+    public override void OnCreate()
+    {
+
+    }
+    #endregion
 
     #region Find
 

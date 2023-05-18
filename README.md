@@ -9,7 +9,16 @@
 4. 개발 일정 확인하기 - [개발 일정](https://app.asana.com/0/1204352798021693/list)
 
 ---
-### V.4.0.03 - GY
+### V.4.0.05 - JS
+> Boss Scene  
+  - Game Manager 추가
+  - UI Manager 추가 (Event Handler)
+  - Skill Manager 추가 - Skill 사용 Test
+  - Boss Map 
+    * Plane Collider 추가
+    * CineMahcine - 추가 예정
+---
+### V.4.0.04 - GY
 > 1. UI  
 - LootingSystem 업데이트  
   * LootingWindow 외형구현  
@@ -19,6 +28,8 @@
 > 2. Monster
 - 몬스터 모델 2종 추가  
   * Knight , Guard 모델 Animatior 추가 , 위치 배치 , 애드 범위 설정
+---
+###
 ---
 ### V.4.0.02 - JS
 > Scene 정리  
