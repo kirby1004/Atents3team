@@ -72,9 +72,9 @@ public class DropList : MonoBehaviour
         {
             myLootSlots[i].GetComponent<LootSlot>().LootDone();
         }
-        //Gamemanager.instance.myPlyaer.GetComponent<IinterPlay>().CloseUi?.Invoke();
-        //LootingManager.Inst.LootWindow = null;
-        //Destroy(transform.parent.gameObject);
+        Gamemanager.instance.myPlyaer.GetComponent<IinterPlay>().CloseUi?.Invoke();
+        LootingManager.Inst.LootWindow = null;
+        Destroy(transform.parent.gameObject);
     }
 
     public void ImageRaycastOff()

@@ -949,6 +949,7 @@ GameObject:
   - component: {fileID: 4273515596278537084}
   - component: {fileID: 4273515596278537087}
   - component: {fileID: 2211286006459444577}
+  - component: {fileID: 7222321573919993961}
   m_Layer: 5
   m_Name: UIExit
   m_TagString: Untagged
@@ -1057,19 +1058,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4273515596278537084}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3961701949277922524}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2211286006459444577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1082,3 +1071,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea83162b1cf43d747b092db2c0733339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7222321573919993961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4273515596278537057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db9ebc8c74bdad641b67fdecce1056a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myTarget: {fileID: 3961701949277922523}
