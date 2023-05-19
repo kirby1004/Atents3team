@@ -14,22 +14,20 @@ public class Dragon : Monster
         pattern = new DragonAttackPattern(this);
 
         canFly = true;
-        
-
     }
 
     protected override void Start()
     {
         base.Start();
         m_states.Add(eState.Fly, new DragonState_Fly(this, m_monsterSM));
+        m_states.Add(eState.FlyToBackPos, new DragonState_FlyToBackPos(this, m_monsterSM));
         m_states.Add(eState.FlySpitFire, new DragonState_FlySpitFire(this, m_monsterSM));
         m_states.Add(eState.Landing, new DragonState_Landing(this, m_monsterSM));
         m_states.Add(eState.BattleDragon, new DragonState_BattleDragon(this, m_monsterSM));
 
 
         AttackRange = 5.1f;
-        //m_monsterSM.ChangeState(m_states[eState.Create]);
-        //StartCoroutine(TestLanding());
+
     }
 
     protected override void Update()
@@ -44,11 +42,17 @@ public class Dragon : Monster
         m_monsterSM.CurrentState.PhysicsUpdate();
     }
 
-    #region
+    #region OnCreate
+
+    public Transform devilEye;
 
     public override void OnCreate()
     {
+        SkillManager.instance.RegisterSkill(MonsterSkillName.DevilEye, devilEye);
 
+        //GameObject obj = (GameObject)Instantiate(Resources.Load("DevilEye"));
+        //obj.SetActive(true);
+        //Destroy(obj, 5.0f);
     }
     #endregion
 
@@ -58,7 +62,7 @@ public class Dragon : Monster
     {
         myTarget = target;
         myTarget.GetComponent<CharacterProperty>().DeathAlarm += () => { if (IsLive) m_monsterSM.ChangeState(m_states[eState.Idle]); }; // Death Alarm 후에 구현
-        if(!isFlying) m_monsterSM.ChangeState(m_states[eState.Trace]);
+        if(!isFlying && (m_monsterSM.CurrentState != m_states[eState.Create])) m_monsterSM.ChangeState(m_states[eState.Trace]);
     }
     #endregion
 
@@ -75,20 +79,13 @@ public class Dragon : Monster
 
     public Vector3 flyPos;
     public bool isFlying = false;
-    public float flyHeight = 20.0f;
-    public float landingDuration = 1.0f;
+    public float flyHeight = 25.0f;
+    public float flySpeed = 7.0f;
+    public float landingDuration = 4.0f;
     public float spitFireCnt;
-    public float spitFireDelay = 3.0f;
+    public float spitFireDelay = 2.0f;
 
-    IEnumerator TestLanding()
-    {
-        yield return new WaitForSeconds(2.0f);
-        m_monsterSM.ChangeState(m_states[Dragon.eState.FlySpitFire]);
-        yield return new WaitForSeconds(5.0f);
-        m_monsterSM.ChangeState(m_states[Dragon.eState.Landing]);
-        yield return null;
-    }
-
+    public Transform flyToBackPos;          // 뒤로 날 지점 
     
     #endregion
 }

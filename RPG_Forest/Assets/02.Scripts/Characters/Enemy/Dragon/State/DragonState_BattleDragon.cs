@@ -10,7 +10,6 @@ public class DragonState_BattleDragon : State
     float dist;
     float attackRadiusOffset = 0.05f;
 
-
     public DragonState_BattleDragon(Monster monster, StateMachine stateMachine) : base(monster, stateMachine)
     {
         dragon = monster as Dragon;
@@ -23,8 +22,6 @@ public class DragonState_BattleDragon : State
         dragon.StopAllCoroutines();
         Debug.Log("DragonBattleState");
         if (check != null) check = dragon.StartCoroutine(attackCoroutine);
-        
-        //dragon.StartCoroutine(dragon.pattern.DoAttackPattern());
     }
 
     public override void Exit()

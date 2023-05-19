@@ -25,7 +25,6 @@ public class DragonState_FlySpitFire : State
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-
     }
 
     public override void PhysicsUpdate()
@@ -35,21 +34,18 @@ public class DragonState_FlySpitFire : State
 
     IEnumerator SpitFire()
     {
-        float startDelay = 5.0f;
-        yield return new WaitForSeconds(startDelay);
+        yield return new WaitForSeconds(3.0f);
+        var wfs = new WaitForSeconds(dragon.spitFireDelay);
 
         while(dragon.spitFireCnt < 5)
         {
             dragon.spitFireCnt++;
             dragon.myAnim.SetTrigger("FlySpitFire");
             Debug.Log($"{dragon.spitFireCnt}");
-            // ½ºÅ³ ÀÌÆåÆ® 
-            //GameObject fireEffect = ObjectPoolManager.Instance.GetObject("FireEffect", dragon.firePoint.position, dragon.firePoint.rotation);
-            //fireEffect.SetActive(true);
 
-            SkillManager.instance.RegisterSkill(Skillname.EnergyBall, dragon.headPoint);
+            //SkillManager.instance.RegisterSkill(MonsterSkillName.EnergyBall2, dragon.headPoint);
 
-            yield return new WaitForSeconds(dragon.spitFireDelay);
+            yield return wfs;
         }
         stateMachine.ChangeState(dragon.m_states[Dragon.eState.Landing]);
     }

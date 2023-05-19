@@ -148,7 +148,7 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            SkillManager.instance.RegisterSkill(Skillname.EnergyBall, WeaponPoint);
+            SkillManager.instance.RegisterSkill(PlayerSkillName.EnergyBall, WeaponPoint);
         }
 
         if (Input.GetKeyDown(KeyCode.F1))
