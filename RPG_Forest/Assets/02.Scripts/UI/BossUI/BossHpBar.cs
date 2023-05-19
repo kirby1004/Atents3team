@@ -14,16 +14,16 @@ public class BossHpBar : MonoBehaviour
         if(FindObjectOfType<Dragon>()!=null)
         {
             myDragon = FindObjectOfType<Dragon>();
+            mySlider = transform.GetComponent<Slider>();
+            mySlider.maxValue = myDragon.MaxHp;
+            mySlider.value = myDragon.curHp;
+            myDragon.UpdateHp.RemoveAllListeners();
+            myDragon.UpdateHp.AddListener(RefreshHPBar);
         }
         else
         {
             Destroy(transform.gameObject);
         }
-        mySlider = transform.GetComponent<Slider>();
-        mySlider.maxValue = myDragon.MaxHp;
-        mySlider.value = myDragon.curHp;
-        myDragon.UpdateHp.RemoveAllListeners();
-        myDragon.UpdateHp.AddListener(RefreshHPBar);
     }
 
     // Update is called once per frame

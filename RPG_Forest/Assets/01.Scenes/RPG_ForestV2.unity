@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.41021925, g: 0.376658, b: 0.332671, a: 1}
+  m_IndirectSpecularColor: {r: 0.12478978, g: 0.11457897, b: 0.10119866, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6211,7 +6211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4280717542504068228, guid: ad092f930b313cb4b8e4ea0063b4aa98, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8
+      value: 3.56
       objectReference: {fileID: 0}
     - target: {fileID: 4280717542504068228, guid: ad092f930b313cb4b8e4ea0063b4aa98, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6713,6 +6713,7 @@ MonoBehaviour:
     desireDist: 0
   LookUpRange: {x: -60, y: 90}
   <toggleCameraRotation>k__BackingField: 0
+  CameraChange: 0
 --- !u!1001 &699606660
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6779,6 +6780,10 @@ PrefabInstance:
     - target: {fileID: 4280717542504068231, guid: ad092f930b313cb4b8e4ea0063b4aa98, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280717542504068231, guid: ad092f930b313cb4b8e4ea0063b4aa98, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4280717542547930022, guid: ad092f930b313cb4b8e4ea0063b4aa98, type: 3}
       propertyPath: DeadFunc.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -7926,6 +7931,9 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
+  UpdateHp:
+    m_PersistentCalls:
+      m_Calls: []
   SpringArm: {fileID: 698962520}
   WeaponPoint: {fileID: 533211372}
   npcMask:
@@ -10563,6 +10571,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4280717542504068231, guid: ad092f930b313cb4b8e4ea0063b4aa98, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4280717542547930022, guid: ad092f930b313cb4b8e4ea0063b4aa98, type: 3}
       propertyPath: DeadFunc.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -10940,6 +10952,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4280717542504068231, guid: ad092f930b313cb4b8e4ea0063b4aa98, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4280717542547930022, guid: ad092f930b313cb4b8e4ea0063b4aa98, type: 3}
       propertyPath: DeadFunc.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -11305,7 +11321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4280717542504068228, guid: ad092f930b313cb4b8e4ea0063b4aa98, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.74
+      value: -9.69
       objectReference: {fileID: 0}
     - target: {fileID: 4280717542504068228, guid: ad092f930b313cb4b8e4ea0063b4aa98, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11313,7 +11329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4280717542504068228, guid: ad092f930b313cb4b8e4ea0063b4aa98, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.16
+      value: 11.4
       objectReference: {fileID: 0}
     - target: {fileID: 4280717542504068228, guid: ad092f930b313cb4b8e4ea0063b4aa98, type: 3}
       propertyPath: m_LocalRotation.w

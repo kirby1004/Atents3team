@@ -9,7 +9,7 @@
 4. 개발 일정 확인하기 - [개발 일정](https://app.asana.com/0/1204352798021693/list)
 
 ---
-### V.4.0.04 - JS
+### V.4.0.05 - JS
 > Boss Scene  
   - Game Manager 추가
   - UI Manager 추가 (Event Handler)
@@ -17,7 +17,19 @@
   - Boss Map 
     * Plane Collider 추가
     * CineMahcine - 추가 예정
-
+---
+### V.4.0.04 - GY
+> 1. UI  
+- LootingSystem 업데이트  
+  * LootingWindow 외형구현  
+  * LootingItems 드랍테이블 구현 및 확률에 따른 아이템 드랍 구현
+  * 다수의 몬스터 처치시 루팅UI는 뜨지만 몬스터가 사라지지않는현상 존재
+- BossHpBar 기능 구현 - 외형적인 부분 추가 필요
+> 2. Monster
+- 몬스터 모델 2종 추가  
+  * Knight , Guard 모델 Animatior 추가 , 위치 배치 , 애드 범위 설정
+---
+###
 ---
 ### V.4.0.02 - JS
 > Scene 정리  
@@ -46,17 +58,6 @@
     * Trigger Enter, Exit 상태일 때 코드 수정. 
 ---
 ## ***Phase4*** 05.15(Mon) ~ 05.30(Tue)
----
-### V.4.0.03 - GY
-> 1. UI  
-- LootingSystem 업데이트  
-  * LootingWindow 외형구현  
-  * LootingItems 드랍테이블 구현 및 확률에 따른 아이템 드랍 구현
-  * 다수의 몬스터 처치시 루팅UI는 뜨지만 몬스터가 사라지지않는현상 존재
-- BossHpBar 기능 구현 - 외형적인 부분 추가 필요
-> 2. Monster
-- 몬스터 모델 2종 추가  
-  * Knight , Guard 모델 Animatior 추가 , 위치 배치 , 애드 범위 설정
 ---
 ### V.3.0.08 - SM
 >  1. Player
