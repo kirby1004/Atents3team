@@ -34,7 +34,9 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
     public Transform myTarget = null; // 몬스터의 타겟 -> Player
 
     public bool canFly = false;         // 날 수 있는 몬스터인 경우
+    //몬스터 드랍테이블 연동
     public ItemDropTable myDropTable;
+    //AIPerception 위치 연동
     public Transform myAI;
 
     public bool IsLive => m_monsterSM.CurrentState != m_states[eState.Die];

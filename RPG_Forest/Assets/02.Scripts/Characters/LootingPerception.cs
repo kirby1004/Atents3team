@@ -42,8 +42,8 @@ public class LootingPerception : MonoBehaviour
             int index = LootingManager.Inst.SearchIndexLootList();
             if (index != -1)
             {
-                myPlayer.OpenUi.AddListener(() => LootingManager.Inst.RefreshLootTarget(LootingManager.Inst.myLootWindows[index].myMonster));
-                myPlayer.CloseUi.AddListener(() => LootingManager.Inst.RemoveWindows(LootingManager.Inst.myLootWindows[index].myMonster));
+                myPlayer.OpenUi.AddListener(() => LootingManager.Inst.RefreshLootTarget(LootingManager.Inst.myLootingMonster[index].myMonster));
+                myPlayer.CloseUi.AddListener(() => LootingManager.Inst.RemoveWindows(LootingManager.Inst.myLootingMonster[index].myMonster));
             }
         }
         else
@@ -80,8 +80,8 @@ public class LootingPerception : MonoBehaviour
                 int index = LootingManager.Inst.SearchIndexLootList();
                 if( index != -1 )
                 {
-                    myPlayer.OpenUi.AddListener(() => LootingManager.Inst.RefreshLootTarget(LootingManager.Inst.myLootWindows[index].myMonster));
-                    myPlayer.CloseUi.AddListener(() => LootingManager.Inst.RemoveWindows(LootingManager.Inst.myLootWindows[index].myMonster));
+                    myPlayer.OpenUi.AddListener(() => LootingManager.Inst.RefreshLootTarget(LootingManager.Inst.myLootingMonster[index].myMonster));
+                    myPlayer.CloseUi.AddListener(() => LootingManager.Inst.RemoveWindows(LootingManager.Inst.myLootingMonster[index].myMonster));
                 }
             }
             else

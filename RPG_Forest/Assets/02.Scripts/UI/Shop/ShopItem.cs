@@ -23,11 +23,13 @@ public class ShopItem : MonoBehaviour, IPointerExitHandler, IPointerEnterHandler
             InventoryManager.Inst.AddItem(item);
         }
     }
+
     //마우스오버 끝날때
     public void OnPointerExit(PointerEventData eventData)
     {
         Debug.Log("OFF");
     }
+
     // 마우스오버 될때
     public void OnPointerEnter(PointerEventData eventData)
     {
