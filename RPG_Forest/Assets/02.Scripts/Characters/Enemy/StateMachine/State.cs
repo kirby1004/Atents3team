@@ -16,6 +16,7 @@ public abstract class State
 
     public virtual void Enter()
     {
+        Debug.Log($"현재 상태 : {stateMachine.CurrentState}");
     }
 
     public virtual void Exit()

@@ -1,0 +1,241 @@
+fileFormatVersion: 2
+guid: 7bcd32ab2a563c94f953fd4d95068157
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chimney
+    second: {fileID: 2100000, guid: 89d5d78e46800e149a22992e94d3f9d2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillBalcony
+    second: {fileID: 2100000, guid: fab90e2663a0cdd4586226bf3e5bdc27, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillChimney
+    second: {fileID: 2100000, guid: 6942783c5469ece47b9734464fb5917c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillCornerstone
+    second: {fileID: 2100000, guid: 8e40de6d28a13ef4798643e240a48c8c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillCornerstone02
+    second: {fileID: 2100000, guid: 47744f2e68e7484458ce7cbd7f63d414, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillCornerstone03
+    second: {fileID: 2100000, guid: 57f4768cae317254b82d8bff60e94449, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillDoor
+    second: {fileID: 2100000, guid: 269899c99c4927d47832f83d397bf5c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillFrame
+    second: {fileID: 2100000, guid: 15b3ef1f3a9888b45bb9e46dc167363c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillInside
+    second: {fileID: 2100000, guid: d92c08b5078b0184284cfcd33ebec5a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillRoof
+    second: {fileID: 2100000, guid: 26b5f17de1d3ff0488e4742c252f182c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillRoofInside
+    second: {fileID: 2100000, guid: f5a86b637a712784486846c9f0d61c47, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillStair
+    second: {fileID: 2100000, guid: 3d6368cf62aacb849870e1147ee9d507, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillStair02
+    second: {fileID: 2100000, guid: 0a867fdfb36ab66438e4f89de4f02ed5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillStoneWall
+    second: {fileID: 2100000, guid: dbee73180d19f194ab61677747d12e42, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillStoneWall02
+    second: {fileID: 2100000, guid: 3dc22e8e64c59914782c7c63d84f0a6c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillWaterMill
+    second: {fileID: 2100000, guid: 29048a5ced689cb4da95581af97b35a0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillWindow
+    second: {fileID: 2100000, guid: 1f6e408a7edc5fc48877622a85227795, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillWindow02
+    second: {fileID: 2100000, guid: 045b8abddd93280428f7e522932e0eea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillWoodenFrame
+    second: {fileID: 2100000, guid: e2572028722deb54d8439046ce0e4544, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillWoodenFrame02
+    second: {fileID: 2100000, guid: 16f25ea8da0af5e438f132325d76b6b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillWoodenFrame03
+    second: {fileID: 2100000, guid: 33f9925297868254aa9eae17fb3d2ce2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillWoodenPlate
+    second: {fileID: 2100000, guid: bb4efe8827103ef4cb997227c0a0b07b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillWoodenWall
+    second: {fileID: 2100000, guid: d91ba8f064f0b71408ea119151231470, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillWoodenWall02
+    second: {fileID: 2100000, guid: 60b2f1b771024d4468ab809b49978b90, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillWoodenWall03
+    second: {fileID: 2100000, guid: cafa98979809d4943a01fc9b360b0ae3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillWoodenWall04
+    second: {fileID: 2100000, guid: 1a5b0c5f2879b3f43a51cf4db05bb736, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMillWoodenWall05
+    second: {fileID: 2100000, guid: c7c4908289b3a7a4787c7ada80d95bdc, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

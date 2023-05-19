@@ -6,16 +6,23 @@ using UnityEngine.Events;
 public class CharacterProperty : MonoBehaviour
 {
     public UnityAction DeathAlarm;
+
+    [HideInInspector]
     public float MoveSpeed = 3.0f;
+    [HideInInspector]
     public float RotSpeed = 360.0f; //1초에 한바퀴.
     public float AttackRange = 1.0f;
     public float AttackDelay = 1.0f;
+
+    [HideInInspector]
     public float playTime = 0.0f;
     public float AttackPoint = 35.0f;
     public float MaxHp = 100.0f;
     float _curHp = -100.0f; //캐릭터 프로퍼티는 최상위부모. MonoBehaviour가 부모라서 생성자 x,생성자를 이용해서 초기화 X
 
     public LayerMask enemyLayer;
+
+    [HideInInspector]
     public UnityEvent<float> UpdateHp;
     public float curHp
     {

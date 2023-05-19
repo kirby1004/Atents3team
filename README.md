@@ -9,7 +9,7 @@
 4. 개발 일정 확인하기 - [개발 일정](https://app.asana.com/0/1204352798021693/list)
 
 ---
-### V.4.0.06 - GY
+### V.4.0.07 - GY
 > Forest Scene
   - 포탈 앞 가드몹 2마리 배치 - 몬스터 스텟 조정 필요
 > UI
@@ -20,6 +20,12 @@
     * 특정상황에서 루팅아이템의 상세정보가 출력되지않는현상 - 원인파악은 못하고 고침
     * UI창을 종료버튼으로 닫으면 메뉴바 아이콘들의 클릭이 작동하지않는현상
     * UI창 위에 마우스가 올라와있을때 캐릭터의 공격이 동작하는 현상
+---
+### V.4.0.06 - JS
+> Boss Scene  
+  - Boss OnCreate Skill - DevilEye 추가
+> Effect
+  - URP Setting adopted
 ---
 ### V.4.0.05 - JS
 > Boss Scene  

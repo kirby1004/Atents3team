@@ -22,7 +22,6 @@ public class DragonState_Landing : State
     public override void Exit()
     {
         base.Exit();
-        dragon.myAnim.SetBool("isFlying", false);
         dragon.isFlying = false;
     }
 
@@ -45,6 +44,7 @@ public class DragonState_Landing : State
 
         while (landTime < 1.0f)
         {
+            if(landTime > 0.8f && dragon.myAnim.GetBool("isFlying")) dragon.myAnim.SetBool("isFlying", false);
             landTime += Time.deltaTime / dragon.landingDuration;
             dragon.transform.position = Vector3.Lerp(startPos, targetPos, landTime);
             yield return null;

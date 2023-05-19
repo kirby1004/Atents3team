@@ -16,6 +16,7 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
         Die,
 
         Fly,
+        FlyToBackPos,
         FlySpitFire,
         Landing,
         BattleDragon
@@ -53,6 +54,7 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
         m_states.Add(eState.Die, new MonsterState_Die(this, m_monsterSM));
 
         m_monsterSM.Initialize(m_states[eState.Create]);
+        
 
         orgPos = this.transform.position;
 
@@ -74,7 +76,7 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
         m_monsterSM.CurrentState.PhysicsUpdate();
     }
 
-    #region
+    #region Create
     public virtual void OnCreate()
     {
 
@@ -159,11 +161,6 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
     #endregion
 
     #region Battle
-    //public override void Attack(Transform target = null)
-    //{
-
-    //}
-
     public Transform leftClawPoint;
 
     // IBattle Interface
@@ -190,23 +187,6 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
         m_monsterSM.ChangeState(m_states[eState.Battle]);
     }
 
-    // 쿨타임 체크 함수? 코루틴? 구현 필요
-
-
-    /*
-     * 
-     * public virtual void Attack(Transform attackPoint)
-    {
-        Collider[] list = Physics.OverlapSphere(attackPoint.position, 0.75f, enemyLayer); //웨폰 포인트는 캐릭터 무기의 위치를 가지고 있음.
-                                                                                          //  그 위치의 0.75 반지름을 가진 구의 공격범위를 가지고 있다. (나중에 수정 예정)
-                                                                                          // overLap에 감지된 콜라이더들을 list에 저장.
-        Debug.DrawLine(attackPoint.position, attackPoint.position + new Vector3(0.5f, 0.5f, 0.5f)); //이건 범위를 확인하기 위한 DrawLine (나중에 지울 예정)
-        foreach (Collider col in list) //list의 콜라이더들을 하나하나 꺼내서 IBattle 컴포넌트를 가지고 있는지 확인하고 맞으면 => OnDamage 함수 실행.
-        {
-            col.transform.GetComponent<IBattle>()?.OnDamage(AttackPoint);
-        }
-    }*/
-
     #endregion
 
     #region Die
@@ -221,7 +201,8 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
 
     public IEnumerator Disappearing()
     {
-        yield return new WaitForSeconds(3.0f);
+        var wfs = new WaitForSeconds(3.0f);
+        yield return wfs;
         float dist = 0.0f;
         while (dist < 1.0f)
         {

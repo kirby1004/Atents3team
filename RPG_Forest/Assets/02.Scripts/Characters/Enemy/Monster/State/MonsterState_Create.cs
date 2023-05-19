@@ -32,8 +32,9 @@ public class MonsterState_Create : State
 
     IEnumerator CreateDelay()
     {
-        yield return new WaitForSeconds(2.0f);
-        stateMachine.ChangeState(monster.m_states[Monster.eState.Idle]);
+        var wfs = new WaitForSeconds(5.0f);
+        yield return wfs;
+        if(stateMachine.CurrentState == monster.m_states[Monster.eState.Create]) stateMachine.ChangeState(monster.m_states[Monster.eState.Idle]);
     }
 
 }

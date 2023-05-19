@@ -21,28 +21,34 @@ public class SkillManager : MonoBehaviour
         }
     }
     [SerializeField]
-    Dictionary<Skillname,bool> skillCooldown = new Dictionary<Skillname,bool>(); //스킬이름이랑 bool 값 연결해서 true면 실행 X, false면 실행되지 않도록 
+    Dictionary<PlayerSkillName,bool> playerSkillCooldown = new Dictionary<PlayerSkillName, bool>(); //스킬이름이랑 bool 값 연결해서 true면 실행 X, false면 실행되지 않도록 
 
     private void Start() 
     {
-       for(int i = 0; i < System.Enum.GetValues(typeof(Skillname)).Length; i++)
+       for(int i = 0; i < System.Enum.GetValues(typeof(PlayerSkillName)).Length; i++)
         {
-            skillCooldown.Add((Skillname)i, false);
+            playerSkillCooldown.Add((PlayerSkillName)i, false);
         }
     }
 
-    public void RegisterSkill(Skillname name,Transform Point)
+    public void RegisterSkill(PlayerSkillName name,Transform Point)
     {
-        if (!skillCooldown[name])
+        if (!playerSkillCooldown[name])
         {
-            skillCooldown[name] = true;
+            playerSkillCooldown[name] = true;
             GameObject skill = ObjectPoolingManager.instance.GetObject((name).ToString(), Point.position, Quaternion.identity);
             skill.GetComponent<ISkill>()?.Use();
             StartCoroutine(CoolDown(name,skill.GetComponent<ISkill>().skillData.CoolTime));
         }
     }
 
-    IEnumerator CoolDown(Skillname name,float coolTime) //쿨다운 코루틴 쿨다운이 다 되면 false로 바꾸기.
+    public void RegisterSkill(MonsterSkillName name, Transform Point)
+    {
+        GameObject skill = ObjectPoolingManager.instance.GetObject((name).ToString(), Point.position, Quaternion.identity);
+        skill.GetComponent<ISkill>()?.Use();
+    }
+
+    IEnumerator CoolDown(PlayerSkillName name,float coolTime) //쿨다운 코루틴 쿨다운이 다 되면 false로 바꾸기.
     {
         float playTime = 0.0f;
         while (coolTime>playTime)
@@ -50,11 +56,16 @@ public class SkillManager : MonoBehaviour
             playTime += Time.deltaTime;
             yield return null;
         }
-        skillCooldown[name] = false;
+        playerSkillCooldown[name] = false;
     }
 }
 
-public enum Skillname
+public enum PlayerSkillName
 {
     EnergyBall
+}
+
+public enum MonsterSkillName
+{
+    DevilEye
 }
