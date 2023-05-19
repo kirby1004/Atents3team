@@ -9,6 +9,12 @@
 4. 개발 일정 확인하기 - [개발 일정](https://app.asana.com/0/1204352798021693/list)
 
 ---
+### V.4.0.06 - JS
+> Boss Scene  
+  - Boss OnCreate Skill - DevilEye 추가
+> Effect
+  - URP Setting adopted
+---
 ### V.4.0.05 - JS
 > Boss Scene  
   - Game Manager 추가
