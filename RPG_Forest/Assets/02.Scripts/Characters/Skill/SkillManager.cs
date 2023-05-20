@@ -42,6 +42,17 @@ public class SkillManager : MonoBehaviour
         }
     }
 
+    public void RegisterSkill(PlayerSkillName name, Transform Point,Quaternion quaternion)
+    {
+        if (!playerSkillCooldown[name])
+        {
+            playerSkillCooldown[name] = true;
+            GameObject skill = ObjectPoolingManager.instance.GetObject((name).ToString(), Point.position, quaternion);
+            skill.GetComponent<ISkill>()?.Use();
+            StartCoroutine(CoolDown(name, skill.GetComponent<ISkill>().skillData.CoolTime));
+        }
+    }
+
     public void RegisterSkill(MonsterSkillName name, Transform Point)
     {
         GameObject skill = ObjectPoolingManager.instance.GetObject((name).ToString(), Point.position, Quaternion.identity);
@@ -57,6 +68,7 @@ public class SkillManager : MonoBehaviour
             yield return null;
         }
         playerSkillCooldown[name] = false;
+        playTime = 0.0f;
     }
 }
 
