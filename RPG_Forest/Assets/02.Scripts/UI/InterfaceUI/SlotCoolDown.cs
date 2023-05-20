@@ -26,23 +26,5 @@ public class SlotCoolDown : MonoBehaviour
         
     }
 
-    public void StartCooldown(float myCooldown)
-    {
-        if(Mathf.Approximately(myImage.fillAmount,1.0f))
-        {
-            myImage.fillAmount = 0.0f;
-            StopAllCoroutines();
-            StartCooldown(myCooldown);
-        }
-    }
 
-    IEnumerator Cooldowns(float myCooldown)
-    {
-
-        while (myImage.fillAmount < 1.0f)
-        {
-            myImage.fillAmount += Time.deltaTime / myCooldown;
-            yield return null;
-        }
-    }
 }

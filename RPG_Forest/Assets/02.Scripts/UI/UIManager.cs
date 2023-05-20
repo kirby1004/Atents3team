@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour
             GameObject obj = Instantiate(Resources.Load("UIResource/System/StatusSystem") as GameObject, transform);
             statusManager = obj.GetComponent<StatusManager>();
         }
-        if(FindObjectOfType<LootingManager>() == null)
+        if (FindObjectOfType<LootingManager>() == null)
         {
             GameObject obj = Instantiate(Resources.Load("UIResource/System/LootingSystem") as GameObject, transform);
             lootingManager = obj.GetComponent<LootingManager>();
@@ -45,10 +45,12 @@ public class UIManager : MonoBehaviour
             GameObject obj = Instantiate(Resources.Load("UIResource/System/ShopSystem") as GameObject, transform);
             shopManager = obj.GetComponent<ShopManager>();
         }
+
     }
     private void Start()
     {
         Refresh();
+        skillList = GetComponentInChildren<MySkillList>();
     }
     [Header("Managers")]
     public InventoryManager inventoryManager;
@@ -60,8 +62,8 @@ public class UIManager : MonoBehaviour
     //public GameObject inventoryManagerGameObject;
     //public GameObject statusManagerGameObject;
     //public GameObject equipmentManagerGameObject;
-
-
+    
+    public MySkillList skillList;
 
 
     public void Refresh()
