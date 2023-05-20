@@ -36,7 +36,7 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
 
     public bool canFly = false;         // 날 수 있는 몬스터인 경우
     public ItemDropTable myDropTable;
-    public Transform myAI;
+    public Transform myAI = null;
 
     public bool IsLive => m_monsterSM.CurrentState != m_states[eState.Die];
 
@@ -77,7 +77,14 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
     #region Create
     public virtual void OnCreate()
     {
+        StartCoroutine(CreateDelay());
+    }
 
+    IEnumerator CreateDelay()
+    {
+        var wfs = new WaitForSeconds(2.0f);
+        yield return wfs;
+        m_monsterSM.ChangeState(m_states[Monster.eState.Idle]);
     }
     #endregion
 

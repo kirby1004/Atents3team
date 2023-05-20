@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
+  m_RequiresDepthTextureOption: 1
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras: []
@@ -142,7 +142,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6787210491104862247}
-  m_LocalRotation: {x: 0.000026800844, y: 0.000034483222, z: -0.000010374183, w: 1}
+  m_LocalRotation: {x: -0.000008800916, y: 1, z: -0.00002621549, w: -2.307203e-10}
   m_LocalPosition: {x: 0.463, y: 1.45, z: -0.056}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -150,7 +150,7 @@ Transform:
   - {fileID: 6787210490284956648}
   m_Father: {fileID: 6787210491212075589}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.003, y: 180, z: -0.001}
 --- !u!114 &6787210491104862245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,6 +177,7 @@ MonoBehaviour:
     desireDist: 0
   LookUpRange: {x: -60, y: 90}
   <toggleCameraRotation>k__BackingField: 0
+  CameraChange: 0
 --- !u!1 &6787210491212075588
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,6 +236,9 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
+  UpdateHp:
+    m_PersistentCalls:
+      m_Calls: []
   SpringArm: {fileID: 6787210491104862244}
   WeaponPoint: {fileID: 6787210491426436035}
   npcMask:
@@ -243,6 +247,7 @@ MonoBehaviour:
   warpMask:
     serializedVersion: 2
     m_Bits: 0
+  isEnterUI: 0
   isObjectNear: 0
   TestTrans: {fileID: 0}
 --- !u!136 &6787210491212075584
