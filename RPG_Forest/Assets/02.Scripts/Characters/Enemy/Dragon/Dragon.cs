@@ -48,11 +48,16 @@ public class Dragon : Monster
 
     public override void OnCreate()
     {
-        SkillManager.instance.RegisterSkill(MonsterSkillName.DevilEye, devilEye);
+        StartCoroutine(EncounterCutScene());
+    }
 
-        //GameObject obj = (GameObject)Instantiate(Resources.Load("DevilEye"));
-        //obj.SetActive(true);
-        //Destroy(obj, 5.0f);
+    IEnumerator EncounterCutScene()
+    {
+        //SkillManager.instance.RegisterSkill(MonsterSkillName.DevilEye, devilEye);
+
+        yield return new WaitForSeconds(10.0f);
+        Debug.Log("ECS ´ë±â ³¡");
+        m_monsterSM.ChangeState(m_states[eState.Idle]);
     }
     #endregion
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
+using TreeEditor;
 using UnityEditor.Rendering;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class EnergyBall : Skill,ISkill
         get;set;
     }
 
+    LayerMask enemyMask;
     public float dist;
     public void Awake()
     {
@@ -37,5 +39,17 @@ public class EnergyBall : Skill,ISkill
         }
         dist = skillData.Distance;
         ObjectPoolingManager.instance.ReturnObject(gameObject);
+    }
+
+   void Update()
+    {
+        Ray ray = new Ray();
+        ray.origin = HitPoint.position;
+        ray.direction = transform.forward;
+        if (Physics.Raycast(ray, out RaycastHit hit, 1.5f, enemyMask))
+        {
+            hit.transform.GetComponent<IBattle>()?.OnDamage(skillData.Value1);
+        }
+
     }
 }

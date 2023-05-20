@@ -8,6 +8,7 @@ public class PlayerAnimEvent : MonoBehaviour
     public UnityEvent AttackFunc;
     public UnityEvent AttackEnterFunc;
     public UnityEvent AttackExitFunc;
+    public UnityEvent QSkillFunc;
     // Start is called before the first frame update
     public void OnAttackEnter() //Attack이 시작될 때 실행.
     {
@@ -21,5 +22,10 @@ public class PlayerAnimEvent : MonoBehaviour
     public void OnAttackExit() //Attack이 끝날 때 실행.
     {
         AttackExitFunc?.Invoke();
+    }
+
+    public void SkillOn()
+    {
+        QSkillFunc?.Invoke();
     }
 }

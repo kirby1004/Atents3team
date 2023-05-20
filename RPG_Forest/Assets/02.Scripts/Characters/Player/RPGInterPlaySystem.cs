@@ -10,7 +10,6 @@ interface IinterPlay
     UnityEvent OpenUi { get; set; }
     UnityEvent CloseUi { get; set; }
     UnityEvent interPlay { get; set; }
-    UnityAction OpenLoot { get; set; }
 }
 public class RPGInterPlaySystem : MonoBehaviour
 {
