@@ -13,16 +13,36 @@ public class SlotCoolDown : MonoBehaviour
         transform.localPosition = Vector3.zero;
         GetComponent<RectTransform>().sizeDelta = myParent.GetComponent<RectTransform>().sizeDelta;
         myImage = GetComponent<Image>();
-        myImage.sprite = myParent.GetComponent<Image>().sprite;
+        myImage.sprite = myParent.GetComponent<SkillSlot>().mySkillData.Image;
         myImage.type = Image.Type.Filled;
         myImage.fillOrigin = 2;
 
-        myParent.GetComponent<Item>().myIcon = myImage;
+        //myParent.GetComponent<SkillSlot>().myIcon = myImage;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void StartCooldown(float myCooldown)
+    {
+        if(Mathf.Approximately(myImage.fillAmount,1.0f))
+        {
+            myImage.fillAmount = 0.0f;
+            StopAllCoroutines();
+            StartCooldown(myCooldown);
+        }
+    }
+
+    IEnumerator Cooldowns(float myCooldown)
+    {
+
+        while (myImage.fillAmount < 1.0f)
+        {
+            myImage.fillAmount += Time.deltaTime / myCooldown;
+            yield return null;
+        }
     }
 }
