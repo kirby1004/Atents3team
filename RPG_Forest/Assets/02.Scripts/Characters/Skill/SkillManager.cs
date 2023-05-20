@@ -38,6 +38,8 @@ public class SkillManager : MonoBehaviour
             playerSkillCooldown[name] = true;
             GameObject skill = ObjectPoolingManager.instance.GetObject((name).ToString(), Point.position, Quaternion.identity);
             skill.GetComponent<ISkill>()?.Use();
+            UIManager.instance.skillList.FindSlots(skill.GetComponent<ISkill>().skillData).
+                StartCooldown(skill.GetComponent<ISkill>().skillData.CoolTime);
             StartCoroutine(CoolDown(name,skill.GetComponent<ISkill>().skillData.CoolTime));
         }
     }
@@ -49,6 +51,8 @@ public class SkillManager : MonoBehaviour
             playerSkillCooldown[name] = true;
             GameObject skill = ObjectPoolingManager.instance.GetObject((name).ToString(), Point.position, quaternion);
             skill.GetComponent<ISkill>()?.Use();
+            UIManager.instance.skillList.FindSlots(skill.GetComponent<ISkill>().skillData).
+                StartCooldown(skill.GetComponent<ISkill>().skillData.CoolTime);
             StartCoroutine(CoolDown(name, skill.GetComponent<ISkill>().skillData.CoolTime));
         }
     }

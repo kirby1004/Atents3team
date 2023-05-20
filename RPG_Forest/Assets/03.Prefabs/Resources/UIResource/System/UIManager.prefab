@@ -292,7 +292,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1232145182763917659}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 1232145181056303618}
   - component: {fileID: 4021639448543830402}
   m_Layer: 5
-  m_Name: Skill
+  m_Name: Skill1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -522,7 +522,7 @@ RectTransform:
   m_Children:
   - {fileID: 8658190774627401249}
   m_Father: {fileID: 1232145182763917659}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -670,8 +670,9 @@ GameObject:
   - component: {fileID: 1232145181502683709}
   - component: {fileID: 1232145181502683707}
   - component: {fileID: 1232145181502683708}
+  - component: {fileID: 7241880820140880864}
   m_Layer: 5
-  m_Name: Skill
+  m_Name: Skill3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -736,6 +737,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7241880820140880864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232145181502683710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4327f5ca92a9c64a9582b1790cbe03a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySkillData: {fileID: 0}
+  myIcon: {fileID: 5795503770725391016}
 --- !u!1 &1232145181625541541
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,6 +881,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slots:
   - {fileID: 4021639448543830402}
+  - {fileID: 6835255534814824390}
+  - {fileID: 7241880820140880864}
+  - {fileID: 2110889338544968179}
 --- !u!1 &1232145181941301213
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,8 +975,9 @@ GameObject:
   - component: {fileID: 1232145182024320636}
   - component: {fileID: 1232145182024320634}
   - component: {fileID: 1232145182024320635}
+  - component: {fileID: 6835255534814824390}
   m_Layer: 5
-  m_Name: SKill
+  m_Name: SKill2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1023,6 +1042,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6835255534814824390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232145182024320637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4327f5ca92a9c64a9582b1790cbe03a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySkillData: {fileID: 0}
+  myIcon: {fileID: 5036802140427421004}
 --- !u!1 &1232145182306174238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,8 +1067,9 @@ GameObject:
   - component: {fileID: 1232145182306174237}
   - component: {fileID: 1232145182306174235}
   - component: {fileID: 1232145182306174236}
+  - component: {fileID: 2110889338544968179}
   m_Layer: 5
-  m_Name: Skill
+  m_Name: Skill4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1100,6 +1134,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2110889338544968179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232145182306174238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4327f5ca92a9c64a9582b1790cbe03a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySkillData: {fileID: 0}
+  myIcon: {fileID: 4468358454495222274}
 --- !u!1 &1232145182334851664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,8 +1332,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1232145180814811488}
   - {fileID: 1232145181056303619}
+  - {fileID: 1232145180814811488}
   m_Father: {fileID: 1232145181941301212}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8745,6 +8793,7 @@ MonoBehaviour:
   statusManager: {fileID: 0}
   shopManager: {fileID: 0}
   lootingManager: {fileID: 0}
+  skillList: {fileID: 0}
 --- !u!1 &5809447225880837189
 GameObject:
   m_ObjectHideFlags: 0
@@ -9289,7 +9338,7 @@ GameObject:
   - component: {fileID: 5719534220428219184}
   - component: {fileID: 5795503770725391016}
   m_Layer: 5
-  m_Name: Image (3)
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

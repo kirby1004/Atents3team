@@ -19,6 +19,13 @@ public class MySkillList : MonoBehaviour
         
     }
 
-
+    public SkillSlot FindSlots(SkillData myData)
+    {
+        for (int i = 0; i < slots.Count; i++)
+        {
+            if (slots[i].mySkillData == myData) return slots[i];
+        }
+        return null;
+    }
 
 }
