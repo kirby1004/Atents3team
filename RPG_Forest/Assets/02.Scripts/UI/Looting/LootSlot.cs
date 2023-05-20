@@ -63,23 +63,32 @@ public class LootSlot : MonoBehaviour , IPointerClickHandler ,IPointerEnterHandl
     Vector2 sumPos = Vector2.zero;
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(isLoot == false)
+        if(MouseOverWindows == null)
         {
-            MouseOverWindows = Instantiate(Resources.Load("UIResource/MouseOverWindow/MouseOverWindow") as GameObject,
-                LootingManager.Inst.LootWindow.transform);
-            MouseOverWindows.GetComponent<MouseOverWindow>().myItem = myItem;
-            mousePos = (Vector2)transform.position - eventData.position;
-            sumPos = new Vector2(MouseOverWindows.GetComponent<RectTransform>().rect.width / 2,
-                MouseOverWindows.GetComponent<RectTransform>().rect.height / 2);
-            MouseOverWindows.transform.position = eventData.position + sumPos;
+            if(isLoot == false)
+            {
+                MouseOverWindows = Instantiate(Resources.Load("UIResource/MouseOverWindow/MouseOverWindow") as GameObject,
+                    LootingManager.Inst.LootWindow.transform);
+                MouseOverWindows.GetComponent<MouseOverWindow>().myItem = myItem;
+                mousePos = (Vector2)transform.position - eventData.position;
+                sumPos = new Vector2(MouseOverWindows.GetComponent<RectTransform>().rect.width / 2,
+                    MouseOverWindows.GetComponent<RectTransform>().rect.height / 2);
+                MouseOverWindows.transform.position = eventData.position + sumPos;
+            }
+
         }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (isLoot == false)
+        if(MouseOverWindows != null)
         {
-            Destroy(MouseOverWindows);
+            if (isLoot == false)
+            {
+
+                Destroy(MouseOverWindows);
+                MouseOverWindows = null;
+            }
         }
     }
 

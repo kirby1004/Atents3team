@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using TMPro;
 
 public class PlayerHpBar : MonoBehaviour
 {
     public Slider mySlider;
     public PlayerController myPlayer;
+    public TMP_Text myText;
     // Start is called before the first frame update
     void Awake()
     {
@@ -33,5 +35,6 @@ public class PlayerHpBar : MonoBehaviour
     public void RefreshHPBar(float hp)
     {
         mySlider.value = hp;
+        myText.text = $"{hp} / {myPlayer.MaxHp}";
     }
 }
