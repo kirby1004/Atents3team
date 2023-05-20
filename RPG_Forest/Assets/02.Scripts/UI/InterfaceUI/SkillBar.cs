@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class SkillBar : MonoBehaviour
 {
-    public List<SkillSlot> slots = new List<SkillSlot>();
+    public List<SkillSlot> mySkillSlots = new List<SkillSlot>();
+
+
+
     // Start is called before the first frame update
     void Start()
     {

@@ -100,7 +100,7 @@ public class LootingManager : Singleton<LootingManager>
     // 루팅창을 제거하며 몬스터의 삭제 및 리스트의 인덱스까지정리하는 함수
     public void RemoveWindows(Monster monster)
     {
-        int index = -1;
+        //int index = -1;
         for (int i = 0; i < LootWindowList.Count; i++)
         {
             if (myLootingMonster[i].myMonster == monster)

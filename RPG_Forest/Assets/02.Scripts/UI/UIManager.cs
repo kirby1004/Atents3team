@@ -40,6 +40,11 @@ public class UIManager : MonoBehaviour
             GameObject obj = Instantiate(Resources.Load("UIResource/System/LootingSystem") as GameObject, transform);
             lootingManager = obj.GetComponent<LootingManager>();
         }
+        if (FindObjectOfType<ShopManager>() == null)
+        {
+            GameObject obj = Instantiate(Resources.Load("UIResource/System/ShopSystem") as GameObject, transform);
+            shopManager = obj.GetComponent<ShopManager>();
+        }
     }
     private void Start()
     {
@@ -69,8 +74,13 @@ public class UIManager : MonoBehaviour
         EquipmentManager.Inst.gameObject.SetActive(false);
         InventoryManager.Inst.gameObject.SetActive(false);
         StatusManager.Inst.gameObject.SetActive(false);
+
     }
 
+    public void TestOpenShop(ShopItemList myList)
+    {
+        ShopManager.Inst.OpenShop(myList);
+    }
 }
 public enum ItemSlotType
 {

@@ -11,12 +11,7 @@ public class PlayerHpBar : MonoBehaviour
     public PlayerController myPlayer;
     public TMP_Text myText;
     // Start is called before the first frame update
-    void Awake()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
         if (FindObjectOfType<PlayerController>() != null)
         {
@@ -24,6 +19,7 @@ public class PlayerHpBar : MonoBehaviour
             mySlider = transform.GetComponent<Slider>();
             mySlider.maxValue = myPlayer.MaxHp;
             mySlider.value = myPlayer.curHp;
+            myText.text = $"{myPlayer.curHp} / {myPlayer.MaxHp}";
             myPlayer.UpdateHp.RemoveAllListeners();
             myPlayer.UpdateHp.AddListener(RefreshHPBar);
         }
@@ -32,9 +28,16 @@ public class PlayerHpBar : MonoBehaviour
             Destroy(transform.gameObject);
         }
     }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
     public void RefreshHPBar(float hp)
     {
         mySlider.value = hp;
         myText.text = $"{hp} / {myPlayer.MaxHp}";
+        mySlider.maxValue = myPlayer.MaxHp;
     }
 }

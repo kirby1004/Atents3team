@@ -71,11 +71,10 @@ public class LootSlot : MonoBehaviour , IPointerClickHandler ,IPointerEnterHandl
                     LootingManager.Inst.LootWindow.transform);
                 MouseOverWindows.GetComponent<MouseOverWindow>().myItem = myItem;
                 mousePos = (Vector2)transform.position - eventData.position;
-                sumPos = new Vector2(MouseOverWindows.GetComponent<RectTransform>().rect.width / 2,
-                    MouseOverWindows.GetComponent<RectTransform>().rect.height / 2);
+                sumPos = new Vector2(MouseOverWindows.GetComponent<RectTransform>().sizeDelta.x / 2,
+                    MouseOverWindows.GetComponent<RectTransform>().sizeDelta.y / 2);
                 MouseOverWindows.transform.position = eventData.position + sumPos;
             }
-
         }
     }
 
