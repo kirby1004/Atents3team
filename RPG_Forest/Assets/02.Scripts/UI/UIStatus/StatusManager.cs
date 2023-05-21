@@ -15,19 +15,19 @@ public class StatusManager : Singleton<StatusManager>
             switch ((StatType)i)
             {
                 case StatType.HP:
-                    myStat[i].text = EquipmentManager.Inst.equipmentHP.ToString();
+                    myStat[i].text = Gamemanager.instance.myPlyaer.MaxHp.ToString()+ $"(+{EquipmentManager.Inst.equipmentHP.ToString()})";
                     break;
                 case StatType.AP:
-                    myStat[i].text = EquipmentManager.Inst.equipmentAP.ToString();
+                    myStat[i].text = Gamemanager.instance.myPlyaer.AttackPoint.ToString()+ $"(+{EquipmentManager.Inst.equipmentAP.ToString()})";
                     break;
                 case StatType.DP:
-                    myStat[i].text = EquipmentManager.Inst.equipmentDP.ToString();
+                    myStat[i].text = Gamemanager.instance.myPlyaer.DefensePoint.ToString() + $"(+{EquipmentManager.Inst.equipmentDP.ToString()})";
                     break;
                 case StatType.Speed:
-                    myStat[i].text = EquipmentManager.Inst.equipmentSpeed.ToString();
+                    myStat[i].text = Gamemanager.instance.myPlyaer.MoveSpeed.ToString() + $"(+{EquipmentManager.Inst.equipmentSpeed.ToString()})";
                     break;
                 case StatType.AS:
-                    myStat[i].text = EquipmentManager.Inst.equipmentAS.ToString();
+                    myStat[i].text = Gamemanager.instance.myPlyaer.AttackDelay.ToString() + $"(+{EquipmentManager.Inst.equipmentAS.ToString()})";
                     break;
             }
         }
