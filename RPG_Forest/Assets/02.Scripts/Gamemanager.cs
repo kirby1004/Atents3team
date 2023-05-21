@@ -34,10 +34,11 @@ public class Gamemanager : MonoBehaviour
 
     // 씬
     public GameObject cutScene01;
-
+    
+    //enum CutScene { encounter = 4, cut1, cut2, cut3 }
 
     // 바인딩
-    
+
     public PlayerController myPlyaer;
     public Monster myEnemy;
     public Spawnner mySpawnner; // 트랜스폼만 받을지 클래스 전체로 받을지

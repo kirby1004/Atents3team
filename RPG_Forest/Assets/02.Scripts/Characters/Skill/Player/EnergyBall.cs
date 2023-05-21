@@ -51,5 +51,7 @@ public class EnergyBall : Skill,ISkill
             hit.transform.GetComponent<IBattle>()?.OnDamage(skillData.Value1);
         }
 
+        Debug.DrawLine(HitPoint.position, ray.direction);
+
     }
 }

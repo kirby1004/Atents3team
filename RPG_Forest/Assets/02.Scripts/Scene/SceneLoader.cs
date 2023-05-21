@@ -27,7 +27,7 @@ public class SceneLoader : Singleton<SceneLoader>
         while (!op.isDone)
         {
             slider.value = op.progress / 0.9f;
-            if(Mathf.Approximately(slider.value, 1.0f))
+            if (Mathf.Approximately(slider.value, 1.0f))
             {
                 yield return new WaitForSeconds(1.0f); // Debuging용 딜레이 추가  
                 op.allowSceneActivation = true;
@@ -35,6 +35,8 @@ public class SceneLoader : Singleton<SceneLoader>
             yield return null;
         }
     }
+
+    //void setupUIManager(Scene curScene, Scene nextScene) {  }
 
     
 }

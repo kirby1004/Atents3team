@@ -3706,6 +3706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c51e179e13de994190538ae2feba1bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cutScene01: {fileID: 0}
   myPlyaer: {fileID: 2034936017}
   myEnemy: {fileID: 1441952542}
   mySpawnner: {fileID: 0}
@@ -3806,7 +3807,10 @@ MonoBehaviour:
   dontDestroy: 1
   playerSkill:
   - prefab: {fileID: 2467265553658134814, guid: 0d801d6040ace084caff3119c26a39bc, type: 3}
-    poolCount: 10
+    poolCount: 4
+    explan: 
+  - prefab: {fileID: 2414816008507225855, guid: 841d94db08daab247b7f6aa7be55bee3, type: 3}
+    poolCount: 4
     explan: 
   MonsterSkill:
   - prefab: {fileID: 5263440771783224704, guid: 5292d547fa6e1844ba8b58f0e14d5d55, type: 3}

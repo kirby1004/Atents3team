@@ -13,13 +13,18 @@ public class CutScene : MonoBehaviour
     private float duration;
     [SerializeField]
     private float time;
+    
 
     void Start()
     {
+        UIManager.instance.gameObject.SetActive(false);
         myPD = GetComponent<PlayableDirector>();
         myPD.initialTime = 0.0f;
         duration = (float)myPD.playableAsset.duration;
         time = (float)myPD.initialTime;
+
+        SceneManager.activeSceneChanged += setUpUIManager;
+
     }
 
     void Update()
@@ -31,4 +36,18 @@ public class CutScene : MonoBehaviour
             SceneManager.LoadScene(2);
         }
     }
+
+    void setUpUIManager(Scene curScene, Scene nextScene)
+    {
+        if (nextScene.buildIndex == 2)
+        {
+            UIManager.instance.gameObject.SetActive(true);
+        }
+        else
+        {
+            UIManager.instance.gameObject.SetActive(false);
+        }
+    }
+
+
 }

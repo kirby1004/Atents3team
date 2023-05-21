@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _image: {fileID: 0}
   _name: 
-  _value1: 50
+  _value1: 0.5
   _value2: 0
   _range: 0
-  _distance: 5
+  _distance: 3
   _coolTime: 10
   _Speed: 0.8
   _crowdControlType: 0

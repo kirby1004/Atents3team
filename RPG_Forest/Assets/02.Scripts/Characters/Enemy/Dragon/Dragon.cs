@@ -52,7 +52,8 @@ public class Dragon : Monster
     IEnumerator EncounterCutScene()
     {
         Vector3 pos = transform.position + new Vector3(0, 13, 0);
-        SkillManager.instance.RegisterSkill(MonsterSkillName.DevilEye, pos);
+        ObjectPoolingManager.instance.GetObject("DevilEye", pos, Quaternion.identity);
+        //SkillManager.instance.RegisterSkill(MonsterSkillName.DevilEye, pos);
         
         yield return new WaitForSeconds(3.5f);
         m_monsterSM.ChangeState(m_states[eState.Idle]);

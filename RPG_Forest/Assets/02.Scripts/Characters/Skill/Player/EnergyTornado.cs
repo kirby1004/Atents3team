@@ -48,6 +48,7 @@ public class EnergyTornado : Skill,ISkill
 
     private void OnTriggerStay(Collider other)
     {
+        //Debug.Log("Test");
         if (((1 << other.gameObject.layer) & enemyMask) != 0)
         {
             other.GetComponent<IBattle>()?.OnDamage(skillData.Value1);
