@@ -598,6 +598,60 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bc3e3c5b01b30ab4db2e38ede4074d59, type: 3}
   m_PrefabInstance: {fileID: 534128660}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &46754788
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 46754790}
+  - component: {fileID: 46754789}
+  m_Layer: 0
+  m_Name: OverPooling
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &46754789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46754788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 685ecabfa8a890444b61ae508ab380d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dontDestroy: 1
+  playerSkill:
+  - prefab: {fileID: 2467265553658134814, guid: 0d801d6040ace084caff3119c26a39bc, type: 3}
+    poolCount: 1
+    explan: 
+  - prefab: {fileID: 2414816008507225855, guid: 841d94db08daab247b7f6aa7be55bee3, type: 3}
+    poolCount: 1
+    explan: 
+  MonsterSkill: []
+  ObjectPoolList: []
+--- !u!4 &46754790
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46754788}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.5441475, y: -4.6306205, z: 5.380077}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &50153449
 GameObject:
   m_ObjectHideFlags: 0
@@ -3211,10 +3265,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 21326941}
     m_Modifications:
-    - target: {fileID: 383706016603429910, guid: ad092f930b313cb4b8e4ea0063b4aa98, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4280717542504068228, guid: ad092f930b313cb4b8e4ea0063b4aa98, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3263,43 +3313,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster
       objectReference: {fileID: 0}
-    - target: {fileID: 4280717542504068231, guid: ad092f930b313cb4b8e4ea0063b4aa98, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4280717542547930022, guid: ad092f930b313cb4b8e4ea0063b4aa98, type: 3}
-      propertyPath: DeadFunc.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 505690818}
-    - target: {fileID: 4280717542547930022, guid: ad092f930b313cb4b8e4ea0063b4aa98, type: 3}
-      propertyPath: DeadFunc.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnDisappear
-      objectReference: {fileID: 0}
-    - target: {fileID: 4280717542547930022, guid: ad092f930b313cb4b8e4ea0063b4aa98, type: 3}
-      propertyPath: DeadFunc.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Monster, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4280717542547930022, guid: ad092f930b313cb4b8e4ea0063b4aa98, type: 3}
-      propertyPath: DeadFunc.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 6907000114969427486, guid: ad092f930b313cb4b8e4ea0063b4aa98, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad092f930b313cb4b8e4ea0063b4aa98, type: 3}
---- !u!114 &505690818 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4280717542504068229, guid: ad092f930b313cb4b8e4ea0063b4aa98, type: 3}
-  m_PrefabInstance: {fileID: 505690817}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cd21193207b63d43ae4c8664a850959, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &510253583 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4280717542504068228, guid: ad092f930b313cb4b8e4ea0063b4aa98, type: 3}
@@ -5308,6 +5323,51 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5756018896799936720, guid: 277df2e0e722eb444a25fcb189e60663, type: 3}
+--- !u!1 &990233237
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 990233239}
+  - component: {fileID: 990233238}
+  m_Layer: 0
+  m_Name: SkillManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &990233238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990233237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 650bc91712bc98d4fa7adeedebb37d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: 
+--- !u!4 &990233239
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990233237}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.2933617, y: -2.9096947, z: 8.861611}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &993016392 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a16116dd869afc9488358beb974d0d3d, type: 3}
