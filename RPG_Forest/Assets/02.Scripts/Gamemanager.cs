@@ -33,6 +33,7 @@ public class Gamemanager : MonoBehaviour
     }
 
     // ¾À
+    public GameObject cutScene01;
 
 
     // ¹ÙÀÎµù

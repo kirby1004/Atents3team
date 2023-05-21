@@ -55,6 +55,7 @@ public class DragonState_FlySpitFire : State
 
             yield return wfs;
         }
+        
         stateMachine.ChangeState(dragon.m_states[Dragon.eState.Landing]);
     }
 
