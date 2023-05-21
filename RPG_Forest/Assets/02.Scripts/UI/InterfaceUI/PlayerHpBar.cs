@@ -37,7 +37,7 @@ public class PlayerHpBar : MonoBehaviour
     public void RefreshHPBar(float hp)
     {
         mySlider.value = hp;
-        myText.text = $"{hp} / {myPlayer.MaxHp}";
+        myText.text = hp.ToString("N0") +$"/ {myPlayer.MaxHp}";
         mySlider.maxValue = myPlayer.MaxHp;
     }
 }
