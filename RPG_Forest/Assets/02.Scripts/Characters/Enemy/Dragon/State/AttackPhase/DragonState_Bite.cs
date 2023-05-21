@@ -30,8 +30,8 @@ public class DragonState_Bite : AttackPhase
                     yield break;
                 }
             }
-            yield return wfs;
-            dragon.playTime += delayTime;
+           yield return wfs;
+           dragon.playTime += delayTime;
         }
     }
 }

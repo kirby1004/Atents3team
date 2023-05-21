@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class SpitFire : Skill, ISkill
 {
     [field:SerializeField]
     public SkillData skillData { get; set; }
-
-    public ParticleSystem ps;
-
+    [SerializeField]
+    SpitFireTrigger trigger;
     public void Awake()
     {
-        ps = GetComponentInChildren<ParticleSystem>();
+       
     }
 
     public void Use()
@@ -26,5 +26,13 @@ public class SpitFire : Skill, ISkill
         ObjectPoolingManager.instance.ReturnObject(gameObject);
         yield return null;
 
+    }
+
+    public void Update()
+    {
+        //if (trigger.isHit)
+        //{
+        //    trigger.hitObject.GetComponent<IBattle>()?.OnDamage(5);
+        //}
     }
 }
