@@ -1054,7 +1054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4327f5ca92a9c64a9582b1790cbe03a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySkillData: {fileID: 0}
+  mySkillData: {fileID: 11400000, guid: b356202739fd9984bb296727b2260cad, type: 2}
   myIcon: {fileID: 5036802140427421004}
 --- !u!1 &1232145182306174238
 GameObject:
