@@ -17,9 +17,9 @@ MonoBehaviour:
   _itemName: T1Leggins
   _attackPoint: 0
   _attackSpeed: 0
-  _defensePoint: 8
+  _defensePoint: 7
   _moveSpeed: 0
-  _maxHpIncrese: 30
+  _maxHpIncrese: 4
   _itemCoolDown: 0
   stackable: 0
   _image: {fileID: 21300000, guid: 5e01487d88492244fb638f02b7384bd1, type: 3}

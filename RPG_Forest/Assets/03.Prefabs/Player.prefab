@@ -289,6 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c5e9ad85976f2945b17e324048352d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myBaseStatus: {fileID: 11400000, guid: b478d324fc8a1c248bbc6b4a5838f9ea, type: 2}
   MoveSpeed: 3
   RotSpeed: 360
   AttackRange: 1

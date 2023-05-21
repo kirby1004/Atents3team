@@ -28,6 +28,11 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
     //공격 관련 변수
     int clickCount = 0;
     Coroutine coCheck = null;
+    // 플레이어 스텟 장비합산 재정의
+    public new float AttackPoint {get{return myBaseStatus.AttackPoint + EquipmentManager.Inst.equipmentAP;}}
+    public new float DefensePoint { get { return myBaseStatus.DefensePoint + EquipmentManager.Inst.equipmentDP; } }
+    public new float MaxHp { get { return myBaseStatus.MaxHp + EquipmentManager.Inst.equipmentAP; } }
+    public new float MoveSpeed { get { return myBaseStatus.MoveSpeed + EquipmentManager.Inst.equipmentAP; } }
 
     //구르기 관련 변수
     float rollPlayTime = 3.0f;

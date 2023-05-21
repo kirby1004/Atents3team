@@ -80,14 +80,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd21193207b63d43ae4c8664a850959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 3
+  myBaseStatus: {fileID: 11400000, guid: 30bc001cb2be7fa48921d107adeb6289, type: 2}
   RotSpeed: 360
   AttackRange: 1
   AttackDelay: 1
   playTime: 0
-  AttackPoint: 35
-  DefensePoint: 10
-  MaxHp: 100
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256

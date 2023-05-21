@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using TMPro.Examples;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -64,7 +67,7 @@ public class UIManager : MonoBehaviour
     //public GameObject equipmentManagerGameObject;
     
     public MySkillList skillList;
-
+    public TMP_Text myName;
 
     public void Refresh()
     {

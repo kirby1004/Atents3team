@@ -311,13 +311,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a332fa8499fa304787d6bb3a6f422c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 3
+  myBaseStatus: {fileID: 11400000, guid: 882f7c99c84e5f34697c92b229f6b792, type: 2}
   RotSpeed: 360
   AttackRange: 5
   AttackDelay: 1
   playTime: 0
-  AttackPoint: 35
-  MaxHp: 110
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -328,12 +326,11 @@ MonoBehaviour:
   orgPos: {x: 0, y: 0, z: 0}
   myTarget: {fileID: 0}
   canFly: 0
-  myDropTable: {fileID: 0}
-  myAI: {fileID: 0}
+  myDropTable: {fileID: 11400000, guid: 0a2c9d46a47639842a6a4b93e03f8ede, type: 2}
+  myAI: {fileID: 5109323813077289598}
   leftClawPoint: {fileID: 5109323814729835467}
   headPoint: {fileID: 5109323812957638735}
   isBerserk: 0
-  devilEye: {fileID: 0}
   flyPos: {x: 0, y: 0, z: 0}
   isFlying: 0
   flyHeight: 25
@@ -342,7 +339,7 @@ MonoBehaviour:
   spitFireCnt: 0
   spitFireDelay: 3
   flyToBackPos: {fileID: 1335898279}
-  rainOfFire: {fileID: 0}
+  spitFirePos: {fileID: 0}
 --- !u!136 &5109323814818870066
 CapsuleCollider:
   m_ObjectHideFlags: 0
