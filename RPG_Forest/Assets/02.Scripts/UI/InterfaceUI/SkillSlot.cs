@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class SkillSlot : MonoBehaviour , IPointerClickHandler
+public class SkillSlot : MonoBehaviour 
 {
     public SkillData mySkillData;
 
@@ -19,7 +19,8 @@ public class SkillSlot : MonoBehaviour , IPointerClickHandler
         //GetComponent<Image>().sprite = mySkillData.Image;
         //myIcon.sprite = mySkillData.Image;
         myIcon.fillAmount = 1.0f;
-
+        GetComponent<Image>().sprite = mySkillData.Image;
+        myIcon.sprite = mySkillData.Image;
     }
 
     // Update is called once per frame
