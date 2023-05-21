@@ -54,7 +54,7 @@ public class ItemInfo : MonoBehaviour
         {
             case ItemType.Weapon:
                 Options[0].text = "AP";
-                Options[1].text = "AS";
+                //Options[1].text = "AS"; 공속 추가시 활성화
                 break;
             case ItemType.Armor:
                 Options[0].text = "HP";
@@ -116,7 +116,7 @@ public class ItemInfo : MonoBehaviour
         {
             case ItemType.Weapon:
                 OptionNums[0].text = myItem.AttackPoint.ToString();
-                OptionNums[1].text = myItem.AttackSpeed.ToString();
+                //OptionNums[1].text = myItem.AttackSpeed.ToString(); 공속 추가시 활성화
                 break;
             case ItemType.Armor:
                 OptionNums[0].text = myItem.MaxHpIncrese.ToString();
@@ -154,8 +154,8 @@ public class ItemInfo : MonoBehaviour
             switch (item.MyItemType)
             {
                 case ItemType.Weapon:
-                    MakeOptions(2);
-                    MakeOptionNums(2);
+                    MakeOptions(1);
+                    MakeOptionNums(1);
                     break;
                 case ItemType.Armor:
                     MakeOptions(2);
