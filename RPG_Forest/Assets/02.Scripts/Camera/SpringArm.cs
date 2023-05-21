@@ -89,7 +89,7 @@ public class SpringArm : MonoBehaviour
     }
 
     public bool CameraChange = false;
-    public void ViewPointTransformation(Transform ViewPoint, UnityEvent e = null)
+    public void ViewPointTransformation(Transform ViewPoint, UnityAction e = null)
     {
         myCam.transform.SetParent(null);
         ChangeViewPoint(ViewPoint,e);
@@ -104,16 +104,13 @@ public class SpringArm : MonoBehaviour
 
     public void ResetSetting()
     {
-        //myCam.localPosition = cameraPoint.localPosition;
-        //myCam.localRotation = cameraPoint.localRotation;
-        //curRot = transform.localRotation.eulerAngles;        
-        //CameraChange = false;
         StopAllCoroutines();
         StartCoroutine(Resetting(myZoomData.curDist));
     }
 
     IEnumerator Resetting(float dist)
     {           
+        myCam.localRotation=Quaternion.identity;
         while (Mathf.Abs(myCam.localPosition.x) > 0.01f || Mathf.Abs(myCam.localPosition.y) > 0.01f)
         {            
             myCam.localPosition = Vector3.Lerp(myCam.localPosition, new Vector3(0,0,-dist), Time.deltaTime * myZoomData.ZoomLerpSpeed);            
@@ -124,12 +121,12 @@ public class SpringArm : MonoBehaviour
     }
 
 
-    public void ChangeViewPoint(Transform ViewPoint, UnityEvent e = null) //코루틴을 실행시키는 함수
+    public void ChangeViewPoint(Transform ViewPoint, UnityAction e = null) //코루틴을 실행시키는 함수
     {
         StartCoroutine(ChangingViewPoint(ViewPoint,e));
     }
 
-    IEnumerator ChangingViewPoint(Transform ViewPoint,UnityEvent e=null) //카메라의 시점을 전환시켜주는 코루틴, ViewPoint를 받아 ViewPoint로 옮겨서 이동함.
+    IEnumerator ChangingViewPoint(Transform ViewPoint, UnityAction e =null) //카메라의 시점을 전환시켜주는 코루틴, ViewPoint를 받아 ViewPoint로 옮겨서 이동함.
     { 
         while (!Mathf.Approximately(myCam.localPosition.x, ViewPoint.position.x) && (!Mathf.Approximately(myCam.localPosition.y, ViewPoint.position.y) && !Mathf.Approximately(myCam.localPosition.z, ViewPoint.position.z)))
         {

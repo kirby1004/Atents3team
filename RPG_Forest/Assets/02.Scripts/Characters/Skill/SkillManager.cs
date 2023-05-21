@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 public class SkillManager : MonoBehaviour
 {
@@ -20,14 +22,15 @@ public class SkillManager : MonoBehaviour
             if (Instance != this) Destroy(this.gameObject); // 씬에 싱글톤 오브젝트가 된 다른 GameManager Object가 있다면 자신을 파괴
         }
     }
-    [SerializeField]
-    Dictionary<PlayerSkillName,bool> playerSkillCooldown = new Dictionary<PlayerSkillName, bool>(); //스킬이름이랑 bool 값 연결해서 true면 실행 X, false면 실행되지 않도록 
 
+    public Dictionary<PlayerSkillName,bool> playerSkillCooldown = new Dictionary<PlayerSkillName, bool>(); //스킬이름이랑 bool 값 연결해서 true면 실행 X, false면 실행되지 않도록 
+    [SerializeField] List<PlayerSkillName> key=new List<PlayerSkillName> ();
     private void Start() 
     {
        for(int i = 0; i < System.Enum.GetValues(typeof(PlayerSkillName)).Length; i++)
         {
             playerSkillCooldown.Add((PlayerSkillName)i, false);
+            key.Add((PlayerSkillName)i);
         }
     }
 
@@ -42,12 +45,12 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    public void RegisterSkill(PlayerSkillName name, Transform Point,Quaternion quaternion)
+    public void RegisterSkill(PlayerSkillName name, Vector3 Point,Quaternion quaternion)
     {
         if (!playerSkillCooldown[name])
         {
             playerSkillCooldown[name] = true;
-            GameObject skill = ObjectPoolingManager.instance.GetObject((name).ToString(), Point.position, quaternion);
+            GameObject skill = ObjectPoolingManager.instance.GetObject((name).ToString(), Point, quaternion);
             skill.GetComponent<ISkill>()?.Use();
             StartCoroutine(CoolDown(name, skill.GetComponent<ISkill>().skillData.CoolTime));
         }
@@ -74,7 +77,7 @@ public class SkillManager : MonoBehaviour
 
 public enum PlayerSkillName
 {
-    EnergyBall
+    EnergyBall,EnergyTornado
 }
 
 public enum MonsterSkillName

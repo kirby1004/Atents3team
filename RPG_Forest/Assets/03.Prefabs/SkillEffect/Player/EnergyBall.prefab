@@ -50,6 +50,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HitPoint: {fileID: 600055332100359311}
   <skillData>k__BackingField: {fileID: 11400000, guid: 35099e23dda3e244fa972679216c765b, type: 2}
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 512
   dist: 0
 --- !u!1 &3925137529451541510
 GameObject:
