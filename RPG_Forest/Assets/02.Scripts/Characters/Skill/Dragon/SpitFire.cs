@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpirFire : Skill, ISkill
+public class SpitFire : Skill, ISkill
 {
     [field:SerializeField]
     public SkillData skillData { get; set; }

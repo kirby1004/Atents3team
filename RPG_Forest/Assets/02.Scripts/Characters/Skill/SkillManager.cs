@@ -66,6 +66,18 @@ public class SkillManager : MonoBehaviour
         skill.GetComponent<ISkill>()?.Use();
     }
 
+    public void RegisterSkill(MonsterSkillName name, Transform Point, Quaternion quaternion)
+    {
+        GameObject skill = ObjectPoolingManager.instance.GetObject((name).ToString(), Point.position, quaternion);
+        skill.GetComponent<ISkill>()?.Use();
+    }
+
+    public void RegisterSkill(MonsterSkillName name, Vector3 Point, Quaternion quaternion = default)
+    {
+        GameObject skill = ObjectPoolingManager.instance.GetObject((name).ToString(), Point, quaternion);
+        skill.GetComponent<ISkill>()?.Use();
+    }
+
     IEnumerator CoolDown(PlayerSkillName name,float coolTime) //쿨다운 코루틴 쿨다운이 다 되면 false로 바꾸기.
     {
         float playTime = 0.0f;
@@ -86,5 +98,5 @@ public enum PlayerSkillName
 
 public enum MonsterSkillName
 {
-    DevilEye
+    DevilEye, MagicCircleImage, SpitFire
 }

@@ -42,9 +42,7 @@ public class Dragon : Monster
         m_monsterSM.CurrentState.PhysicsUpdate();
     }
 
-    #region OnCreate
-
-    public Transform devilEye;
+    #region OnCreate - Create State시 드래곤 발동 함수 오버라이딩
 
     public override void OnCreate()
     {
@@ -53,10 +51,10 @@ public class Dragon : Monster
 
     IEnumerator EncounterCutScene()
     {
-        //SkillManager.instance.RegisterSkill(MonsterSkillName.DevilEye, devilEye);
-
-        yield return new WaitForSeconds(10.0f);
-        Debug.Log("ECS 대기 끝");
+        Vector3 pos = transform.position + new Vector3(0, 13, 0);
+        SkillManager.instance.RegisterSkill(MonsterSkillName.DevilEye, pos);
+        
+        yield return new WaitForSeconds(3.5f);
         m_monsterSM.ChangeState(m_states[eState.Idle]);
     }
     #endregion
@@ -67,7 +65,7 @@ public class Dragon : Monster
     {
         myTarget = target;
         myTarget.GetComponent<CharacterProperty>().DeathAlarm += () => { if (IsLive) m_monsterSM.ChangeState(m_states[eState.Idle]); }; // Death Alarm 후에 구현
-        if(!isFlying && (m_monsterSM.CurrentState != m_states[eState.Create])) m_monsterSM.ChangeState(m_states[eState.Trace]);
+        if(!isFlying && (m_monsterSM.CurrentState != m_states[eState.Create])) m_monsterSM.ChangeState(m_states[eState.Trace]);         // 날고있지 않고, 현재 상태 Create 아닐 때만 Trace 상태로 천이
     }
     #endregion
 
@@ -75,7 +73,7 @@ public class Dragon : Monster
 
     public override void OnBattle()
     {
-        m_monsterSM.ChangeState(m_states[Dragon.eState.BattleDragon]);
+        m_monsterSM.ChangeState(m_states[Dragon.eState.BattleDragon]);      // Dragon은 BattleDragon - AI 스크립트로 오버라이딩 하여 사용
     }
 
     #endregion
@@ -91,6 +89,7 @@ public class Dragon : Monster
     public float spitFireDelay = 2.0f;
 
     public Transform flyToBackPos;          // 뒤로 날 지점 
+    public Transform spitFirePos;   
     
     #endregion
 }
