@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: Dragon
   m_EditorClassIdentifier: 
   _playerName: 
-  _maxhp: 0
-  _attackPoint: 0
-  _sightRange: 0
+  _maxhp: 200
+  _attackPoint: 10
   _moveSpeed: 0
-  _attackSpeed: 0
-  _defensePoint: 0
+  _defensePoint: 35

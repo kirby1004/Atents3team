@@ -15,8 +15,8 @@ MonoBehaviour:
   _myItemType: 0
   _actionType: 0
   _itemName: T1Weapon
-  _attackPoint: 15
-  _attackSpeed: 5
+  _attackPoint: 10
+  _attackSpeed: 0
   _defensePoint: 0
   _moveSpeed: 0
   _maxHpIncrese: 0

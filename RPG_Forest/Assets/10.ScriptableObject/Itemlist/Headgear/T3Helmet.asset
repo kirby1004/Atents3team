@@ -17,9 +17,9 @@ MonoBehaviour:
   _itemName: T3Helmet
   _attackPoint: 0
   _attackSpeed: 0
-  _defensePoint: 15
+  _defensePoint: 33
   _moveSpeed: 0
-  _maxHpIncrese: 40
+  _maxHpIncrese: 17
   _itemCoolDown: 0
   stackable: 0
   _image: {fileID: 21300000, guid: 314096ec099b87246863e0dd74788079, type: 3}
