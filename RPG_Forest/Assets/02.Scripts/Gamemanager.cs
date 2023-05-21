@@ -28,6 +28,8 @@ public class Gamemanager : MonoBehaviour
             GameObject obj = Instantiate(Resources.Load("UIResource/System/UIManager") as GameObject);
             myUIManager = obj.GetComponent<UIManager>();
         }
+
+        mySpawnner = null;
     }
 
     // ¾À
