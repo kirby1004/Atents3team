@@ -18,6 +18,10 @@ public class CharacterProperty : MonoBehaviour
     public float playTime = 0.0f;
     public float AttackPoint = 35.0f;
     public float DefensePoint = 10.0f;
+
+    // 이동속도 추가 필요
+    // 속성공격력 추가 필요
+
     public float MaxHp = 100.0f;
     float _curHp = -100.0f; //캐릭터 프로퍼티는 최상위부모. MonoBehaviour가 부모라서 생성자 x,생성자를 이용해서 초기화 X
 
