@@ -7,9 +7,11 @@ public class SpitFire : Skill, ISkill
     [field:SerializeField]
     public SkillData skillData { get; set; }
 
+    public ParticleSystem ps;
+
     public void Awake()
     {
-        
+        ps = GetComponentInChildren<ParticleSystem>();
     }
 
     public void Use()
@@ -23,5 +25,6 @@ public class SpitFire : Skill, ISkill
         yield return wfs;
         ObjectPoolingManager.instance.ReturnObject(gameObject);
         yield return null;
+
     }
 }
