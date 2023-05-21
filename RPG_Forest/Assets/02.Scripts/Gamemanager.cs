@@ -65,8 +65,8 @@ public class Gamemanager : MonoBehaviour
 
     public float DamageDecrease(float AP , float DP)
     {
-        float Rate = 1 - (DP / DP + 100);
-
+        float Rate = 1 - (DP / (DP + 100));
+        Debug.Log($"{AP*Rate}");
         if( AP * Rate > 1.0f)
         {
             return AP * Rate;

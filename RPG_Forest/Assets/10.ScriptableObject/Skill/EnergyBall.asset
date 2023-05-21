@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f935e96fe7c59e743a21102743e82b40, type: 3}
   m_Name: EnergyBall
   m_EditorClassIdentifier: 
-  _image: {fileID: 0}
+  _image: {fileID: 21300000, guid: fb9bcc3943d1ca94497fd61e5e8c2fde, type: 3}
   _name: "\uC5D0\uB108\uC9C0\uBCFC"
   _value1: 30
   _value2: 0
   _range: 3
-  _distance: 10
+  _distance: 25
   _coolTime: 3
-  _Speed: 3
+  _Speed: 10
   _crowdControlType: 0

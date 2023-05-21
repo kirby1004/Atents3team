@@ -13,6 +13,7 @@ Material:
   - IS_NORMAL_ANIMATE
   - IS_NORMAL_DISTORTION
   - IS_SOFT_PARTICLES
+  - IS_USE_SECOND_COLOR
   m_InvalidKeywords:
   - IS_UNITY_PARTICLE_INSTANCING_ENABLED
   m_LightmapFlags: 4
@@ -128,7 +129,7 @@ Material:
     - _RimScale: 1
     - _RimStrength: 1
     - _RotateAngle: 0
-    - _SecondColor: 0
+    - _SecondColor: 1
     - _SmoothnessTextureChannel: 0
     - _SoftParticle: 1
     - _SpecularHighlights: 1
@@ -159,6 +160,6 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _NoiseValue: {r: 1, g: 1, b: 1, a: 0}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _TintColor: {r: 2.4150944, g: 0.42979276, b: 0.28479883, a: 1}
-    - _TintColor2: {r: 1, g: 1, b: 1, a: 1}
+    - _TintColor: {r: 2.9960785, g: 0.3137255, b: 0.078431375, a: 1}
+    - _TintColor2: {r: 0.41243646, g: 0.29082286, b: 2.4150944, a: 1}
   m_BuildTextureStacks: []

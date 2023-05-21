@@ -14,7 +14,9 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
     //UI와 IinterPlay에 관련된 변수
     [SerializeField]
     bool isObjectNear;
+    [SerializeField]
     bool isUi;
+    [SerializeField]
     public bool isEnterUI = false;
     
     //이동 관련 변수
@@ -39,7 +41,7 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
     }
     public void OnDamage(float dmg)
     {
-        curHp -= dmg;
+        curHp -= Gamemanager.instance.DamageDecrease(dmg, DefensePoint);
 
         if (Mathf.Approximately(curHp, 0.0f))
         {
@@ -87,7 +89,7 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
         
         InputMethod();
         
-        if (!isUi&&!myAnim.GetBool("isAttacking"))
+        if (!isUi&&!myAnim.GetBool("isAttacking")&&!myAnim.GetBool("isSkill"))
         {
             MoveToPos(Vector3.zero);
         }
@@ -97,7 +99,7 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
     #region InputMethod (입력함수)
     void InputMethod()
     {
-        if (!isUi )
+        if (!isUi&& !myAnim.GetBool("isSkill"))
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -131,14 +133,11 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
             {
                 if (!isUi)
                 {
-                    if (!isUi)    //상점이 열려있지 않을 때, isShop을 true로 해주고 움직임 애니메이션을 강제로 idle로 바꿔줌.
-                    {
-                        OpenUi?.Invoke();
-                    }
-                    else //상점이 열려 있을 때 isShop을 false로 하고 UI 끄기.
-                    {
-                        CloseUi?.Invoke();
-                    }
+                     OpenUi?.Invoke();
+                }
+                else
+                {
+                    CloseUi?.Invoke();
                 }
             }
         }
@@ -151,11 +150,15 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
 
         if (!myAnim.GetBool("isRolling")) rollPlayTime += Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && !SkillManager.Instance.playerSkillCooldown[PlayerSkillName.EnergyBall])
         {
-            
             myAnim.SetTrigger("Skill");
             myAnim.SetInteger("skillNum", 1);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2)&& !SkillManager.Instance.playerSkillCooldown[PlayerSkillName.EnergyTornado])
+        {
+            myAnim.SetTrigger("Skill");
+            myAnim.SetInteger("skillNum", 2);
         }
     }
     #endregion
@@ -227,10 +230,16 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
         }
     }
 
-    public void SkillOn(Transform SkillPoint)
+    public void SkillOn1(Transform SkillPoint)
     {
-        SkillManager.instance.RegisterSkill(PlayerSkillName.EnergyBall, SkillPoint, transform.rotation);
+        SkillManager.instance.RegisterSkill(PlayerSkillName.EnergyBall, SkillPoint.position, transform.rotation);
     }
+
+    public void SkillOn2(Transform SkillPoint)
+    {
+        SkillManager.instance.RegisterSkill(PlayerSkillName.EnergyTornado, SkillPoint.position, transform.rotation) ;
+    }
+
     #endregion
 
     #region 구르기 함수
