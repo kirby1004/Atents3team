@@ -39,7 +39,7 @@ public class Gamemanager : MonoBehaviour
 
     // 바인딩
 
-    public PlayerController myPlyaer;
+    public PlayerController myPlayer;
     public Monster myEnemy;
     public Spawnner mySpawnner; // 트랜스폼만 받을지 클래스 전체로 받을지
 
@@ -78,5 +78,6 @@ public class Gamemanager : MonoBehaviour
             return 1;
         }
     }
+
 
 }

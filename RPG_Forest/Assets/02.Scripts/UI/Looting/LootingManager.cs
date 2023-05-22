@@ -105,7 +105,7 @@ public class LootingManager : Singleton<LootingManager>
         {
             if (myLootingMonster[i].myMonster == monster)
             {
-                Gamemanager.instance.myPlyaer.SetIsEnterUI(false);
+                Gamemanager.instance.myPlayer.SetIsEnterUI(false);
                 Destroy(LootWindowList[i].gameObject);
                 myLootingMonster[i].myMonster.ColDelete?.Invoke();
                 myLootingMonster[i].myMonster.OnDisappear();

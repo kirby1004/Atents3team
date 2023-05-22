@@ -15,7 +15,7 @@ public class EquipmentItem : MonoBehaviour , IItems
     {
         transform.parent.GetComponent<Slot>().mySlotItems = transform;
         EquipmentManager.Inst.RefreshStat(); // 장비 매니저의 스텟갱신 동작
-
+        Gamemanager.instance.myPlayer.curHp += transform.gameObject.GetComponent<Item>().item.MaxHpIncrese;
     }
     private void Update()
     {        
