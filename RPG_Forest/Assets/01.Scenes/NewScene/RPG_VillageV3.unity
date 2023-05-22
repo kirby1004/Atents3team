@@ -2708,7 +2708,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c51e179e13de994190538ae2feba1bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myPlyaer: {fileID: 1447619136}
+  cutScene01: {fileID: 0}
+  myPlayer: {fileID: 1447619136}
   myEnemy: {fileID: 0}
   mySpawnner: {fileID: 0}
   playTime: 0
