@@ -4,6 +4,7 @@ using System.Net.NetworkInformation;
 using TreeEditor;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnergyBall : Skill,ISkill
 {
@@ -19,7 +20,7 @@ public class EnergyBall : Skill,ISkill
     {
         dist = skillData.Distance;
     }
-    public void Use()
+    public void Use(UnityAction e = null)
     {
             StartCoroutine(Using());
     }

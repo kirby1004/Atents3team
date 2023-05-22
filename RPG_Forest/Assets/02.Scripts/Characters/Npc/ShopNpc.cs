@@ -21,7 +21,7 @@ public class ShopNpc : NpcProperty
     {
         obj.transform.position = PlayerPoint.position;
         obj.GetComponentInChildren<SpringArm>().CameraChange = true;
-        while (!Mathf.Approximately(obj.transform.localRotation.eulerAngles.y, PlayerPoint.rotation.eulerAngles.y))
+        while (!Mathf.Approximately(obj.transform.localRotation.eulerAngles.y, PlayerPoint.rotation.eulerAngles.y-0.1f))
         {
             obj.transform.localRotation = Quaternion.Slerp(obj.transform.localRotation, playerPoint.localRotation, Time.deltaTime * 15.0f);
             yield return null;

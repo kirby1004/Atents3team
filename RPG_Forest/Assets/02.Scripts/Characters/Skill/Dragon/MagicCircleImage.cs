@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MagicCircleImage : Skill, ISkill
 {
@@ -19,7 +20,7 @@ public class MagicCircleImage : Skill, ISkill
         SpitFireRotation = new Vector3(135.0f, 0f, 0f);
     }
 
-    public void Use()
+    public void Use(UnityAction e = null)
     {
         StartCoroutine(Using());
     }
