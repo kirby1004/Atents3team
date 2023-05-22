@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 public class SkillManager : MonoBehaviour
@@ -34,7 +35,7 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    public void RegisterSkill(PlayerSkillName name,Transform Point)
+    public void RegisterSkill(PlayerSkillName name,Transform Point, UnityAction e = null)
     {
         if (!playerSkillCooldown[name])
         {
@@ -47,7 +48,7 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    public void RegisterSkill(PlayerSkillName name, Vector3 Point,Quaternion quaternion)
+    public void RegisterSkill(PlayerSkillName name, Vector3 Point,Quaternion quaternion, UnityAction e = null)
     {
         if (!playerSkillCooldown[name])
         {
@@ -60,19 +61,19 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    public void RegisterSkill(MonsterSkillName name, Transform Point)
+    public void RegisterSkill(MonsterSkillName name, Transform Point, UnityAction e = null)
     {
         GameObject skill = ObjectPoolingManager.instance.GetObject((name).ToString(), Point.position, Quaternion.identity);
         skill.GetComponent<ISkill>()?.Use();
     }
 
-    public void RegisterSkill(MonsterSkillName name, Transform Point, Quaternion quaternion)
+    public void RegisterSkill(MonsterSkillName name, Transform Point, Quaternion quaternion, UnityAction e = null)
     {
         GameObject skill = ObjectPoolingManager.instance.GetObject((name).ToString(), Point.position, quaternion);
         skill.GetComponent<ISkill>()?.Use();
     }
 
-    public void RegisterSkill(MonsterSkillName name, Vector3 Point, Quaternion quaternion = default)
+    public void RegisterSkill(MonsterSkillName name, Vector3 Point, Quaternion quaternion = default, UnityAction e = null)
     {
         GameObject skill = ObjectPoolingManager.instance.GetObject((name).ToString(), Point, quaternion);
         skill.GetComponent<ISkill>()?.Use();

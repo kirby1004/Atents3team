@@ -27,6 +27,9 @@ public class SpitFireTrigger : MonoBehaviour
         }
         
     }
-
+    private void OnParticleTrigger()
+    {
+        
+    }
 
 }
