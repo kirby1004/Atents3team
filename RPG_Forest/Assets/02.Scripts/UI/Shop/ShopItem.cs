@@ -37,7 +37,6 @@ public class ShopItem : MonoBehaviour, IPointerExitHandler, IPointerEnterHandler
         ShopManager.Inst.itemInfo.RefreshItemInfo
             (eventData.pointerEnter.GetComponent<ShopItem>().myItem);
         ShopManager.Inst.itemInfo.myCost = myCost;
-
     }
 
     // 클릭한 아이템을 구매 대상으로 설정하기
@@ -45,8 +44,10 @@ public class ShopItem : MonoBehaviour, IPointerExitHandler, IPointerEnterHandler
     //               2. 구매대상 설정시 다른아이템 마우스오버안되게 막기
     public void OnPointerClick(PointerEventData eventData)
     {
-        buyButton.gameObject.SetActive(true);
-        buyButton.onClick.RemoveAllListeners();
-        buyButton.onClick.AddListener(() =>gameObject.GetComponent<ShopItem>().BuyItem(myItem,true));
+        //buyButton.gameObject.SetActive(true);
+        //ShopManager.Inst.BuyCheckWindow.GetComponent<ShopBuyCheck>().BuyButton.onClick.RemoveAllListeners();
+        //ShopManager.Inst.BuyCheckWindow.GetComponent<ShopBuyCheck>().BuyButton.onClick.AddListener(() =>gameObject.GetComponent<ShopItem>().BuyItem(myItem,true));
+        ShopManager.Inst.BuyCheckWindow.SetActive(true);
+        ShopManager.Inst.BuyCheckWindow.GetComponent<ShopBuyCheck>().myItem = this;
     }
 }

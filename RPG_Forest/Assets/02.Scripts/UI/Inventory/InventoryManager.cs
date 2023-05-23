@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 interface IItems  // 다른종류의 슬롯으로이동가능한 아이템만 상속받게 하기
@@ -21,6 +22,8 @@ public class InventoryManager : Singleton<InventoryManager>
     // 최초 인벤토리 슬롯 갯수
     public int startSlotcount = 12;
 
+    //public float myMoney;
+    public TMP_Text myMoneyText;
     // 슬롯들의 부모
     public Transform slotParent;
     private void Awake()
@@ -106,4 +109,10 @@ public class InventoryManager : Singleton<InventoryManager>
     {
 
     }
+
+    public void UpdateMyMoney(int money)
+    {
+        myMoneyText.text = money.ToString();
+    }
+
 }

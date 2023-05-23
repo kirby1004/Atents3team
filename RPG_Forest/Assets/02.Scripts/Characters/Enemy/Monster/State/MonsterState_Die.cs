@@ -19,13 +19,14 @@ public class MonsterState_Die : State
     public override void Enter()
     {
         base.Enter();
+        monster.OnDie();
         monster.StopAllCoroutines();
         Transform transform = monster.transform;
         monster.ColDelete += DisableCollider;
         monster.myAnim.SetTrigger("Die");
         LootingManager.Inst.ReadyLootWindow(monster);
         //Object.Destroy(transform.GetComponentInChildren<AIPerception>());
-        monster.myAI.AddComponent<LootingPerception>();
+        //monster.myAI.AddComponent<LootingPerception>();
         monster.DeathAlarm?.Invoke();
         //monster.OnDisappear();
     }

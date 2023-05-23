@@ -9,6 +9,36 @@
 4. 개발 일정 확인하기 - [개발 일정](https://app.asana.com/0/1204352798021693/list)
 
 ---
+### V.4.0.08 - JS
+> Boss Scene  
+  - Boss CutScene 시네머신으로 제작 완료    
+      * Boss CutScene01 Encounter 테스트 완료  
+         + CutScene01 에서 GameScene으로 바로 넘어가는 방식 // 동기 방식 씬 전환
+      * Boss CutScene02 Ending
+         + Additive 방식으로 씬 다중 Play 방법으로 씬 전환  
+         + CutScene02 재생 시 Transform 넘겨 주는 방법 고려필요
+         + CutScene02 재생 이후 본 GameScene으로 넘어왔을 때, 이전 상태 유지하는 방법 고려 필요
+
+> Boss Skill & Effect
+  - DevilEye
+    * 등장 시 사용되고 공격 기능은 없으므로 Object Pool List로 프리팹 위치 변경 
+  - SpitFire  
+    * 수민이와 협업 중, 충돌 처리 관련 수정 작업중
+  - Bress
+    * 추가적인 Boss Skill 제작 구상 중...
+
+> 1st Camera Test  
+  - 1차 보스 씬 촬영 영상 Upload
+    * https://youtu.be/V-PLCbNNiCU
+
+---
+## 1st Camera Test Meeting (05-21, 22)
+> UI Bug Corrected
+> 공격력, 방어력 계산식 / 세부 능력치 설계
+> 재화 관련 구조 설계 및 코드 작성 방향 토의
+> 시네머신 연출 관련 토의
+
+---
 ### V.4.0.07 - GY
 > Forest Scene
   - 포탈 앞 가드몹 2마리 배치 - 몬스터 스텟 조정 필요

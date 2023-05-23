@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Dragon : Monster
 {
@@ -90,7 +91,17 @@ public class Dragon : Monster
     public float spitFireDelay = 2.0f;
 
     public Transform flyToBackPos;          // 뒤로 날 지점 
-    public Transform spitFirePos;   
-    
+    public Transform spitFirePos;
+
+    #endregion
+
+    #region Die
+    // 드래곤 컷씬 연출을 위해 OnDie virtaul 함수 overriding
+    public override void OnDie()
+    {
+        //GameManager.instance.OnLoadEndingScene();
+
+    }
+
     #endregion
 }

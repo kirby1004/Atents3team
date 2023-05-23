@@ -36,7 +36,20 @@ public class SceneLoader : Singleton<SceneLoader>
         }
     }
 
-    //void setupUIManager(Scene curScene, Scene nextScene) {  }
+    public void SceneUnload(int sceneIndex)
+    {
+        StartCoroutine(Unloading(sceneIndex));
+    }
 
-    
+    IEnumerator Unloading(int sceneIndex)
+    {
+        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(sceneIndex);
+
+        while (!unloadOperation.isDone)
+        {
+            yield return null;
+        }
+    }
+
+
 }

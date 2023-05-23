@@ -170,7 +170,7 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
         {
 
             Debug.Log("OnDamage");
-            curHp -= Gamemanager.instance.DamageDecrease(dmg,DefensePoint);
+            curHp -= GameManager.instance.DamageDecrease(dmg,DefensePoint);
             if (Mathf.Approximately(curHp, 0.0f))
             {
                 m_monsterSM.ChangeState(m_states[eState.Die]);
@@ -193,6 +193,11 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
 
     UnityEvent deadAction = null;
     public UnityAction ColDelete = null;
+
+    public virtual void OnDie()
+    {
+
+    }
 
     public void OnDisappear()
     {

@@ -4,12 +4,25 @@ using UnityEngine;
 
 public interface IEconomy
 {
-    public int Money { get; set; }
+    public int Money 
+    {
+        get
+        {
+            if (Money <= -1) return -1;
+            else return Money;
+        }
+        set
+        {
+            if (value >= 0)
+            {
+                Money = value;
+                GameManager.instance.UpdateMoney?.Invoke(Money);
+            }
+        } 
+    }
 
-    public void GetMoney() { }
-    public void SetMoney(int money) { }
-    public void BuyItem(int money) { }
-    public void SellItem(int money) { }
+    public void GetMoney(int money);
+    public bool CheckMoney(int money);
 }
 
 
