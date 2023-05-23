@@ -94,8 +94,6 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
 
     protected override void Update()
     {
-        //Debug.Log($"{MaxHp}");
-        
         InputMethod();
         
         if (!isUi&&!myAnim.GetBool("isAttacking")&&!myAnim.GetBool("isSkill"))

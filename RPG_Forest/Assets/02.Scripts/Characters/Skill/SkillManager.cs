@@ -69,7 +69,7 @@ public class SkillManager : MonoBehaviour
 
     public void RegisterSkill(MonsterSkillName name, Transform Point, Quaternion quaternion, UnityAction e = null)
     {
-        GameObject skill = ObjectPoolingManager.instance.GetObject((name).ToString(), Point.position, quaternion);
+        GameObject skill = ObjectPoolingManager.instance.GetObject((name).ToString(), Point.position, quaternion,Point);
         skill.GetComponent<ISkill>()?.Use();
     }
 
