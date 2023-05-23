@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
+using System;
 
 public class PlayerHpBar : MonoBehaviour
 {
@@ -32,12 +33,17 @@ public class PlayerHpBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //if(LastHP != Gamemanager.instance.myPlayer.MaxHp)
+        //{
+        //    RefreshHPBar(Gamemanager.instance.myPlayer.curHp);
+        //}
     }
+    
     public void RefreshHPBar(float hp)
     {
         mySlider.value = hp;
         myText.text = hp.ToString("N0") +$"/ {myPlayer.MaxHp}";
         mySlider.maxValue = myPlayer.MaxHp;
+        Debug.Log($"Max = {myPlayer.MaxHp},Now = {hp}");
     }
 }

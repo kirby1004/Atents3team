@@ -68,6 +68,7 @@ public class UIManager : MonoBehaviour
     
     public MySkillList skillList;
     public TMP_Text myName;
+    public PlayerHpBar hpBar;
 
     public void Refresh()
     {

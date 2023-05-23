@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SpitFire : Skill, ISkill
 {
@@ -14,12 +15,12 @@ public class SpitFire : Skill, ISkill
        
     }
 
-    public void Use()
+    public void Use(UnityAction e = null)
     {
         StartCoroutine(Using());
     }
 
-    IEnumerator Using()
+    IEnumerator Using(UnityAction e = null)
     {
         var wfs = new WaitForSeconds(5.0f);
         yield return wfs;

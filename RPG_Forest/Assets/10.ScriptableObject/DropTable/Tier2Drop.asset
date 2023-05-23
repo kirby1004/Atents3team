@@ -10,6 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81f230de20405a14b85eaf5d4eecd6c9, type: 3}
-  m_Name: ItemDropTable1
+  m_Name: Tier2Drop
   m_EditorClassIdentifier: 
   myDropTable: []
+  myDropRate: []
+  mySoulDrop: 300

@@ -9,7 +9,7 @@ public class MySkillList : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Gamemanager.instance.myPlyaer.GetComponentInChildren<PlayerAnimEvent>().
+        //Gamemanager.instance.myPlayer.GetComponentInChildren<PlayerAnimEvent>().
         //  QSkillFunc.AddListener(() => slots[0].StartCooldown(slots[0].mySkillData.CoolTime));
     }
 
