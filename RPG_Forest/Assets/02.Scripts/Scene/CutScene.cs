@@ -23,7 +23,7 @@ public class CutScene : MonoBehaviour
         duration = (float)myPD.playableAsset.duration;
         time = (float)myPD.initialTime;
 
-        SceneManager.activeSceneChanged += setUpUIManager;
+        SceneManager.activeSceneChanged += SetUpUIManager;
 
     }
 
@@ -33,12 +33,19 @@ public class CutScene : MonoBehaviour
 
         if(time > duration)
         {
-            SceneManager.LoadScene(2);
+            if(this.gameObject.scene.buildIndex != 3) SceneManager.LoadScene(2);
+            else
+            {
+                GameManager.instance.OnUnLoadEndingScene();
+            }
         }
     }
 
-    void setUpUIManager(Scene curScene, Scene nextScene)
+    void SetUpUIManager(Scene curScene, Scene nextScene)
     {
+        GameManager.instance.myPlyaer = FindObjectOfType<PlayerController>();
+        GameManager.instance.myEnemy = FindObjectOfType<Monster>();
+
         if (nextScene.buildIndex == 2)
         {
             UIManager.instance.gameObject.SetActive(true);

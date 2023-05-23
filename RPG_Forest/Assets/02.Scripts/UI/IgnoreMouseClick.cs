@@ -6,11 +6,11 @@ public class IgnoreMouseClick : MonoBehaviour ,IPointerEnterHandler , IPointerEx
 {
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Gamemanager.instance.myPlyaer.SetIsEnterUI(true);
+        GameManager.instance.myPlyaer.SetIsEnterUI(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Gamemanager.instance.myPlyaer.SetIsEnterUI(false);
+        GameManager.instance.myPlyaer.SetIsEnterUI(false);
     }
 }
