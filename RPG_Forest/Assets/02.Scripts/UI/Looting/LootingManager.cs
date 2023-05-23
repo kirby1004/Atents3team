@@ -153,5 +153,6 @@ public class LootingManager : Singleton<LootingManager>
         return false;
     }
 
+    
 
 }

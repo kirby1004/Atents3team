@@ -94,7 +94,7 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
 
     protected override void Update()
     {
-        Debug.Log($"{MaxHp}");
+        //Debug.Log($"{MaxHp}");
         
         InputMethod();
         

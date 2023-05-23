@@ -14,5 +14,10 @@ public class ItemAddTest : MonoBehaviour
         InventoryManager.Inst.AddItem(itemsList[id]);
     }
 
+    public void Getmoney(int money)
+    {
+        GameManager.instance.economy.GetMoney(money);
+    }
+
 
 }

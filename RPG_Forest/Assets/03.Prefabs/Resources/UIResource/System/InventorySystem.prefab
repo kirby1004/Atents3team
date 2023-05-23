@@ -603,6 +603,7 @@ MonoBehaviour:
   inventoryItemPrefab: {fileID: 6478043930047163432, guid: 983f225720e9ce24c9c7e2290a221d38, type: 3}
   inventorySlotPrefab: {fileID: 8375515251776502479, guid: 76a0b40dc18b4014d93dccc4f08c3086, type: 3}
   startSlotcount: 20
+  myMoneyText: {fileID: 751033755491523130}
   slotParent: {fileID: 3990505020786613836}
 --- !u!1 &3990505019001473989
 GameObject:

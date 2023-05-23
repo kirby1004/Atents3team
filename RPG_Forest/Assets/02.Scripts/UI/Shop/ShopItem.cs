@@ -47,7 +47,7 @@ public class ShopItem : MonoBehaviour, IPointerExitHandler, IPointerEnterHandler
         //buyButton.gameObject.SetActive(true);
         //ShopManager.Inst.BuyCheckWindow.GetComponent<ShopBuyCheck>().BuyButton.onClick.RemoveAllListeners();
         //ShopManager.Inst.BuyCheckWindow.GetComponent<ShopBuyCheck>().BuyButton.onClick.AddListener(() =>gameObject.GetComponent<ShopItem>().BuyItem(myItem,true));
-        ShopManager.Inst.BuyCheckWindow.SetActive(true);
         ShopManager.Inst.BuyCheckWindow.GetComponent<ShopBuyCheck>().myItem = this;
+        ShopManager.Inst.BuyCheckWindow.SetActive(true);
     }
 }
