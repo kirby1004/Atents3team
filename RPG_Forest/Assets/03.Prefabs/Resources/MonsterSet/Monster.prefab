@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 4280717542504068229}
   - component: {fileID: 4724398682352606704}
   - component: {fileID: 1747945727112736809}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Monster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,22 +80,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd21193207b63d43ae4c8664a850959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 3
+  myBaseStatus: {fileID: 11400000, guid: 30bc001cb2be7fa48921d107adeb6289, type: 2}
   RotSpeed: 360
   AttackRange: 1
   AttackDelay: 1
   playTime: 0
-  AttackPoint: 35
-  MaxHp: 100
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
+  UpdateHp:
+    m_PersistentCalls:
+      m_Calls: []
   State: 0
   orgPos: {x: 0, y: 0, z: 0}
   myTarget: {fileID: 0}
   canFly: 0
   myDropTable: {fileID: 11400000, guid: 0a2c9d46a47639842a6a4b93e03f8ede, type: 2}
-  leftClawPoint: {fileID: 526566801321058685}
+  myAI: {fileID: 4280717542541653788}
+  leftClawPoint: {fileID: 4280717542213659304}
 --- !u!136 &4724398682352606704
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -296,13 +298,13 @@ MonoBehaviour:
   DeadFunc:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4280717542504068231}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 4280717542504068229}
+        m_TargetAssemblyTypeName: Monster, Assembly-CSharp
+        m_MethodName: OnDisappear
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -383,6 +385,14 @@ PrefabInstance:
     - target: {fileID: 4334314812708720168, guid: edccbf15fadd9704cb7a2020a492b120, type: 3}
       propertyPath: m_Name
       value: LongSword
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484208065627108173, guid: edccbf15fadd9704cb7a2020a492b120, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7256057588077515077, guid: edccbf15fadd9704cb7a2020a492b120, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edccbf15fadd9704cb7a2020a492b120, type: 3}

@@ -5,11 +5,11 @@ using UnityEngine;
 public class DragonState_Fly : State
 {
     Dragon dragon;
-    //int spitFireCnt;
 
     public DragonState_Fly(Monster monster, StateMachine stateMachine) : base(monster, stateMachine)
     {
         dragon = monster as Dragon;
+        
     }
 
     public override void Enter()
@@ -54,7 +54,7 @@ public class DragonState_Fly : State
             dragon.transform.position = Vector3.Lerp(dragon.transform.position, dragon.flyPos, deltaTime * Time.deltaTime);
             yield return null;
         }
-        stateMachine.ChangeState(dragon.m_states[Dragon.eState.FlySpitFire]);
+        stateMachine.ChangeState(dragon.m_states[Dragon.eState.FlyToBackPos]);
     }
 
 }

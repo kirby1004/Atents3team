@@ -13,11 +13,11 @@ public class SlotCoolDown : MonoBehaviour
         transform.localPosition = Vector3.zero;
         GetComponent<RectTransform>().sizeDelta = myParent.GetComponent<RectTransform>().sizeDelta;
         myImage = GetComponent<Image>();
-        myImage.sprite = myParent.GetComponent<Image>().sprite;
+        myImage.sprite = myParent.GetComponent<SkillSlot>().mySkillData.Image;
         myImage.type = Image.Type.Filled;
         myImage.fillOrigin = 2;
 
-        myParent.GetComponent<Item>().myIcon = myImage;
+        //myParent.GetComponent<SkillSlot>().myIcon = myImage;
     }
 
     // Update is called once per frame
@@ -25,4 +25,6 @@ public class SlotCoolDown : MonoBehaviour
     {
         
     }
+
+
 }

@@ -15,7 +15,9 @@ public class InventoryItem : MonoBehaviour , IItems
     }
     private void OnDestroy()
     {
-        transform.parent.GetComponent<Slot>().mySlotItems = null;
+        //if(transform.parent.GetComponent<Slot>().mySlotItems != null)
+        //    transform.parent.GetComponent<Slot>().mySlotItems = null;
+
     }
 
 }

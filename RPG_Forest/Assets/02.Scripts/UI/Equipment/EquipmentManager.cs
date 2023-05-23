@@ -42,11 +42,17 @@ public class EquipmentManager : Singleton<EquipmentManager>
                 equipmentHP += equipslot[i].GetComponentInChildren<Item>().item.MaxHpIncrese;  // 체력
                 equipmentAP += equipslot[i].GetComponentInChildren<Item>().item.AttackPoint;   //공격력
                 equipmentDP += equipslot[i].GetComponentInChildren<Item>().item.DefensePoint;  //방어력
-                equipmentAS += equipslot[i].GetComponentInChildren<Item>().item.AttackSpeed;   //공격속도
+                //equipmentAS += equipslot[i].GetComponentInChildren<Item>().item.AttackSpeed;   //공격속도 활성화시 추가
                 equipmentSpeed += equipslot[i].GetComponentInChildren<Item>().item.MoveSpeed;  //이동속도
             }
         }
-        Debug.Log($" HP : {equipmentHP} , AP : {equipmentAP} , DP : {equipmentDP} , AS : {equipmentAS} , Speed : {equipmentSpeed} ");
-
+        //Gamemanager.instance.myPlayer.curHp = (Gamemanager.instance.myPlayer.MaxHp * Rate);
+        Debug.Log($"{Gamemanager.instance.myPlayer.curHp}");
+        UIManager.instance.hpBar.RefreshHPBar(Gamemanager.instance.myPlayer.curHp);
+        //Gamemanager.instance.myPlayer.curHp = Gamemanager.instance.myPlayer.
+        //Debug.Log($" HP : {equipmentHP} , AP : {equipmentAP} , DP : {equipmentDP} , AS : {equipmentAS} , Speed : {equipmentSpeed} ");
     }
+
+
+
 }

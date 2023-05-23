@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 
 public class SkillManager : MonoBehaviour
 {
@@ -20,29 +23,63 @@ public class SkillManager : MonoBehaviour
             if (Instance != this) Destroy(this.gameObject); // 씬에 싱글톤 오브젝트가 된 다른 GameManager Object가 있다면 자신을 파괴
         }
     }
-    [SerializeField]
-    Dictionary<Skillname,bool> skillCooldown = new Dictionary<Skillname,bool>(); //스킬이름이랑 bool 값 연결해서 true면 실행 X, false면 실행되지 않도록 
 
+    public Dictionary<PlayerSkillName,bool> playerSkillCooldown = new Dictionary<PlayerSkillName, bool>(); //스킬이름이랑 bool 값 연결해서 true면 실행 X, false면 실행되지 않도록 
+    [SerializeField] List<PlayerSkillName> key=new List<PlayerSkillName> ();
     private void Start() 
     {
-       for(int i = 0; i < System.Enum.GetValues(typeof(Skillname)).Length; i++)
+       for(int i = 0; i < System.Enum.GetValues(typeof(PlayerSkillName)).Length; i++)
         {
-            skillCooldown.Add((Skillname)i, false);
+            playerSkillCooldown.Add((PlayerSkillName)i, false);
+            key.Add((PlayerSkillName)i);
         }
     }
 
-    public void RegisterSkill(Skillname name,Transform Point)
+    public void RegisterSkill(PlayerSkillName name,Transform Point, UnityAction e = null)
     {
-        if (!skillCooldown[name])
+        if (!playerSkillCooldown[name])
         {
-            skillCooldown[name] = true;
+            playerSkillCooldown[name] = true;
             GameObject skill = ObjectPoolingManager.instance.GetObject((name).ToString(), Point.position, Quaternion.identity);
             skill.GetComponent<ISkill>()?.Use();
+            UIManager.instance.skillList.FindSlots(skill.GetComponent<ISkill>().skillData).
+                StartCooldown(skill.GetComponent<ISkill>().skillData.CoolTime);
             StartCoroutine(CoolDown(name,skill.GetComponent<ISkill>().skillData.CoolTime));
         }
     }
 
-    IEnumerator CoolDown(Skillname name,float coolTime) //쿨다운 코루틴 쿨다운이 다 되면 false로 바꾸기.
+    public void RegisterSkill(PlayerSkillName name, Vector3 Point,Quaternion quaternion, UnityAction e = null)
+    {
+        if (!playerSkillCooldown[name])
+        {
+            playerSkillCooldown[name] = true;
+            GameObject skill = ObjectPoolingManager.instance.GetObject((name).ToString(), Point, quaternion);
+            skill.GetComponent<ISkill>()?.Use();
+            UIManager.instance.skillList.FindSlots(skill.GetComponent<ISkill>().skillData).
+                StartCooldown(skill.GetComponent<ISkill>().skillData.CoolTime);
+            StartCoroutine(CoolDown(name, skill.GetComponent<ISkill>().skillData.CoolTime));
+        }
+    }
+
+    public void RegisterSkill(MonsterSkillName name, Transform Point, UnityAction e = null)
+    {
+        GameObject skill = ObjectPoolingManager.instance.GetObject((name).ToString(), Point.position, Quaternion.identity);
+        skill.GetComponent<ISkill>()?.Use();
+    }
+
+    public void RegisterSkill(MonsterSkillName name, Transform Point, Quaternion quaternion, UnityAction e = null)
+    {
+        GameObject skill = ObjectPoolingManager.instance.GetObject((name).ToString(), Point.position, quaternion);
+        skill.GetComponent<ISkill>()?.Use();
+    }
+
+    public void RegisterSkill(MonsterSkillName name, Vector3 Point, Quaternion quaternion = default, UnityAction e = null)
+    {
+        GameObject skill = ObjectPoolingManager.instance.GetObject((name).ToString(), Point, quaternion);
+        skill.GetComponent<ISkill>()?.Use();
+    }
+
+    IEnumerator CoolDown(PlayerSkillName name,float coolTime) //쿨다운 코루틴 쿨다운이 다 되면 false로 바꾸기.
     {
         float playTime = 0.0f;
         while (coolTime>playTime)
@@ -50,11 +87,17 @@ public class SkillManager : MonoBehaviour
             playTime += Time.deltaTime;
             yield return null;
         }
-        skillCooldown[name] = false;
+        playerSkillCooldown[name] = false;
+        playTime = 0.0f;
     }
 }
 
-public enum Skillname
+public enum PlayerSkillName
 {
-    EnergyBall
+    EnergyBall,EnergyTornado
+}
+
+public enum MonsterSkillName
+{
+    DevilEye, MagicCircleImage, SpitFire
 }

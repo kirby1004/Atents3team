@@ -10,7 +10,7 @@ public class ShakeCamera : MonoBehaviour
     private float shakeTime;                            // 흔들리는 시간 설정
     private float shakeIntensity;                       // 흔들리는 강도 설정
 
-    private FollowCamera cameraController;          // CameraController 인스턴스 생성
+    private SpringArm cameraController;          // CameraController 인스턴스 생성
 
     public ShakeCamera()
     {
@@ -19,7 +19,7 @@ public class ShakeCamera : MonoBehaviour
 
     private void Awake()
     {
-        cameraController = GetComponent<FollowCamera>();    // CameraController 컴포넌트 참조
+        cameraController = GetComponent<SpringArm>();    // CameraController 컴포넌트 참조
     }
 
     public void OnShakeCamera(float shakeTime = 0.1f, float shakeIntensity = 0.1f)
@@ -34,7 +34,7 @@ public class ShakeCamera : MonoBehaviour
     // ShakeByRotation이 조금 더 화려해 보여서 채용
     private IEnumerator ShakeByRotation()
     {
-        cameraController.isOnShake = true;      // 카메라 컨트롤러의 isOnShake 부울 값 true 변경
+        //cameraController.isOnShake = true;      // 카메라 컨트롤러의 isOnShake 부울 값 true 변경
 
         Vector3 startRotation = transform.eulerAngles;  // 초기 회전값 오일러각을 Vector3 형태로 startRotation에 저장
 
@@ -53,7 +53,7 @@ public class ShakeCamera : MonoBehaviour
         }
         transform.rotation = Quaternion.Euler(startRotation);   // 회전값 원위치
 
-        cameraController.isOnShake = false;     // isOnShake false로 변경
+        //cameraController.isOnShake = false;     // isOnShake false로 변경
 
     }
 

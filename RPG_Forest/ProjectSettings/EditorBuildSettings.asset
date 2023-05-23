@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/01.Scenes/RPG_Village.unity
-    guid: bdb4832b70564104c81894fa8d9bff8a
+    path: Assets/01.Scenes/NewScene/RPG_Boss_CutScene01.unity
+    guid: c118596d886daed448a119d58f50fe04
+  - enabled: 1
+    path: Assets/01.Scenes/NewScene/RPG_LoadingScene.unity
+    guid: 9c618737b44f9204e802be8f9cc46786
+  - enabled: 1
+    path: Assets/01.Scenes/NewScene/RPG_BossMap.unity
+    guid: 2b4488ac5ebb8264f86cbd44071eb3c9
   m_configObjects: {}

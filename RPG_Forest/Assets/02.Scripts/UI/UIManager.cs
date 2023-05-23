@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using TMPro.Examples;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -35,15 +38,22 @@ public class UIManager : MonoBehaviour
             GameObject obj = Instantiate(Resources.Load("UIResource/System/StatusSystem") as GameObject, transform);
             statusManager = obj.GetComponent<StatusManager>();
         }
-        if(FindObjectOfType<LootingManager>() == null)
+        if (FindObjectOfType<LootingManager>() == null)
         {
             GameObject obj = Instantiate(Resources.Load("UIResource/System/LootingSystem") as GameObject, transform);
             lootingManager = obj.GetComponent<LootingManager>();
         }
+        if (FindObjectOfType<ShopManager>() == null)
+        {
+            GameObject obj = Instantiate(Resources.Load("UIResource/System/ShopSystem") as GameObject, transform);
+            shopManager = obj.GetComponent<ShopManager>();
+        }
+
     }
     private void Start()
     {
         Refresh();
+        skillList = GetComponentInChildren<MySkillList>();
     }
     [Header("Managers")]
     public InventoryManager inventoryManager;
@@ -55,9 +65,10 @@ public class UIManager : MonoBehaviour
     //public GameObject inventoryManagerGameObject;
     //public GameObject statusManagerGameObject;
     //public GameObject equipmentManagerGameObject;
-
-
-
+    
+    public MySkillList skillList;
+    public TMP_Text myName;
+    public PlayerHpBar hpBar;
 
     public void Refresh()
     {
@@ -69,8 +80,13 @@ public class UIManager : MonoBehaviour
         EquipmentManager.Inst.gameObject.SetActive(false);
         InventoryManager.Inst.gameObject.SetActive(false);
         StatusManager.Inst.gameObject.SetActive(false);
+
     }
 
+    public void TestOpenShop(ShopItemList myList)
+    {
+        ShopManager.Inst.OpenShop(myList);
+    }
 }
 public enum ItemSlotType
 {

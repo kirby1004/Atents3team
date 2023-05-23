@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DragonState_LeftClawAttack : AttackPhase
 {
-    //Transform target;
     Transform atkPoint;
 
     public DragonState_LeftClawAttack(Dragon dragon) : base(dragon) 
@@ -14,12 +13,8 @@ public class DragonState_LeftClawAttack : AttackPhase
 
     public override IEnumerator DoPhase()
     {
-        //if (dragon.myTarget != null)
-        //{
-        //    this.target = dragon.myTarget;
-        //    this.atkPoint = dragon.leftClawPoint;
-        //}
         float delayTime = 2.0f;
+        var wfs = new WaitForSeconds(delayTime);
         while (dragon.myTarget != null)
         {
             if (!dragon.myAnim.GetBool("isAttacking"))
@@ -35,7 +30,7 @@ public class DragonState_LeftClawAttack : AttackPhase
                     yield break;
                 }
             }
-            yield return new WaitForSeconds(delayTime);
+            yield return wfs;
             dragon.playTime += delayTime;
         }
     }

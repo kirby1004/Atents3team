@@ -13,7 +13,8 @@ public class MonsterState_Idle : State
     {
         base.Enter();
         monster.myAnim.SetBool("isMoving", false);
-        monster.StartCoroutine(Roaming(Random.Range(3.0f, 5.0f)));
+        if (monster.myTarget == null) monster.StartCoroutine(Roaming(Random.Range(3.0f, 5.0f)));
+        else stateMachine.ChangeState(monster.m_states[Monster.eState.Trace]);
     }
 
     public override void Exit()
@@ -35,7 +36,8 @@ public class MonsterState_Idle : State
 
     IEnumerator Roaming(float delay)
     {
-        yield return new WaitForSeconds(delay);
+        var wfs = new WaitForSeconds(delay);
+        yield return wfs;
         Vector3 pos = monster.orgPos;
         pos.x += Random.Range(-5.0f, 5.0f);
         pos.z += Random.Range(-5.0f, 5.0f);

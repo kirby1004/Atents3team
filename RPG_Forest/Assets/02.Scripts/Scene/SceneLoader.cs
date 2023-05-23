@@ -18,7 +18,7 @@ public class SceneLoader : Singleton<SceneLoader>
 
     IEnumerator Loading(int i)
     {
-        yield return SceneManager.LoadSceneAsync(2); // Loads the Scene asynchronously(비동기) in the background.
+        yield return SceneManager.LoadSceneAsync(1); // Loads the Scene asynchronously(비동기) in the background.
         AsyncOperation op = SceneManager.LoadSceneAsync(i); // 코루틴의 진행상태를 확인하는 방법
         op.allowSceneActivation = false; // Scene Loading 이 끝나면 바로 활성화 되게 하는 불 값 => false
 
@@ -27,7 +27,7 @@ public class SceneLoader : Singleton<SceneLoader>
         while (!op.isDone)
         {
             slider.value = op.progress / 0.9f;
-            if(Mathf.Approximately(slider.value, 1.0f))
+            if (Mathf.Approximately(slider.value, 1.0f))
             {
                 yield return new WaitForSeconds(1.0f); // Debuging용 딜레이 추가  
                 op.allowSceneActivation = true;
@@ -35,6 +35,8 @@ public class SceneLoader : Singleton<SceneLoader>
             yield return null;
         }
     }
+
+    //void setupUIManager(Scene curScene, Scene nextScene) {  }
 
     
 }

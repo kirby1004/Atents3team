@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class ShopManager : Singleton<ShopManager>
@@ -34,11 +35,21 @@ public class ShopManager : Singleton<ShopManager>
         ShopManager.Inst.ShopList.ShopItemRefreshing(itemList);
     }
     //상점 오픈 ver2 상인 타입을 받아서 열기
-    public void OpenShop(NpcProperty.NPCType npcType)
+    public void OpenShop(NpcProperty.NPCType npcType,UnityAction e=null)
     {
+        e?.Invoke();
         ShopUI.SetActive(true);
         ShopManager.Inst.myShopList.GetComponent<ShopList>().myShopItemList = ShopItemList[(int)npcType];
         ShopManager.Inst.ShopList.ShopItemRefreshing(ShopItemList[(int)npcType]);
+    }
+    #endregion
+
+    #region 상점 닫기
+    public void CloseShop(UnityAction camera=null,UnityAction interplay=null)
+    {
+        ShopUI.SetActive(false);
+        camera?.Invoke();
+        interplay?.Invoke();
     }
     #endregion
 

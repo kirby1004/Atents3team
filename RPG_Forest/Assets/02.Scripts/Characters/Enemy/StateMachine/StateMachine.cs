@@ -14,13 +14,13 @@ public class StateMachine
 
     public void ChangeState(State newState)
     {
-        //Debug.Log($"CurState : {CurrentState}");
+        //Debug.Log(CurrentState);
 
         CurrentState.Exit();
 
         CurrentState = newState;
         newState.Enter();
 
-        Debug.Log(newState);
+        //Debug.Log(newState);
     }
 }

@@ -17,9 +17,9 @@ MonoBehaviour:
   _itemName: T1Helmet
   _attackPoint: 0
   _attackSpeed: 0
-  _defensePoint: 7
+  _defensePoint: 9
   _moveSpeed: 0
-  _maxHpIncrese: 20
+  _maxHpIncrese: 7
   _itemCoolDown: 0
   stackable: 0
   _image: {fileID: 21300000, guid: cf0536abebb64f1418403503facd51a5, type: 3}

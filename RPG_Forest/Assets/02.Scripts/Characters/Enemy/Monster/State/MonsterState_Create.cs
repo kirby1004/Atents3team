@@ -12,7 +12,6 @@ public class MonsterState_Create : State
     {
         base.Enter();
         monster.OnCreate();
-        monster.StartCoroutine(CreateDelay());
     }
 
     public override void Exit()
@@ -32,7 +31,8 @@ public class MonsterState_Create : State
 
     IEnumerator CreateDelay()
     {
-        yield return new WaitForSeconds(2.0f);
+        var wfs = new WaitForSeconds(2.0f);
+        yield return wfs;
         stateMachine.ChangeState(monster.m_states[Monster.eState.Idle]);
     }
 

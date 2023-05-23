@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TreeEditor;
@@ -7,22 +8,48 @@ using UnityEngine.Events;
 
 public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
 {
+    #region 플레이어 멤버 변수
     public Transform SpringArm;
     public Transform WeaponPoint;
 
-    public LayerMask npcMask;
-    public LayerMask warpMask; //워프도 사용할거니까 미리 만들어둠.
+    //UI와 IinterPlay에 관련된 변수
+    [SerializeField]
+    bool isObjectNear;
+    [SerializeField]
+    bool isUi;
+    [SerializeField]
+    public bool isEnterUI = false;
+    
+    //이동 관련 변수
+    bool isSprint;
+    Vector3 desireDirection;
+    float SprintSpeed = 5.0f;
+    float Speed;
 
-    Vector3 playerRotate=Vector3.zero;
+    //공격 관련 변수
+    int clickCount = 0;
+    Coroutine coCheck = null;
+    // 플레이어 스텟 장비합산 재정의
+    public new float AttackPoint { get{ return myBaseStatus.AttackPoint + EquipmentManager.Inst.equipmentAP;}}
+    public new float DefensePoint { get { return myBaseStatus.DefensePoint + EquipmentManager.Inst.equipmentDP; } }
+    public new float MaxHp 
+    {   get => myBaseStatus.MaxHp + EquipmentManager.Inst.equipmentHP;         
+    }
+    public new float MoveSpeed { get { return myBaseStatus.MoveSpeed + EquipmentManager.Inst.equipmentSpeed; } }
+
+    //구르기 관련 변수
+    float rollPlayTime = 3.0f;
+    float rollCoolTime = 3.0f;
+    #endregion
+
+    #region IBattle 오버라이드
     public bool IsLive
     {
         get => !Mathf.Approximately(curHp, 0.0f);
     }
-
-    
     public void OnDamage(float dmg)
     {
-        curHp -= dmg;
+        curHp -= Gamemanager.instance.DamageDecrease(dmg, DefensePoint);
 
         if (Mathf.Approximately(curHp, 0.0f))
         {
@@ -39,40 +66,13 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
             myAnim.SetTrigger("Damage");
         }
     }
+    #endregion
 
-    protected override void Start()
-    {
-        base.Start();
-        interPlay = new UnityEvent();
-        OpenUi = new UnityEvent();
-        CloseUi = new UnityEvent();
-    }
-    public bool isEnterUI = false;
+    #region IinterPlay 오버라이드
+    public UnityEvent OpenUi { get; set; }
+    public UnityEvent interPlay { get; set; }
+    public UnityEvent CloseUi { get; set; }
 
-    // Update is called once per frame
-    protected override void Update()
-    {
-        
-        InputMethod();
-        
-        if (!isUi&&!myAnim.GetBool("isAttacking"))
-        {
-            MoveToPos(Vector3.zero);
-        }
-    }
-
-    protected override void LateUpdate()
-    {
-    //    if (toggleCameraRotation != true&&!isShop)
-    //    {
-    //        playerRotate = Vector3.Scale(myCamera.transform.forward, new Vector3(1, 0, 1)); //벡터 구성요소 별 곱.
-    //        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(playerRotate), Time.deltaTime * 15.0f); //구형 보간으로 캐릭터의 Rotation을 playerRotate로 바라보게
-    //    }
-    }
-
-    [SerializeField]
-    bool isObjectNear;
-    bool isUi;
     public void SetisObjectNear(bool n)
     {
         isObjectNear = n;
@@ -81,23 +81,39 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
     {
         isUi = n;
     }
-    public UnityEvent OpenUi { get; set; }    
-    public UnityEvent interPlay
-    {
-        get; set;
-    }
-    public UnityEvent CloseUi { get; set; }
-    public UnityAction OpenLoot { get; set; }
+    #endregion
 
-    bool isSprint;
+    #region Start, Update문
+    protected override void Start()
+    {
+        base.Start();
+        interPlay = new UnityEvent();
+        OpenUi = new UnityEvent();
+        CloseUi = new UnityEvent();
+    }
+
+    protected override void Update()
+    {
+        Debug.Log($"{MaxHp}");
+        
+        InputMethod();
+        
+        if (!isUi&&!myAnim.GetBool("isAttacking")&&!myAnim.GetBool("isSkill"))
+        {
+            MoveToPos(Vector3.zero);
+        }
+    }
+    #endregion
+
+    #region InputMethod (입력함수)
     void InputMethod()
     {
-        if (!isUi )
+        if (!isUi&& !myAnim.GetBool("isSkill"))
         {
             if (Input.GetMouseButtonDown(0))
             {
                 if (isEnterUI == true) return;
-                //myAnim.SetBool("isClick", true); //isClick을 이용해 마우스 클릭이 들어왔는지 체크
+
                 myAnim.SetTrigger("Attack"); // 공격 애니메이션 실행
             }
 
@@ -126,14 +142,11 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
             {
                 if (!isUi)
                 {
-                    if (!isUi)    //상점이 열려있지 않을 때, isShop을 true로 해주고 움직임 애니메이션을 강제로 idle로 바꿔줌.
-                    {
-                        OpenUi?.Invoke();
-                    }
-                    else //상점이 열려 있을 때 isShop을 false로 하고 UI 끄기.
-                    {
-                        CloseUi?.Invoke();
-                    }
+                     OpenUi?.Invoke();
+                }
+                else
+                {
+                    CloseUi?.Invoke();
                 }
             }
         }
@@ -146,25 +159,20 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
 
         if (!myAnim.GetBool("isRolling")) rollPlayTime += Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && !SkillManager.Instance.playerSkillCooldown[PlayerSkillName.EnergyBall])
         {
-            SkillManager.instance.RegisterSkill(Skillname.EnergyBall, WeaponPoint);
+            myAnim.SetTrigger("Skill");
+            myAnim.SetInteger("skillNum", 1);
         }
-
-        if (Input.GetKeyDown(KeyCode.F1))
+        else if (Input.GetKeyDown(KeyCode.Alpha2)&& !SkillManager.Instance.playerSkillCooldown[PlayerSkillName.EnergyTornado])
         {
-            SpringArm.GetComponent<SpringArm>()?.ViewPointTransformation(TestTrans);
-        }
-        if (Input.GetKeyDown(KeyCode.F2))
-        {
-            SpringArm.GetComponent<SpringArm>()?.ViewPointReset(SpringArm);
+            myAnim.SetTrigger("Skill");
+            myAnim.SetInteger("skillNum", 2);
         }
     }
-    public Transform TestTrans;
+    #endregion
 
-    Vector3 desireDirection;
-    float SprintSpeed = 5.0f;
-    float Speed;
+    #region MoveToPos (움직임 함수)
     public override void MoveToPos(Vector3 pos, UnityAction done = null)
     {
         Speed = (isSprint) ? SprintSpeed : MoveSpeed; //speed를 Sprint를 하느냐 안하느냐에 따라 결정, isSprint가 true면 sprintSpeed를 아니라면 MoveSpeed로 설정된다.
@@ -192,13 +200,16 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
             }
         }
     }
+    #endregion
 
+    #region UI 관련 함수
     public void SetIsEnterUI(bool bools)
     {
         isEnterUI = bools;
     }
-    int clickCount = 0;
-    Coroutine coCheck = null;
+    #endregion
+
+    #region 공격 관련 함수
     public void AttackEnter() //공격이 시작될 때 실행되는 이벤트함수, 공격 애니메이션 이벤트로 시작될 때 실행된다.
     {
         coCheck = StartCoroutine(ComboChecking());
@@ -228,14 +239,24 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
         }
     }
 
+    public void SkillOn1(Transform SkillPoint)
+    {
+        SkillManager.instance.RegisterSkill(PlayerSkillName.EnergyBall, SkillPoint.position, transform.rotation);
+    }
 
+    public void SkillOn2(Transform SkillPoint)
+    {
+        SkillManager.instance.RegisterSkill(PlayerSkillName.EnergyTornado, SkillPoint.position, transform.rotation) ;
+    }
+
+    #endregion
+
+    #region 구르기 함수
     void Roll(Vector3 dir)
     {
         StartCoroutine(Rolling(dir));
     }
 
-    float rollPlayTime = 3.0f;
-    float rollCoolTime = 3.0f;
     IEnumerator Rolling(Vector3 dir)
     {
         myAnim.SetBool("isRolling", true);
@@ -247,33 +268,5 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
         }
         gameObject.layer = 8;
     }
-
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if(((1 << other.gameObject.layer) & npcMask) != 0)
-    //    {
-    //        isNpc = true;
-    //    }
-        
-    //}
-
-    //private void OnTriggerStay(Collider other)
-    //{
-    //    if (isUi) //isShop이 트루일 때 
-    //    {
-    //        myCamera.GetComponent<FollowCamera>().Camera_PlayerToOther(other.gameObject.GetComponent<Npc>()?.ViewPoint);          //카메라를 플레이어에서 다른 오브젝트로 이동시키는 함수 실행, 보이는 위치는 NPC에서 가져옴.
-    //        Transform playerPoint = other.gameObject.GetComponent<Npc>()?.playerPoint;      //플레이어 이동도 필요하기 때문에 NPC에서 포인트를 받아서 저장.
-    //        transform.position = playerPoint.position;                                      //캐릭터의 위치와 회전을 NPC에서 미리 저장한 Point의 위치와 회전을 가져와 설정.
-    //        transform.rotation = Quaternion.Euler(0, playerPoint.rotation.eulerAngles.y, 0); 
-    //    }
-    //}
-
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (((1 << other.gameObject.layer) & npcMask) != 0)
-    //    {
-    //        isNpc = false;
-    //    }
-    //}
+    #endregion
 }

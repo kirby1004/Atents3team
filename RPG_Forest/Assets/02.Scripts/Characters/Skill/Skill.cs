@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public interface ISkill
 {
@@ -8,10 +9,7 @@ public interface ISkill
     {
         get;set;
     }
-    void Use()
-    {
-
-    }
+    void Use(UnityAction e = null);
 }
 
 public abstract class Skill : MonoBehaviour

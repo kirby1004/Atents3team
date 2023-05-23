@@ -28,14 +28,18 @@ public class Gamemanager : MonoBehaviour
             GameObject obj = Instantiate(Resources.Load("UIResource/System/UIManager") as GameObject);
             myUIManager = obj.GetComponent<UIManager>();
         }
+
+        mySpawnner = null;
     }
 
     // 씬
-
+    public GameObject cutScene01;
+    
+    //enum CutScene { encounter = 4, cut1, cut2, cut3 }
 
     // 바인딩
-    
-    public PlayerController myPlyaer;
+
+    public PlayerController myPlayer;
     public Monster myEnemy;
     public Spawnner mySpawnner; // 트랜스폼만 받을지 클래스 전체로 받을지
 
@@ -63,8 +67,8 @@ public class Gamemanager : MonoBehaviour
 
     public float DamageDecrease(float AP , float DP)
     {
-        float Rate = 1 - (DP / DP + 100);
-
+        float Rate = 1 - (DP / (DP + 100));
+        Debug.Log($"{AP*Rate}");
         if( AP * Rate > 1.0f)
         {
             return AP * Rate;
@@ -74,5 +78,6 @@ public class Gamemanager : MonoBehaviour
             return 1;
         }
     }
+
 
 }

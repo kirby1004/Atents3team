@@ -4,20 +4,17 @@ using UnityEngine;
 
 public class DragonState_Bite : AttackPhase
 {
-    //Transform target;
     Transform atkPoint;
-    //float atkDelay;
 
     public DragonState_Bite(Dragon dragon) : base(dragon)
     {
         this.atkPoint = dragon.headPoint;
-        //this.atkDelay = dragon.AttackDelay;
     }
 
     public override IEnumerator DoPhase()
     {
-        
         float delayTime = 3.0f;
+        var wfs = new WaitForSeconds(delayTime);
         while (dragon.myTarget != null)
         {
             if (!dragon.myAnim.GetBool("isAttacking"))
@@ -33,8 +30,8 @@ public class DragonState_Bite : AttackPhase
                     yield break;
                 }
             }
-            yield return new WaitForSeconds(delayTime);
-            dragon.playTime += delayTime;
+           yield return wfs;
+           dragon.playTime += delayTime;
         }
     }
 }

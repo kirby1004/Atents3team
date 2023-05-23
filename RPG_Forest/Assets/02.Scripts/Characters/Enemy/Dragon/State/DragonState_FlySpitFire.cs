@@ -25,7 +25,6 @@ public class DragonState_FlySpitFire : State
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-
     }
 
     public override void PhysicsUpdate()
@@ -33,25 +32,34 @@ public class DragonState_FlySpitFire : State
         base.PhysicsUpdate();
     }
 
+
     IEnumerator SpitFire()
     {
-        float startDelay = 5.0f;
-        yield return new WaitForSeconds(startDelay);
+        //Vector3 dir = (dragon.myTarget.transform.position - dragon.transform.position).normalized;
 
-        while(dragon.spitFireCnt < 5)
+        //SkillManager.instance.RegisterSkill(MonsterSkillName.MagicCircleImage, dragon.transform, Quaternion.Euler(new Vector3(40.0f, 0f, 0f)));
+        SkillManager.instance.RegisterSkill(MonsterSkillName.MagicCircleImage, dragon.spitFirePos, dragon.spitFirePos.localRotation);
+        //yield return null;
+        yield return new WaitForSeconds(3.0f);
+        var wfs = new WaitForSeconds(dragon.spitFireDelay);
+
+        ////Vector3 fireStartPos = new Vector3(0, -10.0f, 16f) + magicCircle;
+        //Vector3 fireStartPos = new Vector3(0, -10.0f, 16f) + dragon.spitFirePos.localPosition;
+
+        while (dragon.spitFireCnt < 5)
         {
             dragon.spitFireCnt++;
             dragon.myAnim.SetTrigger("FlySpitFire");
             Debug.Log($"{dragon.spitFireCnt}");
-            // ½ºÅ³ ÀÌÆåÆ® 
-            //GameObject fireEffect = ObjectPoolManager.Instance.GetObject("FireEffect", dragon.firePoint.position, dragon.firePoint.rotation);
-            //fireEffect.SetActive(true);
 
-            SkillManager.instance.RegisterSkill(Skillname.EnergyBall, dragon.headPoint);
+            SkillManager.instance.RegisterSkill(MonsterSkillName.SpitFire, dragon.spitFirePos, Quaternion.Euler(new Vector3(135.0f, 0f, 0f)));
 
-            yield return new WaitForSeconds(dragon.spitFireDelay);
+            yield return wfs;
         }
+        
         stateMachine.ChangeState(dragon.m_states[Dragon.eState.Landing]);
+
+
     }
 
 }
