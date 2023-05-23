@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 // 게임 매니저를 싱글톤 패턴으로 구현
-public class Gamemanager : MonoBehaviour
+public class Gamemanager : MonoBehaviour ,IEconomy
 {
     public static Gamemanager instance;                 // 자기 자신을 담을 static 변수
 
@@ -30,6 +30,10 @@ public class Gamemanager : MonoBehaviour
         }
 
         mySpawnner = null;
+    }
+    private void Start()
+    {
+        UpdateMoney.AddListener(InventoryManager.Inst.UpdateMyMoney);
     }
 
     // 씬
@@ -79,5 +83,27 @@ public class Gamemanager : MonoBehaviour
         }
     }
 
+    
 
+    public void GetMoney(int money)
+    {
+        if( GetComponent<IEconomy>().Money - money >= 0 ) 
+        {
+            GetComponent<IEconomy>().Money += money;
+        }
+    }
+
+    public bool CheckMoney(int money)
+    {
+        if(GetComponent<IEconomy>().Money - money > 0)
+        {
+            return true;
+        }
+        else 
+        {
+            return false; 
+        }
+    }
+
+    public UnityEvent<int> UpdateMoney;
 }

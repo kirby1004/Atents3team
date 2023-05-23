@@ -14,8 +14,8 @@ public class EquipmentItem : MonoBehaviour , IItems
     private void Start()
     {
         transform.parent.GetComponent<Slot>().mySlotItems = transform;
-        EquipmentManager.Inst.RefreshStat(); // 장비 매니저의 스텟갱신 동작
-        Gamemanager.instance.myPlayer.curHp += transform.gameObject.GetComponent<Item>().item.MaxHpIncrese;
+        EquipmentManager.Inst.RefreshStat(transform.gameObject.GetComponent<Item>().item.MaxHpIncrese); // 장비 매니저의 스텟갱신 동작
+        //Gamemanager.instance.myPlayer.curHp += transform.gameObject.GetComponent<Item>().item.MaxHpIncrese;
     }
     private void Update()
     {        
@@ -33,8 +33,9 @@ public class EquipmentItem : MonoBehaviour , IItems
     {
         if (!isQuit)
         {
+            //Gamemanager.instance.myPlayer.curHp -= transform.gameObject.GetComponent<Item>().item.MaxHpIncrese;
             transform.parent.GetComponent<Slot>().mySlotItems = null;
-            EquipmentManager.Inst.RefreshStat(); // 장비 매니저의 스탯갱신 동작
+            EquipmentManager.Inst.RefreshStat(-transform.gameObject.GetComponent<Item>().item.MaxHpIncrese); // 장비 매니저의 스탯갱신 동작
         }       
     }
 }

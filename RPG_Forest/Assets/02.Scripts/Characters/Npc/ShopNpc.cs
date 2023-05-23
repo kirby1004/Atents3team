@@ -21,7 +21,7 @@ public class ShopNpc : NpcProperty
     {
         obj.transform.position = PlayerPoint.position;
         obj.GetComponentInChildren<SpringArm>().CameraChange = true;
-        while (!Mathf.Approximately(obj.transform.localRotation.eulerAngles.y, PlayerPoint.rotation.eulerAngles.y-0.1f))
+        while (!Mathf.Approximately(obj.transform.localRotation.eulerAngles.y, PlayerPoint.rotation.eulerAngles.y))
         {
             obj.transform.localRotation = Quaternion.Slerp(obj.transform.localRotation, playerPoint.localRotation, Time.deltaTime * 15.0f);
             yield return null;
@@ -38,7 +38,7 @@ public class ShopNpc : NpcProperty
             ShopView(other.gameObject, () => other.GetComponentInChildren<SpringArm>().ViewPointTransformation(ViewPoint, () => ShopManager.Inst.OpenShop(NpcType, () => { other.gameObject.GetComponent<IinterPlay>().SetisUI(true); }))); });
         other.gameObject.GetComponent<IinterPlay>().CloseUi.AddListener(() => { ShopManager.Inst.CloseShop(() => other.GetComponentInChildren<SpringArm>().ViewPointReset(other.GetComponentInChildren<SpringArm>().transform),()=> npcAnim.SetTrigger("Greet")); });
         other.gameObject.GetComponent<IinterPlay>().CloseUi.AddListener(() => other.gameObject.GetComponent<IinterPlay>().SetisUI(false));
-
+        ShopManager.Inst.ExitButton.onClick.AddListener(() => other.gameObject.GetComponent<IinterPlay>().CloseUi?.Invoke());
     }
 
     private void OnTriggerExit(Collider other)

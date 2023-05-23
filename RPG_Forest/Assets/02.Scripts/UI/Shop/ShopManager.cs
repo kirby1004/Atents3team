@@ -18,6 +18,8 @@ public class ShopManager : Singleton<ShopManager>
 
     // 구매버튼
     public Button BuyButton;
+    public Button ExitButton;
+    public GameObject BuyCheckWindow;
     // 상점 목록의 종류
     public List<ShopItemList> ShopItemList;
 

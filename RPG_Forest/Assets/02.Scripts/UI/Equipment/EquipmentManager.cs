@@ -23,13 +23,13 @@ public class EquipmentManager : Singleton<EquipmentManager>
     }
 
     // 스텟 갱신 코루틴 작동
-    public void RefreshStat()
+    public void RefreshStat(float A)
     {
-        StartCoroutine(RefreshStsus());
+        StartCoroutine(RefreshStsus(A));
     }
 
     //스텟 갱신 코루틴
-    IEnumerator RefreshStsus()
+    IEnumerator RefreshStsus(float A)
     {
         yield return new WaitForEndOfFrame();
         //스텟 초기화 후 합산
@@ -46,9 +46,10 @@ public class EquipmentManager : Singleton<EquipmentManager>
                 equipmentSpeed += equipslot[i].GetComponentInChildren<Item>().item.MoveSpeed;  //이동속도
             }
         }
+        Gamemanager.instance.myPlayer.curHp += A;
         //Gamemanager.instance.myPlayer.curHp = (Gamemanager.instance.myPlayer.MaxHp * Rate);
         Debug.Log($"{Gamemanager.instance.myPlayer.curHp}");
-        UIManager.instance.hpBar.RefreshHPBar(Gamemanager.instance.myPlayer.curHp);
+        //UIManager.instance.hpBar.RefreshHPBar(Gamemanager.instance.myPlayer.curHp);
         //Gamemanager.instance.myPlayer.curHp = Gamemanager.instance.myPlayer.
         //Debug.Log($" HP : {equipmentHP} , AP : {equipmentAP} , DP : {equipmentDP} , AS : {equipmentAS} , Speed : {equipmentSpeed} ");
     }
