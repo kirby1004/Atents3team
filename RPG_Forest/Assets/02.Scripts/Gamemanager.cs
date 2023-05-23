@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime;
@@ -128,4 +127,15 @@ public class GameManager : MonoBehaviour , IEconomy
     }
 
     public UnityEvent<int> UpdateMoney;
+
+    // È®·ü °Ë»ç
+    public bool ProbabilityChoose(float Rate)
+    {
+        //float Percentge = Rate / 100;
+        if (Random.Range(0, 100) < Rate)
+        {
+            return true;
+        }
+        return false;
+    }
 }

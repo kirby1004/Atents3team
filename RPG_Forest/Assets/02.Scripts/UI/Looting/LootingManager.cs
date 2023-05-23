@@ -142,16 +142,7 @@ public class LootingManager : Singleton<LootingManager>
     }
     #endregion
 
-    // DropRate Calculate
-    public bool ProbabilityChoose(float Rate)
-    {
-        //float Percentge = Rate / 100;
-        if (Random.Range(0, 101) < Rate)
-        {
-            return true;
-        }
-        return false;
-    }
+
 
     
 

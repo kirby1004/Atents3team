@@ -48,6 +48,11 @@ public class UIManager : MonoBehaviour
             GameObject obj = Instantiate(Resources.Load("UIResource/System/ShopSystem") as GameObject, transform);
             shopManager = obj.GetComponent<ShopManager>();
         }
+        if (FindObjectOfType<EnchantManager>() == null)
+        {
+            GameObject obj = Instantiate(Resources.Load("UIResource/System/EnchantSystem") as GameObject, transform);
+            enchantManager = obj.GetComponent<EnchantManager>();
+        }
 
     }
     private void Start()
@@ -61,13 +66,16 @@ public class UIManager : MonoBehaviour
     public StatusManager statusManager;
     public ShopManager shopManager;
     public LootingManager lootingManager;
+    public EnchantManager enchantManager;
     //참조하는 원본
     //public GameObject inventoryManagerGameObject;
     //public GameObject statusManagerGameObject;
     //public GameObject equipmentManagerGameObject;
-    
+
+    [Header("StatusBars")]
     public MySkillList skillList;
     public TMP_Text myName;
+    public TMP_Text myLevel;
     public PlayerHpBar hpBar;
 
     public void Refresh()
@@ -80,6 +88,7 @@ public class UIManager : MonoBehaviour
         EquipmentManager.Inst.gameObject.SetActive(false);
         InventoryManager.Inst.gameObject.SetActive(false);
         StatusManager.Inst.gameObject.SetActive(false);
+        EnchantManager.Inst.gameObject.SetActive(false);
 
     }
 

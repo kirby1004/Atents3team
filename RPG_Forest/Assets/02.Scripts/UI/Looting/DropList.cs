@@ -49,7 +49,7 @@ public class DropList : MonoBehaviour
     {
         for (int i = 0; i < mydropTable.myDropTable.Count(); i++)
         {
-            if (LootingManager.Inst.ProbabilityChoose(mydropTable.myDropRate[i]))
+            if (GameManager.instance.ProbabilityChoose(mydropTable.myDropRate[i]))
             {
                 SpawnLootSlot(mydropTable.myDropTable[i]);
             }
