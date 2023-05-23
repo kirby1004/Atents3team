@@ -33,7 +33,7 @@ public class ShopBuyCheck : MonoBehaviour
     {
         BuyButton.onClick.AddListener(() =>
         {
-            if (Gamemanager.instance.CheckMoney(myItem.myCost))
+            if (GameManager.instance.CheckMoney(myItem.myCost))
             {
                 myItem.BuyItem(myItem.myItem, true);
             }

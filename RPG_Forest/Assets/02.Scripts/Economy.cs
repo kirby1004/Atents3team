@@ -16,7 +16,7 @@ public interface IEconomy
             if (value >= 0)
             {
                 Money = value;
-                Gamemanager.instance.UpdateMoney?.Invoke(Money);
+                GameManager.instance.UpdateMoney?.Invoke(Money);
             }
         } 
     }

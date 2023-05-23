@@ -49,7 +49,7 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
     }
     public void OnDamage(float dmg)
     {
-        curHp -= Gamemanager.instance.DamageDecrease(dmg, DefensePoint);
+        curHp -= GameManager.instance.DamageDecrease(dmg, DefensePoint);
 
         if (Mathf.Approximately(curHp, 0.0f))
         {
