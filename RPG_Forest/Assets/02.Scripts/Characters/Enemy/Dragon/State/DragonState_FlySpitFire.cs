@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class DragonState_FlySpitFire : State
 {
     Dragon dragon;
-
+    Vector3 spitFireRotation;
     public DragonState_FlySpitFire(Monster monster, StateMachine stateMachine) : base(monster, stateMachine)
     {
         dragon = monster as Dragon;
@@ -35,12 +36,14 @@ public class DragonState_FlySpitFire : State
 
     IEnumerator SpitFire()
     {
-        //Vector3 dir = (dragon.myTarget.transform.position - dragon.transform.position).normalized;
 
+        //Vector3 dir = (dragon.myTarget.transform.position - dragon.transform.position).normalized;
         //SkillManager.instance.RegisterSkill(MonsterSkillName.MagicCircleImage, dragon.transform, Quaternion.Euler(new Vector3(40.0f, 0f, 0f)));
-        SkillManager.instance.RegisterSkill(MonsterSkillName.MagicCircleImage, dragon.spitFirePos, dragon.spitFirePos.localRotation);
+        SkillManager.instance.RegisterSkill(MonsterSkillName.MagicCircleImage, dragon.spitFirePos, dragon.spitFirePos.rotation);
         //yield return null;
         yield return new WaitForSeconds(3.0f);
+        spitFireRotation = new Vector3(135.0f, dragon.transform.localRotation.y, 0f);
+        Debug.Log($"{spitFireRotation}");
         var wfs = new WaitForSeconds(dragon.spitFireDelay);
 
         ////Vector3 fireStartPos = new Vector3(0, -10.0f, 16f) + magicCircle;
@@ -49,10 +52,10 @@ public class DragonState_FlySpitFire : State
         while (dragon.spitFireCnt < 5)
         {
             dragon.spitFireCnt++;
-            dragon.myAnim.SetTrigger("FlySpitFire");
+            dragon.myAnim.SetTrigger("FlySpitFire");    
             Debug.Log($"{dragon.spitFireCnt}");
 
-            SkillManager.instance.RegisterSkill(MonsterSkillName.SpitFire, dragon.spitFirePos, Quaternion.Euler(new Vector3(135.0f, 0f, 0f)));
+            SkillManager.instance.RegisterSkill(MonsterSkillName.SpitFire, dragon.spitFirePos.position, Quaternion.Euler(spitFireRotation));
 
             yield return wfs;
         }

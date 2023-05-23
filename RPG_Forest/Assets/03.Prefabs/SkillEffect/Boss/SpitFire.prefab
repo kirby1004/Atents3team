@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 693454231405589813}
-  m_LocalRotation: {x: 0.9232773, y: 0, z: 0, w: 0.38413414}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -5.55, z: 12.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 693454232088552554}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 134.82, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1320379689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HitPoint: {fileID: 0}
   <skillData>k__BackingField: {fileID: 11400000, guid: 355765ade1b2dc14da9e592ec7973f6a, type: 2}
-  trigger: {fileID: 1902409084}
+  trigger: {fileID: 0}
 --- !u!1 &693454232088552533
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,7 +60,6 @@ GameObject:
   - component: {fileID: 693454232088552554}
   - component: {fileID: 693454232088552552}
   - component: {fileID: 693454232088552555}
-  - component: {fileID: 1902409084}
   m_Layer: 0
   m_Name: Effect_24_Projectile
   m_TagString: Untagged
@@ -76,7 +75,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 693454232088552533}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 15, z: 0}
+  m_LocalPosition: {x: 0, y: 15, z: 6.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -337,7 +336,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -800,7 +799,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 4
+      value: 6
       mode: 0
       spread: 0
       speed:
@@ -3728,8 +3727,8 @@ ParticleSystem:
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
-    multiplyColliderForceByParticleSpeed: 1
-    multiplyColliderForceByCollisionAngle: 1
+    multiplyColliderForceByParticleSpeed: 0
+    multiplyColliderForceByCollisionAngle: 0
     m_Planes:
     - {fileID: 0}
     - {fileID: 0}
@@ -3918,7 +3917,7 @@ ParticleSystem:
     colliderQueryMode: 0
     radiusScale: 1
     primitives:
-    - {fileID: 0}
+    - {fileID: 693454232088552554}
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
@@ -4944,21 +4943,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &1902409084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 693454232088552533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b4d8e0920e06cf448e0bb14ec41dc01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!1 &693454232333929701
 GameObject:
   m_ObjectHideFlags: 0
@@ -4970,6 +4954,7 @@ GameObject:
   - component: {fileID: 693454232333929722}
   - component: {fileID: 693454232333929720}
   - component: {fileID: 693454232333929723}
+  - component: {fileID: 257785700325870518}
   m_Layer: 0
   m_Name: Effect_24_FireBall
   m_TagString: Untagged
@@ -4985,7 +4970,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 693454232333929701}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0, y: -0.98999786, z: 15}
+  m_LocalPosition: {x: 0, y: -0.98999786, z: 11.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8645,7 +8630,7 @@ ParticleSystem:
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
-    multiplyColliderForceByCollisionAngle: 1
+    multiplyColliderForceByCollisionAngle: 0
     m_Planes:
     - {fileID: 0}
     - {fileID: 0}
@@ -8813,11 +8798,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     minKillSpeed: 0
-    maxKillSpeed: 10000
+    maxKillSpeed: 1
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 384
+      m_Bits: 128
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -8825,13 +8810,13 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 2
-    inside: 1
+    inside: 0
     outside: 0
-    enter: 0
+    enter: 2
     exit: 0
-    colliderQueryMode: 0
+    colliderQueryMode: 1
     radiusScale: 1
     primitives:
     - {fileID: 0}
@@ -9860,6 +9845,21 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &257785700325870518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693454232333929701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b4d8e0920e06cf448e0bb14ec41dc01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &693454232435756362
 GameObject:
   m_ObjectHideFlags: 0
@@ -14767,7 +14767,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 693454232624206389}
   m_LocalRotation: {x: -0.92387956, y: 0, z: 0, w: 0.38268343}
-  m_LocalPosition: {x: 0, y: 33.13, z: 2.23}
+  m_LocalPosition: {x: 0, y: 34.435, z: 6.645}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
