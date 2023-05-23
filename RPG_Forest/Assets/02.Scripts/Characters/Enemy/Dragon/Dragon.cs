@@ -53,7 +53,7 @@ public class Dragon : Monster
     IEnumerator EncounterCutScene()
     {
         Vector3 pos = transform.position + new Vector3(0, 13, 0);
-        ObjectPoolingManager.instance.GetObject("DevilEye", pos, Quaternion.identity);
+        ObjectPoolingManager.instance.GetObject("DevilEye", pos, Quaternion.identity,5.0f);
         //SkillManager.instance.RegisterSkill(MonsterSkillName.DevilEye, pos);
         
         yield return new WaitForSeconds(3.5f);
