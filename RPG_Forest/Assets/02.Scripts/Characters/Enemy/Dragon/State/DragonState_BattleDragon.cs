@@ -38,6 +38,11 @@ public class DragonState_BattleDragon : State
 
         dist = Vector3.Distance(dragon.transform.position, dragon.myTarget.transform.position);
 
+        // Debug.Log("InBattleState");
+
+        // 공격 시야 안에 들어와있는 지 체크
+
+
         // 거리 체크를 하는 함수를 구현
         if (!dragon.isFlying && dragon.myTarget != null && dist > dragon.AttackRange + attackRadiusOffset)
         {
