@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4270581535377906535
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -7,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FlowShader
-  m_Shader: {fileID: -6465566751694194690, guid: 612f416bdae5d6042a8fe9635b5999a9, type: 3}
+  m_Name: LavaShader 1
+  m_Shader: {fileID: -6465566751694194690, guid: 05fc8cd5f8871264f88394cce782ad15, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 2
@@ -20,23 +33,19 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _FlowMap:
-        m_Texture: {fileID: 2800000, guid: efae4fd991401c14db343ffd37e246c3, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Normals:
-        m_Texture: {fileID: 2800000, guid: b5471f03ad0636147ad792b92298f969, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Texture:
+    - _HeatTexture:
         m_Texture: {fileID: 2800000, guid: 74bb3a1ad2b9a554393a61036043751c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _USGFlowMap_ce5177422a964a79a0389e313c22ed64_FlowMap_2492709467:
-        m_Texture: {fileID: 0}
+    - _MainTexture:
+        m_Texture: {fileID: 2800000, guid: 74bb3a1ad2b9a554393a61036043751c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _USGFlowMap_ce5177422a964a79a0389e313c22ed64_Texture_4143342962:
+    - _NormalTexture:
+        m_Texture: {fileID: 2800000, guid: b5471f03ad0636147ad792b92298f969, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2D:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -54,30 +63,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Emission: 10
-    - _Float: 0
-    - _FlowMapTiling: 1
-    - _Metallic: 0.5
-    - _QueueControl: 0
+    - _HeatControl: 3
+    - _MetallicControl: 0.1
+    - _QueueControl: 1
     - _QueueOffset: 0
-    - _Smoothness: 0.5
-    - _Speed: 0.05
-    - _Strength: 0.5
-    - _Tiling: 2
+    - _ShellControl: 5
     m_Colors:
-    - _EmissionColor: {r: 1, g: 0, b: 0, a: 0}
-    - _Tint: {r: 1, g: 1, b: 1, a: 1}
+    - _AnimationCotrol: {r: 0.02, g: 0.02, b: 0, a: 0}
+    - _LavaColorHeat: {r: 9.201537, g: 2.828019, b: 1.6840543, a: 0}
+    - _TilingControl: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &1583399076253551315
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 5

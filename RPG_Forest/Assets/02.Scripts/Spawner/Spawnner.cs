@@ -10,6 +10,7 @@ public class Spawnner : MonoBehaviour
     public int TotalCount = 3;
     public float Width = 5.0f;
     public float Height = 5.0f;
+    public float ReSpawnDelay = 10.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +37,7 @@ public class Spawnner : MonoBehaviour
 
     IEnumerator ReSpawnning()
     {
-        yield return new WaitForSeconds(10.0f);
+        yield return new WaitForSeconds(ReSpawnDelay);
 
         if (Monster.TotalCount < 3)
         {

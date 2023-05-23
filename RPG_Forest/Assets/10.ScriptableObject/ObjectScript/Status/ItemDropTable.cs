@@ -12,5 +12,6 @@ public class ItemDropTable : ScriptableObject
     [Range(0,100)] public List<float> myDropRate;
 
     [Range(0,1000)] public int mySoulDrop;
+    public Vector2Int mySoulDropRange;
 
 }

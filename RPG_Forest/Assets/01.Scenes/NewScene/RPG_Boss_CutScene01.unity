@@ -6167,7 +6167,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229477554}
-  m_LocalRotation: {x: -0.024449075, y: -0.029570982, z: 0.005133515, w: 0.9992505}
+  m_LocalRotation: {x: -0.024449095, y: -0.029570982, z: 0.0051335143, w: 0.9992505}
   m_LocalPosition: {x: 0.5500009, y: -0.44999987, z: -9.239996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6580,6 +6580,8 @@ PlayableDirector:
     value: {fileID: 2414816008951348347}
   - key: {fileID: 1319071527440835581, guid: 0efbe4d1645cd324891f63dcc5de2954, type: 2}
     value: {fileID: 6787210491588679992}
+  - key: {fileID: 3690264688704575934, guid: 0efbe4d1645cd324891f63dcc5de2954, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - 30fcfad57f8b6cf479af0caaecf7de10: {fileID: 6787210490118394001}
@@ -9364,15 +9366,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c51e179e13de994190538ae2feba1bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutScene02:
-    m_Handle: 0
-  myPlyaer: {fileID: 6787210491588679998}
-  myPlayerTr: {fileID: 6787210491588679993}
+  cutScene01: {fileID: 0}
+  myPlayer: {fileID: 6787210491588679998}
   myEnemy: {fileID: 5109323814280859175}
-  myEnemyTr: {fileID: 5109323814280859174}
   mySpawnner: {fileID: 0}
   playTime: 0
   myUIManager: {fileID: 0}
+  UpdateMoney:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1405096635
 Transform:
   m_ObjectHideFlags: 0
@@ -9503,12 +9505,6 @@ MonoBehaviour:
   - prefab: {fileID: 5263440771783224704, guid: 5292d547fa6e1844ba8b58f0e14d5d55, type: 3}
     poolCount: 1
     explan: Create
-  - prefab: {fileID: 5177226040424265177, guid: 96f2d986ad8d6ce4aa5e6d9280bdc4f0, type: 3}
-    poolCount: 1
-    explan: EndingCutScene
-  - prefab: {fileID: 6289102546783167400, guid: 6bde427c9cc0fd847a7a1c0168ddcd69, type: 3}
-    poolCount: 1
-    explan: EndingCutScene
 --- !u!4 &1499002306
 Transform:
   m_ObjectHideFlags: 0

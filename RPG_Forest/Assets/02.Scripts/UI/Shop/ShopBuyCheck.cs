@@ -29,6 +29,15 @@ public class ShopBuyCheck : MonoBehaviour
         
     }
 
+    private void OnEnable()
+    {
+        RefreshWindow();
+    }
+    private void OnDisable()
+    {
+        myItem = null;
+
+    }
     public void RefreshWindow()
     {
         BuyButton.onClick.AddListener(() =>
@@ -36,10 +45,14 @@ public class ShopBuyCheck : MonoBehaviour
             if (GameManager.instance.CheckMoney(myItem.myCost))
             {
                 myItem.BuyItem(myItem.myItem, true);
+                GameManager.instance.GetMoney(-myItem.myCost);
+                BuyButton.onClick.RemoveAllListeners();
+                ShopManager.Inst.BuyCheckWindow.SetActive(false);
             }
             else
             {
-
+                BuyButton.onClick.RemoveAllListeners();
+                ShopManager.Inst.FailWindow.SetActive(true);
             }
         });
     }

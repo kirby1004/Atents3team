@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -72,6 +73,23 @@ public class Dragon : Monster
     #endregion
 
     #region Battle
+
+    public float fieldOfView = 10f;
+
+#if UNITY_EDITOR
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = new Color(1.0f, 0f, 0f, 0.5f);
+        Gizmos.DrawSphere(transform.position, AttackRange);
+
+        var leftRayRotation = Quaternion.AngleAxis(-fieldOfView * 0.5f, Vector3.up);
+        var rightRayDirection = leftRayRotation * transform.forward;
+        Handles.color = new Color(1f, 1f, 1f, 0.2f);
+        //Handles.DrawSolidArc()
+    }
+
+#endif
 
     public override void OnBattle()
     {
