@@ -90,6 +90,8 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
         StartCoroutine(MovingToPos(pos, done));
     }
 
+    
+
     protected IEnumerator MovingToPos(Vector3 pos, UnityAction done)
     {
         Vector3 dir = pos - transform.position;
@@ -119,7 +121,7 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
         done?.Invoke();
     }
 
-    IEnumerator Rotating(Vector3 dir)  // 주의 : Normalize 된 벡터만 입력받게 할것
+    internal IEnumerator Rotating(Vector3 dir)  // 주의 : Normalize 된 벡터만 입력받게 할것
     {
         float angle = Vector3.Angle(transform.forward, dir);
         float rotDir = 1.0f;

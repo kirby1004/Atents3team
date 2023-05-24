@@ -29,11 +29,12 @@ public class DragonAttackPattern
     {
         phases.Add(new DragonState_Bite(dragon));
         phases.Add(new DragonState_LeftClawAttack(dragon));
+        phases.Add(new DragonState_RightClawAttack(dragon));
     }
 
     public IEnumerator DoAttackPattern()
     {
-        float delayTime = 1.0f;
+        float delayTime = 3.0f;
         var wfs = new WaitForSeconds(delayTime);
 
         while(true)
