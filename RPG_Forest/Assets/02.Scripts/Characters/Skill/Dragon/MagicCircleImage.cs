@@ -12,6 +12,9 @@ public class MagicCircleImage : Skill, ISkill
     Vector3 MagicCircleMaxScale;
     Vector3 MagicCircleMinScale;
     Vector3 SpitFireRotation;
+
+    [SerializeField]
+    Animator animator;
     public void Awake()
     {
         dist = skillData.Distance;
@@ -42,25 +45,31 @@ public class MagicCircleImage : Skill, ISkill
         //    //Mathf.Lerp(10.0f, 30.0f, Time.deltaTime * offset);
         //    yield return null;
         //}
-
-        while (transform.localScale.x< MagicCircleMaxScale.x-0.1f)
-        {
+        animator.SetTrigger("Intro");
+        //while (transform.localScale.x< MagicCircleMaxScale.x-0.1f)
+        //{
        
-            //transform.Translate(transform.forward * delta, Space.World);
-            transform.localScale = Vector3.Lerp(transform.localScale, MagicCircleMaxScale, Time.deltaTime);
-            //Mathf.Lerp(10.0f, 30.0f, Time.deltaTime * offset);
-            yield return null;
-        }
+        //    //transform.Translate(transform.forward * delta, Space.World);
+        //    transform.localScale = Vector3.Lerp(transform.localScale, MagicCircleMaxScale, Time.deltaTime);
+        //    //Mathf.Lerp(10.0f, 30.0f, Time.deltaTime * offset);
+        //    yield return null;
+        //}
 
 
-        var wfs = new WaitForSeconds(13.0f);
+        var wfs = new WaitForSeconds(18.0f);
         yield return wfs;
-        while (transform.localScale.x > MagicCircleMinScale.x + 0.1f)
-        {
+        //while (transform.localScale.x > MagicCircleMinScale.x + 0.1f)
+        //{
 
-            //transform.Translate(transform.forward * delta, Space.World);
-            transform.localScale = Vector3.Lerp(transform.localScale, MagicCircleMinScale, Time.deltaTime * 1.5f) ;
-            //Mathf.Lerp(10.0f, 30.0f, Time.deltaTime * offset);
+        //    //transform.Translate(transform.forward * delta, Space.World);
+        //    transform.localScale = Vector3.Lerp(MagicCircleMaxScale, MagicCircleMinScale, Time.deltaTime * 1.5f);
+        //    //Mathf.Lerp(10.0f, 30.0f, Time.deltaTime * offset);
+        //    yield return null;
+        //}
+        animator.SetTrigger("Outro");
+        while (!animator.GetBool("OutroEnd"))
+        {
+            //Debug.Log($"{animator.GetBool("OutroEnd")}");
             yield return null;
         }
         ObjectPoolingManager.instance.ReturnObject(gameObject);

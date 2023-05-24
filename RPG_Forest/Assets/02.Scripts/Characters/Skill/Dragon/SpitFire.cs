@@ -8,8 +8,6 @@ public class SpitFire : Skill, ISkill
 {
     [field:SerializeField]
     public SkillData skillData { get; set; }
-    [SerializeField]
-    SpitFireTrigger trigger;
     public void Awake()
     {
        
@@ -27,13 +25,5 @@ public class SpitFire : Skill, ISkill
         ObjectPoolingManager.instance.ReturnObject(gameObject);
         yield return null;
 
-    }
-
-    public void Update()
-    {
-        //if (trigger.isHit)
-        //{
-        //    trigger.hitObject.GetComponent<IBattle>()?.OnDamage(5);
-        //}
     }
 }
