@@ -9,6 +9,32 @@
 4. 개발 일정 확인하기 - [개발 일정](https://app.asana.com/0/1204352798021693/list)
 
 ---
+## Scene Merge & Map Discussion
+> Boss Scene
+   - 마법진 입체감 향상을 위해 이중 Image로 변경하고 Animation 처리를 통해 생동감을 주는 작업 진행 예정 (수민)  
+   - 마법진 블룸처리 (URP와 충돌 문제 해결가능 한지 확인해보고 진행)  
+   - 맵 톤 설정  
+     * 씬 전환 시 맵 전체적인 분위기 연결을 위해 Light 색 조정 (Tone down)  
+
+> Forest Scene  
+  - 등장 연출 토의  
+    * Warp Cut Scene 제작 예정 (진수)
+    * 중간 보스 조우 Cut Scene 제작 예정 (진수)  
+      + 걸어가다가 서부영화처럼 발부터 올라가면서 캐릭터 전체를 보여주고 다리 너머 기사들이 대화하다가 캐릭터를 발견한 후 캐릭터에게 달려오는 듯하게 연출
+
+> Village Scene  
+  - 등장 연출 토의
+    * Dummy NPC 생성하고, Nav Mesh Agent 이용해서 정해진 경로를 움직이다가 Player를 만날 시 반대로 도망가는 연출 삽입
+    * Village 소환 CutScene 필요시 제작
+
+> Additive Scene
+  - Intro, Death, Loading Scene 제작 예정
+  - Loading Scene의 경우 각 Map의 스틸 컷을 활용하여 이미지 사용 할 예정 (명오)
+
+> UI  
+  - 미니맵 (교원)
+
+---
 ### V.4.0.08 - JS
 > Boss Scene  
   - Boss CutScene 시네머신으로 제작 완료    
@@ -33,10 +59,13 @@
 
 ---
 ## 1st Camera Test Meeting (05-21, 22)
-> UI Bug Corrected
-> 공격력, 방어력 계산식 / 세부 능력치 설계
-> 재화 관련 구조 설계 및 코드 작성 방향 토의
-> 시네머신 연출 관련 토의
+> UI Bug Corrected  
+
+> 공격력, 방어력 계산식 / 세부 능력치 설계  
+
+> 재화 관련 구조 설계 및 코드 작성 방향 토의  
+
+> 시네머신 연출 관련 토의  
 
 ---
 ### V.4.0.07 - GY
