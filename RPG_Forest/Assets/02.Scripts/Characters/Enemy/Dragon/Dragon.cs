@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Dragon : Monster
 {
     public Transform headPoint;
+    public Transform rightClawPoint;
     public DragonAttackPattern pattern;
 
     public bool isBerserk = false;                 // ±¤ÆøÈ­
@@ -55,9 +56,7 @@ public class Dragon : Monster
     IEnumerator EncounterCutScene()
     {
         Vector3 pos = transform.position + new Vector3(0, 13, 0);
-        ObjectPoolingManager.instance.GetObject("DevilEye", pos, Quaternion.identity,5.0f);
-        //SkillManager.instance.RegisterSkill(MonsterSkillName.DevilEye, pos);
-        
+        ObjectPoolingManager.instance.GetObject("DevilEye", pos, Quaternion.identity, 5.0f);
         yield return new WaitForSeconds(3.5f);
         m_monsterSM.ChangeState(m_states[eState.Idle]);
     }
@@ -75,7 +74,8 @@ public class Dragon : Monster
 
     #region Battle
 
-    public float fieldOfView = 10f;
+    public float fieldOfView = 30f;
+    public float viewDistance = 10.0f;
 
 #if UNITY_EDITOR
 
@@ -85,9 +85,9 @@ public class Dragon : Monster
         Gizmos.DrawSphere(transform.position, AttackRange);
 
         var leftRayRotation = Quaternion.AngleAxis(-fieldOfView * 0.5f, Vector3.up);
-        var rightRayDirection = leftRayRotation * transform.forward;
+        var leftRayDirection = leftRayRotation * transform.forward;
         Handles.color = new Color(1f, 1f, 1f, 0.2f);
-        //Handles.DrawSolidArc()
+        Handles.DrawSolidArc(transform.position, Vector3.up, leftRayDirection, fieldOfView, viewDistance);
     }
 
 #endif

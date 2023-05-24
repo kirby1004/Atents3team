@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _image: {fileID: 0}
   _name: SpitFire
-  _value1: 30
+  _value1: 10
   _value2: 0
   _range: 3
   _distance: 10

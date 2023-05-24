@@ -46,6 +46,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: e0080c37f479acb49b6389201658bbf1, type: 3}
+--- !u!1 &753074021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 753074022}
+  m_Layer: 9
+  m_Name: RightAtkPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &753074022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753074021}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5455374079271813021}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1075396257
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +361,10 @@ MonoBehaviour:
   myAI: {fileID: 5109323813077289598}
   leftClawPoint: {fileID: 5109323814729835467}
   headPoint: {fileID: 5109323812957638735}
+  rightClawPoint: {fileID: 753074022}
   isBerserk: 0
+  fieldOfView: 15
+  viewDistance: 10
   flyPos: {x: 0, y: 0, z: 0}
   isFlying: 0
   flyHeight: 25
@@ -1929,6 +1963,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -46.615646
       objectReference: {fileID: 0}
+    - target: {fileID: 959995844590543892, guid: dd2b8cd7bb9b3b14f8ac4f51b9c43d25, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 959995844594653908, guid: dd2b8cd7bb9b3b14f8ac4f51b9c43d25, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1982,6 +2020,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  RightAttackFunc:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5109323814818870076}
+        m_TargetAssemblyTypeName: CharacterMovement_V2, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 753074022}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   DeadFunc:
     m_PersistentCalls:
       m_Calls:
@@ -2000,6 +2053,11 @@ MonoBehaviour:
 --- !u!4 &5455374079271812717 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 959995844583311946, guid: dd2b8cd7bb9b3b14f8ac4f51b9c43d25, type: 3}
+  m_PrefabInstance: {fileID: 5109323814435812391}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5455374079271813021 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 959995844583312314, guid: dd2b8cd7bb9b3b14f8ac4f51b9c43d25, type: 3}
   m_PrefabInstance: {fileID: 5109323814435812391}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5455374079271813057 stripped
