@@ -61,7 +61,7 @@ public class EnchantWIndow : MonoBehaviour
 
     public void RefreshSuccessRate(float Rate)
     {
-        SuccessRate.text = Rate.ToString();
+        SuccessRate.text = Rate.ToString()+"%";
     }
 
     public void RefreshEnchentCost(int  Cost)

@@ -77,7 +77,7 @@ public class EnchantManager : Singleton<EnchantManager>
     {
         UIManager.instance.myLevel.text = value.ToString();
         //StatusManager.Inst.myLevel.text = "Lv." + value.ToString();
-        StatusManager.Inst.myEnchantDamage.text = (value * 10).ToString();
+        StatusManager.Inst.myEnchantDamage.text = value.ToString();
         myWindow.RefreshEnchentCost(myCostTable.CostTable[value]);
         myWindow.RefreshSoulLevel(value);
         myWindow.RefreshSuccessRate(myCostTable.SuccessRate[value]);

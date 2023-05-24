@@ -11,6 +11,7 @@ public class Dragon : Monster
 
     public bool isBerserk = false;                 // ±¤ÆøÈ­
 
+
     protected override void Awake()
     {
         pattern = new DragonAttackPattern(this);

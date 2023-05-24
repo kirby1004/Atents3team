@@ -11,6 +11,7 @@ public class PlayerHpBar : MonoBehaviour
     public Slider mySlider;
     public PlayerController myPlayer;
     public TMP_Text myText;
+    public int myIndex;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,14 +34,12 @@ public class PlayerHpBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(LastHP != Gamemanager.instance.myPlayer.MaxHp)
-        //{
-        //    RefreshHPBar(Gamemanager.instance.myPlayer.curHp);
-        //}
+
     }
     
     public void RefreshHPBar(float hp)
     {
+
         mySlider.value = hp;
         myText.text = hp.ToString("N0") +$"/ {myPlayer.MaxHp}";
         mySlider.maxValue = myPlayer.MaxHp;

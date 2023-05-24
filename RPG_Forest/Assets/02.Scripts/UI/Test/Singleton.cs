@@ -33,12 +33,5 @@ public class Singleton<T> : MonoBehaviour where T : Component
             Destroy(this);
         }
     }
-    public void Initializer()
-    {
-        Initialize();
-    }
-    //protected void Awake()
-    //{
-          
-    //}
+   
 }
