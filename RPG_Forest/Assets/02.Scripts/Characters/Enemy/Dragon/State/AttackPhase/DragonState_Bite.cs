@@ -19,7 +19,6 @@ public class DragonState_Bite : AttackPhase
         {
             if (!dragon.myAnim.GetBool("isAttacking"))
             {
-                // playTime 을 nextAttackTime으로 변경 필요
                 dragon.playTime += Time.deltaTime;
                 if (dragon.playTime >= dragon.AttackDelay)
                 {
