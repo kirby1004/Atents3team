@@ -42,7 +42,7 @@ public class DragonState_FlySpitFire : State
         SkillManager.instance.RegisterSkill(MonsterSkillName.MagicCircleImage, dragon.spitFirePos, dragon.spitFirePos.rotation);
         //yield return null;
         yield return new WaitForSeconds(3.0f);
-        spitFireRotation = new Vector3(135.0f, dragon.transform.localRotation.y, 0f);
+        spitFireRotation = new Vector3(0f, dragon.transform.localRotation.y, 0f);
         Debug.Log($"{spitFireRotation}");
         var wfs = new WaitForSeconds(dragon.spitFireDelay);
 
@@ -55,7 +55,7 @@ public class DragonState_FlySpitFire : State
             dragon.myAnim.SetTrigger("FlySpitFire");    
             Debug.Log($"{dragon.spitFireCnt}");
 
-            SkillManager.instance.RegisterSkill(MonsterSkillName.SpitFire, dragon.spitFirePos.position, Quaternion.Euler(spitFireRotation));
+            SkillManager.instance.RegisterSkill(MonsterSkillName.SpitFire, dragon.spitFirePos.position+new Vector3(0,1,0)*10.0f,dragon.transform.localRotation);
 
             yield return wfs;
         }

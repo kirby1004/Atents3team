@@ -1,11 +1,11 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime;
 using UnityEngine;
 using UnityEngine.Events;
 
 // 게임 매니저를 싱글톤 패턴으로 구현
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour , IEconomy
 {
     public static GameManager instance;                 // 자기 자신을 담을 static 변수
 
@@ -33,7 +33,8 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        UpdateMoney.AddListener(InventoryManager.Inst.UpdateMyMoney);
+        economy = this.GetComponent<IEconomy>();
+        Money = new int();
     }
 
     // 씬
@@ -83,19 +84,39 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
-
+    public IEconomy economy;
+    private int _Money = 0;
+    public int Money
+    {
+        get 
+        {  
+            return _Money;
+        }
+        set 
+        {
+           _Money = value;
+            GameManager.instance.UpdateMoney?.Invoke(_Money);
+        }
+    }
+    //public int Money = 0;
     public void GetMoney(int money)
     {
-        if( GetComponent<IEconomy>().Money - money >= 0 ) 
+        if(money < 0)
         {
-            GetComponent<IEconomy>().Money += money;
+            if(economy.Money - money >= 0 ) 
+            {
+                economy.Money += money;
+            }
+        }
+        else
+        {
+            economy.Money += money;
         }
     }
 
     public bool CheckMoney(int money)
     {
-        if(GetComponent<IEconomy>().Money - money > 0)
+        if(economy.Money - money > 0)
         {
             return true;
         }
@@ -106,4 +127,15 @@ public class GameManager : MonoBehaviour
     }
 
     public UnityEvent<int> UpdateMoney;
+
+    // 확률 검사
+    public bool ProbabilityChoose(float Rate)
+    {
+        //float Percentge = Rate / 100;
+        if (Random.Range(0, 100) < Rate)
+        {
+            return true;
+        }
+        return false;
+    }
 }

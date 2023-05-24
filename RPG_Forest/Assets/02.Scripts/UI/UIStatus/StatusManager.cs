@@ -7,7 +7,8 @@ public class StatusManager : Singleton<StatusManager>
 {
     public TMP_Text[] myStat;
 
-
+    public TMP_Text myLevel;
+    public TMP_Text myEnchantDamage;
     public void RefreshingStat()
     {
         for (int i = 0; i < myStat.Length; i++)

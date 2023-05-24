@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -8,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class Dragon : Monster
 {
     public Transform headPoint;
-    public Transform rightClawPoint;
     public DragonAttackPattern pattern;
 
     public bool isBerserk = false;                 // ±¤ÆøÈ­
@@ -29,7 +27,9 @@ public class Dragon : Monster
         m_states.Add(eState.Landing, new DragonState_Landing(this, m_monsterSM));
         m_states.Add(eState.BattleDragon, new DragonState_BattleDragon(this, m_monsterSM));
 
+
         AttackRange = 5.1f;
+
     }
 
     protected override void Update()
@@ -54,7 +54,9 @@ public class Dragon : Monster
     IEnumerator EncounterCutScene()
     {
         Vector3 pos = transform.position + new Vector3(0, 13, 0);
-        ObjectPoolingManager.instance.GetObject("DevilEye", pos, Quaternion.identity);
+        ObjectPoolingManager.instance.GetObject("DevilEye", pos, Quaternion.identity,5.0f);
+        //SkillManager.instance.RegisterSkill(MonsterSkillName.DevilEye, pos);
+        
         yield return new WaitForSeconds(3.5f);
         m_monsterSM.ChangeState(m_states[eState.Idle]);
     }
@@ -72,23 +74,19 @@ public class Dragon : Monster
 
     #region Battle
 
-    public float fieldOfView = 15f;
-
-  
-    public float viewDistance = 10f;
+    public float fieldOfView = 10f;
 
 #if UNITY_EDITOR
 
-    // ½Ã¾ß°¢ Ã¼Å© 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = new Color(1.0f, 0f, 0f, 0.5f);
         Gizmos.DrawSphere(transform.position, AttackRange);
 
         var leftRayRotation = Quaternion.AngleAxis(-fieldOfView * 0.5f, Vector3.up);
-        var leftRayDirection = leftRayRotation * transform.forward;
+        var rightRayDirection = leftRayRotation * transform.forward;
         Handles.color = new Color(1f, 1f, 1f, 0.2f);
-        Handles.DrawSolidArc(transform.position, Vector3.up, leftRayDirection, fieldOfView, viewDistance);
+        //Handles.DrawSolidArc()
     }
 
 #endif
@@ -119,7 +117,7 @@ public class Dragon : Monster
     // µå·¡°ï ÄÆ¾À ¿¬ÃâÀ» À§ÇØ OnDie virtaul ÇÔ¼ö overriding
     public override void OnDie()
     {
-        //GameManager.instance.OnLoadEndingScene(); 
+        //GameManager.instance.OnLoadEndingScene();
 
     }
 

@@ -19,6 +19,7 @@ public class ToggleButton : MonoBehaviour
         mySystems.Add(InventoryManager.Inst.gameObject);
         mySystems.Add(EquipmentManager.Inst.gameObject);
         mySystems.Add(StatusManager.Inst.gameObject);
+        mySystems.Add(EnchantManager.Inst.gameObject);
     }
 
     // Update is called once per frame
