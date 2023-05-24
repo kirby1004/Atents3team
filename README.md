@@ -15,6 +15,9 @@
    - 마법진 블룸처리 (URP와 충돌 문제 해결가능 한지 확인해보고 진행)  
    - 맵 톤 설정  
      * 씬 전환 시 맵 전체적인 분위기 연결을 위해 Light 색 조정 (Tone down)  
+       <img src = "https://github.com/kirby1004/AtentsTeamProject/assets/105345909/0b9378d7-3fae-49e8-b0f6-d956dffec242.JPG" width = "300" height ="220"/>
+       <img src = "https://github.com/kirby1004/AtentsTeamProject/assets/105345909/f6c9f14e-a5ed-4fb5-89c1-6711a6000a7e.JPG" width = "300" height ="220"/>
+       <img src = "https://github.com/kirby1004/AtentsTeamProject/assets/105345909/bec489ed-22dc-456d-b7d3-2f1776c826d5.JPG" width = "300" height ="220"/>
 
 > Forest Scene  
   - 등장 연출 토의  
