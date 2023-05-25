@@ -36,15 +36,15 @@ public class CutScene : MonoBehaviour
             if(this.gameObject.scene.buildIndex != 3) SceneManager.LoadScene(2);
             else
             {
-                //GameManager.instance.OnUnLoadEndingScene();
+                //GameManager.Inst.OnUnLoadEndingScene();
             }
         }
     }
 
     void SetUpUIManager(Scene curScene, Scene nextScene)
     {
-        GameManager.instance.myPlayer = FindObjectOfType<PlayerController>();
-        GameManager.instance.myEnemy = FindObjectOfType<Monster>();
+        GameManager.Inst.myPlayer = FindObjectOfType<PlayerController>();
+        GameManager.Inst.myEnemy = FindObjectOfType<Monster>();
 
         if (nextScene.buildIndex == 2)
         {

@@ -12,6 +12,7 @@ public class Dragon : Monster
 
     public bool isBerserk = false;                 // ±¤ÆøÈ­
 
+
     protected override void Awake()
     {
         pattern = new DragonAttackPattern(this);
@@ -105,8 +106,8 @@ public class Dragon : Monster
     public float flyHeight = 25.0f;
     public float flySpeed = 7.0f;
     public float landingDuration = 4.0f;
-    public float spitFireCnt=0;
-    public float spitFireDelay = 2.0f;
+    public float spitFireCnt= 0;
+    public float spitFireDelay = 0.6f;
 
     public Transform flyToBackPos;          // µÚ·Î ³¯ ÁöÁ¡ 
     public Transform spitFirePos;
@@ -117,7 +118,7 @@ public class Dragon : Monster
     // µå·¡°ï ÄÆ¾À ¿¬ÃâÀ» À§ÇØ OnDie virtaul ÇÔ¼ö overriding
     public override void OnDie()
     {
-        //GameManager.instance.OnLoadEndingScene();
+        //GameManager.Inst.OnLoadEndingScene();
 
     }
 

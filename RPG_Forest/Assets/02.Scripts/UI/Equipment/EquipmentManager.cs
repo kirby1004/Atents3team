@@ -46,11 +46,11 @@ public class EquipmentManager : Singleton<EquipmentManager>
                 equipmentSpeed += equipslot[i].GetComponentInChildren<Item>().item.MoveSpeed;  //이동속도
             }
         }
-        GameManager.instance.myPlayer.curHp += A;
-        //Gamemanager.instance.myPlayer.curHp = (Gamemanager.instance.myPlayer.MaxHp * Rate);
-        Debug.Log($"{GameManager.instance.myPlayer.curHp}");
-        UIManager.instance.hpBar.RefreshHPBar(GameManager.instance.myPlayer.curHp);
-        //Gamemanager.instance.myPlayer.curHp = Gamemanager.instance.myPlayer.
+        GameManager.Inst.myPlayer.curHp += A;
+        //Gamemanager.Inst.myPlayer.curHp = (Gamemanager.Inst.myPlayer.MaxHp * Rate);
+        Debug.Log($"{GameManager.Inst.myPlayer.curHp}");
+        UIManager.instance.hpBar.RefreshHPBar(GameManager.Inst.myPlayer.curHp);
+        //Gamemanager.Inst.myPlayer.curHp = Gamemanager.Inst.myPlayer.
         //Debug.Log($" HP : {equipmentHP} , AP : {equipmentAP} , DP : {equipmentDP} , AS : {equipmentAS} , Speed : {equipmentSpeed} ");
     }
 

@@ -38,7 +38,7 @@ public class DragonState_FlySpitFire : State
     {
 
         //Vector3 dir = (dragon.myTarget.transform.position - dragon.transform.position).normalized;
-        //SkillManager.instance.RegisterSkill(MonsterSkillName.MagicCircleImage, dragon.transform, Quaternion.Euler(new Vector3(40.0f, 0f, 0f)));
+        //SkillManager.Inst.RegisterSkill(MonsterSkillName.MagicCircleImage, dragon.transform, Quaternion.Euler(new Vector3(40.0f, 0f, 0f)));
         SkillManager.instance.RegisterSkill(MonsterSkillName.MagicCircleImage, dragon.spitFirePos, dragon.spitFirePos.rotation);
         //yield return null;
         yield return new WaitForSeconds(3.0f);
@@ -49,7 +49,7 @@ public class DragonState_FlySpitFire : State
         ////Vector3 fireStartPos = new Vector3(0, -10.0f, 16f) + magicCircle;
         //Vector3 fireStartPos = new Vector3(0, -10.0f, 16f) + dragon.spitFirePos.localPosition;
 
-        while (dragon.spitFireCnt < 5)
+        while (dragon.spitFireCnt < 25)
         {
             dragon.spitFireCnt++;
             dragon.myAnim.SetTrigger("FlySpitFire");    
