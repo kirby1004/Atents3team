@@ -8,6 +8,7 @@ public class MiniMapIcon : MonoBehaviour
     public Image myIcon = null;
     public Transform myRoot = null;
     RectTransform parentRect;
+    public Camera myCamera = null;
 
     public void Initialize(Transform p, Color color)
     {
@@ -19,12 +20,16 @@ public class MiniMapIcon : MonoBehaviour
     void Start()
     {
         parentRect = transform.parent.GetComponent<RectTransform>();
+        if(myCamera == null)
+        {
+            myCamera = FindObjectOfType<MiniMapCamera>().transform.GetComponent<Camera>();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 pos = Camera.allCameras[2].WorldToViewportPoint(myRoot.position);
+        Vector3 pos = myCamera.WorldToViewportPoint(myRoot.position);
 
         pos.x = pos.x * parentRect.sizeDelta.x - parentRect.sizeDelta.x * 0.5f;
         pos.y = pos.y * parentRect.sizeDelta.y - parentRect.sizeDelta.y * 0.5f;

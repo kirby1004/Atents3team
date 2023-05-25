@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShakeCamera : MonoBehaviour
 {
     private static ShakeCamera instance;                // ShakeCamera의 인스턴스 정적 변수로 생성
-    public static ShakeCamera Instance => instance;     // Instance 프로퍼티에 람다식으로 instance 정적 변수 할당
+    public static ShakeCamera Instance => instance;     // Inst 프로퍼티에 람다식으로 Inst 정적 변수 할당
 
     private float shakeTime;                            // 흔들리는 시간 설정
     private float shakeIntensity;                       // 흔들리는 강도 설정

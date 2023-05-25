@@ -172,7 +172,7 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
         {
 
             Debug.Log("OnDamage");
-            curHp -= GameManager.instance.DamageDecrease(dmg,DefensePoint);
+            curHp -= GameManager.Inst.DamageDecrease(dmg,DefensePoint);
             if (Mathf.Approximately(curHp, 0.0f))
             {
                 m_monsterSM.ChangeState(m_states[eState.Die]);

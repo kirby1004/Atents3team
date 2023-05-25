@@ -16,7 +16,7 @@ public class ItemAddTest : MonoBehaviour
 
     public void Getmoney(int money)
     {
-        GameManager.instance.economy.GetMoney(money);
+        GameManager.Inst.economy.GetMoney(money);
     }
 
 

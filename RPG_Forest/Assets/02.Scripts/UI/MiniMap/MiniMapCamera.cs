@@ -12,7 +12,7 @@ public class MiniMapCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myPlayer = GameManager.instance.myPlayer.transform;
+        myPlayer = GameManager.Inst.myPlayer.transform;
 
     }
 
@@ -21,8 +21,11 @@ public class MiniMapCamera : MonoBehaviour
     {
         if( myPlayer == null)
         {
-            myPlayer = GameManager.instance.myPlayer.transform;
+            myPlayer = GameManager.Inst.myPlayer.transform;
+            transform.SetParent(myPlayer);
+            transform.localPosition = Vector3.up * 50.0f;
         }
+        
     }
 
 

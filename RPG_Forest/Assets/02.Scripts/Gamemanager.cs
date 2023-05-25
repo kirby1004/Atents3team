@@ -7,9 +7,6 @@ using UnityEngine.Events;
 // 게임 매니저를 싱글톤 패턴으로 구현
 public class GameManager : Singleton<GameManager> , IEconomy
 {
-    public static GameManager instance;                 // 자기 자신을 담을 static 변수
-
-    public static GameManager Instance => instance;     // 그 변수를 리턴할 static 프로퍼티 Instance
 
     public void Awake()
     {
@@ -88,7 +85,7 @@ public class GameManager : Singleton<GameManager> , IEconomy
         set 
         {
            _Money = value;
-            GameManager.instance.UpdateMoney?.Invoke(_Money);
+            GameManager.Inst.UpdateMoney?.Invoke(_Money);
         }
     }
     //public int Money = 0;

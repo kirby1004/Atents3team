@@ -118,7 +118,7 @@ public class Dragon : Monster
     // µå·¡°ï ÄÆ¾À ¿¬ÃâÀ» À§ÇØ OnDie virtaul ÇÔ¼ö overriding
     public override void OnDie()
     {
-        //GameManager.instance.OnLoadEndingScene();
+        //GameManager.Inst.OnLoadEndingScene();
 
     }
 
