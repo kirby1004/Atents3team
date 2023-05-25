@@ -105,8 +105,8 @@ public class Dragon : Monster
     public float flyHeight = 25.0f;
     public float flySpeed = 7.0f;
     public float landingDuration = 4.0f;
-    public float spitFireCnt=0;
-    public float spitFireDelay = 2.0f;
+    public float spitFireCnt= 0;
+    public float spitFireDelay = 0.6f;
 
     public Transform flyToBackPos;          // 뒤로 날 지점 
     public Transform spitFirePos;

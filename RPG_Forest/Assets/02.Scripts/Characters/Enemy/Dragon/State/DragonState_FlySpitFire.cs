@@ -49,7 +49,7 @@ public class DragonState_FlySpitFire : State
         ////Vector3 fireStartPos = new Vector3(0, -10.0f, 16f) + magicCircle;
         //Vector3 fireStartPos = new Vector3(0, -10.0f, 16f) + dragon.spitFirePos.localPosition;
 
-        while (dragon.spitFireCnt < 5)
+        while (dragon.spitFireCnt < 25)
         {
             dragon.spitFireCnt++;
             dragon.myAnim.SetTrigger("FlySpitFire");    

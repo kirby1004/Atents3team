@@ -11,6 +11,8 @@ public abstract class AttackPhase
         this.dragon = dragon;
     }
 
+    // Rotation 코루틴을 여기다가 추가해서 오버라이딩 하는 방향으로 수정해보기 
+
     public abstract IEnumerator DoPhase();
 }
 

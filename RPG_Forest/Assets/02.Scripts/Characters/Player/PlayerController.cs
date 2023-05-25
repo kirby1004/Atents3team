@@ -108,11 +108,14 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
     {
         if (!isUi&& !myAnim.GetBool("isSkill"))
         {
-            if (Input.GetMouseButtonDown(0))
+            if(isEnterUI == false)
             {
-                if (isEnterUI == true) return;
+                if (Input.GetMouseButtonDown(0))
+                {
+                    //if (isEnterUI == true) return;
 
-                myAnim.SetTrigger("Attack"); // 공격 애니메이션 실행
+                    myAnim.SetTrigger("Attack"); // 공격 애니메이션 실행
+                }
             }
 
             if (Input.GetKey(KeyCode.LeftAlt))
@@ -229,6 +232,7 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
         clickCount = 0;
         while (true)
         {
+            if (isEnterUI) AttackExit();
             if (Input.GetMouseButtonDown(0))
             {
                 clickCount++;
