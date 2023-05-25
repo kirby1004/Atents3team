@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dragon
   m_EditorClassIdentifier: 
   _playerName: 
-  _maxhp: 95
+  _maxhp: 100
   _attackPoint: 10
   _moveSpeed: 3
   _defensePoint: 35

@@ -108,9 +108,9 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
     {
         if (!isUi&& !myAnim.GetBool("isSkill"))
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0)&& !isEnterUI)
             {
-                if (isEnterUI) return;
+                
                 myAnim.SetTrigger("Attack"); // 공격 애니메이션 실행
             }
 
@@ -186,11 +186,11 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
 
         if(!myAnim.GetBool("isRolling"))transform.Translate(inputDirection.normalized * Time.deltaTime * Speed);
 
-        if (Input.GetKeyDown(KeyCode.Space)&&inputDirection.magnitude!=0) 
+        if (Input.GetKeyDown(KeyCode.Space)&& desireDirection.magnitude!=0) 
         {
             if (rollPlayTime >= rollCoolTime)
             {
-                Roll(inputDirection);
+                Roll(desireDirection);
                 myAnim.SetTrigger("Roll");
                 rollPlayTime = 0.0f;
 
@@ -231,7 +231,7 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
             if (isEnterUI)
             {
                 clickCount = 0;
-                AttackExit();
+                break;
             }
             if (Input.GetMouseButtonDown(0))
             {
@@ -265,7 +265,7 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
         while (myAnim.GetBool("isRolling"))
         {
             gameObject.layer = 10; //플레이어의 레이어를 무적 레이어로 바꿔서 맞지 않도록 함.
-            transform.position += dir.normalized * Time.deltaTime*1.5f;
+            transform.Translate(dir.normalized * Time.deltaTime * Speed);
             yield return null;
         }
         gameObject.layer = 8;

@@ -12,9 +12,13 @@ public class EnergyTornado : Skill,ISkill
     }
     [SerializeField]
     LayerMask enemyMask;
+    [SerializeField]
+    float deltaTime;
     public float dist;
+    bool isHit;
     public void Awake()
     {
+        deltaTime = 0;
         dist = skillData.Distance;
     }
     public void Use(UnityAction e = null)
@@ -39,20 +43,25 @@ public class EnergyTornado : Skill,ISkill
         ObjectPoolingManager.instance.ReturnObject(gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        if (((1 << other.gameObject.layer) & enemyMask) != 0)
-        {
-            other.GetComponent<IBattle>()?.OnDamage(skillData.Value1);
-        }
+        isHit = false;
     }
-
     private void OnTriggerStay(Collider other)
     {
-        //Debug.Log("Test");
-        if (((1 << other.gameObject.layer) & enemyMask) != 0)
+       
+        if(deltaTime> skillData.Value2)
         {
-            other.GetComponent<IBattle>()?.OnDamage(skillData.Value1);
+            if (((1 << other.gameObject.layer) & enemyMask) != 0)
+            {
+                other.GetComponent<IBattle>()?.OnDamage(skillData.Value1);
+                Debug.Log($"Damage {skillData.Value1} ");
+            }
+            deltaTime = 0;
+        }
+        else
+        {
+            deltaTime += Time.deltaTime;
         }
     }
 }

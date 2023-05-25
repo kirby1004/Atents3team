@@ -4891,8 +4891,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6004633634701903925}
-  - component: {fileID: 4780331129633703986}
   - component: {fileID: -5390697287922542168}
+  - component: {fileID: 727784993239480307}
   m_Layer: 0
   m_Name: EnergyTornado
   m_TagString: Untagged
@@ -4908,7 +4908,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2414816008507225855}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.357, y: 0, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -4922,20 +4922,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &4780331129633703986
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2414816008507225855}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 14.0268545
-  m_Height: 28.505022
-  m_Direction: 1
-  m_Center: {x: -0.22565746, y: 3.3716745, z: 0.8007078}
 --- !u!114 &-5390697287922542168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4953,7 +4939,21 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 512
+  deltaTime: 0
   dist: 0
+--- !u!135 &727784993239480307
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2414816008507225855}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 12
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3563851544838275894
 GameObject:
   m_ObjectHideFlags: 0

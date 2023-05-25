@@ -15,6 +15,10 @@ public class EnergyBall : Skill,ISkill
     }
     [SerializeField]
     LayerMask enemyMask;
+    [SerializeField]
+    LayerMask crashMask;
+    [SerializeField]
+    Transform hitEffect;
     public float dist;
     public void Awake()
     {
@@ -47,9 +51,15 @@ public class EnergyBall : Skill,ISkill
         Ray ray = new Ray();
         ray.origin = HitPoint.position;
         ray.direction = transform.forward;
-        if (Physics.Raycast(ray, out RaycastHit hit, 1.5f, enemyMask))
+        if (Physics.Raycast(ray, out RaycastHit hit, 1.4f,crashMask))
         {
-            hit.transform.GetComponent<IBattle>()?.OnDamage(skillData.Value1);
+            if (((1 << hit.transform.gameObject.layer) & enemyMask) != 0)
+            {
+                hitEffect.gameObject.SetActive(true);
+                hit.transform.GetComponent<IBattle>()?.OnDamage(skillData.Value1);
+            }
+            ObjectPoolingManager.instance.ReturnObject(this.gameObject);
+            Debug.Log($"Damage {skillData.Value1}");
         }
 
         Debug.DrawLine(HitPoint.position, ray.direction);
