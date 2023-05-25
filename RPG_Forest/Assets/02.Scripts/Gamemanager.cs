@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviour , IEconomy
             myUIManager = obj.GetComponent<UIManager>();
         }
 
-        mySpawnner = null;
     }
     private void Start()
     {
@@ -46,7 +45,7 @@ public class GameManager : MonoBehaviour , IEconomy
     public PlayerController myPlayer;
     public Monster myEnemy;
     public Dragon myDragon;
-    public Spawnner mySpawnner; // 트랜스폼만 받을지 클래스 전체로 받을지
+    public List<Spawnner> mySpawnner; // 트랜스폼만 받을지 클래스 전체로 받을지
 
 
     // 몬스터, 플레이어 쪽에서 처리하는 것 중에서 GameManager로 이관할 내용

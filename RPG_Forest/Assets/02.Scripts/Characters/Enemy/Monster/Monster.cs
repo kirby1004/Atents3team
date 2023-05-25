@@ -25,7 +25,7 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
     [SerializeField]
     private eState State;
 
-    public static int TotalCount;
+   // public static int TotalCount;
 
     protected StateMachine m_monsterSM; // 스테이트 머신 스크립트 참조
 
@@ -39,6 +39,8 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
     public ItemDropTable myDropTable;
     //AIPerception 위치 연동
     public Transform myAI;
+    // 내 스포너의 인덱스 연동
+    public int mySpawnnerIndex = -1;
 
     public bool IsLive => m_monsterSM.CurrentState != m_states[eState.Die];
 
@@ -58,7 +60,7 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
 
         orgPos = this.transform.position;
 
-        TotalCount = 3;
+        //TotalCount = 3;
 
         AttackRange = 2.0f;
         AttackDelay = 1.0f;
@@ -219,7 +221,7 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
         }
         deadAction?.Invoke();
         Destroy(gameObject);
-        TotalCount--;
+        GameManager.inst.mySpawnner[mySpawnnerIndex].TotalCount--;
     }
 
     #endregion
