@@ -110,8 +110,7 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if (isEnterUI == true) return;
-
+                if (isEnterUI) return;
                 myAnim.SetTrigger("Attack"); // 공격 애니메이션 실행
             }
 
@@ -229,6 +228,11 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
         clickCount = 0;
         while (true)
         {
+            if (isEnterUI)
+            {
+                clickCount = 0;
+                AttackExit();
+            }
             if (Input.GetMouseButtonDown(0))
             {
                 clickCount++;
