@@ -3399,9 +3399,9 @@ MonoBehaviour:
   BuyCheckWindow: {fileID: 822597551490800956}
   FailWindow: {fileID: 4449636562489709824}
   ShopItemList:
-  - {fileID: 11400000, guid: c21ed6d242873f94ea36ac23c0952385, type: 2}
   - {fileID: 11400000, guid: 60233bfc8ed824a47b1600b5dab4e55e, type: 2}
   - {fileID: 11400000, guid: 5d06922348e87fe478fc51b6f176bb54, type: 2}
+  - {fileID: 11400000, guid: c21ed6d242873f94ea36ac23c0952385, type: 2}
 --- !u!1 &6526593563598784491
 GameObject:
   m_ObjectHideFlags: 0

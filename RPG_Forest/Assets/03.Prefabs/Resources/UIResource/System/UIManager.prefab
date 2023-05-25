@@ -7514,7 +7514,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1074548209459697768
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9406,7 +9406,7 @@ MonoBehaviour:
   skillList: {fileID: 0}
   myName: {fileID: 2367977799134172010}
   myLevel: {fileID: 2500364352287598449}
-  hpBar: {fileID: 0}
+  hpBar: {fileID: 1544996758036519454}
 --- !u!1 &5809447225880837189
 GameObject:
   m_ObjectHideFlags: 0
