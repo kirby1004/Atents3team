@@ -49,7 +49,7 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
     }
     public void OnDamage(float dmg)
     {
-        curHp -= GameManager.instance.DamageDecrease(dmg, DefensePoint);
+        curHp -= GameManager.Inst.DamageDecrease(dmg, DefensePoint);
 
         if (Mathf.Approximately(curHp, 0.0f))
         {
@@ -90,6 +90,9 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
         interPlay = new UnityEvent();
         OpenUi = new UnityEvent();
         CloseUi = new UnityEvent();
+        MiniMapIcon icon =
+           (Instantiate(Resources.Load("UIResource/MiniMapIcon"), UIManager.instance.MiniMap) as GameObject).GetComponent<MiniMapIcon>();
+        icon.Initialize(transform, Color.green);
     }
 
     protected override void Update()
@@ -108,14 +111,10 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
     {
         if (!isUi&& !myAnim.GetBool("isSkill"))
         {
-            if(isEnterUI == false)
+            if (Input.GetMouseButtonDown(0))
             {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    //if (isEnterUI == true) return;
-
-                    myAnim.SetTrigger("Attack"); // 공격 애니메이션 실행
-                }
+                if (isEnterUI) return;
+                myAnim.SetTrigger("Attack"); // 공격 애니메이션 실행
             }
 
             if (Input.GetKey(KeyCode.LeftAlt))
@@ -232,7 +231,11 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
         clickCount = 0;
         while (true)
         {
-            if (isEnterUI) AttackExit();
+            if (isEnterUI)
+            {
+                clickCount = 0;
+                AttackExit();
+            }
             if (Input.GetMouseButtonDown(0))
             {
                 clickCount++;

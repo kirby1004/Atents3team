@@ -19,13 +19,13 @@ public class EnchantWIndow : MonoBehaviour
     void Start()
     {
         //EnchantButton.onClick.RemoveAllListeners();
-        EnchantButton.onClick.AddListener(() =>
+        EnchantButton.onClick.AddListener((UnityAction)(() =>
         {
             if (EnchantManager.Inst.EnchantPossibleCheck())
             {
                 if(EnchantManager.Inst.EnchantSuccessCheck())
                 {
-                    GameManager.Instance.GetMoney
+                    GameManager.Inst.GetMoney
                     (-EnchantManager.Inst.myCostTable.CostTable[EnchantManager.Inst.EnchantLevel]);
                     EnchantManager.Inst.EnchantLevel++;
                     EnchantManager.Inst.mySuccessWindow.gameObject.SetActive(true);
@@ -33,7 +33,7 @@ public class EnchantWIndow : MonoBehaviour
                 }
                 else
                 {
-                    GameManager.Instance.GetMoney
+                    GameManager.Inst.GetMoney
                     (-EnchantManager.Inst.myCostTable.CostTable[EnchantManager.Inst.EnchantLevel]);
                     EnchantManager.Inst.myFailWindow.gameObject.SetActive(true);
                     EnchantManager.Inst.myFailWindow.isType = true;
@@ -44,7 +44,7 @@ public class EnchantWIndow : MonoBehaviour
                 EnchantManager.Inst.myFailWindow.gameObject.SetActive(true);
                 EnchantManager.Inst.myFailWindow.isType = false;
             }
-        });
+        }));
     }
 
     // Update is called once per frame
@@ -61,7 +61,7 @@ public class EnchantWIndow : MonoBehaviour
 
     public void RefreshSuccessRate(float Rate)
     {
-        SuccessRate.text = Rate.ToString();
+        SuccessRate.text = Rate.ToString()+"%";
     }
 
     public void RefreshEnchentCost(int  Cost)

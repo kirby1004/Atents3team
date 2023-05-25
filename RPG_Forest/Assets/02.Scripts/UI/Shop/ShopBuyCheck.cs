@@ -40,13 +40,15 @@ public class ShopBuyCheck : MonoBehaviour
     }
     public void RefreshWindow()
     {
+        myItemname.text = myItem.myItem.name;
         BuyButton.onClick.AddListener(() =>
         {
-            if (GameManager.instance.CheckMoney(myItem.myCost))
+            if (GameManager.Inst.CheckMoney(myItem.myCost))
             {
                 myItem.BuyItem(myItem.myItem, true);
-                GameManager.instance.GetMoney(-myItem.myCost);
+                GameManager.Inst.GetMoney(-myItem.myCost);
                 BuyButton.onClick.RemoveAllListeners();
+
                 ShopManager.Inst.BuyCheckWindow.SetActive(false);
             }
             else

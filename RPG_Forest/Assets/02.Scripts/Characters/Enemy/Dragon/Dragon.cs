@@ -12,6 +12,7 @@ public class Dragon : Monster
 
     public bool isBerserk = false;                 // ±¤ÆøÈ­
 
+
     protected override void Awake()
     {
         pattern = new DragonAttackPattern(this);
@@ -117,7 +118,7 @@ public class Dragon : Monster
     // µå·¡°ï ÄÆ¾À ¿¬ÃâÀ» À§ÇØ OnDie virtaul ÇÔ¼ö overriding
     public override void OnDie()
     {
-        //GameManager.instance.OnLoadEndingScene();
+        //GameManager.Inst.OnLoadEndingScene();
 
     }
 

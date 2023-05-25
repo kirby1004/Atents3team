@@ -71,12 +71,15 @@ public class UIManager : MonoBehaviour
     //public GameObject inventoryManagerGameObject;
     //public GameObject statusManagerGameObject;
     //public GameObject equipmentManagerGameObject;
+    public Transform MiniMap;
 
     [Header("StatusBars")]
     public MySkillList skillList;
     public TMP_Text myName;
     public TMP_Text myLevel;
     public PlayerHpBar hpBar;
+
+
 
     public void Refresh()
     {
