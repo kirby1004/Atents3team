@@ -1,6 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+public class MySctipts
+{
+    public List<TextScript> TextScript;
+}
+
+[Serializable]
+public class TextScript
+{
+    public int id;
+    public string Text;
+}
 
 public class ScriptManager : MonoBehaviour
 {
@@ -18,4 +31,5 @@ public class ScriptManager : MonoBehaviour
     {
         
     }
+
 }

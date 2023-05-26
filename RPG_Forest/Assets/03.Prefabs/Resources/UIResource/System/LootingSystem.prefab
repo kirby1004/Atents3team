@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 326, y: -23}
-  m_SizeDelta: {x: 200, y: 400}
+  m_SizeDelta: {x: 300, y: 505}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3977859408334866457
 MonoBehaviour:
@@ -50,3 +50,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LootWindow: {fileID: 831862332325543206, guid: 84744a9b99e6a954ab83b85c55f9328d, type: 3}
+  LootWindowList: []

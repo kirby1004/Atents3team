@@ -97,6 +97,7 @@ MonoBehaviour:
   canFly: 0
   myDropTable: {fileID: 11400000, guid: 0a2c9d46a47639842a6a4b93e03f8ede, type: 2}
   myAI: {fileID: 2565290860575296994}
+  mySpawnnerIndex: -1
   leftClawPoint: {fileID: 2392794665424447835}
 --- !u!136 &6440701675059324686
 CapsuleCollider:
@@ -188,7 +189,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 7
+  m_Radius: 30
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2392794665833468512
 PrefabInstance:
@@ -249,6 +250,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: 2267618f83bbf3747a5b2fcd375f0784, type: 2}
+    - target: {fileID: 5866666021909216657, guid: df781093c8e9dd045a9c43fb71a09622, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df781093c8e9dd045a9c43fb71a09622, type: 3}
 --- !u!4 &2791760556628473227 stripped
@@ -289,6 +294,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   BiteFunc:
+    m_PersistentCalls:
+      m_Calls: []
+  RightAttackFunc:
     m_PersistentCalls:
       m_Calls: []
   DeadFunc:
