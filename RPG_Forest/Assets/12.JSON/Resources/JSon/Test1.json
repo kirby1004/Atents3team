@@ -1,16 +1,39 @@
 {
   "TextScript": [
     {
-      "id": 0,
-      "Text": "Test1"
+      "id": 1,
+      "Text": "Test1",
+      "Player": "신입사원R1"
     },
     {
       "id": 0,
-      "Text": "BBBB"
+      "Text": "Test1",
+      "Player": "신입사원R"
+    },
+    {
+      "id": 4,
+      "Text": "DDDD",
+      "Player": "과장G"
     },
     {
       "id": 0,
-      "Text": "DDDD"
+      "Text": "Test2",
+      "Player": "과장G"
+    },
+    {
+      "id": 0,
+      "Text": "DDDD",
+      "Player": "과장G"
+    },
+    {
+      "id": 4,
+      "Text": "DDDD",
+      "Player": "신입사원R"
+    },
+    {
+      "id": 0,
+      "Text": "DDDD",
+      "Player": "신입사원R"
     },
     {
       "id": 3,
