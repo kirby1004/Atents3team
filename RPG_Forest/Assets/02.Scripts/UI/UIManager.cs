@@ -83,6 +83,7 @@ public class UIManager : MonoBehaviour
     public MySkillList skillList;
     public TMP_Text myName;
     public TMP_Text myLevel;
+    public TMP_Text CoreLevel;
     public PlayerHpBar hpBar;
 
 
