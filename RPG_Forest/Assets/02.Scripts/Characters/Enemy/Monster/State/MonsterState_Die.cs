@@ -26,8 +26,8 @@ public class MonsterState_Die : State
         monster.myAnim.SetTrigger("Die");
         GameManager.Inst.GetMoney(Random.Range(monster.myDropTable.mySoulDropRange.x, monster.myDropTable.mySoulDropRange.y));
         LootingManager.Inst.ReadyLootWindow(monster);
-        //Object.Destroy(transform.GetComponentInChildren<AIPerception>());
-        //monster.myAI.AddComponent<LootingPerception>();
+        Object.Destroy(transform.GetComponentInChildren<AIPerception>());
+        monster.myAI.AddComponent<LootingPerception>();
         monster.DeathAlarm?.Invoke();
         //monster.OnDisappear();
     }
