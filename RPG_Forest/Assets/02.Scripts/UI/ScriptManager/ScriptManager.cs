@@ -19,12 +19,12 @@ public class TextScript
 
 public class ScriptManager : Singleton<ScriptManager>
 {
+    // 텍스트 출력창
     public ScriptWindow myWindow;
 
-    //public MySctipts mySctipts = new();
-
+    // 현재 열린 문서 내에 텍스트 인덱스
     public int index = 0;
-
+    // 열린 문서의 내용을 받아올 클래스
     public MySctipts myScripts;
 
     // 텍스트 진행이 끝낫는지 판단
@@ -33,6 +33,7 @@ public class ScriptManager : Singleton<ScriptManager>
     private void Awake()
     {
         base.Initialize();
+
     }
 
 
@@ -41,23 +42,23 @@ public class ScriptManager : Singleton<ScriptManager>
     {
         RefreshScript("json");
         myWindow.gameObject.SetActive(false);
-        for(int i = 0; i< myScripts.TextScript.Count; i++)
-        {
-            Debug.Log($"{myScripts.TextScript[i].id} , {myScripts.TextScript[i].Text}");
-        }
+        //for(int i = 0; i< myScripts.TextScript.Count; i++)
+        //{
+        //    Debug.Log($"{myScripts.TextScript[i].id} , {myScripts.TextScript[i].Text}");
+        //}
     }
     
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (isScriptEnd)
-            {
-                CurIndexAdd(index);
-                index++;
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    if (isScriptEnd)
+        //    {
+        //        CurIndexAdd(index);
+        //        index++;
+        //    }
+        //}
     }
 
     public void CurIndexAdd(int idx)
@@ -72,7 +73,7 @@ public class ScriptManager : Singleton<ScriptManager>
         TextAsset textAsset = Resources.Load<TextAsset>($"JSon/{text}");
 
         myScripts = JsonUtility.FromJson<MySctipts>(textAsset.ToString());
-        isScriptEnd = false;
+        
         index = 0;
         isScriptEnd = true;
     }
