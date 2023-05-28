@@ -174,7 +174,7 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
         {
 
             Debug.Log("OnDamage");
-            curHp -= GameManager.Inst.DamageDecrease(dmg,DefensePoint);
+            curHp -= Gamemanager.Inst.DamageDecrease(dmg,DefensePoint);
             if (Mathf.Approximately(curHp, 0.0f))
             {
                 m_monsterSM.ChangeState(m_states[eState.Die]);
@@ -221,7 +221,7 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
         }
         deadAction?.Invoke();
         Destroy(gameObject);
-        GameManager.inst.mySpawnner[mySpawnnerIndex].TotalCount--;
+        Gamemanager.inst.mySpawnner[mySpawnnerIndex].TotalCount--;
     }
 
     #endregion

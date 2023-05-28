@@ -38,7 +38,7 @@ public class DropList : MonoBehaviour
         }
         if (myLootCount == 0)
         {
-            GameManager.Inst.myPlayer.GetComponent<IinterPlay>().CloseUi?.Invoke();
+            Gamemanager.Inst.myPlayer.GetComponent<IinterPlay>().CloseUi?.Invoke();
             LootingManager.Inst.LootWindow = null;
             Destroy(transform.parent.gameObject);
         }
@@ -49,7 +49,7 @@ public class DropList : MonoBehaviour
     {
         for (int i = 0; i < mydropTable.myDropTable.Count(); i++)
         {
-            if (GameManager.Inst.ProbabilityChoose(mydropTable.myDropRate[i]))
+            if (Gamemanager.Inst.ProbabilityChoose(mydropTable.myDropRate[i]))
             {
                 SpawnLootSlot(mydropTable.myDropTable[i]);
             }
@@ -75,7 +75,7 @@ public class DropList : MonoBehaviour
         {
             myLootSlots[i].GetComponent<LootSlot>().LootDone();
         }
-        GameManager.Inst.myPlayer.GetComponent<IinterPlay>().CloseUi?.Invoke();
+        Gamemanager.Inst.myPlayer.GetComponent<IinterPlay>().CloseUi?.Invoke();
         LootingManager.Inst.LootWindow = null;
         Destroy(transform.parent.gameObject);
     }

@@ -102,8 +102,8 @@ public class InventoryManager : Singleton<InventoryManager>
     void Start()
     {
         SpawnNewSlots(startSlotcount);
-        GameManager.Inst.UpdateMoney.AddListener(UpdateMyMoney);
-        UpdateMyMoney(GameManager.Inst.Money);
+        Gamemanager.Inst.UpdateMoney.AddListener(UpdateMyMoney);
+        UpdateMyMoney(Gamemanager.Inst.Money);
     }
 
     // Update is called once per frame

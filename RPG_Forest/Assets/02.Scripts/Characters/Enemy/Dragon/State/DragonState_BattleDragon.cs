@@ -47,6 +47,7 @@ public class DragonState_BattleDragon : State
         // 남은 체력에 비례해서 패턴 선택 분기
         if (dragon.curHp < dragon.MaxHp * 0.2f && !dragon.isBerserk)
         {
+            Debug.Log("Test");
             dragon.isBerserk = true;
             stateMachine.ChangeState(dragon.m_states[Dragon.eState.Fly]);
         }
