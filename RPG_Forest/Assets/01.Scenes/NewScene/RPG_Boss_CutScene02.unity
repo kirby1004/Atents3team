@@ -178,7 +178,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229477554}
-  m_LocalRotation: {x: 0.002136965, y: -0.988812, z: -0.014232096, w: -0.14847125}
+  m_LocalRotation: {x: 0.0021369692, y: -0.988812, z: -0.014232109, w: -0.14847128}
   m_LocalPosition: {x: -0.5099998, y: -0.049999952, z: 1.6599997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -19210,7 +19210,7 @@ MonoBehaviour:
   AttackFunc:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6787210491588679998}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CharacterMovement_V2, Assembly-CSharp
         m_MethodName: Attack
         m_Mode: 2
@@ -19225,7 +19225,7 @@ MonoBehaviour:
   AttackEnterFunc:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6787210491588679998}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: AttackEnter
         m_Mode: 1
@@ -19240,7 +19240,7 @@ MonoBehaviour:
   AttackExitFunc:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6787210491588679998}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: AttackExit
         m_Mode: 1
@@ -19255,7 +19255,7 @@ MonoBehaviour:
   SkillFunc:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6787210491588679998}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: SkillOn1
         m_Mode: 2
@@ -19270,7 +19270,7 @@ MonoBehaviour:
   SkillFunc2:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6787210491588679998}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: SkillOn2
         m_Mode: 2
@@ -19329,33 +19329,6 @@ Transform:
   m_Father: {fileID: 6787210491588679993}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0.003, y: 90, z: -0.001}
---- !u!114 &6787210491412261721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6787210491412261723}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23c36b0e90a27ac44ba1b20e9b0e169b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraPoint: {fileID: 0}
-  crashMask:
-    serializedVersion: 2
-    m_Bits: 8
-  Offset: 0.5
-  RotSpeed: 180
-  myZoomData:
-    ZoomSpeed: 3
-    ZoomRange: {x: 1, y: 1.8}
-    ZoomLerpSpeed: 3
-    curDist: 0
-    desireDist: 0
-  LookUpRange: {x: -60, y: 90}
-  <toggleCameraRotation>k__BackingField: 0
-  CameraChange: 0
 --- !u!1 &6787210491412261723
 GameObject:
   m_ObjectHideFlags: 0
@@ -19365,7 +19338,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6787210491412261720}
-  - component: {fileID: 6787210491412261721}
   m_Layer: 0
   m_Name: SpringArm
   m_TagString: Untagged
@@ -19382,7 +19354,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6787210491588679993}
-  - component: {fileID: 6787210491588679998}
   - component: {fileID: 6787210491588679996}
   - component: {fileID: 6787210491588679999}
   m_Layer: 8
@@ -19425,34 +19396,6 @@ CapsuleCollider:
   m_Height: 1.8543491
   m_Direction: 1
   m_Center: {x: 0, y: 0.85713196, z: 0}
---- !u!114 &6787210491588679998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6787210491588679992}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c5e9ad85976f2945b17e324048352d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myBaseStatus: {fileID: 11400000, guid: b478d324fc8a1c248bbc6b4a5838f9ea, type: 2}
-  RotSpeed: 360
-  AttackRange: 1
-  AttackDelay: 1
-  playTime: 0
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  UpdateHp:
-    m_PersistentCalls:
-      m_Calls: []
-  SpringArm: {fileID: 6787210491412261720}
-  WeaponPoint: {fileID: 6787210491123235007}
-  isObjectNear: 0
-  isUi: 0
-  isEnterUI: 0
 --- !u!54 &6787210491588679999
 Rigidbody:
   m_ObjectHideFlags: 0

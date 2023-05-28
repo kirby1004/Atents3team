@@ -13,7 +13,15 @@ public class AnimEvent : MonoBehaviour
     public void OnAttack()
     {
         AttackFunc?.Invoke();
+    }
+
+    public void OnBIte()
+    {
         BiteFunc?.Invoke();
+    }
+
+    public void OnRightAttack()
+    {
         RightAttackFunc?.Invoke();
     }
 

@@ -27,9 +27,9 @@ EditorBuildSettings:
     path: Assets/01.Scenes/NewScene/RPG_VillageV5.unity
     guid: 6a97cbf221f97f2438982de9887a829d
   - enabled: 1
-    path: Assets/01.Scenes/NewScene/RPG_ForestV5Copy.unity
-    guid: 29d84b26a9e93454a977445a1f8a27d1
+    path: Assets/01.Scenes/NewScene/RPG_Forest_CutScene01.unity
+    guid: ed118b7a6f148ae47a7631f6e009d067
   - enabled: 1
-    path: Assets/01.Scenes/NewScene/RPG_ForestV5Copy2.unity
-    guid: 2f79eea7d1d1ff3459f3e3ae0cffe501
+    path: Assets/01.Scenes/NewScene/RPG_Forest_CutScene02.unity
+    guid: a397ef9e6359e484b8380cfe98fdfac0
   m_configObjects: {}
