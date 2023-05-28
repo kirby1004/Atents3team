@@ -1,13 +1,11 @@
 {
-  "PlayerData": [
-    {
-      "curHP": 100.0,
-      "Portal0": [202.416, -0.023, -0.086],
-      "Portal1": [-30.7999992,0.572000027,-0.349000007],
-      "Portal2": [75.07,0.58,88.1]
-
-    }
-  ]
-
-
+  "PlayerData": {
+    "curHP": 100.0,
+    "PortalRocate": [
+    ]
+  },
+  "PlayerInfo": {
+    "Soul": 300,
+    "Level": 0
+  }
 }

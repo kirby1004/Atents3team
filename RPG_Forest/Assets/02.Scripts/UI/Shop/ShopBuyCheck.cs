@@ -55,6 +55,8 @@ public class ShopBuyCheck : MonoBehaviour
             {
                 BuyButton.onClick.RemoveAllListeners();
                 ShopManager.Inst.FailWindow.SetActive(true);
+                ShopManager.Inst.FailWindow.GetComponentInChildren<Button>().onClick
+                .AddListener(() => { CancelButton.onClick?.Invoke(); });    
             }
         });
     }
