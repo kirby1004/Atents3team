@@ -48,13 +48,13 @@ public class DataSaverManager : MonoBehaviour
 
     public void TestFunc()
     {
-        testData.PlayerData.curHP = GameManager.inst.myPlayer.curHp;
+        testData.PlayerData.curHP = Gamemanager.inst.myPlayer.curHp;
         //for(int i = 0;i < InventoryManager.Inst.startSlotcount;i++)
         //{
         //    testData.PlayerInventory.InventoryItems[i] = 
         //        InventoryManager.Inst.slots[i].mySlotItems.GetComponent<Item>();
         //}
-        testData.PlayerInfo.Soul = GameManager.inst.Money;
+        testData.PlayerInfo.Soul = Gamemanager.inst.Money;
         testData.PlayerInfo.Level = EnchantManager.Inst.EnchantLevel;
         string data = JsonUtility.ToJson(testData);
         Debug.Log(Application.dataPath);
