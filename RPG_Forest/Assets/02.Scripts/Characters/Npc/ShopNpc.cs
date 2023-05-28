@@ -21,27 +21,27 @@ public class ShopNpc : NpcProperty
     {
         obj.transform.position = PlayerPoint.position;
         obj.GetComponentInChildren<SpringArm>().CameraChange = true;
-        //while (!Mathf.Approximately(obj.transform.localRotation.eulerAngles.y, PlayerPoint.rotation.eulerAngles.y))
-        //{
-        //    obj.transform.localRotation = Quaternion.Slerp(obj.transform.localRotation, playerPoint.localRotation, Time.deltaTime * 15.0f);
-        //    yield return null;
-        //}
-        //obj.GetComponentInChildren<SpringArm>().CurRot = obj.transform.localRotation.eulerAngles;
-        //e?.Invoke();
-        Quaternion objlocalRotation = obj.transform.localRotation;
-        if(objlocalRotation.y > 180.0f)
+        while (!Mathf.Approximately(obj.transform.localRotation.eulerAngles.y, PlayerPoint.rotation.eulerAngles.y))
         {
-            objlocalRotation.y -= 360.0f;
-        }
-        while (Mathf.Abs(objlocalRotation.y)>Mathf.Abs(playerPoint.localRotation.eulerAngles.y)-0.1f)
-        {
-            objlocalRotation = Quaternion.Slerp(objlocalRotation, playerPoint.localRotation, Time.deltaTime * 15.0f);
-            obj.transform.localRotation = objlocalRotation;
+            obj.transform.localRotation = Quaternion.Slerp(obj.transform.localRotation, playerPoint.localRotation, Time.deltaTime * 15.0f);
             yield return null;
         }
-        obj.GetComponentInChildren<SpringArm>().CurRot = objlocalRotation.eulerAngles;
-        objlocalRotation = Quaternion.identity;
+        obj.GetComponentInChildren<SpringArm>().CurRot = obj.transform.localRotation.eulerAngles;
         e?.Invoke();
+        //Quaternion objlocalRotation = obj.transform.localRotation;
+        //if(objlocalRotation.y > 180.0f)
+        //{
+        //    objlocalRotation.y -= 360.0f;
+        //}
+        //while (Mathf.Abs(objlocalRotation.y)>Mathf.Abs(playerPoint.localRotation.eulerAngles.y)-0.1f)
+        //{
+        //    objlocalRotation = Quaternion.Slerp(objlocalRotation, playerPoint.localRotation, Time.deltaTime * 15.0f);
+        //    obj.transform.localRotation = objlocalRotation;
+        //    yield return null;
+        //}
+        //obj.GetComponentInChildren<SpringArm>().CurRot = objlocalRotation.eulerAngles;
+        //objlocalRotation = Quaternion.identity;
+        //e?.Invoke();
     }
 
 

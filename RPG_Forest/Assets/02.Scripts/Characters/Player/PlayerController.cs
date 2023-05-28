@@ -93,6 +93,10 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
         MiniMapIcon icon =
            (Instantiate(Resources.Load("UIResource/MiniMapIcon"), UIManager.instance.MiniMap) as GameObject).GetComponent<MiniMapIcon>();
         icon.Initialize(transform, Color.green);
+        if (Gamemanager.inst.myPlayer != this)
+        {
+            Gamemanager.inst.myPlayer = this;
+        }
     }
 
     protected override void Update()

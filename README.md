@@ -9,6 +9,30 @@
 4. 개발 일정 확인하기 - [개발 일정](https://app.asana.com/0/1204352798021693/list)
 
 ---
+### V.4.0.10 - GY
+> Scriptmanager
+  - JSON File 읽고 텍스트박스에 출력하는 기능 추가
+> Shopmanager
+  - 구매 버튼 개선 및 재화 시스템과 연동
+> Economy
+  - 재화 시스템 구현
+> EnchantSystem
+  - 재화를 사용하여 레벨 증가 시스템 구현
+    * 속성 공격력(스킬데미지) 증가 시스템
+    * 확률형 시스템으로 제작함
+> MiniMap
+  - 플레이어 하위 오브젝트로 미니맵카메라 세팅 후 Raw Image 출력으로 구현
+> Spawnner
+  - 스포너 각각의 개체에 생성가능한 몬스터카운트 지정가능하게 변경
+  - 각 스포너의 위치주변에서 몹이 생성되게 적용
+---
+### V.4.0.09 - JS
+> Cut Scene  
+  - CutScene Script revised  
+> Loading Scene
+  - UI 생성 및 Sprite 분류 
+
+---
 ## Scene Merge & Map Discussion
 > Boss Scene
    - 마법진 입체감 향상을 위해 이중 Image로 변경하고 Animation 처리를 통해 생동감을 주는 작업 진행 예정 (수민)  

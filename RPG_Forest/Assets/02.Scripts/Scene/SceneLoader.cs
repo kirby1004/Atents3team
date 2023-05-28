@@ -36,6 +36,7 @@ public class SceneLoader : Singleton<SceneLoader>
             }
             yield return null;
         }
+        
     }
 
     // Encounter CutScene ¿œ ∂ß
