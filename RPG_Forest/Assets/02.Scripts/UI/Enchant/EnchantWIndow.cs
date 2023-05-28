@@ -25,7 +25,7 @@ public class EnchantWIndow : MonoBehaviour
             {
                 if(EnchantManager.Inst.EnchantSuccessCheck())
                 {
-                    GameManager.Inst.GetMoney
+                    Gamemanager.Inst.GetMoney
                     (-EnchantManager.Inst.myCostTable.CostTable[EnchantManager.Inst.EnchantLevel]);
                     EnchantManager.Inst.EnchantLevel++;
                     EnchantManager.Inst.mySuccessWindow.gameObject.SetActive(true);
@@ -33,7 +33,7 @@ public class EnchantWIndow : MonoBehaviour
                 }
                 else
                 {
-                    GameManager.Inst.GetMoney
+                    Gamemanager.Inst.GetMoney
                     (-EnchantManager.Inst.myCostTable.CostTable[EnchantManager.Inst.EnchantLevel]);
                     EnchantManager.Inst.myFailWindow.gameObject.SetActive(true);
                     EnchantManager.Inst.myFailWindow.isType = true;

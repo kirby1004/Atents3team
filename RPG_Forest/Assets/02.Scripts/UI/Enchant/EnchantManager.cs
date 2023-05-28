@@ -50,7 +50,7 @@ public class EnchantManager : Singleton<EnchantManager>
     // 강화 가능한 돈이 있는지 체크
     public bool EnchantPossibleCheck()
     {
-        if (GameManager.Inst.CheckMoney(myCostTable.CostTable[EnchantLevel]))
+        if (Gamemanager.Inst.CheckMoney(myCostTable.CostTable[EnchantLevel]))
         {
             return true;
         }
@@ -62,7 +62,7 @@ public class EnchantManager : Singleton<EnchantManager>
     // 강화 확률을 통과햇는지 체크
     public bool EnchantSuccessCheck()
     {
-        if (GameManager.Inst.ProbabilityChoose(myCostTable.SuccessRate[EnchantLevel]))
+        if (Gamemanager.Inst.ProbabilityChoose(myCostTable.SuccessRate[EnchantLevel]))
         {
             return true;
         }

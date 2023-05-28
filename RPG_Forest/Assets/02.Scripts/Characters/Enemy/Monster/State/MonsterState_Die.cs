@@ -24,7 +24,7 @@ public class MonsterState_Die : State
         Transform transform = monster.transform;
         monster.ColDelete += DisableCollider;
         monster.myAnim.SetTrigger("Die");
-        GameManager.Inst.GetMoney(Random.Range(monster.myDropTable.mySoulDropRange.x, monster.myDropTable.mySoulDropRange.y));
+        Gamemanager.Inst.GetMoney(Random.Range(monster.myDropTable.mySoulDropRange.x, monster.myDropTable.mySoulDropRange.y));
         LootingManager.Inst.ReadyLootWindow(monster);
         //Object.Destroy(transform.GetComponentInChildren<AIPerception>());
         //monster.myAI.AddComponent<LootingPerception>();

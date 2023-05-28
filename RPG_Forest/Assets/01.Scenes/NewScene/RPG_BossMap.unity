@@ -1165,6 +1165,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3120159481847442113, guid: 7dbcc6532f34eec4db3bfa2b543cf7ae, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6787210491104862244, guid: 7dbcc6532f34eec4db3bfa2b543cf7ae, type: 3}
       propertyPath: m_LocalRotation.w
       value: -2.307203e-10
@@ -1192,6 +1196,10 @@ PrefabInstance:
     - target: {fileID: 6787210491212075588, guid: 7dbcc6532f34eec4db3bfa2b543cf7ae, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6787210491212075588, guid: 7dbcc6532f34eec4db3bfa2b543cf7ae, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6787210491212075589, guid: 7dbcc6532f34eec4db3bfa2b543cf7ae, type: 3}
       propertyPath: m_RootOrder
@@ -2401,6 +2409,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5109323814818870078, guid: 9cb13efe788b0034d8688bbb8f13782a, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5455374079257849587, guid: 9cb13efe788b0034d8688bbb8f13782a, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5455374079271812717, guid: 9cb13efe788b0034d8688bbb8f13782a, type: 3}
@@ -3738,9 +3750,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutScene01: {fileID: 0}
+  myPlayerTr: {fileID: 2076959929}
   myPlayer: {fileID: 1677150460}
-  myEnemy: {fileID: 1441952542}
-  mySpawnner: {fileID: 0}
+  myEnemy: {fileID: 0}
+  myDragon: {fileID: 1441952542}
+  mySpawnner: []
   playTime: 0
   myUIManager: {fileID: 0}
   UpdateMoney:
@@ -5405,6 +5419,11 @@ Transform:
   m_Father: {fileID: 389924269}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2076959929 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6787210491212075589, guid: 7dbcc6532f34eec4db3bfa2b543cf7ae, type: 3}
+  m_PrefabInstance: {fileID: 218465751}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2081698409
 PrefabInstance:
   m_ObjectHideFlags: 0
