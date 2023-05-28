@@ -27,6 +27,7 @@ public class Portal : MonoBehaviour
         if (((1 << other.gameObject.layer) & playerMask) != 0)
         {
             Effect.SetActive(true);
+            other.GetComponent<IinterPlay>()?.SetisObjectNear(true);
             other.GetComponent<IinterPlay>()?.OpenUi.AddListener(() => SceneLoader.Inst.SceneLoad(SceneNum));
         }
                 
@@ -42,6 +43,7 @@ public class Portal : MonoBehaviour
         if (((1 << other.gameObject.layer) & playerMask) != 0)
         {
             Effect.SetActive(false);
+            other.GetComponent<IinterPlay>()?.SetisObjectNear(false);
             other.GetComponent<IinterPlay>()?.OpenUi.RemoveAllListeners();
         }
             

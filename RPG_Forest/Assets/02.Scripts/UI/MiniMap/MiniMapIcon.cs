@@ -29,6 +29,11 @@ public class MiniMapIcon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if( myRoot == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         Vector3 pos = myCamera.WorldToViewportPoint(myRoot.position);
 
         pos.x = pos.x * parentRect.sizeDelta.x - parentRect.sizeDelta.x * 0.5f;
