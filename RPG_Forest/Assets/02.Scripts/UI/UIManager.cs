@@ -23,6 +23,11 @@ public class UIManager : MonoBehaviour
         }
         // 각각의 매니저가 존재하지않을때 생성후 참조대상으로 설정해주기
         // 이미 생성되잇을때 재참조기능 추가필요?
+        if (FindObjectOfType<StatusManager>() == null)
+        {
+            GameObject obj = Instantiate(Resources.Load("UIResource/System/StatusSystem") as GameObject, transform);
+            statusManager = obj.GetComponent<StatusManager>();
+        }
         if (FindObjectOfType<InventoryManager>() == null)
         {
             GameObject obj = Instantiate(Resources.Load("UIResource/System/InventorySystem") as GameObject,transform);
@@ -32,11 +37,6 @@ public class UIManager : MonoBehaviour
         {
             GameObject obj = Instantiate(Resources.Load("UIResource/System/EquipmentSystem") as GameObject, transform);
             equipmentManager = obj.GetComponent<EquipmentManager>();
-        }
-        if (FindObjectOfType<StatusManager>() == null)
-        {
-            GameObject obj = Instantiate(Resources.Load("UIResource/System/StatusSystem") as GameObject, transform);
-            statusManager = obj.GetComponent<StatusManager>();
         }
         if (FindObjectOfType<LootingManager>() == null)
         {

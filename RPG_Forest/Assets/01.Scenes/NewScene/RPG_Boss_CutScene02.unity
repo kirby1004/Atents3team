@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12779802, g: 0.14734218, b: 0.19952276, a: 1}
+  m_IndirectSpecularColor: {r: 0.07776234, g: 0.051885203, b: 0.07026228, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -178,7 +178,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229477554}
-  m_LocalRotation: {x: 0.0021369692, y: -0.988812, z: -0.014232109, w: -0.14847128}
+  m_LocalRotation: {x: 0.002136965, y: -0.988812, z: -0.014232096, w: -0.14847125}
   m_LocalPosition: {x: -0.5099998, y: -0.049999952, z: 1.6599997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -360,7 +360,7 @@ PlayableDirector:
   - key: {fileID: -1811302398833658441, guid: 8c8881ff68daeb946be7a72315af4edf, type: 2}
     value: {fileID: 1919144373}
   - key: {fileID: 875692615978506747, guid: 8c8881ff68daeb946be7a72315af4edf, type: 2}
-    value: {fileID: 5455374078733344534}
+    value: {fileID: 5109323814280859173}
   - key: {fileID: -7418909390579924878, guid: 8c8881ff68daeb946be7a72315af4edf, type: 2}
     value: {fileID: 5455374078726057256}
   - key: {fileID: -8281986596952824560, guid: 8c8881ff68daeb946be7a72315af4edf, type: 2}
@@ -416,9 +416,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 979ccc6d201dd1f488dfe1140f839198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myPD: {fileID: 0}
-  duration: 0
-  time: 0
+  cutSceneType: 1
+  myPD: {fileID: 374992152}
+  myScene: 3
+  nextScene: 2
 --- !u!1 &458655284
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,7 +590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 1447157606}
-  m_PathPosition: 3
+  m_PathPosition: 0.27
   m_PositionUnits: 0
   m_PathOffset: {x: 0.8918964, y: -0.368568, z: -0.25965264}
   m_XDamping: 0
@@ -15823,6 +15824,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  RightAttackFunc:
+    m_PersistentCalls:
+      m_Calls: []
   DeadFunc:
     m_PersistentCalls:
       m_Calls:

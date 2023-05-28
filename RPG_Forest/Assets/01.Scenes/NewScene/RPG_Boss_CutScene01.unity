@@ -6283,7 +6283,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &374992154
 MonoBehaviour:
@@ -6297,9 +6297,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 979ccc6d201dd1f488dfe1140f839198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myPD: {fileID: 0}
-  duration: 0
-  time: 0
+  cutSceneType: 0
+  myPD: {fileID: 374992152}
+  myScene: 0
+  nextScene: 2
 --- !u!114 &376605566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7767,7 +7768,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1010846716
 PrefabInstance:
@@ -8737,7 +8738,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1290371590}
-  m_LocalRotation: {x: 0.040514138, y: 0.6762831, z: -0.6667275, w: -0.31060305}
+  m_LocalRotation: {x: 0.040514126, y: 0.6762831, z: -0.66672754, w: -0.31060305}
   m_LocalPosition: {x: 4.578401, y: 8.464979, z: -0.7918143}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9097,7 +9098,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c51e179e13de994190538ae2feba1bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutScene01: {fileID: 0}
   myPlayer: {fileID: 6787210491588679998}
   myEnemy: {fileID: 0}
   myDragon: {fileID: 5109323814280859175}
@@ -9121,7 +9121,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1445885289
 GameObject:
@@ -9156,7 +9156,7 @@ Transform:
   - {fileID: 1163287599}
   - {fileID: 555457900}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1452058726
 PrefabInstance:
@@ -9503,7 +9503,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1500914802
 PrefabInstance:
@@ -10626,7 +10626,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1795208157
 PrefabInstance:
@@ -11148,7 +11148,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1895363632}
-  m_LocalRotation: {x: -0.06268948, y: -0.0048080976, z: 0.0763215, w: 0.99509895}
+  m_LocalRotation: {x: -0.06268949, y: -0.004808098, z: 0.0763215, w: 0.995099}
   m_LocalPosition: {x: 0.19138145, y: -1.2403058, z: -9.92094}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11222,7 +11222,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  m_CustomBlends: {fileID: 11400000, guid: cecb3898fcae1c74bac9ecbf9db81d13, type: 2}
+  m_CustomBlends: {fileID: 11400000, guid: 2ca7fcbbba2589e48a8384c1170b1f57, type: 2}
   m_CameraCutEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -29604,7 +29604,7 @@ Transform:
   - {fileID: 6105669164249465661}
   - {fileID: 5153960982168490732}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &6069775282438559280
 GameObject:
@@ -49212,7 +49212,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6787210490118394001}
-  m_LocalRotation: {x: -0.000027621329, y: 0.36350235, z: -0.000001330518, w: 0.93159336}
+  m_LocalRotation: {x: -0.000027621329, y: 0.36350235, z: -0.0000013305189, w: 0.9315933}
   m_LocalPosition: {x: -4.19975, y: 1.27076, z: 15.906612}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -49518,7 +49518,7 @@ Transform:
   - {fileID: 3120159481483263453}
   - {fileID: 738661808}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &6787210491588679996
 CapsuleCollider:

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerName: "\uC2E0\uC785\uC0AC\uC6D0R"
   _maxhp: 100
-  _attackPoint: 35
+  _attackPoint: 10
   _moveSpeed: 3
   _defensePoint: 35

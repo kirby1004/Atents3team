@@ -1293,7 +1293,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c51e179e13de994190538ae2feba1bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutScene01: {fileID: 0}
   myPlayer: {fileID: 1810480707}
   myEnemy: {fileID: 0}
   myDragon: {fileID: 0}

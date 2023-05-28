@@ -9,6 +9,11 @@ public class StatusManager : Singleton<StatusManager>
 
     public TMP_Text myLevel;
     public TMP_Text myEnchantDamage;
+
+    private void Start()
+    {
+        base.Initialize();
+    }
     public void RefreshingStat()
     {
         for (int i = 0; i < myStat.Length; i++)

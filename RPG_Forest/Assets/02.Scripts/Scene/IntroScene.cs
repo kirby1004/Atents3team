@@ -7,7 +7,7 @@ public class IntroScene : MonoBehaviour
 {
     void Start()
     {
-        StartCoroutine(ConvertingNextScene());
+        StartCoroutine(ConvertingToLoadingScene());
     }
 
     void Update()
@@ -15,9 +15,10 @@ public class IntroScene : MonoBehaviour
         
     }
 
-    IEnumerator ConvertingNextScene()
+    IEnumerator ConvertingToLoadingScene()
     {
         yield return new WaitForSeconds(3.0f);
         SceneManager.LoadScene(1);  // Unity는 one-source-multi-flatform tool
+                                    // Loading Scene 은 1번 인덱스
     }
 }
