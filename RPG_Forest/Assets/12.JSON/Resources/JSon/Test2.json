@@ -1,0 +1,55 @@
+{
+  "TextScript": [
+    {
+      "id": 1,
+      "Text": "Test2",
+      "Player": "신입사원R"
+    },
+    {
+      "id": 4,
+      "Text": "Test2",
+      "Player": "경비병"
+    },
+    {
+      "id": 4,
+      "Text": "DDDD",
+      "Player": "신입사원R1"
+    },
+    {
+      "id": 0,
+      "Text": "BBBB",
+      "Player": "신입사원R"
+    },
+    {
+      "id": 4,
+      "Text": "DDDD",
+      "Player": "경비병"
+    },
+    {
+      "id": 0,
+      "Text": "BBBB",
+      "Player": "경비병"
+    },
+    {
+      "id": 0,
+      "Text": "DDDD",
+      "Player": "경비병"
+    },
+    {
+      "id": 4,
+      "Text": "BBBB",
+      "Player": "신입사원R"
+    },
+    {
+      "id": 0,
+      "Text": "DDDD",
+      "Player": "신입사원R"
+    },
+    {
+      "id": 3,
+      "Text": "Test1"
+    }
+  ]
+
+
+}

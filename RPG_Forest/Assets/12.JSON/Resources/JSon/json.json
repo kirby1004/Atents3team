@@ -1,0 +1,27 @@
+{
+  "TextScript": [
+    {
+      "id": 1,
+      "Text": "ABCD",
+      "Player": "신입사원R"
+    },
+    {
+      "id": 0,
+      "Text": "BBBB",
+      "Player": "신입사원R"
+
+    },
+    {
+      "id": 4,
+      "Text": "DDDD",
+      "Player": "과장G"
+
+    },
+    {
+      "id": 3,
+      "Text": "Test1"
+    }
+  ]
+
+
+}

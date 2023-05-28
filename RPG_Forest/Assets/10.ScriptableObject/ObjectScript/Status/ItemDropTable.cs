@@ -11,7 +11,7 @@ public class ItemDropTable : ScriptableObject
     // 아이템의 드랍률 지정해주기
     [Range(0,100)] public List<float> myDropRate;
 
-    [Range(0,1000)] public int mySoulDrop;
+    //[Range(0,1000)] public int mySoulDrop;
     public Vector2Int mySoulDropRange;
 
 }

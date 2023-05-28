@@ -53,6 +53,11 @@ public class UIManager : MonoBehaviour
             GameObject obj = Instantiate(Resources.Load("UIResource/System/EnchantSystem") as GameObject, transform);
             enchantManager = obj.GetComponent<EnchantManager>();
         }
+        if(FindObjectOfType<ScriptManager>() == null)
+        {
+            GameObject obj = Instantiate(Resources.Load("UIResource/System/ScriptCanvas") as GameObject);
+            scriptManager = obj.GetComponent<ScriptManager>();
+        }
 
     }
     private void Start()
@@ -67,6 +72,7 @@ public class UIManager : MonoBehaviour
     public ShopManager shopManager;
     public LootingManager lootingManager;
     public EnchantManager enchantManager;
+    public ScriptManager scriptManager;
     //참조하는 원본
     //public GameObject inventoryManagerGameObject;
     //public GameObject statusManagerGameObject;
@@ -77,6 +83,7 @@ public class UIManager : MonoBehaviour
     public MySkillList skillList;
     public TMP_Text myName;
     public TMP_Text myLevel;
+    public TMP_Text CoreLevel;
     public PlayerHpBar hpBar;
 
 
