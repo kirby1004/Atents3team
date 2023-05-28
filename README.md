@@ -9,6 +9,13 @@
 4. 개발 일정 확인하기 - [개발 일정](https://app.asana.com/0/1204352798021693/list)
 
 ---
+### V.4.0.09 - JS
+> Cut Scene  
+  - CutScene Script revised  
+> Loading Scene
+  - UI 생성 및 Sprite 분류 
+
+---
 ## Scene Merge & Map Discussion
 > Boss Scene
    - 마법진 입체감 향상을 위해 이중 Image로 변경하고 Animation 처리를 통해 생동감을 주는 작업 진행 예정 (수민)  
