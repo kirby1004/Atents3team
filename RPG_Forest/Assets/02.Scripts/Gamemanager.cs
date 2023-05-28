@@ -35,17 +35,16 @@ public class Gamemanager : MonoBehaviour , IEconomy
         Money = new int();
     }
 
-    #region ¾À
     // ¾À
-    public GameObject cutScene01;
+    public void FindObject()
+    {
+        myPlayer = FindObjectOfType<PlayerController>();
+        myEnemy = FindObjectOfType<Monster>();
+        myDragon = FindObjectOfType<Dragon>();
+    }
 
-
-    #endregion
-
-    //enum CutScene { encounter = 4, cut1, cut2, cut3 }
 
     // ¹ÙÀÎµù
-
     public PlayerController myPlayer;
     public Monster myEnemy;
     public Dragon myDragon;

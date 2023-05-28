@@ -14,74 +14,95 @@ public class CutScene : MonoBehaviour
         InGame 
     }
 
+    public eCutScene cutSceneType;
 
     public PlayableDirector myPD;
-    [SerializeField]
-    private float duration;
-    [SerializeField]
-    private float time;
-    
+    private SceneLoader sceneLoader;
+    private List<GameObject>[] list;
+
+    public int myScene;
+    public int nextScene;
+
+    private void Awake()
+    {
+        
+    }
 
     void Start()
     {
-        //UIManager.instance.gameObject.SetActive(false);
         myPD = GetComponent<PlayableDirector>();
+        sceneLoader = SceneLoader.Inst;
+        myScene = this.gameObject.scene.buildIndex;
+
         myPD.initialTime = 0.0f;
-        duration = (float)myPD.playableAsset.duration;
-        time = (float)myPD.initialTime;
 
-        SceneManager.activeSceneChanged += SetUpUIManager;
-        SceneManager.sceneLoaded += DeActivateSetUp;
-    }
-
-    void Update()
-    {
-        time += Time.deltaTime;
-
-        if(time > duration)
+        if (cutSceneType == eCutScene.Encounter)
         {
-            if(this.gameObject.scene.buildIndex != 3) SceneManager.LoadScene(2);
-            else
-            {
-                SceneLoader.Inst.SceneUnload(3);
-
-
-                DisableSkinnedRenderer(Gamemanager.Inst.myPlayer.gameObject);
-                DisableSkinnedRenderer(Gamemanager.Inst.myDragon.gameObject);
-
-            }
+            SceneManager.activeSceneChanged += SetUpUIManager;
+            StartCoroutine(PlayEncounterCutScene());
+        }
+        else if (cutSceneType == eCutScene.InGame)
+        {
+            SceneManager.sceneLoaded += DeActivateSetUp;
+            StartCoroutine(PlayInGameCutScene());
         }
     }
 
-    private void OnDisable()
+    IEnumerator PlayEncounterCutScene()
     {
-        SceneManager.sceneUnloaded += ActivateSetUp;
+        float offset = 0.1f;
+        UIManager.instance.gameObject.SetActive(false);
+        myPD.Play();
+        yield return new WaitForSeconds((float)myPD.duration - offset);
+        
+        sceneLoader.SceneLoad(nextScene);
+    }
 
+    IEnumerator PlayInGameCutScene()
+    {
+        float offset = 0.1f;
+        SetUpUI();
+
+        //Active 씬의 Dragon과 Player의 위치 값을 열린 씬에 넣어주기
+        //foreach (GameObject i in list) i = this.gameObject.scene.GetRootGameObjects;
+
+        myPD.Play();
+        yield return new WaitForSeconds((float)myPD.duration - offset);
+        sceneLoader.SceneUnload(myScene);
+        SetUpUI(true);
+    }
+
+    void SetUpUI(bool enable = false)
+    {
+        UIManager.instance.gameObject.SetActive(enable);
+        DisableSkinnedRenderer(Gamemanager.inst.myDragon.gameObject, enable);
+        DisableSkinnedRenderer(Gamemanager.inst.myPlayer.gameObject, enable);
     }
 
     // Single Scene Unload 상황에서 다음 Scene이 게임 씬일 때
     void SetUpUIManager(Scene curScene, Scene nextScene)
     {
         Gamemanager.Inst.myPlayer = FindObjectOfType<PlayerController>();
-        Gamemanager.Inst.myEnemy = FindObjectOfType<Monster>();
         Gamemanager.Inst.myDragon = FindObjectOfType<Dragon>();
+        if(Gamemanager.Inst.myDragon == null) Gamemanager.Inst.myEnemy = FindObjectOfType<Monster>();
 
-        if (nextScene.buildIndex == 2)
+        UIManager.instance.gameObject.SetActive(true);
+    }
+
+    void DisableSkinnedRenderer(GameObject obj, bool enable = true)
+    {
+        foreach(var i in obj.GetComponentsInChildren<SkinnedMeshRenderer>())
         {
-            UIManager.instance.gameObject.SetActive(true);
-        }
-        else
-        {
-            UIManager.instance.gameObject.SetActive(false);
+            i.enabled = enable;
         }
     }
 
-    // Additive Scene이 열릴 때, UI 및 Main Scene GameObject 꺼주기
+    // Additive Scene이 열릴 때, UI 및 MainScene GameObject 꺼주기
     void DeActivateSetUp(Scene nextScene, LoadSceneMode loadSceneMode)
     {
         Gamemanager.Inst.myPlayer = FindObjectOfType<PlayerController>();
-        Gamemanager.Inst.myEnemy = FindObjectOfType<Monster>();
         Gamemanager.Inst.myDragon = FindObjectOfType<Dragon>();
+        if(Gamemanager.Inst.myDragon == null) Gamemanager.Inst.myEnemy = FindObjectOfType<Monster>();
 
         UIManager.instance.gameObject.SetActive(false);
 
@@ -92,18 +113,6 @@ public class CutScene : MonoBehaviour
         }
     }
 
-    void ActivateSetUp(Scene nextScene)
-    {
-        Gamemanager.Inst.myUIManager.gameObject.SetActive(true);
-    }
-
-    void DisableSkinnedRenderer(GameObject obj, bool enable = true)
-    {
-        foreach(var i in obj.GetComponentsInChildren<SkinnedMeshRenderer>())
-        {
-            i.enabled = enable;
-        }
-    }
 
 
 }

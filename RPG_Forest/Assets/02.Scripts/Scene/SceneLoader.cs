@@ -7,22 +7,21 @@ using UnityEngine.UI;
 
 public class SceneLoader : Singleton<SceneLoader>
 {
-    public UnityAction action;
-
     void Awake()
     {
         base.Initialize();
     }
 
-    public void ChangeScene(int i)
+    // 맵 로딩 관련 -> Loading Scene을 거칠 때 사용
+    public void ChangeMap(int destMap)
     {
-        StartCoroutine(Loading(i));
+        StartCoroutine(MapLoading(destMap)) ;
     }
 
-    IEnumerator Loading(int i)
+    IEnumerator MapLoading(int destMap)
     {
-        yield return SceneManager.LoadSceneAsync(i); // Loads the Scene asynchronously(비동기) in the background.
-        AsyncOperation op = SceneManager.LoadSceneAsync(i); // 코루틴의 진행상태를 확인하는 방법
+        yield return SceneManager.LoadSceneAsync(1); // Loads the Scene asynchronously(비동기) in the background.
+        AsyncOperation op = SceneManager.LoadSceneAsync(destMap); // 코루틴의 진행상태를 확인하는 방법
         op.allowSceneActivation = false; // Scene Loading 이 끝나면 바로 활성화 되게 하는 불 값 => false
 
         Slider slider = FindObjectOfType<Slider>();
@@ -39,6 +38,18 @@ public class SceneLoader : Singleton<SceneLoader>
         }
     }
 
+    // Encounter CutScene 일 때
+    public void SceneLoad(int sceneIndex)
+    {
+        StartCoroutine(LoadScene(sceneIndex));
+    }
+
+    IEnumerator LoadScene(int sceneIndex)
+    {
+        yield return SceneManager.LoadSceneAsync(sceneIndex);
+    }
+
+    // Play-In CutScene 관 련
     public void SceneLoadAdditive(int sceneIndex)
     {
         StartCoroutine(LoadingAdditive(sceneIndex));
@@ -59,7 +70,7 @@ public class SceneLoader : Singleton<SceneLoader>
         StartCoroutine(Unloading(sceneIndex));
     }
 
-    IEnumerator Unloading(int sceneIndex)
+    public IEnumerator Unloading(int sceneIndex)
     {
         AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(sceneIndex);
 

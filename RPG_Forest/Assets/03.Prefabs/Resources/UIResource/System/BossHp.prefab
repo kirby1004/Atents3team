@@ -108,6 +108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myDragon: {fileID: 0}
   mySlider: {fileID: 816761218699862115}
+  myText: {fileID: 0}
+  myIndex: 0
 --- !u!1 &1334934626887972036
 GameObject:
   m_ObjectHideFlags: 0
