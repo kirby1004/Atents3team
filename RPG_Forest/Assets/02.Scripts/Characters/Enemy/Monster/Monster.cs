@@ -219,9 +219,9 @@ public class Monster : CharacterMovement_V2, IPerception, IBattle
             transform.Translate(Vector3.down * Time.deltaTime);
             yield return null;
         }
+        Gamemanager.inst.mySpawnner[mySpawnnerIndex].TotalCount--;
         deadAction?.Invoke();
         Destroy(gameObject);
-        Gamemanager.inst.mySpawnner[mySpawnnerIndex].TotalCount--;
     }
 
     #endregion

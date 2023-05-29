@@ -11,11 +11,14 @@ public class SceneLoader : Singleton<SceneLoader>
     {
         base.Initialize();
     }
-
+    public int curLoading;
     // 맵 로딩 관련 -> Loading Scene을 거칠 때 사용
     public void ChangeMap(int destMap)
     {
-        StartCoroutine(MapLoading(destMap)) ;
+        curLoading = destMap;
+        UIManager.instance.gameObject.SetActive(false);
+        Gamemanager.inst.gameObject.SetActive(false);
+        StartCoroutine(MapLoading(destMap));
     }
 
     IEnumerator MapLoading(int destMap)
@@ -31,12 +34,13 @@ public class SceneLoader : Singleton<SceneLoader>
             slider.value = op.progress / 0.9f;
             if (Mathf.Approximately(slider.value, 1.0f))
             {
-                yield return new WaitForSeconds(10.0f); // Debuging용 딜레이 추가  
+                yield return new WaitForSeconds(5.0f); // Debuging용 딜레이 추가  
+                UIManager.instance.gameObject.SetActive(true);
+                Gamemanager.inst.gameObject.SetActive(true);
                 op.allowSceneActivation = true;
             }
-            yield return null;
+            yield return new WaitForSeconds(2.0f); //   
         }
-        
     }
 
     // Encounter CutScene 일 때

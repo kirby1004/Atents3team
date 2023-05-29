@@ -13,7 +13,7 @@ public class Spawnner : MonoBehaviour
     public float ReSpawnDelay = 10.0f;
 
     public int mySpawnnerIndex = -1;
-
+    public List<GameObject> monsters = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,11 @@ public class Spawnner : MonoBehaviour
             pos.z += Random.Range(-Height * 0.5f, Height * 0.5f);
             GameObject obj = Instantiate(orgObject, pos, Quaternion.Euler(0, Random.Range(0.0f, 360.0f), 0));
             obj.GetComponent<CharacterProperty>().DeathAlarm += 
-                Gamemanager.inst.mySpawnner[mySpawnnerIndex].ReSpawn;
+                Gamemanager.Inst.mySpawnner[mySpawnnerIndex].ReSpawn;
+            obj.GetComponent<Monster>().mySpawnnerIndex = mySpawnnerIndex;
+            monsters.Add(obj);
+            obj.GetComponent<CharacterProperty>().DeathAlarm +=
+                () => Gamemanager.Inst.mySpawnner[mySpawnnerIndex].monsters.RemoveAt(FindMonsterIndex(obj));
         }
     }
 
@@ -55,7 +59,12 @@ public class Spawnner : MonoBehaviour
             obj.GetComponent<CharacterProperty>().DeathAlarm +=
                 Gamemanager.inst.mySpawnner[mySpawnnerIndex].ReSpawn;
             obj.GetComponent<Monster>().mySpawnnerIndex = mySpawnnerIndex;
-        }        
+            obj.GetComponent<CharacterProperty>().DeathAlarm +=
+                () => Gamemanager.Inst.mySpawnner[mySpawnnerIndex].monsters.RemoveAt(FindMonsterIndex(obj));
+            obj.GetComponent<Monster>().mySpawnnerIndex = mySpawnnerIndex;
+            monsters.Add(obj);
+            TotalCount++;
+        }
     }
 
     public int FindMyIndex(Spawnner mySpawnner)
@@ -69,5 +78,13 @@ public class Spawnner : MonoBehaviour
         }
         return -1;
     }
-
+    public int FindMonsterIndex(GameObject obj)
+    {
+        for(int i = 0;0< monsters.Count; i++)
+        {
+            if (monsters[i] == obj)
+                return i;
+        }
+        return -1;
+    }
 }

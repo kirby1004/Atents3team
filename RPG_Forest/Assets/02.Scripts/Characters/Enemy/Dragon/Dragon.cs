@@ -29,7 +29,7 @@ public class Dragon : Monster
         m_states.Add(eState.Landing, new DragonState_Landing(this, m_monsterSM));
         m_states.Add(eState.BattleDragon, new DragonState_BattleDragon(this, m_monsterSM));
 
-
+        GameObject obj = Instantiate(Resources.Load("UIResource/System/BossHpHigh"), UIManager.instance.BossHPBar) as GameObject;
         AttackRange = 5.1f;
 
     }

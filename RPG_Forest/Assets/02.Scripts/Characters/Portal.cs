@@ -28,7 +28,7 @@ public class Portal : MonoBehaviour
         {
             Effect.SetActive(true);
             other.GetComponent<IinterPlay>()?.SetisObjectNear(true);
-            other.GetComponent<IinterPlay>()?.OpenUi.AddListener(() => SceneLoader.Inst.SceneLoad(SceneNum));
+            other.GetComponent<IinterPlay>()?.OpenUi.AddListener(() => SceneLoader.Inst.ChangeMap(SceneNum));
         }
                 
     }

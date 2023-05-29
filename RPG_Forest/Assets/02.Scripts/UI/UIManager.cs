@@ -53,7 +53,7 @@ public class UIManager : MonoBehaviour
             GameObject obj = Instantiate(Resources.Load("UIResource/System/EnchantSystem") as GameObject, transform);
             enchantManager = obj.GetComponent<EnchantManager>();
         }
-        if(FindObjectOfType<ScriptManager>() == null)
+        if (FindObjectOfType<ScriptManager>() == null)
         {
             GameObject obj = Instantiate(Resources.Load("UIResource/System/ScriptCanvas") as GameObject);
             scriptManager = obj.GetComponent<ScriptManager>();
@@ -77,8 +77,9 @@ public class UIManager : MonoBehaviour
     //public GameObject inventoryManagerGameObject;
     //public GameObject statusManagerGameObject;
     //public GameObject equipmentManagerGameObject;
+    [Header("Transforms")]
     public Transform MiniMap;
-
+    public Transform BossHPBar;
     [Header("StatusBars")]
     public MySkillList skillList;
     public TMP_Text myName;
