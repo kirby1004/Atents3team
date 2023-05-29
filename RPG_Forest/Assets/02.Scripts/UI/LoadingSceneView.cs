@@ -5,7 +5,15 @@ using UnityEngine.UI;
 
 public class LoadingSceneView : MonoBehaviour
 {
-    
+    public enum eCutScene
+    {
+        Boss =4 ,
+        Forest = 5,
+        Village 
+        
+
+    }
+
     public List<Image> ForestImages;
     public List<Image> VillageImages;
     public List<Image> BossmapImages;
@@ -13,25 +21,19 @@ public class LoadingSceneView : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        switch (SceneLoader.Inst.curLoading)
+        switch ((eCutScene)SceneLoader.Inst.curLoading)
         {
-            case 5:
+            case eCutScene.Forest:
                 ForestImages[Random.Range(0, ForestImages.Count)].gameObject.SetActive(true);
                 break;
-            case 6:
+            case eCutScene.Village:
                 VillageImages[Random.Range(0,VillageImages.Count)].gameObject.SetActive(true);
                 break;
-            case 2:
+            case eCutScene.Boss:
                 BossmapImages[Random.Range(0,VillageImages.Count)].gameObject.SetActive(true);
                 break;
             default:
                 break;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

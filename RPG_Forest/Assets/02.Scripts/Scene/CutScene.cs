@@ -11,7 +11,7 @@ public class CutScene : MonoBehaviour
     [type: SerializeField]
     public enum eCutScene { 
         Encounter, 
-        InGame 
+        InGame
     }
 
     public eCutScene cutSceneType;

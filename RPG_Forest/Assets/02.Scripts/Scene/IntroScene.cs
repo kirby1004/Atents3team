@@ -7,8 +7,9 @@ public class IntroScene : MonoBehaviour
 {
     void Start()
     {
-        StartCoroutine(ConvertingToLoadingScene());
         SceneManager.activeSceneChanged += SetUI;
+        StartCoroutine(ConvertingToLoadingScene());
+        DontDestroyOnLoad(this);
     }
 
     void Update()
@@ -27,8 +28,11 @@ public class IntroScene : MonoBehaviour
     {
         if(postScene.isLoaded)
         {
+            UIManager.instance.gameObject.SetActive(true);
             UIManager.instance.Refresh();
+            
         }
+        Destroy(this.gameObject);
     }
 
 }
