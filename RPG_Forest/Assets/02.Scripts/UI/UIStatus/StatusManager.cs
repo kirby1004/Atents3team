@@ -10,7 +10,7 @@ public class StatusManager : Singleton<StatusManager>
     public TMP_Text myLevel;
     public TMP_Text myEnchantDamage;
 
-    private void Start()
+    private void Awake()
     {
         base.Initialize();
     }
