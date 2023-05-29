@@ -21,7 +21,7 @@ public class PlayerHpBar : MonoBehaviour
             mySlider = transform.GetComponent<Slider>();
             mySlider.maxValue = myPlayer.MaxHp;
             mySlider.value = myPlayer.curHp;
-            myText.text = $"{myPlayer.curHp} / {myPlayer.MaxHp}";
+            myText.text = myPlayer.curHp.ToString("F0")+$"/ {myPlayer.MaxHp}";
             myPlayer.UpdateHp.RemoveAllListeners();
             myPlayer.UpdateHp.AddListener(RefreshHPBar);
         }
@@ -41,7 +41,7 @@ public class PlayerHpBar : MonoBehaviour
     {
 
         mySlider.value = hp;
-        myText.text = hp.ToString("N0") +$"/ {myPlayer.MaxHp}";
+        myText.text = hp.ToString("F0") +$"/ {myPlayer.MaxHp}";
         mySlider.maxValue = myPlayer.MaxHp;
         Debug.Log($"Max = {myPlayer.MaxHp},Now = {hp}");
     }
