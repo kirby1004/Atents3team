@@ -10,7 +10,7 @@ public class StatusManager : Singleton<StatusManager>
     public TMP_Text myLevel;
     public TMP_Text myEnchantDamage;
 
-    private void Start()
+    private void Awake()
     {
         base.Initialize();
     }
@@ -21,13 +21,13 @@ public class StatusManager : Singleton<StatusManager>
             switch ((StatType)i)
             {
                 case StatType.HP:
-                    myStat[i].text = Gamemanager.Inst.myPlayer.myBaseStatus.MaxHp.ToString()+ $"(+{EquipmentManager.Inst.equipmentHP.ToString()})";
+                    myStat[i].text = Gamemanager.Inst.myPlayer.myBaseStatus.MaxHp.ToString()+ $"(+{EquipmentManager.Inst.equipmentHP})";
                     break;
                 case StatType.AP:
-                    myStat[i].text = Gamemanager.Inst.myPlayer.myBaseStatus.AttackPoint.ToString()+ $"(+{EquipmentManager.Inst.equipmentAP.ToString()})";
+                    myStat[i].text = Gamemanager.Inst.myPlayer.myBaseStatus.AttackPoint.ToString()+ $"(+{EquipmentManager.Inst.equipmentAP})";
                     break;
                 case StatType.DP:
-                    myStat[i].text = Gamemanager.Inst.myPlayer.myBaseStatus.DefensePoint.ToString() + $"(+{EquipmentManager.Inst.equipmentDP.ToString()})";
+                    myStat[i].text = Gamemanager.Inst.myPlayer.myBaseStatus.DefensePoint.ToString() + $"(+{EquipmentManager.Inst.equipmentDP})";
                     break;
                 case StatType.Speed:
                     myStat[i].text = (Gamemanager.Inst.myPlayer.myBaseStatus.MoveSpeed /3 ).ToString("F1") + $"(+{(EquipmentManager.Inst.equipmentSpeed/3).ToString("F1")})";

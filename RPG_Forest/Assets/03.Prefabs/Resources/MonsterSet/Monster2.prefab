@@ -301,19 +301,7 @@ MonoBehaviour:
       m_Calls: []
   DeadFunc:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2565290860545773179}
-        m_TargetAssemblyTypeName: Monster, Assembly-CSharp
-        m_MethodName: OnDisappear
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!4 &4071613433326333352 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: df781093c8e9dd045a9c43fb71a09622, type: 3}
