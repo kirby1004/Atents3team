@@ -20,6 +20,8 @@ public class CutScene : MonoBehaviour
     private SceneLoader sceneLoader;
     private List<GameObject>[] list;
 
+    private BossHpBar bossHpBar;
+
     public int myScene;
     public int nextScene;
 
@@ -33,6 +35,8 @@ public class CutScene : MonoBehaviour
         myPD = GetComponent<PlayableDirector>();
         sceneLoader = SceneLoader.Inst;
         myScene = this.gameObject.scene.buildIndex;
+
+        
 
         myPD.initialTime = 0.0f;
 
@@ -92,6 +96,7 @@ public class CutScene : MonoBehaviour
         if(Gamemanager.Inst.myDragon == null) Gamemanager.Inst.myEnemy = FindObjectOfType<Monster>();
 
         UIManager.instance.gameObject.SetActive(true);
+
     }
 
     void DisableSkinnedRenderer(GameObject obj, bool enable)
