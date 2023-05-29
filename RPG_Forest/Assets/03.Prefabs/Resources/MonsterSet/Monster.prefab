@@ -97,6 +97,7 @@ MonoBehaviour:
   canFly: 0
   myDropTable: {fileID: 11400000, guid: 0a2c9d46a47639842a6a4b93e03f8ede, type: 2}
   myAI: {fileID: 4280717542541653788}
+  mySpawnnerIndex: -1
   leftClawPoint: {fileID: 4280717542213659304}
 --- !u!136 &4724398682352606704
 CapsuleCollider:
@@ -295,21 +296,12 @@ MonoBehaviour:
   BiteFunc:
     m_PersistentCalls:
       m_Calls: []
+  RightAttackFunc:
+    m_PersistentCalls:
+      m_Calls: []
   DeadFunc:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4280717542504068229}
-        m_TargetAssemblyTypeName: Monster, Assembly-CSharp
-        m_MethodName: OnDisappear
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!4 &4387227942777216075 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 23f4d93bdcfd7e7438b404749497c963, type: 3}
