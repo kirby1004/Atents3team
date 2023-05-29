@@ -37,8 +37,8 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.077700675, g: 0.05244528, b: 0.07102059, a: 1}
+  m_Sun: {fileID: 410087040}
+  m_IndirectSpecularColor: {r: 0.07770072, g: 0.05244741, b: 0.0710223, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,8 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: b1f8c439dbfac6b48b6be6667cff7379, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: a8ad6e7623c32fd4eaea573fdf6e62ba, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Castle_Tower_Square_A1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ef52a54dc89f3b040be6aef1b6bae8a9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef52a54dc89f3b040be6aef1b6bae8a9, type: 3}
 --- !u!4 &6428043 stripped
@@ -243,6 +247,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3d7465c9528ed8b4f818383fb98bb780, type: 3}
       propertyPath: m_Name
       value: LavaFlow
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3d7465c9528ed8b4f818383fb98bb780, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d7465c9528ed8b4f818383fb98bb780, type: 3}
@@ -318,6 +326,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Cliff_Corner_04_Slope_AU
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3e0031f2705935f43b5d65982dc21967, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e0031f2705935f43b5d65982dc21967, type: 3}
 --- !u!4 &54986486 stripped
@@ -379,6 +391,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e9082a67922a80e47bd516e2ed9a4368, type: 3}
       propertyPath: m_Name
       value: Castle_Wall_B_Straight05
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e9082a67922a80e47bd516e2ed9a4368, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9082a67922a80e47bd516e2ed9a4368, type: 3}
@@ -454,6 +470,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Cliff_Plateau_01_Taper_AP
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b8823966796a5fb4ba60c42d156424e9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8823966796a5fb4ba60c42d156424e9, type: 3}
 --- !u!4 &112066830 stripped
@@ -528,6 +548,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Boulder_06_Ak
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d74b2880e2be4fa4284c6b7953962344, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d74b2880e2be4fa4284c6b7953962344, type: 3}
 --- !u!4 &113605390 stripped
@@ -589,6 +613,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 475e7d8a3b4bcb549a396e3f160ccef9, type: 3}
       propertyPath: m_Name
       value: Castle_Wall_B_Straight09
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 475e7d8a3b4bcb549a396e3f160ccef9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 475e7d8a3b4bcb549a396e3f160ccef9, type: 3}
@@ -664,6 +692,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Cliff_Fin_01_Slope_AO
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 278187f9a181cdf4d85b70a48e25ac20, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 278187f9a181cdf4d85b70a48e25ac20, type: 3}
 --- !u!4 &122871370 stripped
@@ -737,6 +769,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 85d87e98db60e0f4185c4616edc96154, type: 3}
       propertyPath: m_Name
       value: Mesh_Cliff_Block_03_Slope_AS
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 85d87e98db60e0f4185c4616edc96154, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85d87e98db60e0f4185c4616edc96154, type: 3}
@@ -812,6 +848,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Cliff_Corner_02_Slope_AU
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 615bf7cad1f33524ca745031b7754396, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 615bf7cad1f33524ca745031b7754396, type: 3}
 --- !u!4 &152934608 stripped
@@ -886,6 +926,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Boulder_04_AJ
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fb4b5e0fd7b6bb243aa1f2c2bf37f1ce, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb4b5e0fd7b6bb243aa1f2c2bf37f1ce, type: 3}
 --- !u!4 &164989374 stripped
@@ -907,7 +951,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &189472714
 Transform:
@@ -1015,6 +1059,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Castle_Wall_B_Straight08
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6cd813debd523dc47b172706e6dc03ef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cd813debd523dc47b172706e6dc03ef, type: 3}
 --- !u!4 &191308953 stripped
@@ -1076,6 +1124,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f79720f47d6f6024f8114fae16029e2f, type: 3}
       propertyPath: m_Name
       value: Castle_Tower_Square_A2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f79720f47d6f6024f8114fae16029e2f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f79720f47d6f6024f8114fae16029e2f, type: 3}
@@ -1150,6 +1202,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a2cb91c7766325b47b661ddb37048ba3, type: 3}
       propertyPath: m_Name
       value: Mesh_Cliff_Block_02_AS
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2cb91c7766325b47b661ddb37048ba3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2cb91c7766325b47b661ddb37048ba3, type: 3}
@@ -1314,6 +1370,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Cliff_Corner_02_AU
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3832759df31420c40aad60927c4bcae1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3832759df31420c40aad60927c4bcae1, type: 3}
 --- !u!4 &261897657 stripped
@@ -1387,6 +1447,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b4ba1400b6c8e1a42ad6e4be449e6e35, type: 3}
       propertyPath: m_Name
       value: Mesh_Cliff_Corner_01_AS
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b4ba1400b6c8e1a42ad6e4be449e6e35, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4ba1400b6c8e1a42ad6e4be449e6e35, type: 3}
@@ -1462,6 +1526,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Cliff_Corner_01_Slope_AS
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bc3c4257db7097f4f8ffce5aa6493045, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc3c4257db7097f4f8ffce5aa6493045, type: 3}
 --- !u!4 &291534594 stripped
@@ -1524,6 +1592,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Castle_Wall_B_Straight02
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fdaf79e6c3eab7c479c111d6a6bf5060, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdaf79e6c3eab7c479c111d6a6bf5060, type: 3}
 --- !u!4 &389503933 stripped
@@ -1545,7 +1617,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &389924269
 Transform:
@@ -1624,6 +1696,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 266b3b372ef0c2e429c0266f17472032, type: 3}
       propertyPath: m_Name
       value: Castle_Tower_Round_F4
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 266b3b372ef0c2e429c0266f17472032, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 266b3b372ef0c2e429c0266f17472032, type: 3}
@@ -1761,7 +1837,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &421958012
 Transform:
@@ -1855,6 +1931,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Cliff_Block_03_AS
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4d7fcbfa51445924e93b246168a9bb74, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d7fcbfa51445924e93b246168a9bb74, type: 3}
 --- !u!4 &433326328 stripped
@@ -1879,7 +1959,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &434413854
 Transform:
@@ -2027,6 +2107,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Cliff_Block_03_Taper_AS
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b06fcd9cf2c361f4e8e0fb7dab328265, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b06fcd9cf2c361f4e8e0fb7dab328265, type: 3}
 --- !u!4 &445754895 stripped
@@ -2048,7 +2132,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &449480067
 Transform:
@@ -2142,6 +2226,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Cliff_Block_02_Slope_AS
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4c80d86a4824bbf41bde3fc8b88459fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c80d86a4824bbf41bde3fc8b88459fe, type: 3}
 --- !u!4 &481927020 stripped
@@ -2203,6 +2291,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6b2ebe7bd4c6a254c9a047dd72c70400, type: 3}
       propertyPath: m_Name
       value: Castle_Tower_Round_F1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b2ebe7bd4c6a254c9a047dd72c70400, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b2ebe7bd4c6a254c9a047dd72c70400, type: 3}
@@ -2274,6 +2366,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cf285b6ad76bc594c96b37d9fdafd5a2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf285b6ad76bc594c96b37d9fdafd5a2, type: 3}
 --- !u!1 &511942363
@@ -2290,7 +2386,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &511942364
 Transform:
@@ -2439,7 +2535,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &547615338
 Transform:
@@ -2529,6 +2625,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Castle_Wall_B_Straight
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ffb3787ae241af84598d2af268047682, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffb3787ae241af84598d2af268047682, type: 3}
 --- !u!4 &675574871 stripped
@@ -2550,7 +2650,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &699734432
 Transform:
@@ -2641,6 +2741,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Boulder_09_Ak
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ff8551360b49af943ac1f8e28d2507b5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff8551360b49af943ac1f8e28d2507b5, type: 3}
 --- !u!4 &747566563 stripped
@@ -2715,6 +2819,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Cliff_Fin_02_AT
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3a7d1d9af14491e48b32f0548e068076, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a7d1d9af14491e48b32f0548e068076, type: 3}
 --- !u!4 &776580918 stripped
@@ -2788,6 +2896,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c4fd2cbe579bc6649a3e9476c25e9e38, type: 3}
       propertyPath: m_Name
       value: Mesh_Cliff_Plateau_02_AQ
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c4fd2cbe579bc6649a3e9476c25e9e38, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4fd2cbe579bc6649a3e9476c25e9e38, type: 3}
@@ -2912,6 +3024,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Cliff_Block_01_AO
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b3351f60443b96b4599ae7c20177fbe3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3351f60443b96b4599ae7c20177fbe3, type: 3}
 --- !u!4 &841810868 stripped
@@ -2985,6 +3101,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8b5dbc205c279734e97aa7b6bac248a1, type: 3}
       propertyPath: m_Name
       value: Mesh_Cliff_Corner_03_AU
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8b5dbc205c279734e97aa7b6bac248a1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b5dbc205c279734e97aa7b6bac248a1, type: 3}
@@ -3060,6 +3180,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Boulder_10_Ak
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e72e6b3d623943d44a4cb3712582d1f0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e72e6b3d623943d44a4cb3712582d1f0, type: 3}
 --- !u!4 &855491648 stripped
@@ -3122,6 +3246,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Castle_Wall_B_Straight04
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f46e05fdd6e44a94ca01bdc87142241a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f46e05fdd6e44a94ca01bdc87142241a, type: 3}
 --- !u!4 &886391472 stripped
@@ -3183,6 +3311,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 60c413f5b494d2a4da69c5b1f7f85f8a, type: 3}
       propertyPath: m_Name
       value: Castle_Wall_B_Straight01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 60c413f5b494d2a4da69c5b1f7f85f8a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60c413f5b494d2a4da69c5b1f7f85f8a, type: 3}
@@ -3291,6 +3423,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Castle_Wall_B_Straight07
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dbff7e60e2bb0f54abfa1fee39bebec1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbff7e60e2bb0f54abfa1fee39bebec1, type: 3}
 --- !u!4 &957114983 stripped
@@ -3365,6 +3501,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Boulder_11_Ak
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aafdb119bab774549b4befade8479275, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aafdb119bab774549b4befade8479275, type: 3}
 --- !u!4 &1141702682 stripped
@@ -3427,6 +3567,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Castle_Tower_Square_A4
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 588ddc3d661468e40a45017bb5519d8c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 588ddc3d661468e40a45017bb5519d8c, type: 3}
 --- !u!4 &1148199007 stripped
@@ -3488,6 +3632,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ac1efd6dbd51b684296fe9cdc0f83417, type: 3}
       propertyPath: m_Name
       value: Castle_Tower_Square_A
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ac1efd6dbd51b684296fe9cdc0f83417, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac1efd6dbd51b684296fe9cdc0f83417, type: 3}
@@ -3554,6 +3702,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 124c84bc639ee364d89aa7125738829f, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 124c84bc639ee364d89aa7125738829f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 124c84bc639ee364d89aa7125738829f, type: 3}
@@ -3623,6 +3775,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 98e07b292175a014aac2f99bf86d3603, type: 3}
       propertyPath: m_Name
       value: Mesh_Cliff_Plateau_02_Taper_AQ
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 98e07b292175a014aac2f99bf86d3603, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98e07b292175a014aac2f99bf86d3603, type: 3}
@@ -3698,6 +3854,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Boulder_02_AJ
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: df2b8e70ac0e0aa40a22bf7bf8eaa214, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df2b8e70ac0e0aa40a22bf7bf8eaa214, type: 3}
 --- !u!4 &1389653636 stripped
@@ -3753,6 +3913,7 @@ MonoBehaviour:
   myEnemy: {fileID: 0}
   myDragon: {fileID: 1441952542}
   mySpawnner: []
+  mySceneLoader: {fileID: 0}
   playTime: 0
   myUIManager: {fileID: 0}
   UpdateMoney:
@@ -3783,7 +3944,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1460170159
 Transform:
@@ -3868,6 +4029,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Boulder_07_Ak
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29e4a05b098f50b45b9dac7108f837f1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29e4a05b098f50b45b9dac7108f837f1, type: 3}
 --- !u!4 &1514504263 stripped
@@ -3942,6 +4107,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Cliff_Block_01_Taper_AO
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7c83bc969f8bcc2429c491a3c74f408c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c83bc969f8bcc2429c491a3c74f408c, type: 3}
 --- !u!4 &1528144494 stripped
@@ -4003,6 +4172,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c478ce4b0230cc94a9dec828b14a0918, type: 3}
       propertyPath: m_Name
       value: Cliff
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c478ce4b0230cc94a9dec828b14a0918, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c478ce4b0230cc94a9dec828b14a0918, type: 3}
@@ -4070,6 +4243,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c1834ec6ba9651d4eaf84a2d39579c2e, type: 3}
       propertyPath: m_Name
       value: MagicCircleImagesPentagon
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1834ec6ba9651d4eaf84a2d39579c2e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1834ec6ba9651d4eaf84a2d39579c2e, type: 3}
@@ -4139,6 +4316,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fc896771bf8ce5b4d8c5cce7e5b587d9, type: 3}
       propertyPath: m_Name
       value: Mesh_Boulder_05_AJ
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fc896771bf8ce5b4d8c5cce7e5b587d9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc896771bf8ce5b4d8c5cce7e5b587d9, type: 3}
@@ -4214,6 +4395,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Cliff_Fin_01_AO
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 16cba0cab6b61df4fa073b74b0b8a66d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16cba0cab6b61df4fa073b74b0b8a66d, type: 3}
 --- !u!4 &1620327894 stripped
@@ -4287,6 +4472,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 28917e05cf26b3c47b617d445b6d537a, type: 3}
       propertyPath: m_Name
       value: Mesh_Cliff_Plateau_01_AP
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 28917e05cf26b3c47b617d445b6d537a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28917e05cf26b3c47b617d445b6d537a, type: 3}
@@ -4362,6 +4551,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Cliff_Corner_04_AU
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 93212a2bb437c2c4c97d974066580f12, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93212a2bb437c2c4c97d974066580f12, type: 3}
 --- !u!4 &1650236280 stripped
@@ -4436,6 +4629,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Cliff_Block_01_Skew_AO
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0ba6f1b853f15eb4faaa7ce1d111d550, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ba6f1b853f15eb4faaa7ce1d111d550, type: 3}
 --- !u!4 &1656719945 stripped
@@ -4509,6 +4706,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Castle_Tower_Round_F3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e5bed6682523cf248b1fa70aa216833a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5bed6682523cf248b1fa70aa216833a, type: 3}
 --- !u!4 &1697662797 stripped
@@ -4570,6 +4771,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e32616780819c544989d73da35eb1ce7, type: 3}
       propertyPath: m_Name
       value: Castle_Tower_Square_A3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e32616780819c544989d73da35eb1ce7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e32616780819c544989d73da35eb1ce7, type: 3}
@@ -4701,6 +4906,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: KisspngKamenPentagon
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 24da9cf9231c9514cbe3a3620dc0e56c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24da9cf9231c9514cbe3a3620dc0e56c, type: 3}
 --- !u!1001 &1850753289
@@ -4757,6 +4966,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c9461a4f6d5b35245ac7608fcd4fdfb5, type: 3}
       propertyPath: m_Name
       value: Castle_Wall_B_Straight03
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c9461a4f6d5b35245ac7608fcd4fdfb5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9461a4f6d5b35245ac7608fcd4fdfb5, type: 3}
@@ -4900,6 +5113,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Cliff_Fin_02_Arch_AT
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1bccc2484c03b94e9da0cabc8525361, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1bccc2484c03b94e9da0cabc8525361, type: 3}
 --- !u!4 &1904353054 stripped
@@ -4973,6 +5190,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: de4167e601ec61a42a8f747f6a8a393b, type: 3}
       propertyPath: m_Name
       value: Mesh_Boulder_01_AJ
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de4167e601ec61a42a8f747f6a8a393b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de4167e601ec61a42a8f747f6a8a393b, type: 3}
@@ -5048,6 +5269,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Cliff_Corner_03_Slope_AU
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a52cff00ccd961f4b9be420f39873e09, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a52cff00ccd961f4b9be420f39873e09, type: 3}
 --- !u!4 &1936568804 stripped
@@ -5122,6 +5347,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Cliff_Block_04_AS
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d0b660d290fb45047b23a2da8c28141e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0b660d290fb45047b23a2da8c28141e, type: 3}
 --- !u!4 &1947090123 stripped
@@ -5183,6 +5412,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ef2962aec43925740924bed872ce3be7, type: 3}
       propertyPath: m_Name
       value: Castle_Wall_B_Straight06
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ef2962aec43925740924bed872ce3be7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef2962aec43925740924bed872ce3be7, type: 3}
@@ -5246,6 +5479,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Castle_Tower_Round_F2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ee029cb5f5f342b47b65c2b913a1b377, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee029cb5f5f342b47b65c2b913a1b377, type: 3}
 --- !u!4 &1970196518 stripped
@@ -5307,6 +5544,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 17931390de1671e4f954f5d9f4c220fb, type: 3}
       propertyPath: m_Name
       value: KisspngKamenTriangle
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 17931390de1671e4f954f5d9f4c220fb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17931390de1671e4f954f5d9f4c220fb, type: 3}
@@ -5377,6 +5618,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh_Boulder_08_Ak
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 55675fce9dd8eeb4c9f50fa1f4a27ac5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55675fce9dd8eeb4c9f50fa1f4a27ac5, type: 3}
 --- !u!4 &1986288476 stripped
@@ -5398,7 +5643,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2048575574
 Transform:
@@ -5472,6 +5717,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: KisspngKamenDragon
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a05c3dd7ea08124ca36de0f98c2107c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a05c3dd7ea08124ca36de0f98c2107c, type: 3}
 --- !u!4 &2087039055 stripped
@@ -5538,6 +5787,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4f2ff9cdbf3d2c541ad18724ab21b53e, type: 3}
       propertyPath: m_Name
       value: Castle_Tower_Round_F
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4f2ff9cdbf3d2c541ad18724ab21b53e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f2ff9cdbf3d2c541ad18724ab21b53e, type: 3}
@@ -5612,6 +5865,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4d7d927aed91fe34ebb61f4b879d7a2f, type: 3}
       propertyPath: m_Name
       value: Mesh_Boulder_03_AJ
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4d7d927aed91fe34ebb61f4b879d7a2f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d7d927aed91fe34ebb61f4b879d7a2f, type: 3}
