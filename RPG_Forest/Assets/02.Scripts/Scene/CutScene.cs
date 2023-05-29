@@ -20,14 +20,11 @@ public class CutScene : MonoBehaviour
     private SceneLoader sceneLoader;
     private List<GameObject>[] list;
 
-    private BossHpBar bossHpBar;
-
     public int myScene;
     public int nextScene;
 
     private void Awake()
     {
-        
     }
 
     void Start()
@@ -35,8 +32,6 @@ public class CutScene : MonoBehaviour
         myPD = GetComponent<PlayableDirector>();
         sceneLoader = SceneLoader.Inst;
         myScene = this.gameObject.scene.buildIndex;
-
-        
 
         myPD.initialTime = 0.0f;
 
@@ -64,7 +59,7 @@ public class CutScene : MonoBehaviour
 
     IEnumerator PlayInGameCutScene()
     {
-        float offset = 0.25f;
+        float offset = 0.1f;
         SetUpUI(false);
 
         //Active 씬의 Dragon과 Player의 위치 값을 열린 씬에 넣어주기
@@ -76,17 +71,20 @@ public class CutScene : MonoBehaviour
         SetUpUI(true);
     }
 
-    void SetUpUI(bool enable)
+    public void SetUpUI(bool enable)
     {
         UIManager.instance.gameObject.SetActive(enable);
+
         DisableSkinnedRenderer(Gamemanager.inst.myPlayer.gameObject, enable);
         if (Gamemanager.inst.myDragon != null) DisableSkinnedRenderer(Gamemanager.inst.myDragon.gameObject, enable);
         else
         {
             // myEnemy는 배열 형태여야 하지않는가...?
             DisableSkinnedRenderer(Gamemanager.inst.myEnemy.gameObject, enable);
+            Gamemanager.inst.myEnemy.gameObject.GetComponentInChildren<MeshRenderer>().enabled = enable;
         }
     }
+
 
     // Single Scene Unload 상황에서 다음 Scene이 게임 씬일 때
     void SetUpUIManager(Scene curScene, Scene nextScene)
@@ -99,7 +97,7 @@ public class CutScene : MonoBehaviour
 
     }
 
-    void DisableSkinnedRenderer(GameObject obj, bool enable)
+    public void DisableSkinnedRenderer(GameObject obj, bool enable)
     {
         foreach(var i in obj.GetComponentsInChildren<SkinnedMeshRenderer>())
         {

@@ -11,6 +11,7 @@ public class SceneLoader : Singleton<SceneLoader>
     {
         base.Initialize();
     }
+
     public int curLoading;
     // 맵 로딩 관련 -> Loading Scene을 거칠 때 사용
     public void ChangeMap(int destMap)
@@ -81,9 +82,12 @@ public class SceneLoader : Singleton<SceneLoader>
 
         while (!unloadOperation.isDone)
         {
+            
             yield return null;
         }
     }
+
+
 
 
 }

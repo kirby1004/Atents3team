@@ -2909,6 +2909,7 @@ MonoBehaviour:
   Height: 5
   ReSpawnDelay: 5
   mySpawnnerIndex: -1
+  monsters: []
 --- !u!4 &418217609
 Transform:
   m_ObjectHideFlags: 0
@@ -3754,6 +3755,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 75717506}
     m_Modifications:
+    - target: {fileID: 2165906732973130789, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2565290860545773177, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
       propertyPath: m_Name
       value: Monster2 (1)
@@ -3764,7 +3769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.59
       objectReference: {fileID: 0}
     - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4879,6 +4884,7 @@ MonoBehaviour:
   Height: 5
   ReSpawnDelay: 5
   mySpawnnerIndex: -1
+  monsters: []
 --- !u!4 &884588699
 Transform:
   m_ObjectHideFlags: 0
@@ -5849,7 +5855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6787210491212075589, guid: 7dbcc6532f34eec4db3bfa2b543cf7ae, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 133.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6787210491212075589, guid: 7dbcc6532f34eec4db3bfa2b543cf7ae, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8978,7 +8984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.99
       objectReference: {fileID: 0}
     - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9860,6 +9866,7 @@ MonoBehaviour:
   myDragon: {fileID: 0}
   mySpawnner:
   - {fileID: 0}
+  mySceneLoader: {fileID: 0}
   playTime: 0
   myUIManager: {fileID: 0}
   UpdateMoney:
@@ -11456,6 +11463,7 @@ MonoBehaviour:
   Height: 5
   ReSpawnDelay: 5
   mySpawnnerIndex: -1
+  monsters: []
 --- !u!4 &2083656188
 Transform:
   m_ObjectHideFlags: 0
