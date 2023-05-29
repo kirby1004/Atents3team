@@ -13,7 +13,6 @@ public class BossHpBar : MonoBehaviour
 
     public int myIndex = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
         if(FindObjectOfType<Dragon>()!=null)

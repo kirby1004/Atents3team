@@ -11,7 +11,7 @@ public class BossHpBarController : MonoBehaviour
     public Image[] myColorImage;
     public Dragon myDragon = null;
 
-    private void Start()
+    private void OnEnable()
     {
         if (FindObjectOfType<Dragon>() != null)
         {

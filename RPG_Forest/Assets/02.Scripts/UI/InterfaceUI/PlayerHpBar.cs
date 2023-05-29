@@ -13,7 +13,7 @@ public class PlayerHpBar : MonoBehaviour
     public TMP_Text myText;
     public int myIndex;
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         if (FindObjectOfType<PlayerController>() != null)
         {

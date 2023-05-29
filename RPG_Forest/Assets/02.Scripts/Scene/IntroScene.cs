@@ -8,6 +8,7 @@ public class IntroScene : MonoBehaviour
     void Start()
     {
         StartCoroutine(ConvertingToLoadingScene());
+        SceneManager.activeSceneChanged += SetUI;
     }
 
     void Update()
@@ -18,7 +19,16 @@ public class IntroScene : MonoBehaviour
     IEnumerator ConvertingToLoadingScene()
     {
         yield return new WaitForSeconds(3.0f);
-        SceneManager.LoadScene(1);  // Unity는 one-source-multi-flatform tool
+        SceneManager.LoadScene(7);  // Unity는 one-source-multi-flatform tool
                                     // Loading Scene 은 1번 인덱스
     }
+
+    void SetUI(Scene preScene, Scene postScene)
+    {
+        if(postScene.isLoaded)
+        {
+            UIManager.instance.Refresh();
+        }
+    }
+
 }

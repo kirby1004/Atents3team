@@ -20,6 +20,8 @@ public class CutScene : MonoBehaviour
     private SceneLoader sceneLoader;
     private List<GameObject>[] list;
 
+    private BossHpBar bossHpBar;
+
     public int myScene;
     public int nextScene;
 
@@ -34,6 +36,8 @@ public class CutScene : MonoBehaviour
         sceneLoader = SceneLoader.Inst;
         myScene = this.gameObject.scene.buildIndex;
 
+        
+
         myPD.initialTime = 0.0f;
 
         if (cutSceneType == eCutScene.Encounter)
@@ -43,7 +47,7 @@ public class CutScene : MonoBehaviour
         }
         else if (cutSceneType == eCutScene.InGame)
         {
-            SceneManager.sceneLoaded += DeActivateSetUp;
+            //SceneManager.sceneLoaded += DeActivateSetUp;
             StartCoroutine(PlayInGameCutScene());
         }
     }
@@ -60,8 +64,8 @@ public class CutScene : MonoBehaviour
 
     IEnumerator PlayInGameCutScene()
     {
-        float offset = 0.1f;
-        SetUpUI();
+        float offset = 0.25f;
+        SetUpUI(false);
 
         //Active 씬의 Dragon과 Player의 위치 값을 열린 씬에 넣어주기
         //foreach (GameObject i in list) i = this.gameObject.scene.GetRootGameObjects;
@@ -72,11 +76,16 @@ public class CutScene : MonoBehaviour
         SetUpUI(true);
     }
 
-    void SetUpUI(bool enable = false)
+    void SetUpUI(bool enable)
     {
         UIManager.instance.gameObject.SetActive(enable);
-        DisableSkinnedRenderer(Gamemanager.inst.myDragon.gameObject, enable);
         DisableSkinnedRenderer(Gamemanager.inst.myPlayer.gameObject, enable);
+        if (Gamemanager.inst.myDragon != null) DisableSkinnedRenderer(Gamemanager.inst.myDragon.gameObject, enable);
+        else
+        {
+            // myEnemy는 배열 형태여야 하지않는가...?
+            DisableSkinnedRenderer(Gamemanager.inst.myEnemy.gameObject, enable);
+        }
     }
 
     // Single Scene Unload 상황에서 다음 Scene이 게임 씬일 때
@@ -87,9 +96,10 @@ public class CutScene : MonoBehaviour
         if(Gamemanager.Inst.myDragon == null) Gamemanager.Inst.myEnemy = FindObjectOfType<Monster>();
 
         UIManager.instance.gameObject.SetActive(true);
+
     }
 
-    void DisableSkinnedRenderer(GameObject obj, bool enable = true)
+    void DisableSkinnedRenderer(GameObject obj, bool enable)
     {
         foreach(var i in obj.GetComponentsInChildren<SkinnedMeshRenderer>())
         {

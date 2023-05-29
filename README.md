@@ -31,6 +31,13 @@
   - CutScene Script revised  
 > Loading Scene
   - UI 생성 및 Sprite 분류 
+> Forest Scene  
+  - CutScene01 - Intro Scene
+  - CutScene02 - Play-In CutScene
+> Build Index 정리  
+
+> 2차 Cam Test 완료  
+  - Build 후 라이트 Auto Generate만 해결하면 문제 없을 것으로 보임
 
 ---
 ## Scene Merge & Map Discussion
