@@ -22,4 +22,4 @@ MonoBehaviour:
   _maxHpIncrese: 0
   _itemCoolDown: 0
   stackable: 0
-  _image: {fileID: 21300000, guid: 7109f26730c291d4799edc3b02145dcc, type: 3}
+  _image: {fileID: 21300000, guid: 40c1c25c49d31574685402c0030e977c, type: 3}
