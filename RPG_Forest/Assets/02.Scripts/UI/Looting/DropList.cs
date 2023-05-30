@@ -38,7 +38,7 @@ public class DropList : MonoBehaviour
         }
         if (myLootCount == 0)
         {
-            Gamemanager.Inst.myPlayer.GetComponent<IinterPlay>().CloseUi?.Invoke();
+            Gamemanager.Inst.myPlayer.CloseUi?.Invoke();
             LootingManager.Inst.LootWindow = null;
             Destroy(transform.parent.gameObject);
         }
@@ -75,7 +75,7 @@ public class DropList : MonoBehaviour
         {
             myLootSlots[i].GetComponent<LootSlot>().LootDone();
         }
-        Gamemanager.Inst.myPlayer.GetComponent<IinterPlay>().CloseUi?.Invoke();
+        Gamemanager.Inst.myPlayer.CloseUi?.Invoke();
         LootingManager.Inst.LootWindow = null;
         Destroy(transform.parent.gameObject);
     }

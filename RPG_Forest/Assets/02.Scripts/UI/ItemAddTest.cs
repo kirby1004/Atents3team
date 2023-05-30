@@ -9,6 +9,8 @@ public class ItemAddTest : MonoBehaviour
 
     public ItemDropTable[] itemDropTables;
 
+    public ShopItemList[] myShopList;
+
     public void ItemList(int id)
     {
         InventoryManager.Inst.AddItem(itemsList[id]);
@@ -19,5 +21,8 @@ public class ItemAddTest : MonoBehaviour
         Gamemanager.Inst.economy.GetMoney(money);
     }
 
-
+    public void OpenShops(ShopItemList shops)
+    {
+        ShopManager.Inst.OpenShop(shops);
+    }
 }

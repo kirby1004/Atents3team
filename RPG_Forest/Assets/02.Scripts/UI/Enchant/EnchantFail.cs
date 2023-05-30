@@ -23,8 +23,7 @@ public class EnchantFail : MonoBehaviour
 
     public TMP_Text myText;
     
-    // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         isFail.AddListener(SetText);
     }

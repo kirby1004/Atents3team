@@ -125,7 +125,7 @@ public class Gamemanager : MonoBehaviour , IEconomy
 
     public bool CheckMoney(int money)
     {
-        if(economy.Money - money > 0)
+        if(economy.Money - money >= 0)
         {
             return true;
         }

@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: Tier3Shop
   m_EditorClassIdentifier: 
   myList: 0
-  items: []
-  cost: 
+  items:
+  - {fileID: 11400000, guid: f76ce4f2ce041f74c9d4ac873c666061, type: 2}
+  - {fileID: 11400000, guid: bdc29402630f96a4ba1531216f38c5da, type: 2}
+  - {fileID: 11400000, guid: f5dc8cf7d8c241646bd0da02a45529d8, type: 2}
+  - {fileID: 11400000, guid: 481d4b6fed898c845b5805deac9628b6, type: 2}
+  - {fileID: 11400000, guid: 831b44d257a1e5648a6edf94cd9ad431, type: 2}
+  cost: 280000001e0000001e0000002300000032000000
