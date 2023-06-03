@@ -16,134 +16,112 @@ public class LootingManager : Singleton<LootingManager>
     // Start is called before the first frame update
     void Start()
     {
-        RefreshLootTarget += OpenLootWindow;
-        DelLootTarget += RemoveWindows;
+        OpenTarget += PossibleOpenLoot;
+        RemoveTarget += RemoveMonster;
+        LootWindow = null;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-    // 함수 호출 대기상태 2종
-    public UnityAction<Monster> RefreshLootTarget;
-    public UnityAction<Monster> DelLootTarget;
+    public UnityAction OpenTarget;
+    public UnityAction<Monster> RemoveTarget;
 
     // 현재 열려잇는 루팅창
     public GameObject LootWindow;
 
-    // myLootingMonster[i] 의 myMonster에 의해 열린 루팅창이 LootingWindowList[i] 의 오브젝트
-    // 몬스터종류와 루팅범위진입여부를 담고있는 리스트
-    public List<(Monster myMonster,bool IsEnter)> myLootingMonster = new();
-    // 열려있는 루팅창의 목록을 담고잇는 리스트
-    public List<GameObject> LootWindowList = new();
 
-    // 루팅창 생성방식 및 동작방식이 변경되어 사용불가능
-    //public void SpawnLootWindow(ItemDropTable itemDropTable)
-    //{
-    //    //GameObject obj = Instantiate(LootWindow, transform);
-    //    GameObject obj = Instantiate(Resources.Load("UIResource/Looting/LootWindow") as GameObject, transform);
-    //    LootWindow = obj;
-    //    obj.GetComponentInChildren<DropList>().myDropTable = itemDropTable;
-       
-    //}
+#region 루팅버그개선완료버전
 
-    // 입력받은 몬스터의 정보로 루팅창 생성하는 함수
-    public void ReadyLootWindow(Monster myMonster)
+    // 몬스터의 루팅창 연동
+    public List<(Monster myMonster, GameObject myWindow)> LootWindows = new();
+    // 루팅창을 열수 있는 몬스터
+    public List<Monster> PossibleList = new();
+
+    // 루팅창 생성
+    public void CreateLootWindow(Monster monster)
     {
-        ItemDropTable itemDropTable = myMonster.myDropTable;
-        if (SearchListMonster(myMonster)) return;
-        GameObject obj = Instantiate(Resources.Load("UIResource/Looting/LootWindow") as GameObject, transform);
-        //LootWindow = obj;
+        ItemDropTable itemDropTable = monster.myDropTable;
+        if (PossibleList.Contains(monster)) return;
+        GameObject obj = Instantiate(Resources.Load("UIResource/Looting/LootWindow") as GameObject,transform);
         obj.GetComponentInChildren<DropList>().myDropTable = itemDropTable;
-        myLootingMonster.Add((myMonster,false));
-        LootWindowList.Add(obj);
-        //obj.GetComponent<DropList>().IsEnterLoot = true;
-
+        LootWindows.Add((monster, obj));
+        PossibleList.Add(monster);
         obj.SetActive(false);
     }
 
-    #region myLootWIndows 리스트 탐색 및 수정 함수
-    // 루팅가능한 몬스터가 있는지 탐색후 인덱스를 반환하는함수
-    public int SearchIndexLootList()
+    // 루팅 가능한 맨앞의것 열기
+    public void PossibleOpenLoot()
     {
-        for (int i = 0; i < myLootingMonster.Count; i++)
+        if(PossibleList.Count == 0) return;
+        OpenLootWindow(PossibleList[0]);
+    }
+
+    // 해당몬스터의 루팅창 열기
+    public void OpenLootWindow(Monster monster)
+    {
+        if(LootWindow == null)
         {
-            if (myLootingMonster[i].IsEnter == true)
+            for(int i = 0;i < LootWindows.Count; i++)
+            {
+                if (LootWindows[i].myMonster == monster)
+                {
+                    LootWindows[i].myWindow.SetActive(true);
+                    LootWindow = LootWindows[i].myWindow;
+                    Gamemanager.inst.myPlayer.SetisUI(true);
+                    break;
+                }
+            }
+        }
+    }
+
+    // 몬스터가 루팅가능상태인지 판단하기
+    public bool CanOpenWindow(Monster monster)
+    {
+        if(PossibleList.Contains(monster)) { return true; }
+        return false;
+    }
+    
+    // 몬스터가 루팅범위 밖에있을때 제거하기
+    public void RemoveMonster(Monster monster)
+    {
+        if (PossibleList.Contains(monster))
+        {
+            PossibleList.Remove(monster);
+        }
+    }
+
+    // 현재 루팅창이 몇번째 인덱스인지 찾기
+    public int WindowIndexFind(GameObject myWindow)
+    {
+        for (int i = 0; i < LootWindows.Count; i++)
+        {
+            if (LootWindows[i].myWindow == myWindow)
             {
                 return i;
             }
         }
         return -1;
     }
-    // 입력받은 몬스터가 루팅창을 생성햇는지 여부를 반환하는 함수
-    public bool SearchListMonster(Monster monster)
-    {
-        for (int i = 0; i < myLootingMonster.Count; i++)
-        {
-            if(myLootingMonster[i].myMonster == monster) return true;
-        }
-        return false;
-    }
-    // 루팅가능한 몬스터가 존재하는지 반환하는 함수
-    public bool SearchLootList()
-    {
-        for (int i = 0; i < myLootingMonster.Count; i++)
-        {
-            if (myLootingMonster[i].IsEnter == true)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-    // 루팅창을 제거하며 몬스터의 삭제 및 리스트의 인덱스까지정리하는 함수
-    public void RemoveWindows(Monster monster)
-    {
-        //int index = -1;
-        for (int i = 0; i < LootWindowList.Count; i++)
-        {
-            if (myLootingMonster[i].myMonster == monster)
-            {
-                Gamemanager.Inst.myPlayer.SetIsEnterUI(false);
-                myLootingMonster[i].myMonster.ColDelete?.Invoke();
-                myLootingMonster[i].myMonster.OnDisappear();
-                Destroy(LootWindowList[i]);
-                LootWindowList.RemoveAt(i);
-                myLootingMonster.RemoveAt(i);
-                break;
-            }
-        }
-    }
-    // 몬스터의 루팅가능상태를 갱신시켜주는 함수
-    public void ListIsEnterUpdate(Monster monster,bool isEnter)
-    {
-        for(int i = 0;i < myLootingMonster.Count; i++)
-        {
-            if (myLootingMonster[i].myMonster == monster)
-            {
-                myLootingMonster[i] = (monster, isEnter);
-            }
-        }
-    }
-    // 해당 몬스터로 인해 열린 루팅창이 존재하면 열어주는 함수
-    public void OpenLootWindow(Monster mymonster)
-    {
-        for (int i = 0; i < myLootingMonster.Count; i++)
-        {
-            if(myLootingMonster[i].myMonster == mymonster)
-            {
-                LootWindowList[i].gameObject.SetActive(true);
-                //LootWindowList[i].GetComponentInChildren<DropList>().ImageRaycastOn();
-                LootWindow = LootWindowList[i].gameObject; 
-                break;
-            }
-        }
-    }
-    #endregion
 
+    // 루팅창 닫기
+    public void CloseWindows()
+    {
+        int index = WindowIndexFind(LootWindow); 
+        if (index != -1) 
+        {
+            Destroy(LootWindows[index].myWindow);
+            LootWindows[index].myMonster.OnDisappear();
+            LootWindows.RemoveAt(index);
+            PossibleList.RemoveAt(0);
+            LootWindow = null;
+            Gamemanager.inst.myPlayer.SetisUI(false);
+            if(PossibleList.Count == 0) 
+            {
+                Gamemanager.inst.myPlayer.OpenUi.RemoveAllListeners();
+                Gamemanager.inst.myPlayer.CloseUi.RemoveAllListeners();
+            }
+        }
+    }
 
+#endregion
 
-    
 
 }

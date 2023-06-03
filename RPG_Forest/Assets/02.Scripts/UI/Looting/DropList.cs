@@ -23,24 +23,16 @@ public class DropList : MonoBehaviour
         ConfirmItem(myDropTable);
         myLootCount = myLootSlots.Count;
         LootLeftCount += () => myLootCount--;
-        //ImageRaycastOff();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(LootingManager.Inst.LootWindowList != null)
-        {
-            if (LootingManager.Inst.LootWindowList[0] == this)
-            {
-                ImageRaycastOn();
-            }
-        }
+        
         if (myLootCount == 0)
         {
             Gamemanager.Inst.myPlayer.CloseUi?.Invoke();
-            LootingManager.Inst.LootWindow = null;
-            Destroy(transform.parent.gameObject);
         }
     }
 
@@ -55,8 +47,6 @@ public class DropList : MonoBehaviour
             }
         }
     }
-
-    public GameObject LootSlot;
 
     // 루팅창 내부의 루팅가능한 아이템슬롯을 생성 후 아이템 정보를 추가해주는 함수
     void SpawnLootSlot(ItemStatus itemStatus)
@@ -78,25 +68,6 @@ public class DropList : MonoBehaviour
         Gamemanager.Inst.myPlayer.CloseUi?.Invoke();
         LootingManager.Inst.LootWindow = null;
         Destroy(transform.parent.gameObject);
-    }
-
-    // 모든 ImageRaycast를 꺼주는 함수
-    public void ImageRaycastOff()
-    {
-        Image[] myImage = transform.parent.GetComponentsInChildren<Image>();
-        foreach (Image img in myImage)
-        {
-            img.raycastTarget = false;
-        }
-    }
-    // 모든 ImageRaycast를 꺼주는 함수
-    public void ImageRaycastOn()
-    {
-        Image[] myImage = transform.parent.GetComponentsInChildren<Image>();
-        foreach(Image img in myImage)
-        {
-            img.raycastTarget = true;
-        }
     }
 
 }

@@ -862,6 +862,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 75717506}
+  - component: {fileID: 75717507}
   m_Layer: 0
   m_Name: GuardSpawnPoint
   m_TagString: Untagged
@@ -880,12 +881,29 @@ Transform:
   m_LocalPosition: {x: 195, y: 0, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 623189912}
-  - {fileID: 1652107974}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &75717507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75717505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31447693111241d4aa4be643f051e924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orgObject: {fileID: 2565290860545773177, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
+  TotalCount: 2
+  Width: 3
+  Height: 3
+  ReSpawnDelay: 9999
+  mySpawnnerIndex: -1
+  monsters: []
 --- !u!1001 &76748089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3021,7 +3039,7 @@ GameObject:
   - component: {fileID: 418217609}
   - component: {fileID: 418217608}
   m_Layer: 0
-  m_Name: Spawnner
+  m_Name: KnightSpawnner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3928,72 +3946,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 364dfb0d251f3eb42af0633f065ad6a3, type: 3}
   m_PrefabInstance: {fileID: 590691620}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &623189911
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 75717506}
-    m_Modifications:
-    - target: {fileID: 2165906732973130789, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2565290860545773177, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_Name
-      value: Monster2 (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.59
-      objectReference: {fileID: 0}
-    - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
---- !u!4 &623189912 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-  m_PrefabInstance: {fileID: 623189911}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &624873228 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0cf48a18f350b9345b75227eb5f675ff, type: 3}
@@ -4329,17 +4281,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c75dad45f51b1aa4e8dfd81de48fafb3, type: 3}
   m_PrefabInstance: {fileID: 1699368292}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &742574736 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2565290860545773179, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-  m_PrefabInstance: {fileID: 623189911}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cd21193207b63d43ae4c8664a850959, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &745680863
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5088,7 +5029,7 @@ GameObject:
   - component: {fileID: 884588699}
   - component: {fileID: 884588698}
   m_Layer: 0
-  m_Name: Spawnner (1)
+  m_Name: KnightSpawnner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5110,7 +5051,7 @@ MonoBehaviour:
   TotalCount: 3
   Width: 5
   Height: 5
-  ReSpawnDelay: 5
+  ReSpawnDelay: 7
   mySpawnnerIndex: -1
   monsters: []
 --- !u!4 &884588699
@@ -8292,7 +8233,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1450827032
 Transform:
@@ -9371,68 +9312,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1a983056ff5a1f64ba46f9d5aebd9885, type: 3}
   m_PrefabInstance: {fileID: 1647709661}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1652107973
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 75717506}
-    m_Modifications:
-    - target: {fileID: 2565290860545773177, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_Name
-      value: Monster2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.99
-      objectReference: {fileID: 0}
-    - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
---- !u!4 &1652107974 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2565290860545773178, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-  m_PrefabInstance: {fileID: 1652107973}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1657695579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10302,7 +10181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myPlayer: {fileID: 1050198978}
-  myEnemy: {fileID: 742574736}
+  myEnemy: {fileID: 0}
   myDragon: {fileID: 0}
   mySpawnner:
   - {fileID: 0}
@@ -11951,7 +11830,7 @@ GameObject:
   - component: {fileID: 2083656188}
   - component: {fileID: 2083656187}
   m_Layer: 0
-  m_Name: Spawnner (2)
+  m_Name: KnightSpawnner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11973,7 +11852,7 @@ MonoBehaviour:
   TotalCount: 3
   Width: 5
   Height: 5
-  ReSpawnDelay: 5
+  ReSpawnDelay: 7
   mySpawnnerIndex: -1
   monsters: []
 --- !u!4 &2083656188

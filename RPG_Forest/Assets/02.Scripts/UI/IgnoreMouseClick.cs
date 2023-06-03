@@ -13,4 +13,9 @@ public class IgnoreMouseClick : MonoBehaviour ,IPointerEnterHandler , IPointerEx
     {
         Gamemanager.Inst.myPlayer.SetIsEnterUI(false);
     }
+
+    private void OnDestroy()
+    {
+        Gamemanager.Inst.myPlayer.SetIsEnterUI(false);
+    }
 }

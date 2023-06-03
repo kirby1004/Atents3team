@@ -24,12 +24,16 @@ public class MonsterState_Die : State
         //Gamemanager.inst.mySpawnner[monster.mySpawnnerIndex].TotalCount--;
         monster.DeathAlarm?.Invoke();
         Transform transform = monster.transform;
-        monster.ColDelete += DisableCollider;
+        //monster.ColDelete += 
+        //DisableCollider();
         monster.myAnim.SetTrigger("Die");
-        Gamemanager.Inst.GetMoney(Random.Range(monster.myDropTable.mySoulDropRange.x, monster.myDropTable.mySoulDropRange.y));
-        LootingManager.Inst.ReadyLootWindow(monster);
+
         Object.Destroy(transform.GetComponentInChildren<AIPerception>());
         monster.myAI.AddComponent<LootingPerception>();
+        //LootingManager.Inst.ReadyLootWindow(monster);
+        LootingManager.Inst.CreateLootWindow(monster);
+
+        Gamemanager.Inst.GetMoney(Random.Range(monster.myDropTable.mySoulDropRange.x, monster.myDropTable.mySoulDropRange.y));
         //monster.OnDisappear();
     }
 
@@ -52,6 +56,7 @@ public class MonsterState_Die : State
     {
         Collider[] list = monster.transform.GetComponentsInChildren<Collider>();
         foreach (Collider col in list) col.enabled = false;
+        monster.myAI.GetComponent<Collider>().enabled = true;
     }
 
     
