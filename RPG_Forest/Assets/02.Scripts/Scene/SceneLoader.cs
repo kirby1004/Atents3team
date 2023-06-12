@@ -29,7 +29,7 @@ public class SceneLoader : Singleton<SceneLoader>
         op.allowSceneActivation = false; // Scene Loading 이 끝나면 바로 활성화 되게 하는 불 값 => false
 
         Slider slider = FindObjectOfType<Slider>();
-
+        Gamemanager.inst.myPlayer = null;
         while (!op.isDone)
         {
             slider.value = op.progress / 0.9f;
@@ -39,8 +39,8 @@ public class SceneLoader : Singleton<SceneLoader>
                 UIManager.instance.gameObject.SetActive(true);
                 Gamemanager.inst.gameObject.SetActive(true);
                 op.allowSceneActivation = true;
-            }
-            yield return new WaitForSeconds(2.0f); //   
+                Gamemanager.inst.FindObject();
+            }  
         }
     }
 

@@ -13,7 +13,6 @@ public class MiniMapCamera : MonoBehaviour
     void Start()
     {
         myPlayer = Gamemanager.Inst.myPlayer.transform;
-
     }
 
     // Update is called once per frame

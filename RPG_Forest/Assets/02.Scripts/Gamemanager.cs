@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -42,12 +45,28 @@ public class Gamemanager : MonoBehaviour , IEconomy
         GetMoney(100);
     }
 
-    // 씬
+    // 씬전환시 플레이어 보스 스포너 탐색동작
     public void FindObject()
     {
+        //플레이어 재참조
         myPlayer = FindObjectOfType<PlayerController>();
-        myEnemy = FindObjectOfType<Monster>();
-        myDragon = FindObjectOfType<Dragon>();
+
+        //보스가 없는맵일때는 미참조
+        if(FindObjectOfType<Dragon>() != null)
+        {
+            myDragon = FindObjectOfType<Dragon>();
+        }
+
+        //스포너가 없는맵일때는 미참조
+        if(FindObjectOfType<Spawnner>() != null)
+        {
+            Spawnner[] spawnners = FindObjectsOfType<Spawnner>();
+            mySpawnner = spawnners.ToList();
+            for(int i = 0; i < mySpawnner.Count; i++)
+            {
+                mySpawnner[i].mySpawnnerIndex = mySpawnner[i].FindMyIndex(mySpawnner[i]);
+            }
+        }
     }
 
 
@@ -75,24 +94,14 @@ public class Gamemanager : MonoBehaviour , IEconomy
     // [UIManager 싱글톤]으로 구현하고 여기에서 view 처리
     [Header("UIManager")]
     public UIManager myUIManager;
-    // 세이브데이터
+
+    // 세이브데이터(추가예정)
 
 
 
-    public float DamageDecrease(float AP , float DP)
-    {
-        float Rate = 1 - (DP / (DP + 100));
-        Debug.Log($"{AP*Rate}");
-        if( AP * Rate > 1.0f)
-        {
-            return AP * Rate;
-        }
-        else
-        {
-            return 1;
-        }
-    }
 
+
+    #region 재화관련코드
     public IEconomy economy;
     private int _Money = 0;
     public int Money
@@ -136,21 +145,41 @@ public class Gamemanager : MonoBehaviour , IEconomy
     }
 
     public UnityEvent<int> UpdateMoney;
+    #endregion
 
+
+    #region 각종 계산식
     // 확률 검사
     public bool ProbabilityChoose(float Rate)
     {
         //float Percentge = Rate / 100;
-        if (Random.Range(0, 100) < Rate)
+        if (UnityEngine.Random.Range(0, 100) < Rate)
         {
             return true;
         }
         return false;
     }
-
+    // 스킬 데미지 증폭 Val1 = 스킬본데미지
     public float EnchantMultiple(float Value1) 
     {
         return Value1 * (1 + EnchantManager.Inst.EnchantLevel * 0.01f);
-    } 
+    }
+
+    // 데미지 감소율 계산식
+    public float DamageDecrease(float AP , float DP)
+    {
+        float Rate = 1 - (DP / (DP + 100));
+        Debug.Log($"{AP*Rate}");
+        if( AP * Rate > 1.0f)
+        {
+            return AP * Rate;
+        }
+        else
+        {
+            return 1;
+        }
+    }
+    #endregion
+
 
 }

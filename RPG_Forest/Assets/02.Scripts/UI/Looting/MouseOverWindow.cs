@@ -48,30 +48,30 @@ public class MouseOverWindow : MonoBehaviour
         switch (myItem.MyItemType)
         {
             case ItemType.Weapon:
-                MakeOptionTexts(2);
-                myOptionType[0].text = "AP : ";
-                myOptionType[1].text = "AS : ";
+                MakeOptionTexts(1);
+                myOptionType[0].text = "공격력 : ";
+                //myOptionType[1].text = "AS : ";
                 break;
             case ItemType.Armor:
                 MakeOptionTexts(2);
-                myOptionType[0].text = "HP : ";
-                myOptionType[1].text = "DP : ";
+                myOptionType[0].text = "체력 : ";
+                myOptionType[1].text = "방어력 : ";
                 break;
             case ItemType.Leggins:
                 MakeOptionTexts(2);
-                myOptionType[0].text = "HP : ";
-                myOptionType[1].text = "DP : ";
+                myOptionType[0].text = "체력 : ";
+                myOptionType[1].text = "방어력 : ";
                 break;
             case ItemType.Headgear:
                 MakeOptionTexts(2);
-                myOptionType[0].text = "HP : ";
-                myOptionType[1].text = "DP : ";
+                myOptionType[0].text = "체력 : ";
+                myOptionType[1].text = "방어력 : ";
                 break;
             case ItemType.Boots:
                 MakeOptionTexts(3);
-                myOptionType[0].text = "HP : ";
-                myOptionType[1].text = "DP : ";
-                myOptionType[2].text = "Speed : ";
+                myOptionType[0].text = "체력 : ";
+                myOptionType[1].text = "방어력 : ";
+                myOptionType[2].text = "이동 속도 : ";
                 break;
             case ItemType.Soul:
                 //myOptionType[0].text = "HP";
@@ -100,9 +100,9 @@ public class MouseOverWindow : MonoBehaviour
         switch (myItem.MyItemType)
         {
             case ItemType.Weapon:
-                MakeOptionNumTexts(2);
+                MakeOptionNumTexts(1);
                 myOptionNum[0].text = myItem.AttackPoint.ToString();
-                myOptionNum[1].text = myItem.AttackSpeed.ToString();
+                //myOptionNum[1].text = myItem.AttackSpeed.ToString();
                 break;
             case ItemType.Armor:
                 MakeOptionNumTexts(2);

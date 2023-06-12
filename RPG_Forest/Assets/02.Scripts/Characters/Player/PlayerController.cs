@@ -82,6 +82,15 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
     #endregion
 
     #region Start, Update¹®
+    protected override void Awake()
+    {
+        base.Awake();
+        if (Gamemanager.inst.myPlayer != this)
+        {
+            Gamemanager.inst.myPlayer = this;
+        }
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -91,10 +100,6 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
         MiniMapIcon icon =
            (Instantiate(Resources.Load("UIResource/MiniMapIcon"), UIManager.instance.MiniMap) as GameObject).GetComponent<MiniMapIcon>();
         icon.Initialize(transform, Color.green);
-        if (Gamemanager.inst.myPlayer != this)
-        {
-            Gamemanager.inst.myPlayer = this;
-        }
     }
 
     protected override void Update()

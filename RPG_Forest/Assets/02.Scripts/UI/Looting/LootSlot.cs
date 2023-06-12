@@ -16,6 +16,8 @@ public class LootSlot : MonoBehaviour , IPointerClickHandler ,IPointerEnterHandl
     public UnityAction myAction;
     public Sprite emptyImage;
     public int myIndex = -1;
+
+    // 루팅을 햇는지를 나타내는 불값 true = O , false = X
     bool isLoot = false;
     // Start is called before the first frame update
     // 주입받은 myItem 정보를 기준으로 슬롯 내부데이터 갱신
@@ -31,20 +33,23 @@ public class LootSlot : MonoBehaviour , IPointerClickHandler ,IPointerEnterHandl
     // 클릭으로 아이템 획득 기능
     public void LootDone()
     {
-        // 인벤토리가 비어있다면
-        if(InventoryManager.Inst.FindEmptySlot() != -1)
+        if (!isLoot)
         {
-            myItemImage.sprite = emptyImage;
-            myItemName.text = null;
-            InventoryManager.Inst.AddItem(myItem);
-            transform.parent.GetComponent<DropList>().LootLeftCount?.Invoke();
-            isLoot = true;
-        }
-        // 가득차있다면 인벤토리 풀 이벤트가 발생하게 할예정
-        else
-        {
+            // 인벤토리가 비어있다면
+            if(InventoryManager.Inst.FindEmptySlot() != -1)
+            {
+                myItemImage.sprite = emptyImage;
+                myItemName.text = null;
+                InventoryManager.Inst.AddItem(myItem);
+                transform.parent.GetComponent<DropList>().LootLeftCount?.Invoke();
+                isLoot = true;
+            }
+            // 가득차있다면 인벤토리 풀 이벤트가 발생하게 할예정
+            else
+            {
 
-            return;
+                return;
+            }
         }
     }
 
@@ -84,7 +89,6 @@ public class LootSlot : MonoBehaviour , IPointerClickHandler ,IPointerEnterHandl
         {
             if (isLoot == false)
             {
-
                 Destroy(MouseOverWindows);
                 MouseOverWindows = null;
             }
@@ -97,7 +101,5 @@ public class LootSlot : MonoBehaviour , IPointerClickHandler ,IPointerEnterHandl
         {
             MouseOverWindows.transform.position = eventData.position + sumPos;
         }
-
-        Debug.Log(eventData.position);
     }
 }

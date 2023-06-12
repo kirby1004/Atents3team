@@ -7,9 +7,14 @@ using UnityEngine.SocialPlatforms;
 public class Spawnner : MonoBehaviour 
 {
     public GameObject orgObject;
+    // 생성가능한 몬스터 최대숫자
     public int TotalCount = 3;
+
+    //몬스터 생성범위
     public float Width = 5.0f;
     public float Height = 5.0f;
+
+    // 부활대기시간
     public float ReSpawnDelay = 10.0f;
 
     public int mySpawnnerIndex = -1;
@@ -18,6 +23,7 @@ public class Spawnner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //CurCount = TotalCount;
         Gamemanager.Inst.mySpawnner.Add(GetComponent<Spawnner>());
         mySpawnnerIndex = FindMyIndex(GetComponent<Spawnner>());
         for(int i = 0; i < TotalCount; ++i)
@@ -50,7 +56,7 @@ public class Spawnner : MonoBehaviour
     {
         yield return new WaitForSeconds(ReSpawnDelay);
 
-        if (TotalCount < 3)
+        if (monsters.Count < TotalCount)
         {
             Vector3 pos = transform.position;
             pos.x += Random.Range(-Width * 0.5f, Width * 0.5f);
@@ -63,7 +69,6 @@ public class Spawnner : MonoBehaviour
                 () => Gamemanager.Inst.mySpawnner[mySpawnnerIndex].monsters.RemoveAt(FindMonsterIndex(obj));
             obj.GetComponent<Monster>().mySpawnnerIndex = mySpawnnerIndex;
             monsters.Add(obj);
-            TotalCount++;
         }
     }
 

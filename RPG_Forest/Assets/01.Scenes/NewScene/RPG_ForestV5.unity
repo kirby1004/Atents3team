@@ -3061,7 +3061,7 @@ MonoBehaviour:
   TotalCount: 3
   Width: 5
   Height: 5
-  ReSpawnDelay: 5
+  ReSpawnDelay: 10
   mySpawnnerIndex: -1
   monsters: []
 --- !u!4 &418217609

@@ -22,16 +22,17 @@ public class IntroScene : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         SceneManager.LoadScene(7);  // Unity는 one-source-multi-flatform tool
                                     // Loading Scene 은 1번 인덱스
+        
     }
 
     void SetUI(Scene preScene, Scene postScene)
     {
-        if(postScene.isLoaded)
+        if (postScene.isLoaded)
         {
             UIManager.instance.gameObject.SetActive(true);
             UIManager.instance.Refresh();
-            
         }
+        SceneManager.activeSceneChanged -= SetUI;
         Destroy(this.gameObject);
     }
 

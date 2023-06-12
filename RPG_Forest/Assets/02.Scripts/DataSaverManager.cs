@@ -28,6 +28,7 @@ public class DataSaverManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         TextAsset textAsset = Resources.Load<TextAsset>("PlayerData/PlayerData");
 
         testData = JsonUtility.FromJson<TestData>(textAsset.ToString());
