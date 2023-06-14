@@ -17,6 +17,8 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
     bool isUi;
     [SerializeField]
     public bool isEnterUI = false;
+    [SerializeField]
+    bool isInterPlay;
     
     //이동 관련 변수
     bool isSprint;
@@ -78,6 +80,10 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
     public void SetisUI(bool n)
     {
         isUi = n;
+    }
+    public void SetisInterPlay(bool n)
+    {
+        isInterPlay = n;
     }
     #endregion
 
@@ -145,7 +151,7 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
 
         if (isObjectNear)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F)&&!isInterPlay)
             {
                 if (!isUi)
                 {
@@ -224,7 +230,10 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
 
     public void AttackExit() //공격 애니메이션 이벤트로 공격이 끝날 때 실행된다.
     {
-        StopCoroutine(coCheck);
+        if (coCheck != null)
+        {
+            StopCoroutine(coCheck);
+        }
         if (clickCount == 0)
         {
             myAnim.SetTrigger("FailedCombo");

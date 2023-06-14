@@ -96,19 +96,19 @@ public class SpringArm : MonoBehaviour
         CameraChange = true;
     }
 
-    public void ViewPointReset(Transform Parent)
+    public void ViewPointReset(Transform Parent, UnityAction e = null)
     {
         myCam.transform.SetParent(Parent);
-        ResetSetting();
+        ResetSetting(e);
     }
 
-    public void ResetSetting()
+    public void ResetSetting(UnityAction e)
     {
         StopAllCoroutines();
-        StartCoroutine(Resetting(myZoomData.curDist));
+        StartCoroutine(Resetting(myZoomData.curDist,e));
     }
 
-    IEnumerator Resetting(float dist)
+    IEnumerator Resetting(float dist,UnityAction e)
     {           
         myCam.localRotation=Quaternion.identity;
         while (Mathf.Abs(myCam.localPosition.x) > 0.01f || Mathf.Abs(myCam.localPosition.y) > 0.01f)
@@ -118,6 +118,7 @@ public class SpringArm : MonoBehaviour
         }
         myZoomData.desireDist = myZoomData.curDist;
         CameraChange = false;
+        e?.Invoke();
     }
 
 
