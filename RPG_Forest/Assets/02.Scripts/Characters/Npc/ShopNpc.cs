@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
 
 public class ShopNpc : NpcProperty
 {
@@ -11,13 +12,15 @@ public class ShopNpc : NpcProperty
     {
         _npctype = NPCType.Shop;
     }
-    public void ShopView(GameObject obj,UnityAction e=null)
+
+    public void ShopView(GameObject obj,UnityAction e=null,UnityAction viewstart = null, UnityAction viewEnd = null)
     {
-        StartCoroutine(ShopViewing(obj,e));
+        StartCoroutine(ShopViewing(obj,e, viewstart, viewEnd));
     }
 
-    IEnumerator ShopViewing(GameObject obj,UnityAction e=null)
+    IEnumerator ShopViewing(GameObject obj,UnityAction e=null,UnityAction viewstart=null,UnityAction viewEnd=null)
     {
+        viewstart?.Invoke();
         obj.transform.position = PlayerPoint.position;
         obj.GetComponentInChildren<SpringArm>().CameraChange = true;
         while (!Mathf.Approximately(obj.transform.localRotation.eulerAngles.y, PlayerPoint.rotation.eulerAngles.y))
@@ -27,20 +30,8 @@ public class ShopNpc : NpcProperty
         }
         obj.GetComponentInChildren<SpringArm>().CurRot = obj.transform.localRotation.eulerAngles;
         e?.Invoke();
-        //Quaternion objlocalRotation = obj.transform.localRotation;
-        //if(objlocalRotation.y > 180.0f)
-        //{
-        //    objlocalRotation.y -= 360.0f;
-        //}
-        //while (Mathf.Abs(objlocalRotation.y)>Mathf.Abs(playerPoint.localRotation.eulerAngles.y)-0.1f)
-        //{
-        //    objlocalRotation = Quaternion.Slerp(objlocalRotation, playerPoint.localRotation, Time.deltaTime * 15.0f);
-        //    obj.transform.localRotation = objlocalRotation;
-        //    yield return null;
-        //}
-        //obj.GetComponentInChildren<SpringArm>().CurRot = objlocalRotation.eulerAngles;
-        //objlocalRotation = Quaternion.identity;
-        //e?.Invoke();
+        yield return null;
+        viewEnd?.Invoke();
     }
 
 
@@ -48,9 +39,9 @@ public class ShopNpc : NpcProperty
     {
         other.gameObject.GetComponent<IinterPlay>().SetisObjectNear(true);
         other.gameObject.GetComponent<IinterPlay>()?.OpenUi.AddListener(()=> {
-            ShopView(other.gameObject, () => other.GetComponentInChildren<SpringArm>().ViewPointTransformation(ViewPoint, () => ShopManager.Inst.OpenShop(NpcType, () => { other.gameObject.GetComponent<IinterPlay>().SetisUI(true); }))); });
-        other.gameObject.GetComponent<IinterPlay>().CloseUi.AddListener(() => { ShopManager.Inst.CloseShop(() => other.GetComponentInChildren<SpringArm>().ViewPointReset(other.GetComponentInChildren<SpringArm>().transform),()=> npcAnim.SetTrigger("Greet")); });
-        other.gameObject.GetComponent<IinterPlay>().CloseUi.AddListener(() => other.gameObject.GetComponent<IinterPlay>().SetisUI(false));
+            ShopView(other.gameObject, () => other.GetComponentInChildren<SpringArm>().ViewPointTransformation(ViewPoint, () => ShopManager.Inst.OpenShop(NpcType, () => { other.gameObject.GetComponent<IinterPlay>().SetisUI(true); })), () => { other.gameObject.GetComponent<IinterPlay>().SetisInterPlay(true); },()=> { other.gameObject.GetComponent<IinterPlay>().SetisInterPlay(false); }); });
+        other.gameObject.GetComponent<IinterPlay>().CloseUi.AddListener(() => { ShopManager.Inst.CloseShop(() => other.GetComponentInChildren<SpringArm>().ViewPointReset(other.GetComponentInChildren<SpringArm>().transform,()=> other.gameObject.GetComponent<IinterPlay>().SetisUI(false)),()=> npcAnim.SetTrigger("Greet")); });
+        //other.gameObject.GetComponent<IinterPlay>().CloseUi.AddListener(() => other.gameObject.GetComponent<IinterPlay>().SetisUI(false));
         ShopManager.Inst.ExitButton.onClick.AddListener(() => other.gameObject.GetComponent<IinterPlay>().CloseUi?.Invoke());
     }
 

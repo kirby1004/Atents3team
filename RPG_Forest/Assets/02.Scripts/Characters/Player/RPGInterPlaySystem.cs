@@ -7,6 +7,8 @@ interface IinterPlay
 {
     void SetisObjectNear(bool n);
     void SetisUI(bool n);
+
+    void SetisInterPlay(bool n);
     UnityEvent OpenUi { get; set; }
     UnityEvent CloseUi { get; set; }
     UnityEvent interPlay { get; set; }
