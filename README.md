@@ -10,6 +10,28 @@
 
 
 ---
+### V.5.0.03 - SM & GY Development requirements confirm
+> 1. 신규 추가 작업 요소
+  - 1. 마을맵 로머 NPC  
+  - 2. Save Data
+  - 3. 마을 가드 몬스터 로밍범위 조절 & 컷씬
+  - 4. PC , Android 플랫폼 동시지원
+> 2. 기존 요소 디테일 부분 작업
+  - 1. Player StateMachine
+  - 2. Core Image Shader작업
+  - 3. Sound
+> 3. 현재 알려진 버그
+  - 1. 플레이어 콤보 어택 버그
+  - 2. 상점 퇴장시 시점버그
+  - 3. Intro 에서 진입시 UI 창들이 켜져있는 버그
+  - 4. Gamemanager 의 Spawnner 목록에 빈 객체가 담겨있는 버그
+---
+### V.5.0.02 - GY & SM
+> Intro Scene NullReference 버그 수정
+  - 참조 가능성 제거로 대처
+> PlayerController NullReference 버그 수정
+  - 참조 시점 이전에 PlayerController 갱신으로 NullReference 가능성 삭제
+---
 ### V.5.0.01 - GY
 > Looting System 개편
   - 다중 몬스터 루팅시 나던 버그 수정 완료

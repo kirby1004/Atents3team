@@ -36,10 +36,11 @@ public class SceneLoader : Singleton<SceneLoader>
             if (Mathf.Approximately(slider.value, 1.0f))
             {
                 yield return new WaitForSeconds(5.0f); // Debuging용 딜레이 추가  
-                UIManager.instance.gameObject.SetActive(true);
-                Gamemanager.inst.gameObject.SetActive(true);
                 op.allowSceneActivation = true;
+                Gamemanager.inst.gameObject.SetActive(true);
+                UIManager.instance.gameObject.SetActive(true);
                 Gamemanager.inst.FindObject();
+                UIManager.instance.Refresh();
             }  
         }
     }

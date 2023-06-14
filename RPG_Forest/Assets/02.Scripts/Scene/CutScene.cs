@@ -35,6 +35,7 @@ public class CutScene : MonoBehaviour
 
         myPD.initialTime = 0.0f;
 
+
         if (cutSceneType == eCutScene.Encounter)
         {
             SceneManager.activeSceneChanged += SetUpUIManager;
@@ -106,6 +107,7 @@ public class CutScene : MonoBehaviour
             //DisableSkinnedRenderer(Gamemanager.inst.myEnemy.gameObject, enable);
             //Gamemanager.inst.myEnemy.gameObject.GetComponentInChildren<MeshRenderer>().enabled = enable;
         }
+        UIManager.instance.Refresh();
     }
 
 

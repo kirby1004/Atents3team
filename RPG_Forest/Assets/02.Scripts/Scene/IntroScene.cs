@@ -28,12 +28,14 @@ public class IntroScene : MonoBehaviour
 
     void SetUI(Scene preScene, Scene postScene)
     {
-        if (postScene.isLoaded)
-        {
-            UIManager.instance.gameObject.SetActive(true);
-            UIManager.instance.Refresh();
-        }
+        
+        //UIManager.instance.gameObject.SetActive(true);
+        //UIManager.instance.Refresh();
+        
+        
         SceneManager.activeSceneChanged -= SetUI;
+         
+        Gamemanager.inst.mySpawnner.Clear();
         Destroy(this.gameObject);
     }
 
