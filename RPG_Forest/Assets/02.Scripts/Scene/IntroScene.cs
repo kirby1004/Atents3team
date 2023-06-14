@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement; // 씬 관련 처리를 위한 네임스페이스 사용을 하
 
 public class IntroScene : MonoBehaviour
 {
+
     void Start()
     {
         SceneManager.activeSceneChanged += SetUI;
@@ -35,5 +36,6 @@ public class IntroScene : MonoBehaviour
         SceneManager.activeSceneChanged -= SetUI;
         Destroy(this.gameObject);
     }
+
 
 }

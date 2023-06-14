@@ -878,7 +878,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 75717505}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 195, y: 0, z: -0.5}
+  m_LocalPosition: {x: 195.42, y: 0, z: -3.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -898,9 +898,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orgObject: {fileID: 2565290860545773177, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
-  TotalCount: 2
-  Width: 3
-  Height: 3
+  TotalCount: 1
+  Width: 0.1
+  Height: 0.1
   ReSpawnDelay: 9999
   mySpawnnerIndex: -1
   monsters: []
@@ -1716,7 +1716,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &178665323 stripped
 GameObject:
@@ -2094,6 +2094,57 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5e42150e8e569c34c9f9c6255ed9c1b3, type: 3}
   m_PrefabInstance: {fileID: 363464038}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &260022340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 260022342}
+  - component: {fileID: 260022341}
+  m_Layer: 0
+  m_Name: GuardSpawnPoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &260022341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260022340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31447693111241d4aa4be643f051e924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orgObject: {fileID: 2565290860545773177, guid: c698af99e2656d04a930aac6f7d4f6b7, type: 3}
+  TotalCount: 1
+  Width: 0.1
+  Height: 0.1
+  ReSpawnDelay: 9999
+  mySpawnnerIndex: -1
+  monsters: []
+--- !u!4 &260022342
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260022340}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 195.27, y: 0, z: 1.81}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &273335534
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5743,7 +5794,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &978563289 stripped
 GameObject:
@@ -6621,7 +6672,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1131187079 stripped
 GameObject:
@@ -6773,7 +6824,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1205857798
 PrefabInstance:
@@ -7548,7 +7599,7 @@ Transform:
   m_Children:
   - {fileID: 208141580}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1320063313
 GameObject:
@@ -10183,8 +10234,7 @@ MonoBehaviour:
   myPlayer: {fileID: 1050198978}
   myEnemy: {fileID: 0}
   myDragon: {fileID: 0}
-  mySpawnner:
-  - {fileID: 0}
+  mySpawnner: []
   mySceneLoader: {fileID: 0}
   playTime: 0
   myUIManager: {fileID: 0}
@@ -10204,7 +10254,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1880491308 stripped
 GameObject:

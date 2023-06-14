@@ -42,8 +42,16 @@ public class CutScene : MonoBehaviour
         }
         else if (cutSceneType == eCutScene.InGame)
         {
-            //SceneManager.sceneLoaded += DeActivateSetUp;
+            SceneManager.sceneLoaded += DeActivateSetUp;
             StartCoroutine(PlayInGameCutScene());
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (cutSceneType == eCutScene.InGame)
+        {
+            SceneManager.sceneLoaded -= DeActivateSetUp;
         }
     }
 
@@ -66,6 +74,7 @@ public class CutScene : MonoBehaviour
         //foreach (GameObject i in list) i = this.gameObject.scene.GetRootGameObjects;
 
         myPD.Play();
+       
         yield return new WaitForSeconds((float)myPD.duration - offset);
         sceneLoader.SceneUnload(myScene);
         SetUpUI(true);
@@ -79,9 +88,23 @@ public class CutScene : MonoBehaviour
         if (Gamemanager.inst.myDragon != null) DisableSkinnedRenderer(Gamemanager.inst.myDragon.gameObject, enable);
         else
         {
+            for (int i = 0; i < Gamemanager.inst.mySpawnner.Count; i++)
+            {
+                for (int j = 0; j < Gamemanager.inst.mySpawnner[i].monsters.Count; j++)
+                {
+                    DisableSkinnedRenderer(Gamemanager.inst.mySpawnner[i].monsters[j].gameObject, enable);
+                }
+            }
+            for (int i = 0; i < Gamemanager.inst.mySpawnner.Count; i++)
+            {
+                for (int j = 0; j < Gamemanager.inst.mySpawnner[i].monsters.Count; j++)
+                {
+                    Gamemanager.inst.mySpawnner[i].monsters[j].gameObject.GetComponentInChildren<MeshRenderer>().enabled = enable;
+                }
+            }
             // myEnemy는 배열 형태여야 하지않는가...?
-            DisableSkinnedRenderer(Gamemanager.inst.myEnemy.gameObject, enable);
-            Gamemanager.inst.myEnemy.gameObject.GetComponentInChildren<MeshRenderer>().enabled = enable;
+            //DisableSkinnedRenderer(Gamemanager.inst.myEnemy.gameObject, enable);
+            //Gamemanager.inst.myEnemy.gameObject.GetComponentInChildren<MeshRenderer>().enabled = enable;
         }
     }
 
@@ -95,6 +118,10 @@ public class CutScene : MonoBehaviour
 
         UIManager.instance.gameObject.SetActive(true);
 
+        if(nextScene.isLoaded)
+        {
+            SceneManager.activeSceneChanged -= SetUpUIManager;
+        }
     }
 
     public void DisableSkinnedRenderer(GameObject obj, bool enable)
@@ -114,10 +141,42 @@ public class CutScene : MonoBehaviour
 
         UIManager.instance.gameObject.SetActive(false);
 
-        if (loadSceneMode != LoadSceneMode.Single)
+        if (loadSceneMode == LoadSceneMode.Additive)
         {
             DisableSkinnedRenderer(Gamemanager.Inst.myPlayer.gameObject, false);
-            DisableSkinnedRenderer(Gamemanager.Inst.myDragon.gameObject, false);
+            if(Gamemanager.inst.myDragon == null)
+            {
+                for(int i = 0;i < Gamemanager.inst.mySpawnner.Count; i++)
+                {
+                    for (int j = 0; j < Gamemanager.inst.mySpawnner[i].monsters.Count; j++)
+                    {
+                        DisableSkinnedRenderer(Gamemanager.inst.mySpawnner[i].monsters[j].gameObject, false);
+                    }
+                }
+            }
+            else
+            {
+                DisableSkinnedRenderer(Gamemanager.Inst.myDragon.gameObject, false);
+            }
+            
+        }
+        else if(loadSceneMode == LoadSceneMode.Single) 
+        {
+            DisableSkinnedRenderer(Gamemanager.inst.myPlayer.gameObject,true);
+            if (Gamemanager.inst.myDragon == null)
+            {
+                for (int i = 0; i < Gamemanager.inst.mySpawnner.Count; i++)
+                {
+                    for (int j = 0; j < Gamemanager.inst.mySpawnner[i].monsters.Count; j++)
+                    {
+                        DisableSkinnedRenderer(Gamemanager.inst.mySpawnner[i].monsters[j].gameObject, true);
+                    }
+                }
+            }
+            else
+            {
+                DisableSkinnedRenderer(Gamemanager.Inst.myDragon.gameObject, true);
+            }
         }
     }
 

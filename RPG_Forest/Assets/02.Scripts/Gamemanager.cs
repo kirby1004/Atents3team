@@ -67,6 +67,7 @@ public class Gamemanager : MonoBehaviour , IEconomy
                 mySpawnner[i].mySpawnnerIndex = mySpawnner[i].FindMyIndex(mySpawnner[i]);
             }
         }
+        
     }
 
 
