@@ -27,7 +27,7 @@ public class SceneLoader : Singleton<SceneLoader>
         yield return SceneManager.LoadSceneAsync(1); // Loads the Scene asynchronously(비동기) in the background.
         AsyncOperation op = SceneManager.LoadSceneAsync(destMap); // 코루틴의 진행상태를 확인하는 방법
         op.allowSceneActivation = false; // Scene Loading 이 끝나면 바로 활성화 되게 하는 불 값 => false
-
+        
         Slider slider = FindObjectOfType<Slider>();
         Gamemanager.inst.myPlayer = null;
         while (!op.isDone)
@@ -38,10 +38,11 @@ public class SceneLoader : Singleton<SceneLoader>
                 yield return new WaitForSeconds(5.0f); // Debuging용 딜레이 추가  
                 op.allowSceneActivation = true;
                 Gamemanager.inst.gameObject.SetActive(true);
-                UIManager.instance.gameObject.SetActive(true);
+                //UIManager.instance.gameObject.SetActive(true);
                 Gamemanager.inst.FindObject();
-                UIManager.instance.Refresh();
-            }  
+                //UIManager.instance.Refresh();
+            }
+            yield return null;
         }
     }
 
@@ -88,7 +89,25 @@ public class SceneLoader : Singleton<SceneLoader>
         }
     }
 
+    public void SetUI(Scene preScene, Scene postScene)
+    {
+        switch (postScene.buildIndex)
+        {
 
-
-
+            default:
+                break;
+            case 3:
+            case 4:
+            case 7:
+            case 8:
+                UIManager.instance.gameObject.SetActive(false);
+                break;
+            case 2:
+            case 5:
+            case 6:
+                UIManager.instance.gameObject.SetActive(true);
+                UIManager.instance.Refresh();
+                break;
+        }
+    }
 }

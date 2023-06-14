@@ -107,7 +107,10 @@ public class CutScene : MonoBehaviour
             //DisableSkinnedRenderer(Gamemanager.inst.myEnemy.gameObject, enable);
             //Gamemanager.inst.myEnemy.gameObject.GetComponentInChildren<MeshRenderer>().enabled = enable;
         }
-        UIManager.instance.Refresh();
+        if(enable)
+        {
+            UIManager.instance.Refresh();
+        }
     }
 
 

@@ -34,7 +34,8 @@ public class IntroScene : MonoBehaviour
         
         
         SceneManager.activeSceneChanged -= SetUI;
-         
+
+        SceneManager.activeSceneChanged += SceneLoader.Inst.SetUI;
         Gamemanager.inst.mySpawnner.Clear();
         Destroy(this.gameObject);
     }
