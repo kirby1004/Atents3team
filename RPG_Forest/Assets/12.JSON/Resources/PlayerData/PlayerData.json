@@ -1,11 +1,14 @@
 {
   "PlayerData": {
     "curHP": 100.0,
-    "PortalRocate": [
-    ]
-  },
-  "PlayerInfo": {
+    "LastRocate": [
+    ],
+    "LastMapIndex": 0,
     "Soul": 300,
     "Level": 0
+  },
+  "PlayerInventorys": {
+    "InventoryItemCode": [],
+    "EquipmentItemCode": []
   }
 }
