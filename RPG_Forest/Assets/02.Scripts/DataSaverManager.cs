@@ -27,7 +27,7 @@ public class TestData
     public PlayerInventory PlayerInventory;
 }
 
-public class DataSaverManager : MonoBehaviour
+public class DataSaverManager : Singleton<DataSaverManager>
 {
     //public PlayerData playerData;
     public enum ItemCodes
@@ -50,6 +50,12 @@ public class DataSaverManager : MonoBehaviour
     }
     
     public TestData testData;
+
+    private void Awake()
+    {
+        base.Initialize();
+        DontDestroyOnLoad(this);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -57,7 +63,7 @@ public class DataSaverManager : MonoBehaviour
         TextAsset textAsset = Resources.Load<TextAsset>("PlayerData/PlayerData");
 
         testData = JsonUtility.FromJson<TestData>(textAsset.ToString());
-        //TestFunc();
+        
     }
 
     // Update is called once per frame
@@ -76,31 +82,54 @@ public class DataSaverManager : MonoBehaviour
     }
     public void SavePlayerData()
     {
-        TextAsset textAsset = Resources.Load<TextAsset>("PlayerData/PlayerData");
-
-        testData = JsonUtility.FromJson<TestData>(textAsset.ToString());
+        LoadJsonFile();
 
         testData.PlayerData.curHP = Gamemanager.inst.myPlayer.curHp;
         testData.PlayerData.Soul = Gamemanager.inst.Money;
         testData.PlayerData.Level = EnchantManager.Inst.EnchantLevel;
         testData.PlayerData.LastMapIndex = SceneManager.GetActiveScene().buildIndex;
         testData.PlayerData.LastRocate = Gamemanager.inst.myPlayer.gameObject.transform.position;
+        string data = JsonUtility.ToJson(testData);
+        Debug.Log(Application.dataPath);
+
+        System.IO.File.WriteAllText(Application.dataPath + "/12.JSON/Resources/PlayerData/PlayerData.json", data);
+
     }
     public void SavePlayerInventoryData()
+    {
+        LoadJsonFile();
+        testData.PlayerInventory.EquipmentItemCode = new int[EquipmentManager.Inst.equipslot.Count];
+        testData.PlayerInventory.InventoryItemCode = new int[InventoryManager.Inst.startSlotcount];
+        for (int i = 0; i < EquipmentManager.Inst.equipslot.Count - 1; i++)
+        {
+            if (EquipmentManager.Inst.equipslot[i].mySlotItems == null)
+            {
+                testData.PlayerInventory.EquipmentItemCode[i] = -1;
+                continue;
+            }
+            testData.PlayerInventory.EquipmentItemCode[i] = (int)EquipmentManager.Inst.equipslot[i].mySlotItems.GetComponent<Item>().item.myCodes;
+        }
+        for (int i = 0; i < InventoryManager.Inst.slots.Count; i++)
+        {
+            if (InventoryManager.Inst.slots[i].mySlotItems == null)
+            {
+                testData.PlayerInventory.InventoryItemCode[i] = -1;
+                continue;
+            }
+            testData.PlayerInventory.InventoryItemCode[i] = (int)InventoryManager.Inst.slots[i].mySlotItems.GetComponent<Item>().item.myCodes;
+        }
+
+        string data = JsonUtility.ToJson(testData);
+        Debug.Log(Application.dataPath);
+
+        System.IO.File.WriteAllText(Application.dataPath + "/12.JSON/Resources/PlayerData/PlayerData.json", data);
+
+    }
+    public void LoadJsonFile()
     {
         TextAsset textAsset = Resources.Load<TextAsset>("PlayerData/PlayerData");
 
         testData = JsonUtility.FromJson<TestData>(textAsset.ToString());
-
-        for (int i = 0; i < EquipmentManager.Inst.equipslot.Count - 1; i++)
-        {
-            //testData.PlayerInventory.EquipmentItemCode[i] = EquipmentManager.Inst.equipslot[i].mySlotItems.GetComponent<ItemStatus>();
-        }
-        for (int i = 0; i < InventoryManager.Inst.slots.Count; i++)
-        {
-            //testData.PlayerInventory.InventoryItemCode[i] = InventoryManager.Inst.slots[i].itemCodes;
-        }
-
     }
 
     public void TestFunc()

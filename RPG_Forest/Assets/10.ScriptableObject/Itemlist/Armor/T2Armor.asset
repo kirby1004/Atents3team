@@ -23,3 +23,4 @@ MonoBehaviour:
   _itemCoolDown: 0
   stackable: 0
   _image: {fileID: 21300000, guid: a965ac0f57ed8644797ee1d2ddc1133a, type: 3}
+  myCodes: 23

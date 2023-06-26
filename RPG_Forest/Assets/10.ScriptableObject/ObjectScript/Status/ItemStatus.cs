@@ -104,8 +104,8 @@ public class ItemStatus : ScriptableObject
     [SerializeField]
     private Sprite _image;
     public Sprite Image { get { return _image; } }
-    
-    
+
+    public DataSaverManager.ItemCodes myCodes;
 }
 
 public enum ItemType
