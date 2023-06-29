@@ -14,6 +14,7 @@ public class Item : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
     //아이템 이미지
     public Image image;
     public Image myIcon = null;
+    public Transform parentBeforeDrag;
     public Transform parentAfterDrag;
 
     public ItemSlotType slotType = ItemSlotType.Inventory;
@@ -34,6 +35,7 @@ public class Item : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
         color.a = 1;
         image.color = color;
         slotType = ItemSlotType.Inventory;
+        parentBeforeDrag = transform.parent;
     }
 
     // 마우스 드래그 
@@ -54,8 +56,14 @@ public class Item : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
     public void OnEndDrag(PointerEventData eventData)
     {
         image.raycastTarget = true;
-        transform.SetParent(parentAfterDrag);
+        transform.SetParent(parentAfterDrag);   
         transform.localPosition = Vector3.zero;
+        if(parentBeforeDrag.GetComponent<Slot>().mySlotItems == transform
+            && parentBeforeDrag.transform != transform.parent)
+        {
+            parentBeforeDrag.GetComponent<Slot>().mySlotItems = null;
+            parentBeforeDrag = transform.parent;
+        }
     }
 
 

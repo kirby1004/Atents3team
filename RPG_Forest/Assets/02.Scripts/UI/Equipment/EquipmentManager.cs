@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class EquipmentManager : Singleton<EquipmentManager>
 {
@@ -20,6 +21,11 @@ public class EquipmentManager : Singleton<EquipmentManager>
     private void Awake()
     {
         base.Initialize();
+    }
+    private void Start()
+    {
+        DataSaverManager.Inst.LoadEquipment();
+        RefreshStat(0);
     }
 
     // 스텟 갱신 코루틴 작동
@@ -54,6 +60,14 @@ public class EquipmentManager : Singleton<EquipmentManager>
         //Debug.Log($" HP : {equipmentHP} , AP : {equipmentAP} , DP : {equipmentDP} , AS : {equipmentAS} , Speed : {equipmentSpeed} ");
     }
 
+    public void CreateEquipmentItems(ItemStatus items , int index)
+    {
+        //equipslot[index]
 
+        GameObject newItemGo = Instantiate(equipmentItemPrefab, equipslot[index].transform);    //아이템 오브젝트 원본 받아와서 슬롯의 자식으로 생성
+        newItemGo.GetComponent<Item>().InitialiseItem(items);      //생성한 오브젝트에 InventoryItem 속성 추가 후 item으로 정보주입
+        newItemGo.AddComponent<EquipmentItem>();
+
+    }
 
 }

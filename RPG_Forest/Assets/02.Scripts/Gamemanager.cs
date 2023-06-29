@@ -42,7 +42,8 @@ public class Gamemanager : MonoBehaviour , IEconomy
     {
         economy = this.GetComponent<IEconomy>();
         Money = new int();
-        GetMoney(100);
+        //GetMoney(100);
+        DataSaverManager.Inst.LoadPlayerData(false);
     }
 
     // 씬전환시 플레이어 보스 스포너 탐색동작

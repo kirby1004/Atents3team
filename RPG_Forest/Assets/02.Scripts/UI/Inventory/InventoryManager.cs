@@ -29,6 +29,8 @@ public class InventoryManager : Singleton<InventoryManager>
     private void Awake()
     {
         base.Initialize();
+
+        
     }
 
     // 앞에서부터 빈슬롯 확인 후 빈 슬롯에 아이템 추가 / 슬롯이 꽉찻을때 예외처리 및 가독성 작업 완료
@@ -90,11 +92,55 @@ public class InventoryManager : Singleton<InventoryManager>
     }
 
     // 새로운 아이템 오브젝트 생성
-    void SpawnNewItem(ItemStatus item, Slot slot)
+    public void SpawnNewItem(ItemStatus item, Slot slot)
     {
         GameObject newItemGo = Instantiate(inventoryItemPrefab, slot.transform);    //아이템 오브젝트 원본 받아와서 슬롯의 자식으로 생성
         newItemGo.GetComponent<Item>().InitialiseItem(item);      //생성한 오브젝트에 InventoryItem 속성 추가 후 item으로 정보주입
         newItemGo.AddComponent<InventoryItem>();
+    }
+
+    public ItemStatus MakeItemFromItemCode(DataSaverManager.ItemCodes itemcodes)
+    {
+        switch (itemcodes)
+        {
+            case DataSaverManager.ItemCodes.T1Weapon:
+                break;
+            case DataSaverManager.ItemCodes.T1Helmet:
+                break;
+            case DataSaverManager.ItemCodes.T1Armor:
+                break;
+            case DataSaverManager.ItemCodes.T1Leggins:
+                break;
+            case DataSaverManager.ItemCodes.T1Boots:
+                break;
+            case DataSaverManager.ItemCodes.T2Weapon:
+                break;
+            case DataSaverManager.ItemCodes.T2Helmet:
+                break;
+            case DataSaverManager.ItemCodes.T2Armor:
+                break;
+            case DataSaverManager.ItemCodes.T2Leggins:
+                break;
+            case DataSaverManager.ItemCodes.T2Boots:
+                break;
+            case DataSaverManager.ItemCodes.T3Weapon:
+                break;
+            case DataSaverManager.ItemCodes.T3Helmet:
+                break;
+            case DataSaverManager.ItemCodes.T3Armor:
+                break;
+            case DataSaverManager.ItemCodes.T3Leggins:
+                break;
+            case DataSaverManager.ItemCodes.T3Boots:
+                break;
+            default:
+                break;
+        }
+        //Resources.Load();
+
+        string ItemName = itemcodes.ToString();
+
+        return null;
     }
 
 
@@ -104,6 +150,7 @@ public class InventoryManager : Singleton<InventoryManager>
         SpawnNewSlots(startSlotcount);
         Gamemanager.Inst.UpdateMoney.AddListener(UpdateMyMoney);
         UpdateMyMoney(Gamemanager.Inst.Money);
+        DataSaverManager.Inst.LoadInventory();
     }
 
     // Update is called once per frame

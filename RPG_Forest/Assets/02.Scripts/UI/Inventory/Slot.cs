@@ -27,7 +27,7 @@ public class Slot : MonoBehaviour, IDropHandler
                 switch (mySlotType)
                 {
                     case ItemSlotType.Inventory:
-                        dropItem.parentAfterDrag = transform;
+                        dropItem.ChangeParent(transform, true);
                         Destroy(dropItem.GetComponent<IItems>().myState);
                         dropItem.AddComponent<InventoryItem>();
                         dropItem.slotType = ItemSlotType.Inventory;
@@ -37,7 +37,7 @@ public class Slot : MonoBehaviour, IDropHandler
                         if ((dropItem.item.actionType == ActionType.Attack || dropItem.item.actionType == ActionType.Defense)&&
                             (myItemType == dropItem.item.MyItemType))
                         {
-                            dropItem.parentAfterDrag = transform;
+                            dropItem.ChangeParent(transform, true);
                             Destroy(dropItem.GetComponent<IItems>().myState);
                             dropItem.AddComponent<EquipmentItem>();
                             dropItem.slotType = ItemSlotType.Equipment;
@@ -47,7 +47,7 @@ public class Slot : MonoBehaviour, IDropHandler
                     case ItemSlotType.Quick:
                         if (dropItem.item.actionType == ActionType.UsingItems)
                         {
-                            dropItem.parentAfterDrag = transform;
+                            dropItem.ChangeParent(transform, true);
                             Destroy(dropItem.GetComponent<IItems>().myState);
                             dropItem.AddComponent<QuickItem>();
                             dropItem.slotType = ItemSlotType.Quick;
@@ -57,7 +57,7 @@ public class Slot : MonoBehaviour, IDropHandler
                     case ItemSlotType.Soul:
                         if (dropItem.item.actionType == ActionType.Inchent)
                         {
-                            dropItem.parentAfterDrag = transform;
+                            dropItem.ChangeParent(transform, true);
                             Destroy(dropItem.GetComponent<IItems>().myState);
                             dropItem.AddComponent<SoulItem>();
                             dropItem.slotType = ItemSlotType.Soul;
@@ -111,10 +111,10 @@ public class Slot : MonoBehaviour, IDropHandler
                     }
                     Destroy(dropItem.GetComponent<IItems>().myState);
                     Destroy(myItem.GetComponent<IItems>().myState);
+                    myItem.ChangeParent(dropItem.parentAfterDrag, true);
+                    dropItem.ChangeParent(transform,true);
                     AddItemType(dropItem.slotType, dropItem);
                     AddItemType(myItem.slotType, myItem);
-                    myItem.ChangeParent(dropItem.parentAfterDrag, true);
-                    dropItem.ChangeParent(transform);
                 }
             }
         }

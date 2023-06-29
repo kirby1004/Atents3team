@@ -100,6 +100,7 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
     protected override void Start()
     {
         base.Start();
+        DataSaverManager.Inst.LoadPlayerData(true);
         interPlay = new UnityEvent();
         OpenUi = new UnityEvent();
         CloseUi = new UnityEvent();
