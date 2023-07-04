@@ -6,16 +6,34 @@ public class IgnoreMouseClick : MonoBehaviour ,IPointerEnterHandler , IPointerEx
 {
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Gamemanager.Inst.myPlayer.SetIsEnterUI(true);
+        if (Gamemanager.Inst != null)
+        {
+            if (Gamemanager.Inst.myPlayer != null)
+            {
+                Gamemanager.Inst.myPlayer.SetIsEnterUI(false);
+            }
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Gamemanager.Inst.myPlayer.SetIsEnterUI(false);
+        if (Gamemanager.Inst != null)
+        {
+            if (Gamemanager.Inst.myPlayer != null)
+            {
+                Gamemanager.Inst.myPlayer.SetIsEnterUI(false);
+            }
+        }
     }
 
     private void OnDestroy()
     {
-        Gamemanager.Inst.myPlayer.SetIsEnterUI(false);
+        if(Gamemanager.Inst != null)
+        {
+            if(Gamemanager.Inst.myPlayer != null)
+            {
+                Gamemanager.Inst.myPlayer.SetIsEnterUI(false);
+            }
+        }
     }
 }

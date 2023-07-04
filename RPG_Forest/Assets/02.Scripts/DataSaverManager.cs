@@ -32,6 +32,7 @@ public class TestData
 public class DataSaverManager : Singleton<DataSaverManager>
 {
     //public PlayerData playerData;
+    public GameObject GameExitUI;
    
     public enum ItemCodes
     {
@@ -75,9 +76,10 @@ public class DataSaverManager : Singleton<DataSaverManager>
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SaveAllData();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {  
+            GameExitUI.SetActive(!GameExitUI.activeSelf);
+            //SaveAllData(false);
         }
     }
 
@@ -99,34 +101,52 @@ public class DataSaverManager : Singleton<DataSaverManager>
     }
     #endregion
 
+    bool isSaveDone = false;
     #region 데이터 저장
-    public void SaveAllData()
+    public void SaveAllData(bool isQuit)
     {
         SavePlayerData();
         SavePlayerInventoryData();
+        WriteJSonFile();
+        if (isQuit)
+        {
+            if(isSaveDone)
+            {
+                Application.Quit();
+            }   
+        }
+    }
+    public void WriteJSonFile()
+    {
+        string data = JsonUtility.ToJson(testData);
+        Debug.Log(Application.dataPath);
+
+        System.IO.File.WriteAllText(Application.dataPath + "/12.JSON/Resources/PlayerData/PlayerData.json", data);
+        isSaveDone = true;
     }
 
     public void SavePlayerData()
     {
+
         LoadJsonFile();
 
+        isSaveDone = false;
         testData.PlayerData.curHP = Gamemanager.inst.myPlayer.curHp;
         testData.PlayerData.Soul = Gamemanager.inst.Money;
         testData.PlayerData.Level = EnchantManager.Inst.EnchantLevel;
         testData.PlayerData.LastMapIndex = SceneManager.GetActiveScene().buildIndex;
         testData.PlayerData.LastRocate = Gamemanager.inst.myPlayer.gameObject.transform.position;
-        string data = JsonUtility.ToJson(testData);
-        Debug.Log(Application.dataPath);
-
-        System.IO.File.WriteAllText(Application.dataPath + "/12.JSON/Resources/PlayerData/PlayerData.json", data);
 
     }
 
     public void SavePlayerInventoryData()
     {
         LoadJsonFile();
+
+        isSaveDone = false;
         testData.PlayerInventory.EquipmentItemCode = new int[EquipmentManager.Inst.equipslot.Count];
         testData.PlayerInventory.InventoryItemCode = new int[InventoryManager.Inst.startSlotcount];
+
         for (int i = 0; i < EquipmentManager.Inst.equipslot.Count - 1; i++)
         {
             if (EquipmentManager.Inst.equipslot[i].mySlotItems == null)
@@ -136,6 +156,7 @@ public class DataSaverManager : Singleton<DataSaverManager>
             }
             testData.PlayerInventory.EquipmentItemCode[i] = (int)EquipmentManager.Inst.equipslot[i].mySlotItems.GetComponent<Item>().item.myCodes;
         }
+
         for (int i = 0; i < InventoryManager.Inst.slots.Count; i++)
         {
             if (InventoryManager.Inst.slots[i].mySlotItems == null)
@@ -146,15 +167,19 @@ public class DataSaverManager : Singleton<DataSaverManager>
             testData.PlayerInventory.InventoryItemCode[i] = (int)InventoryManager.Inst.slots[i].mySlotItems.GetComponent<Item>().item.myCodes;
         }
 
-        string data = JsonUtility.ToJson(testData);
-        Debug.Log(Application.dataPath);
-
-        System.IO.File.WriteAllText(Application.dataPath + "/12.JSON/Resources/PlayerData/PlayerData.json", data);
     }
 
     #endregion
 
     #region 데이터 로드
+
+    public void LoadJsonFile()
+    {
+        TextAsset textAsset = Resources.Load<TextAsset>("PlayerData/PlayerData");
+
+        testData = JsonUtility.FromJson<TestData>(textAsset.ToString());
+    }
+
     public void LoadInventory()
     {
         LoadJsonFile();
@@ -234,27 +259,11 @@ public class DataSaverManager : Singleton<DataSaverManager>
     }
 
     #endregion
-    public void LoadJsonFile()
-    {
-        TextAsset textAsset = Resources.Load<TextAsset>("PlayerData/PlayerData");
+    
 
-        testData = JsonUtility.FromJson<TestData>(textAsset.ToString());
-    }
-
-    public void TestFunc()
+    public void OpenSaveUI()
     {
-        testData.PlayerData.curHP = Gamemanager.inst.myPlayer.curHp;
-        //for(int i = 0;i < InventoryManager.Inst.startSlotcount;i++)
-        //{
-        //    testData.PlayerInventory.InventoryItems[i] = 
-        //        InventoryManager.Inst.slots[i].mySlotItems.GetComponent<Item>();
-        //}
-        testData.PlayerData.Soul = Gamemanager.inst.Money;
-        testData.PlayerData.Level = EnchantManager.Inst.EnchantLevel;
-        string data = JsonUtility.ToJson(testData);
-        Debug.Log(Application.dataPath);
-        
-        System.IO.File.WriteAllText(Application.dataPath+ "/12.JSON/Resources/PlayerData/PlayerData.json", data);
+
     }
 
 }

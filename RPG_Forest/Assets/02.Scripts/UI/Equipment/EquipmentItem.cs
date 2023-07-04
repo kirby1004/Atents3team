@@ -13,6 +13,7 @@ public class EquipmentItem : MonoBehaviour , IItems
     // 착용상태 적용시 스텟창 갱신
     private void Start()
     {
+        isQuit = false;
         transform.parent.GetComponent<Slot>().mySlotItems = transform;
         EquipmentManager.Inst.RefreshStat(transform.gameObject.GetComponent<Item>().item.MaxHpIncrese); // 장비 매니저의 스텟갱신 동작
         Gamemanager.Inst.myPlayer.curHp += transform.gameObject.GetComponent<Item>().item.MaxHpIncrese;
@@ -22,7 +23,7 @@ public class EquipmentItem : MonoBehaviour , IItems
     }
 
     // 
-    bool isQuit = false;
+    bool isQuit = true;
     private void OnApplicationQuit()
     {
         isQuit = true;
