@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEditor.Progress;
 
 
 [System.Serializable]
@@ -88,7 +87,7 @@ public class DataSaverManager : Singleton<DataSaverManager>
             if (Input.GetKeyDown(KeyCode.Escape))
             {  
                 GameExitUI.SetActive(!GameExitUI.activeSelf);
-                SaveAllData(false);
+                //SaveAllData(false);
             }
         }
     }
@@ -118,14 +117,12 @@ public class DataSaverManager : Singleton<DataSaverManager>
         LoadJsonFile();
         SavePlayerData();
         SavePlayerInventoryData();
-        WriteJSonFile();
         if (isQuit)
         {
-            if(isSaveDone)
-            {
-                Application.Quit();
-            }   
+            StartCoroutine(GameExit());  
         }
+        WriteJSonFile();
+        //StopAllCoroutines();
     }
     public void WriteJSonFile()
     {
@@ -135,11 +132,31 @@ public class DataSaverManager : Singleton<DataSaverManager>
         System.IO.File.WriteAllText(Application.dataPath + "/12.JSON/Resources/PlayerData/PlayerData.json", data);
         isSaveDone = true;
     }
+    IEnumerator GameExit()
+    {
+        while(!isSaveDone)
+        {
+            yield return new WaitForFixedUpdate();
+            if (isSaveDone)
+            {
+#if !UNITY_EDITOR
+
+        System.Diagnostics.Process.GetCurrentProcess().Kill();
+
+#endif
+                Application.Quit();
+            }
+        }
+#if !UNITY_EDITOR
+
+        System.Diagnostics.Process.GetCurrentProcess().Kill();
+
+#endif
+        Application.Quit();
+    }
 
     public void SavePlayerData()
     {
-
-        
 
         isSaveDone = false;
         testData.PlayerData.curHP = Gamemanager.inst.myPlayer.curHp;

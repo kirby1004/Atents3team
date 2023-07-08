@@ -9,11 +9,12 @@ public class SaveButton : MonoBehaviour
 
     public Transform myTarget;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        myButton = GetComponent<Button>();
+        myButton = transform.GetComponent<Button>();
+
         myButton.onClick.AddListener(() => DataSaverManager.Inst.SaveAllData(true));
-        
+        myButton.onClick.AddListener(() => myTarget.GetComponent<DataSaverManager>().SaveAllData(true));
     }
 
     // Update is called once per frame
