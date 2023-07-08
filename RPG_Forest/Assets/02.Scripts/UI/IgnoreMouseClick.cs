@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-public class IgnoreMouseClick : MonoBehaviour ,IPointerEnterHandler , IPointerExitHandler
+public class IgnoreMouseClick : MonoBehaviour ,IPointerEnterHandler , IPointerExitHandler , IPointerMoveHandler
 {
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -10,10 +10,12 @@ public class IgnoreMouseClick : MonoBehaviour ,IPointerEnterHandler , IPointerEx
         {
             if (Gamemanager.Inst.myPlayer != null)
             {
-                Gamemanager.Inst.myPlayer.SetIsEnterUI(false);
+                Gamemanager.Inst.myPlayer.SetIsEnterUI(true);
             }
         }
     }
+
+    //public void onpointet
 
     public void OnPointerExit(PointerEventData eventData)
     {
@@ -26,11 +28,32 @@ public class IgnoreMouseClick : MonoBehaviour ,IPointerEnterHandler , IPointerEx
         }
     }
 
+    public void OnPointerMove(PointerEventData eventData)
+    {
+        if (Gamemanager.Inst != null)
+        {
+            if (Gamemanager.Inst.myPlayer != null)
+            {
+                Gamemanager.Inst.myPlayer.SetIsEnterUI(true);
+            }
+        }
+    }
+
     private void OnDestroy()
     {
         if(Gamemanager.Inst != null)
         {
             if(Gamemanager.Inst.myPlayer != null)
+            {
+                Gamemanager.Inst.myPlayer.SetIsEnterUI(false);
+            }
+        }
+    }
+    private void OnDisable()
+    {
+        if (Gamemanager.Inst != null)
+        {
+            if (Gamemanager.Inst.myPlayer != null)
             {
                 Gamemanager.Inst.myPlayer.SetIsEnterUI(false);
             }

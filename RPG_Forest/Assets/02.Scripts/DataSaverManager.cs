@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using static UnityEditor.Progress;
 
+
 [System.Serializable]
 public class PlayerData
 {
@@ -17,6 +18,7 @@ public class PlayerData
     public int Soul;
     public int Level;
 }
+
 [System.Serializable]
 public class PlayerInventory
 {
@@ -67,19 +69,27 @@ public class DataSaverManager : Singleton<DataSaverManager>
         ItemListSort();
         InsertItemDict();
     }
+
     // Start is called before the first frame update
     void Start()
     {
-        LoadJsonFile();   
+        LoadJsonFile();
+        testData.PlayerInventory.InventoryItemCode = new int[20];
+        testData.PlayerInventory.EquipmentItemCode = new int[6];
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {  
-            GameExitUI.SetActive(!GameExitUI.activeSelf);
-            //SaveAllData(false);
+        if(SceneManager.GetActiveScene().buildIndex == 0 ||
+            SceneManager.GetActiveScene().buildIndex == 5 || 
+            SceneManager.GetActiveScene().buildIndex == 6)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {  
+                GameExitUI.SetActive(!GameExitUI.activeSelf);
+                //SaveAllData(false);
+            }
         }
     }
 
@@ -151,7 +161,7 @@ public class DataSaverManager : Singleton<DataSaverManager>
         {
             if (EquipmentManager.Inst.equipslot[i].mySlotItems == null)
             {
-                testData.PlayerInventory.EquipmentItemCode[i] = -1;
+                testData.PlayerInventory.EquipmentItemCode[i] = 0;
                 continue;
             }
             testData.PlayerInventory.EquipmentItemCode[i] = (int)EquipmentManager.Inst.equipslot[i].mySlotItems.GetComponent<Item>().item.myCodes;
@@ -161,7 +171,7 @@ public class DataSaverManager : Singleton<DataSaverManager>
         {
             if (InventoryManager.Inst.slots[i].mySlotItems == null)
             {
-                testData.PlayerInventory.InventoryItemCode[i] = -1;
+                testData.PlayerInventory.InventoryItemCode[i] = 0;
                 continue;
             }
             testData.PlayerInventory.InventoryItemCode[i] = (int)InventoryManager.Inst.slots[i].mySlotItems.GetComponent<Item>().item.myCodes;
@@ -186,7 +196,7 @@ public class DataSaverManager : Singleton<DataSaverManager>
 
         for (int i = 0; i < InventoryManager.Inst.slots.Count; i++)
         {
-            if (testData.PlayerInventory.InventoryItemCode[i] != -1)
+            if (testData.PlayerInventory.InventoryItemCode[i] != 0)
             {
                 ItemStatus myItem = GetItemStatus((ItemCodes)testData.PlayerInventory.InventoryItemCode[i]);
                 InventoryManager.Inst.SpawnNewItem(myItem, InventoryManager.Inst.slots[i]);
@@ -199,7 +209,7 @@ public class DataSaverManager : Singleton<DataSaverManager>
 
         for (int i = 0; i < EquipmentManager.Inst.equipslot.Count-1; i++)
         {
-            if (testData.PlayerInventory.EquipmentItemCode[i] != -1)
+            if (testData.PlayerInventory.EquipmentItemCode[i] != 0)
             {
                 ItemStatus myItem = GetItemStatus((ItemCodes)testData.PlayerInventory.EquipmentItemCode[i]);
                 GameObject newItemGo = Instantiate(InventoryManager.Inst.inventoryItemPrefab, EquipmentManager.Inst.equipslot[i].transform);    //아이템 오브젝트 원본 받아와서 슬롯의 자식으로 생성
@@ -221,7 +231,6 @@ public class DataSaverManager : Singleton<DataSaverManager>
             {
 
                 Gamemanager.Inst.myPlayer.curHp = testData.PlayerData.curHP;
-
             }
             // 스타트타임 로드시에는 데이터 전체 로드
             else
@@ -229,33 +238,85 @@ public class DataSaverManager : Singleton<DataSaverManager>
                 //Gamemanager.Inst.myPlayer.curHp = testData.PlayerData.curHP;
                 Gamemanager.Inst.Money = testData.PlayerData.Soul;
                 EnchantManager.Inst.EnchantLevel = testData.PlayerData.Level;
+                Gamemanager.inst.myPlayer.transform.position = testData.PlayerData.LastRocate;
             }
         }
     }
     #endregion
 
-    #region 데이터 초기화
-    public void ResetInventory()
+    #region 슬롯 초기화
+    public void ResetAllSlots()
+    {
+        StartCoroutine(ResetAllSlot());
+    }
+    IEnumerator ResetAllSlot()
+    {
+        yield return new WaitForEndOfFrame();
+        ResetInventorySlot();
+        ResetEquipmentSlot();
+        ResetPlayerStatus();
+    }
+    public void ResetInventorySlot()
     {
         for (int i = 0; i < InventoryManager.Inst.slots.Count; i++)
         {
-            Destroy(InventoryManager.Inst.slots[i].mySlotItems.gameObject);
+            if (InventoryManager.Inst.slots[i].mySlotItems != null)
+            {
+                Destroy(InventoryManager.Inst.slots[i].mySlotItems.gameObject);
+            }
             InventoryManager.Inst.slots[i].mySlotItems = null;
+        }
+    }
+    public void ResetEquipmentSlot()
+    {
+        for (int i = 0; i < EquipmentManager.Inst.equipslot.Count-1; i++)
+        {
+            if (EquipmentManager.Inst.equipslot[i].mySlotItems != null)
+            {
+                Destroy(EquipmentManager.Inst.equipslot[i].mySlotItems.gameObject);
+            }
+            EquipmentManager.Inst.equipslot[i].mySlotItems = null;
+        }
+    }
+    public void ResetPlayerStatus()
+    {
+        Gamemanager.Inst.myPlayer.curHp = 100;
+        Gamemanager.Inst.Money = 0;
+        EnchantManager.Inst.EnchantLevel = 0;
+
+    }
+    #endregion
+
+    #region 데이터 초기화
+    public void ResetAllData()
+    {
+        ResetEquipment();
+        ResetInventory();
+        ResetPlayerData();
+        WriteJSonFile();    
+    }
+
+    public void ResetInventory()
+    {
+        for(int i = 0;i < testData.PlayerInventory.InventoryItemCode.Length; i++)
+        {
+            testData.PlayerInventory.InventoryItemCode[i] = 0;
         }
     }
     public void ResetEquipment()
     {
-        for(int i = 0;i < EquipmentManager.Inst.equipslot.Count; i++)
+        for (int i = 0; i < testData.PlayerInventory.EquipmentItemCode.Length-1; i++)
         {
-            Destroy(EquipmentManager.Inst.equipslot[i].mySlotItems.gameObject);
-            EquipmentManager.Inst.equipslot[i].mySlotItems = null;
+            testData.PlayerInventory.EquipmentItemCode[i] = 0;
         }
     }
     public void ResetPlayerData()
     {
-        Gamemanager.Inst.myPlayer.curHp = Gamemanager.inst.myPlayer.MaxHp;
-        Gamemanager.Inst.Money = 0;
-        EnchantManager.Inst.EnchantLevel = 0;
+        testData.PlayerData.curHP = 100;
+        testData.PlayerData.Soul = 0;
+        testData.PlayerData.Level = 0;
+        testData.PlayerData.LastMapIndex = -1;
+        testData.PlayerData.LastRocate = new Vector3(0,0,0);
     }
 
     #endregion

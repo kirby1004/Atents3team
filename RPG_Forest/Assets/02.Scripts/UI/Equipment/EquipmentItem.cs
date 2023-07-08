@@ -26,8 +26,11 @@ public class EquipmentItem : MonoBehaviour , IItems
     bool isQuit = true;
     private void OnApplicationQuit()
     {
+
         isQuit = true;
+
     }
+
     
     //착용상태 해제시 스텟 갱신
     private void OnDestroy()
