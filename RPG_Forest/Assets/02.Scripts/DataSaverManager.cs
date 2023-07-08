@@ -88,7 +88,7 @@ public class DataSaverManager : Singleton<DataSaverManager>
             if (Input.GetKeyDown(KeyCode.Escape))
             {  
                 GameExitUI.SetActive(!GameExitUI.activeSelf);
-                //SaveAllData(false);
+                SaveAllData(false);
             }
         }
     }
@@ -115,6 +115,7 @@ public class DataSaverManager : Singleton<DataSaverManager>
     #region 데이터 저장
     public void SaveAllData(bool isQuit)
     {
+        LoadJsonFile();
         SavePlayerData();
         SavePlayerInventoryData();
         WriteJSonFile();
@@ -138,7 +139,7 @@ public class DataSaverManager : Singleton<DataSaverManager>
     public void SavePlayerData()
     {
 
-        LoadJsonFile();
+        
 
         isSaveDone = false;
         testData.PlayerData.curHP = Gamemanager.inst.myPlayer.curHp;
@@ -151,7 +152,6 @@ public class DataSaverManager : Singleton<DataSaverManager>
 
     public void SavePlayerInventoryData()
     {
-        LoadJsonFile();
 
         isSaveDone = false;
         testData.PlayerInventory.EquipmentItemCode = new int[EquipmentManager.Inst.equipslot.Count];
@@ -239,6 +239,7 @@ public class DataSaverManager : Singleton<DataSaverManager>
                 Gamemanager.Inst.Money = testData.PlayerData.Soul;
                 EnchantManager.Inst.EnchantLevel = testData.PlayerData.Level;
                 Gamemanager.inst.myPlayer.transform.position = testData.PlayerData.LastRocate;
+
             }
         }
     }

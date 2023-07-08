@@ -1,1 +1,45 @@
-{"PlayerData":{"curHP":100.0,"LastRocate":{"x":0.0,"y":0.0,"z":0.0},"LastMapIndex":-1,"Soul":0,"Level":0},"PlayerInventory":{"InventoryItemCode":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"EquipmentItemCode":[0,0,0,0,0,0]}}
+{
+  "PlayerData": {
+    "curHP": 100.0,
+    "LastRocate": {
+      "x": 14.541913032531739,
+      "y": 0.07004153728485108,
+      "z": 6.157418727874756
+    },
+    "LastMapIndex": 5,
+    "Soul": 440,
+    "Level": 3
+  },
+  "PlayerInventory": {
+    "InventoryItemCode": [
+      35,
+      0,
+      0,
+      32,
+      0,
+      0,
+      33,
+      34,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "EquipmentItemCode": [
+      31,
+      32,
+      33,
+      34,
+      35,
+      0
+    ]
+  }
+}
