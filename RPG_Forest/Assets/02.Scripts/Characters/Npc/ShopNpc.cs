@@ -4,9 +4,11 @@ using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class ShopNpc : NpcProperty
 {
+    public LayerMask customer;
     public Animator npcAnim;
     private void Awake()
     {
@@ -37,17 +39,24 @@ public class ShopNpc : NpcProperty
 
     private void OnTriggerEnter(Collider other)
     {
-        other.gameObject.GetComponent<IinterPlay>().SetisObjectNear(true);
-        other.gameObject.GetComponent<IinterPlay>()?.OpenUi.AddListener(()=> {
-            ShopView(other.gameObject, () => other.GetComponentInChildren<SpringArm>().ViewPointTransformation(ViewPoint, () => ShopManager.Inst.OpenShop(NpcType, () => { other.gameObject.GetComponent<IinterPlay>().SetisUI(true); })), () => { other.gameObject.GetComponent<IinterPlay>().SetisInterPlay(true); },()=> { other.gameObject.GetComponent<IinterPlay>().SetisInterPlay(false); }); });
-        other.gameObject.GetComponent<IinterPlay>().CloseUi.AddListener(() => { ShopManager.Inst.CloseShop(() => other.GetComponentInChildren<SpringArm>().ViewPointReset(other.GetComponentInChildren<SpringArm>().transform,()=> other.gameObject.GetComponent<IinterPlay>().SetisUI(false)),()=> npcAnim.SetTrigger("Greet")); });
-        //other.gameObject.GetComponent<IinterPlay>().CloseUi.AddListener(() => other.gameObject.GetComponent<IinterPlay>().SetisUI(false));
-        ShopManager.Inst.ExitButton.onClick.AddListener(() => other.gameObject.GetComponent<IinterPlay>().CloseUi?.Invoke());
+        if (((1 << other.gameObject.layer) & customer) != 0)
+        {
+            other.gameObject.GetComponent<IinterPlay>().SetisObjectNear(true);
+            other.gameObject.GetComponent<IinterPlay>()?.OpenUi.AddListener(() => {
+                ShopView(other.gameObject, () => other.GetComponentInChildren<SpringArm>().ViewPointTransformation(ViewPoint, () => ShopManager.Inst.OpenShop(NpcType, () => { other.gameObject.GetComponent<IinterPlay>().SetisUI(true); })), () => { other.gameObject.GetComponent<IinterPlay>().SetisInterPlay(true); }, () => { other.gameObject.GetComponent<IinterPlay>().SetisInterPlay(false); });
+            });
+            other.gameObject.GetComponent<IinterPlay>().CloseUi.AddListener(() => { ShopManager.Inst.CloseShop(() => other.GetComponentInChildren<SpringArm>().ViewPointReset(other.GetComponentInChildren<SpringArm>().transform, () => other.gameObject.GetComponent<IinterPlay>().SetisUI(false)), () => npcAnim.SetTrigger("Greet")); });
+            //other.gameObject.GetComponent<IinterPlay>().CloseUi.AddListener(() => other.gameObject.GetComponent<IinterPlay>().SetisUI(false));
+            ShopManager.Inst.ExitButton.onClick.AddListener(() => other.gameObject.GetComponent<IinterPlay>().CloseUi?.Invoke());
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        other.gameObject.GetComponent<IinterPlay>()?.SetisObjectNear(false);
+        if (((1 << other.gameObject.layer) & customer) != 0)
+        {
+            other.gameObject.GetComponent<IinterPlay>()?.SetisObjectNear(false);
+        }
     }
 
 
