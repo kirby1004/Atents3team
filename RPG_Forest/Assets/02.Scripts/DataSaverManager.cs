@@ -117,12 +117,15 @@ public class DataSaverManager : Singleton<DataSaverManager>
         LoadJsonFile();
         SavePlayerData();
         SavePlayerInventoryData();
+        WriteJSonFile();
         if (isQuit)
         {
-            StartCoroutine(GameExit());  
+            if(isSaveDone)
+            {
+                Application.Quit();
+            }  
         }
-        WriteJSonFile();
-        //StopAllCoroutines();
+        
     }
     public void WriteJSonFile()
     {
@@ -132,28 +135,28 @@ public class DataSaverManager : Singleton<DataSaverManager>
         System.IO.File.WriteAllText(Application.dataPath + "/12.JSON/Resources/PlayerData/PlayerData.json", data);
         isSaveDone = true;
     }
-    IEnumerator GameExit()
-    {
-        while(!isSaveDone)
-        {
-            yield return new WaitForFixedUpdate();
-            if (isSaveDone)
-            {
-#if !UNITY_EDITOR
+//    IEnumerator GameExit()
+//    {
+//        while(!isSaveDone)
+//        {
+//            yield return new WaitForFixedUpdate();
+//            if (isSaveDone)
+//            {
+//#if !UNITY_EDITOR
 
-        System.Diagnostics.Process.GetCurrentProcess().Kill();
+//        System.Diagnostics.Process.GetCurrentProcess().Kill();
 
-#endif
-                Application.Quit();
-            }
-        }
-#if !UNITY_EDITOR
+//#endif
+//                Application.Quit();
+//            }
+//        }
+//#if !UNITY_EDITOR
 
-        System.Diagnostics.Process.GetCurrentProcess().Kill();
+//        System.Diagnostics.Process.GetCurrentProcess().Kill();
 
-#endif
-        Application.Quit();
-    }
+//#endif
+//        Application.Quit();
+//    }
 
     public void SavePlayerData()
     {
