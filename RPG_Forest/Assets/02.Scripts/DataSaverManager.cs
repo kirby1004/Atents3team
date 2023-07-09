@@ -122,6 +122,15 @@ public class DataSaverManager : Singleton<DataSaverManager>
         {
             if(isSaveDone)
             {
+#if !UNITY_EDITOR
+
+                        System.Diagnostics.Process.GetCurrentProcess().Kill();
+
+#endif
+
+                //GameObject obj = new GameObject();
+                //obj.AddComponent<GameExit>();
+
                 Application.Quit();
             }  
         }
