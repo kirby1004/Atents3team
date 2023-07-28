@@ -34,20 +34,20 @@ public class DataSaverManager : Singleton<DataSaverManager>
 {
     //public PlayerData playerData;
     public GameObject GameExitUI;
-   
+
     public enum ItemCodes
     {
-        T1Weapon=11,
+        T1Weapon = 11,
         T1Helmet,
         T1Armor,
         T1Leggins,
         T1Boots,
-        T2Weapon=21,
+        T2Weapon = 21,
         T2Helmet,
-        T2Armor,            
+        T2Armor,
         T2Leggins,
         T2Boots,
-        T3Weapon=31,
+        T3Weapon = 31,
         T3Helmet,
         T3Armor,
         T3Leggins,
@@ -60,6 +60,7 @@ public class DataSaverManager : Singleton<DataSaverManager>
 
     public TestData testData;
 
+    public GameObject GameExitObj;
 
     private void Awake()
     {
@@ -72,22 +73,27 @@ public class DataSaverManager : Singleton<DataSaverManager>
     // Start is called before the first frame update
     void Start()
     {
-        LoadJsonFile();
         testData.PlayerInventory.InventoryItemCode = new int[20];
         testData.PlayerInventory.EquipmentItemCode = new int[6];
+        LoadJsonFile();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(SceneManager.GetActiveScene().buildIndex == 0 ||
-            SceneManager.GetActiveScene().buildIndex == 5 || 
+        if (SceneManager.GetActiveScene().buildIndex == 0 ||
+            SceneManager.GetActiveScene().buildIndex == 5 ||
             SceneManager.GetActiveScene().buildIndex == 6)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {  
-                GameExitUI.SetActive(!GameExitUI.activeSelf);
-                //SaveAllData(false);
+            if (FindObjectOfType<GameExit>() == null)
+            {
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+
+                    Instantiate(GameExitUI);
+                    //GameExitUI.SetActive(!GameExitUI.activeSelf);
+                    //SaveAllData(false);
+                }
             }
         }
     }
@@ -99,7 +105,7 @@ public class DataSaverManager : Singleton<DataSaverManager>
     }
     public void InsertItemDict()
     {
-        for(int i = 0; i < UseableItems.Count; i++)
+        for (int i = 0; i < UseableItems.Count; i++)
         {
             UseableItemsDict.Add(UseableItems[i].myCodes, UseableItems[i]);
         }
@@ -110,31 +116,21 @@ public class DataSaverManager : Singleton<DataSaverManager>
     }
     #endregion
 
-    bool isSaveDone = false;
+    public bool isSaveDone = false;
     #region 데이터 저장
+
+    /// <summary>
+    /// 플레이어 데이터 , 인벤토리 , 장비창 현황을 저장하기
+    /// bool이 True 면 게임종료까지 같이 false 이면 저장만
+    /// </summary>
+    /// <param name="isQuit"></param>
     public void SaveAllData(bool isQuit)
     {
         LoadJsonFile();
         SavePlayerData();
         SavePlayerInventoryData();
         WriteJSonFile();
-        if (isQuit)
-        {
-            if(isSaveDone)
-            {
-#if !UNITY_EDITOR
 
-                        System.Diagnostics.Process.GetCurrentProcess().Kill();
-
-#endif
-
-                //GameObject obj = new GameObject();
-                //obj.AddComponent<GameExit>();
-
-                Application.Quit();
-            }  
-        }
-        
     }
     public void WriteJSonFile()
     {
@@ -144,28 +140,16 @@ public class DataSaverManager : Singleton<DataSaverManager>
         System.IO.File.WriteAllText(Application.dataPath + "/12.JSON/Resources/PlayerData/PlayerData.json", data);
         isSaveDone = true;
     }
-//    IEnumerator GameExit()
-//    {
-//        while(!isSaveDone)
-//        {
-//            yield return new WaitForFixedUpdate();
-//            if (isSaveDone)
-//            {
-//#if !UNITY_EDITOR
+    IEnumerator GameExit()
+    {
+        GameObject obj = Instantiate(GameExitObj);
+        while (!isSaveDone)
+        {
+            yield return new WaitForFixedUpdate();
 
-//        System.Diagnostics.Process.GetCurrentProcess().Kill();
-
-//#endif
-//                Application.Quit();
-//            }
-//        }
-//#if !UNITY_EDITOR
-
-//        System.Diagnostics.Process.GetCurrentProcess().Kill();
-
-//#endif
-//        Application.Quit();
-//    }
+        }
+        obj.SetActive(true);
+    }
 
     public void SavePlayerData()
     {
@@ -236,7 +220,7 @@ public class DataSaverManager : Singleton<DataSaverManager>
     {
         LoadJsonFile();
 
-        for (int i = 0; i < EquipmentManager.Inst.equipslot.Count-1; i++)
+        for (int i = 0; i < EquipmentManager.Inst.equipslot.Count - 1; i++)
         {
             if (testData.PlayerInventory.EquipmentItemCode[i] != 0)
             {
@@ -256,7 +240,7 @@ public class DataSaverManager : Singleton<DataSaverManager>
         {
             // 런타임 로드시에는 ??? 로드 
             // ex) 씬전환시
-            if(isRunTimeLoading)
+            if (isRunTimeLoading)
             {
 
                 Gamemanager.Inst.myPlayer.curHp = testData.PlayerData.curHP;
@@ -299,7 +283,7 @@ public class DataSaverManager : Singleton<DataSaverManager>
     }
     public void ResetEquipmentSlot()
     {
-        for (int i = 0; i < EquipmentManager.Inst.equipslot.Count-1; i++)
+        for (int i = 0; i < EquipmentManager.Inst.equipslot.Count - 1; i++)
         {
             if (EquipmentManager.Inst.equipslot[i].mySlotItems != null)
             {
@@ -323,19 +307,19 @@ public class DataSaverManager : Singleton<DataSaverManager>
         ResetEquipment();
         ResetInventory();
         ResetPlayerData();
-        WriteJSonFile();    
+        WriteJSonFile();
     }
 
     public void ResetInventory()
     {
-        for(int i = 0;i < testData.PlayerInventory.InventoryItemCode.Length; i++)
+        for (int i = 0; i < testData.PlayerInventory.InventoryItemCode.Length; i++)
         {
             testData.PlayerInventory.InventoryItemCode[i] = 0;
         }
     }
     public void ResetEquipment()
     {
-        for (int i = 0; i < testData.PlayerInventory.EquipmentItemCode.Length-1; i++)
+        for (int i = 0; i < testData.PlayerInventory.EquipmentItemCode.Length - 1; i++)
         {
             testData.PlayerInventory.EquipmentItemCode[i] = 0;
         }
@@ -346,11 +330,11 @@ public class DataSaverManager : Singleton<DataSaverManager>
         testData.PlayerData.Soul = 0;
         testData.PlayerData.Level = 0;
         testData.PlayerData.LastMapIndex = -1;
-        testData.PlayerData.LastRocate = new Vector3(0,0,0);
+        testData.PlayerData.LastRocate = new Vector3(0, 0, 0);
     }
 
     #endregion
-    
+
 
     public void OpenSaveUI()
     {

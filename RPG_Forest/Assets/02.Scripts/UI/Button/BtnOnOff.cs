@@ -19,5 +19,9 @@ public class BtnOnOff : MonoBehaviour
         transform.gameObject.SetActive(!transform.gameObject.activeSelf);
     }
 
+    public void DesstroyUI(Transform transform)
+    {
+        Destroy(transform.gameObject);
+    }
 
 }

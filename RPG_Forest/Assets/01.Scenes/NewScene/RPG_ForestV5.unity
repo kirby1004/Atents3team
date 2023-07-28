@@ -5102,7 +5102,7 @@ MonoBehaviour:
   TotalCount: 3
   Width: 5
   Height: 5
-  ReSpawnDelay: 7
+  ReSpawnDelay: 10
   mySpawnnerIndex: -1
   monsters: []
 --- !u!4 &884588699
@@ -11902,7 +11902,7 @@ MonoBehaviour:
   TotalCount: 3
   Width: 5
   Height: 5
-  ReSpawnDelay: 7
+  ReSpawnDelay: 10
   mySpawnnerIndex: -1
   monsters: []
 --- !u!4 &2083656188

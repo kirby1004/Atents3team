@@ -68,8 +68,8 @@ public class IntroScene : MonoBehaviour
         {
             SceneManager.LoadScene(DataSaverManager.Inst.testData.PlayerData.LastMapIndex);
         }
-                                    // Loading Scene 은 1번 인덱스
-        
+        // Loading Scene 은 1번 인덱스
+        yield return null;
     }
 
     // 다음씬으로 넘어갈때의 동작

@@ -11,6 +11,8 @@ public class ToggleButton : MonoBehaviour
 
     //메뉴 목록
     public List<GameObject> mySystems;
+
+    public GameObject SaveUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,7 @@ public class ToggleButton : MonoBehaviour
         mySystems.Add(EquipmentManager.Inst.gameObject);
         mySystems.Add(StatusManager.Inst.gameObject);
         mySystems.Add(EnchantManager.Inst.gameObject);
+        mySystems.Add(SaveUI);
     }
 
     // Update is called once per frame
