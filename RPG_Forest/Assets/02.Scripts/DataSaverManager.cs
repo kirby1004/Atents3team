@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -68,14 +69,18 @@ public class DataSaverManager : Singleton<DataSaverManager>
         DontDestroyOnLoad(this);
         ItemListSort();
         InsertItemDict();
+        LoadPossibleCheck();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        testData.PlayerInventory.InventoryItemCode = new int[20];
-        testData.PlayerInventory.EquipmentItemCode = new int[6];
         LoadJsonFile();
+        if (!LoadSuccess)
+        {
+            testData.PlayerInventory.InventoryItemCode = new int[20];
+            testData.PlayerInventory.EquipmentItemCode = new int[6];
+        }
     }
 
     // Update is called once per frame
@@ -85,14 +90,12 @@ public class DataSaverManager : Singleton<DataSaverManager>
             SceneManager.GetActiveScene().buildIndex == 5 ||
             SceneManager.GetActiveScene().buildIndex == 6)
         {
-            if (FindObjectOfType<GameExit>() == null)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (Input.GetKeyDown(KeyCode.Escape))
+                if (FindObjectOfType<GameExit>() == null)
                 {
-
+                    //Instantiate(Resources.Load("UIResource/Test/GameExitUI2"))
                     Instantiate(GameExitUI);
-                    //GameExitUI.SetActive(!GameExitUI.activeSelf);
-                    //SaveAllData(false);
                 }
             }
         }
@@ -137,19 +140,16 @@ public class DataSaverManager : Singleton<DataSaverManager>
         string data = JsonUtility.ToJson(testData);
         Debug.Log(Application.dataPath);
 
-        System.IO.File.WriteAllText(Application.dataPath + "/12.JSON/Resources/PlayerData/PlayerData.json", data);
+#if !UNITY_EDITOR
+        System.IO.File.WriteAllText(Application.persistentDataPath + 
+        "/JSon/PlayerDatas/PlayerData.json", data);
+#else
+        System.IO.File.WriteAllText(Application.dataPath + 
+            "/12.JSON/Resources/PlayerDatas/PlayerData.json", data);
+#endif      
         isSaveDone = true;
     }
-    IEnumerator GameExit()
-    {
-        GameObject obj = Instantiate(GameExitObj);
-        while (!isSaveDone)
-        {
-            yield return new WaitForFixedUpdate();
 
-        }
-        obj.SetActive(true);
-    }
 
     public void SavePlayerData()
     {
@@ -192,15 +192,59 @@ public class DataSaverManager : Singleton<DataSaverManager>
 
     }
 
-    #endregion
+#endregion
 
     #region 데이터 로드
+    bool LoadSuccess = false;
+    // 파일 로드가 가능한지 확인후 없다면 생성하기
+    public void LoadPossibleCheck()
+    {
+#if !UNITY_EDITOR
+        bool success = false;
+        while (!success)
+        {
+            if (Directory.Exists(Application.persistentDataPath + "/JSon"))
+            {
+                if(Directory.Exists(Application.persistentDataPath + "/JSon/PlayerDatas"))
+                {
+                    if(File.Exists(Application.persistentDataPath + "/JSon/PlayerDatas/PlayerData.json"))
+                    {
+                        success = true;
+                    }
+                    else
+                    {
+                        File.Create(Application.persistentDataPath + "/JSon/PlayerDatas/PlayerData.json");
+                        FirstTimeWrite();
+                    }
+                }
+                else
+                {
+                    Directory.CreateDirectory(Application.persistentDataPath + "/JSon/PlayerDatas");
+                }
+            }
+            else
+            {
+                Directory.CreateDirectory(Application.persistentDataPath + "/JSon/");
+            }
+        }
+#endif
 
+    }
     public void LoadJsonFile()
     {
-        TextAsset textAsset = Resources.Load<TextAsset>("PlayerData/PlayerData");
-
+#if !UNITY_EDITOR
+        testData = JsonUtility.FromJson<TestData>(System.IO.File.ReadAllText(Application.persistentDataPath +
+            "/JSon/PlayerDatas/PlayerData.json"));
+#else
+        //TextAsset textAsset = 
+        TextAsset textAsset = Resources.Load<TextAsset>("PlayerDatas/PlayerData");
+        if(textAsset != null)
+        {
+            LoadSuccess = true;
+        }
         testData = JsonUtility.FromJson<TestData>(textAsset.ToString());
+#endif
+
     }
 
     public void LoadInventory()
@@ -256,7 +300,7 @@ public class DataSaverManager : Singleton<DataSaverManager>
             }
         }
     }
-    #endregion
+#endregion
 
     #region 슬롯 초기화
     public void ResetAllSlots()
@@ -297,11 +341,11 @@ public class DataSaverManager : Singleton<DataSaverManager>
         Gamemanager.Inst.myPlayer.curHp = 100;
         Gamemanager.Inst.Money = 0;
         EnchantManager.Inst.EnchantLevel = 0;
-
     }
     #endregion
 
     #region 데이터 초기화
+
     public void ResetAllData()
     {
         ResetEquipment();
@@ -341,4 +385,11 @@ public class DataSaverManager : Singleton<DataSaverManager>
 
     }
 
+    public void FirstTimeWrite()
+    {
+        string data = "{\"PlayerData\":{\"curHP\":100.0,\"LastRocate\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"LastMapIndex\":-1,\"Soul\":0,\"Level\":0},\"PlayerInventory\":{\"InventoryItemCode\":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],\"EquipmentItemCode\":[0,0,0,0,0,0]}}";
+
+        System.IO.File.WriteAllText(Application.persistentDataPath +
+        "/JSon/PlayerDatas/PlayerData.json", data);
+    }
 }
