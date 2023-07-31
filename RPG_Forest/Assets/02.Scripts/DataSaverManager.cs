@@ -210,11 +210,13 @@ public class DataSaverManager : Singleton<DataSaverManager>
                     if(File.Exists(Application.persistentDataPath + "/JSon/PlayerDatas/PlayerData.json"))
                     {
                         success = true;
+                        LoadSuccess = true;
                     }
                     else
                     {
-                        File.Create(Application.persistentDataPath + "/JSon/PlayerDatas/PlayerData.json");
+                        //File.Create(Application.persistentDataPath + "/JSon/PlayerDatas/PlayerData.json");
                         FirstTimeWrite();
+                        success = true;
                     }
                 }
                 else
@@ -388,6 +390,12 @@ public class DataSaverManager : Singleton<DataSaverManager>
     public void FirstTimeWrite()
     {
         string data = "{\"PlayerData\":{\"curHP\":100.0,\"LastRocate\":{\"x\":0.0,\"y\":0.0,\"z\":0.0},\"LastMapIndex\":-1,\"Soul\":0,\"Level\":0},\"PlayerInventory\":{\"InventoryItemCode\":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],\"EquipmentItemCode\":[0,0,0,0,0,0]}}";
+        
+        System.IO.File.WriteAllText(Application.persistentDataPath+"/BasicData.json", data);
+
+
+        //string textAsset = System.IO.File.ReadAllText(Application.persistentDataPath+"/BasicData.json");
+
 
         System.IO.File.WriteAllText(Application.persistentDataPath +
         "/JSon/PlayerDatas/PlayerData.json", data);
