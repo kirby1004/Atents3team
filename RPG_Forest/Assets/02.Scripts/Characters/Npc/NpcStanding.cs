@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class NpcStanding : NpcMovement
 {
+    #region 스탠딩 NPC 멤버 변수
+   
     Vector3 spawnPoint;
     Quaternion Rotate;
     public GameObject Avartar;
+    #endregion
 
     private void Start()
     {
@@ -14,6 +17,8 @@ public class NpcStanding : NpcMovement
         spawnPoint = transform.position;
         Rotate=transform.rotation;
     }
+
+    #region 상태 변환 함수
     override protected void ChangeState(NpcState ns)
     {
         if (myState == ns) return;
@@ -34,7 +39,9 @@ public class NpcStanding : NpcMovement
                 break;
         }
     }
+    #endregion
 
+    #region 애니메이션 실행 함수
     IEnumerator Active()
     {
         yield return new WaitForEndOfFrame();
@@ -45,18 +52,24 @@ public class NpcStanding : NpcMovement
             myAnimator.SetTrigger("Active");
         }
     }
+    #endregion
 
+    #region 딜레이주는 함수
     float delaySeconds()
     {
         return UnityEngine.Random.Range(8.0f, 30.0f);
     }
+    #endregion
 
+    #region 사라지는 함수
     protected override void Disappear()
     {
         Avartar.SetActive(false);
         StartCoroutine(Appearing());
     }
+    #endregion
 
+    #region 다시 나타나는 함수
     IEnumerator Appearing()
     {
         yield return new WaitForSeconds(10.0f);
@@ -72,4 +85,5 @@ public class NpcStanding : NpcMovement
             break;
         }
     }
+    #endregion
 }

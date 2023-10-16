@@ -7,8 +7,14 @@ using UnityEngine;
 
 public class NpcSpawnner : MonoBehaviour
 {
-    public GameObject[] orgNpc;
+    #region NPC 스포너 멤버변수
     public int Total = 10;
+
+    enum NpcList
+    {
+        NpcFemale1, NpcFemale2, NpcMale
+    }
+    NpcList npcList;
 
     [Serializable]
     public class WayPoints
@@ -17,12 +23,27 @@ public class NpcSpawnner : MonoBehaviour
     }
 
     public WayPoints[] npcWay;
+    #endregion
 
+    public int NpcCount = 0;
+
+    private void Update()
+    {
+        NpcCount = NpcMovement.WalkAbleCount;
+    }
     private void Start()
     {
-        StartCoroutine(FirstRespawning());
+        for (int i = 0; i < Total; i++)
+        {
+            Transform[] wayPoint = RandomWayPoint();
+            Vector3 pos = wayPoint[0].position;
+            GameObject obj = ObjectPoolingManager.instance.GetObject(RandomNpcObject(), pos, Quaternion.identity);
+            obj.GetComponent<NpcMovement>()?.SetPoints(wayPoint);
+            obj.GetComponent<NpcMovement>().RespawnSetting += ReSpawn;
+        }
     }
 
+    #region NPC 랜덤 스폰 함수
     Transform[] RandomWayPoint()
     {
         Transform[] temp = { };
@@ -41,31 +62,22 @@ public class NpcSpawnner : MonoBehaviour
         return temp;
     }
 
-    GameObject RandomNpcObject()
+    string RandomNpcObject()
     {
-        int rnd= UnityEngine.Random.Range(0, orgNpc.Length);
-        return orgNpc[rnd];
+        int rnd = UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(NpcList)).Length);
+        npcList = (NpcList)rnd;
+        return npcList.ToString();
     }
+
 
     float RandomRespawnTime()
     {
         float delay= UnityEngine.Random.Range(1.0f, 2.5f);
         return delay;
     }
+    #endregion
 
-    IEnumerator FirstRespawning()
-    {
-        for (int i = 0; i < Total; i++)
-        {
-            Transform[] wayPoint = RandomWayPoint();
-            Vector3 pos = wayPoint[0].position;
-            GameObject obj = Instantiate(RandomNpcObject(), pos, Quaternion.identity);
-            obj.GetComponent<NpcMovement>()?.SetPoints(wayPoint);
-            obj.GetComponent<NpcMovement>().RespawnSetting += ReSpawn;
-
-            yield return new WaitForSeconds(RandomRespawnTime());
-        }
-    }
+    #region 스폰 함수
     void ReSpawn()
     {
         StartCoroutine(ReSpawnning());
@@ -73,15 +85,15 @@ public class NpcSpawnner : MonoBehaviour
 
     IEnumerator ReSpawnning()
     {
-        yield return new WaitForSeconds(3.0f);
-
+        yield return new WaitForSeconds(RandomRespawnTime());
         if (NpcMovement.WalkAbleCount < Total)
         {
             Transform[] wayPoint = RandomWayPoint();
             Vector3 pos = wayPoint[0].position;
-            GameObject obj = Instantiate(RandomNpcObject(), pos, Quaternion.identity);
+            GameObject obj = ObjectPoolingManager.instance.GetObject(RandomNpcObject(), pos, Quaternion.identity);
             obj.GetComponent<NpcMovement>()?.SetPoints(wayPoint);
             obj.GetComponent<NpcMovement>().RespawnSetting += ReSpawn;
         }
     }
+    #endregion
 }
