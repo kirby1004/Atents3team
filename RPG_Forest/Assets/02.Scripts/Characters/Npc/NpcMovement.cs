@@ -7,7 +7,8 @@ using UnityEngine.Events;
 
 public class NpcMovement : MonoBehaviour
 {
-    public enum NpcState
+    #region NPCMovement 멤버 변수
+    public enum NpcState //Npc 상태 
     {
         Create,Standing, Walk,Run, Disappear
     }
@@ -32,18 +33,15 @@ public class NpcMovement : MonoBehaviour
     public LayerMask mask;
     
     public Animator myAnimator;
-
-    public void SetPoints(Transform[] p)
-    {
-        walkPoints = p;
-    }
+    #endregion
 
     private void Start()
     {
         ChangeState(NpcState.Walk);
     }
 
-     virtual protected void ChangeState(NpcState ns)
+    #region 상태 변환 함수
+    virtual protected void ChangeState(NpcState ns)
     {
         if (myState == ns) return;
         myState = ns;
@@ -65,11 +63,12 @@ public class NpcMovement : MonoBehaviour
                 break;
         }
     }
+    #endregion
 
-    protected void Fear(Transform target)
+    #region NPC 이동 관련 함수
+    public void SetPoints(Transform[] p)
     {
-        StartCoroutine(WalkingToPos(target.position, () => { ChangeState(NpcState.Disappear); }));
-        myCollider.enabled = false;
+        walkPoints = p;
     }
 
     void GotoNextPoint()
@@ -146,12 +145,19 @@ public class NpcMovement : MonoBehaviour
             yield return null;
         }
     }
+    #endregion
 
+    #region NPC 상태 함수
+    protected void Fear(Transform target)
+    {
+        StartCoroutine(WalkingToPos(target.position, () => { ChangeState(NpcState.Disappear); }));
+        myCollider.enabled = false;
+    }
 
     virtual protected void Disappear()
     {
         RespawnSetting?.Invoke();
-        Destroy(gameObject);
+        ObjectPoolingManager.instance.ReturnObject(gameObject);
         WalkAbleCount--;
     }
 
@@ -164,5 +170,5 @@ public class NpcMovement : MonoBehaviour
             ChangeState(NpcState.Run);
         }
     }
-
+    #endregion
 }

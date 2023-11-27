@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
+
+#region Zoom 데이터 저장 구조체
 public struct ZoomData
 {
     public float ZoomSpeed;
@@ -20,9 +22,11 @@ public struct ZoomData
         desireDist = 0.0f;
     }
 }
+#endregion
 
 public class SpringArm : MonoBehaviour
 {
+    #region 스프링암 변수 
     public Transform cameraPoint;
     public LayerMask crashMask;
     [SerializeField] float Offset = 0.5f;
@@ -36,6 +40,10 @@ public class SpringArm : MonoBehaviour
         set => curRot = value;
     }
     [SerializeField] Vector2 LookUpRange = new Vector2(-60, 90);
+    [field: SerializeField] public bool toggleCameraRotation { get; set; }
+    public bool CameraChange = false;
+    #endregion
+
 
     void Start()
     {
@@ -45,7 +53,6 @@ public class SpringArm : MonoBehaviour
         myZoomData.desireDist = myZoomData.curDist = myCam.localPosition.magnitude;
     }
 
-    [field: SerializeField] public bool toggleCameraRotation { get; set; }
     void Update()
     {
         if (!CameraChange)
@@ -54,7 +61,8 @@ public class SpringArm : MonoBehaviour
         }
        
     }
-    
+
+    #region 카메라 업데이트 함수
     void CameraUpdate()
     {
         if (Input.GetMouseButton(1))
@@ -64,7 +72,7 @@ public class SpringArm : MonoBehaviour
             transform.localRotation = Quaternion.Euler(curRot.x, 0, 0);
         }
 
-        if (!toggleCameraRotation)
+        if (!toggleCameraRotation) //토글이 켜져있는지 확인.
         {
             transform.parent.localRotation = Quaternion.Euler(0, curRot.y, 0);
             transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(transform.localRotation.eulerAngles.x, 0, 0), Time.deltaTime * 10.0f);
@@ -87,8 +95,9 @@ public class SpringArm : MonoBehaviour
 
         myCam.localPosition = Vector3.back * myZoomData.curDist;
     }
+    #endregion
 
-    public bool CameraChange = false;
+    #region 카메라 시점 이동 함수
     public void ViewPointTransformation(Transform ViewPoint, UnityAction e = null)
     {
         myCam.transform.SetParent(null);
@@ -138,4 +147,5 @@ public class SpringArm : MonoBehaviour
         }
         e?.Invoke();
     }
+    #endregion
 }

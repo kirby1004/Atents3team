@@ -33,11 +33,6 @@ public class Portal : MonoBehaviour
                 
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        
-    }
-
     private void OnTriggerExit(Collider other)
     {
         if (((1 << other.gameObject.layer) & playerMask) != 0)

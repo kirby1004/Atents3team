@@ -38,7 +38,7 @@ public class ShopManager : Singleton<ShopManager>
         ShopManager.Inst.ShopList.ShopItemRefreshing(itemList);
     }
     //상점 오픈 ver2 상인 타입을 받아서 열기
-    public void OpenShop(NpcProperty.NPCType npcType,UnityAction e=null)
+    public void OpenShop(ShopNpcProperty.NPCType npcType,UnityAction e=null)
     {
         e?.Invoke();
         ShopUI.SetActive(true);

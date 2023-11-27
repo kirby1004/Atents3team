@@ -6,15 +6,19 @@ using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
-public class ShopNpc : NpcProperty
+public class ShopNpc : ShopNpcProperty
 {
+    #region ShopNpc 멤버변수
     public LayerMask customer;
     public Animator npcAnim;
+    #endregion
+
     private void Awake()
     {
         _npctype = NPCType.Shop;
     }
 
+    #region 상점 관련 함수
     public void ShopView(GameObject obj,UnityAction e=null,UnityAction viewstart = null, UnityAction viewEnd = null)
     {
         StartCoroutine(ShopViewing(obj,e, viewstart, viewEnd));
@@ -35,18 +39,24 @@ public class ShopNpc : NpcProperty
         yield return null;
         viewEnd?.Invoke();
     }
+    #endregion
 
-
+    #region 플레이어 상호작용 함수
     private void OnTriggerEnter(Collider other)
     {
         if (((1 << other.gameObject.layer) & customer) != 0)
         {
             other.gameObject.GetComponent<IinterPlay>().SetisObjectNear(true);
             other.gameObject.GetComponent<IinterPlay>()?.OpenUi.AddListener(() => {
-                ShopView(other.gameObject, () => other.GetComponentInChildren<SpringArm>().ViewPointTransformation(ViewPoint, () => ShopManager.Inst.OpenShop(NpcType, () => { other.gameObject.GetComponent<IinterPlay>().SetisUI(true); })), () => { other.gameObject.GetComponent<IinterPlay>().SetisInterPlay(true); }, () => { other.gameObject.GetComponent<IinterPlay>().SetisInterPlay(false); });
+                ShopView(other.gameObject, () => other.GetComponentInChildren<SpringArm>().ViewPointTransformation(ViewPoint, 
+                    () => ShopManager.Inst.OpenShop(NpcType, () => { other.gameObject.GetComponent<IinterPlay>().SetisUI(true); })), 
+                    () => { other.gameObject.GetComponent<IinterPlay>().SetisInterPlay(true); }, 
+                    () => { other.gameObject.GetComponent<IinterPlay>().SetisInterPlay(false); });
             });
-            other.gameObject.GetComponent<IinterPlay>().CloseUi.AddListener(() => { ShopManager.Inst.CloseShop(() => other.GetComponentInChildren<SpringArm>().ViewPointReset(other.GetComponentInChildren<SpringArm>().transform, () => other.gameObject.GetComponent<IinterPlay>().SetisUI(false)), () => npcAnim.SetTrigger("Greet")); });
-            //other.gameObject.GetComponent<IinterPlay>().CloseUi.AddListener(() => other.gameObject.GetComponent<IinterPlay>().SetisUI(false));
+            other.gameObject.GetComponent<IinterPlay>().CloseUi.AddListener(() => 
+                { ShopManager.Inst.CloseShop(
+                    () => other.GetComponentInChildren<SpringArm>().ViewPointReset(other.GetComponentInChildren<SpringArm>().transform, 
+                    () => other.gameObject.GetComponent<IinterPlay>().SetisUI(false)), () => npcAnim.SetTrigger("Greet")); });
             ShopManager.Inst.ExitButton.onClick.AddListener(() => other.gameObject.GetComponent<IinterPlay>().CloseUi?.Invoke());
         }
     }
@@ -58,6 +68,6 @@ public class ShopNpc : NpcProperty
             other.gameObject.GetComponent<IinterPlay>()?.SetisObjectNear(false);
         }
     }
-
+    #endregion
 
 }

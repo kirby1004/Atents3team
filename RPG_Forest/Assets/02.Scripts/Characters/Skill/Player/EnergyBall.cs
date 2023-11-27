@@ -48,7 +48,7 @@ public class EnergyBall : Skill,ISkill
         Ray ray = new Ray();
         ray.origin = HitPoint.position;
         ray.direction = transform.forward;
-        if (Physics.Raycast(ray, out RaycastHit hit, 1.4f,crashMask))
+        if (Physics.Raycast(ray, out RaycastHit hit, 0.5f,crashMask))
         {
             if (((1 << hit.transform.gameObject.layer) & enemyMask) != 0)
             {
