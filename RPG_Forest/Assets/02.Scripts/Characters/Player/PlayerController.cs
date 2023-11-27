@@ -38,8 +38,8 @@ public class PlayerController : CharacterMovement_V2, IBattle,IinterPlay
     public new float MoveSpeed { get { return myBaseStatus.MoveSpeed + EquipmentManager.Inst.equipmentSpeed; } }
 
     //구르기 관련 변수
-    float rollPlayTime = 3.0f;
-    float rollCoolTime = 3.0f;
+    float rollPlayTime = 0.2f;
+    float rollCoolTime = 0.2f;
     #endregion
 
     #region IBattle 오버라이드

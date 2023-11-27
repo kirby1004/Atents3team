@@ -22,6 +22,7 @@ public class Singleton<T> : MonoBehaviour where T : Component
             return _inst;
         }
     }
+
     protected void Initialize()
     {
         if(_inst == null)

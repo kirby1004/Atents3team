@@ -38,6 +38,7 @@ public class Gamemanager : MonoBehaviour , IEconomy
             DontDestroyOnLoad (obj);
         }
     }
+
     private void Start()
     {
         economy = this.GetComponent<IEconomy>();

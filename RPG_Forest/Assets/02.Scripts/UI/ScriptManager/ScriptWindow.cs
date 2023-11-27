@@ -15,6 +15,7 @@ public class ScriptWindow : MonoBehaviour , IPointerClickHandler
     {
         normal,Start,End,NewLoad,PlayerChange
     }
+
     public UnityAction StartAction;
     public UnityAction DoneAction;
 
