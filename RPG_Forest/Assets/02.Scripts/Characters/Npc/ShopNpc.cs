@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
-public class ShopNpc : ShopNpcProperty
+public class ShopNpc : NpcProperty
 {
     #region ShopNpc 멤버변수
     public LayerMask customer;
@@ -15,7 +15,7 @@ public class ShopNpc : ShopNpcProperty
 
     private void Awake()
     {
-        _npctype = NPCType.Shop;
+        _npcType = NPCType.Shop;
     }
 
     #region 상점 관련 함수
